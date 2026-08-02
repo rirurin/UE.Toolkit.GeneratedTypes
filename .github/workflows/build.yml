@@ -39,6 +39,13 @@ jobs:
       run: |
         dotnet publish -c Release -o "Build" /p:OutputPath=../Build
 
+    - name: Upload Release Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: NuGet Release
+        path: |
+          Build/*.nupkg
+
     - name: Login to NuGet (on Tag)
       uses: NuGet/login@v1
       if: env.IS_RELEASE == 'true'
