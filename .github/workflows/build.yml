@@ -66,3 +66,4 @@ jobs:
         {
             Write-Host "Pushing $Item"
             dotnet nuget push "$Item" -k "${{ steps.login.outputs.NUGET_API_KEY }}" -s "${{ env.NUGET_URL }}" --skip-duplicate
+        }
