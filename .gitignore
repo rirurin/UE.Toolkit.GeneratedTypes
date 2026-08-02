@@ -2,10 +2,8 @@
 .vs/*
 **/obj/*
 **/bin/*
-
-UE.Toolkit.ChronosTypes
-UE.Toolkit.PalworldTypes
-UE.Toolkit.RFGOATypes
-UE.Toolkit.SandfallTypes
-UE.Toolkit.SMT5VTypes
-UE.Toolkit.UnionTypes
+*.nupkg
+*.dll
+*.pdb
+*.deps.json
+Build

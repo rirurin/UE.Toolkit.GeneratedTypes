@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+	    <TargetFramework>net9.0</TargetFramework>
+	    <ImplicitUsings>enable</ImplicitUsings>
+	    <Nullable>enable</Nullable>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+
+		<!-- Create NuGet Package and include your Documentation/comments inside. -->
+		<!--<GenerateDocumentationFile>true</GenerateDocumentationFile>-->
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		
+		<!-- Set to the same as your project name/namespace -->
+		<PackageId>UE.Toolkit.SMT5VTypes</PackageId>
+		
+		<!-- Use Semantic Versioning -->
+		<Authors>Rirurin</Authors>
+		<Version>1.0.0</Version>
+		
+		<!-- Description of your Package -->
+		<Description>UE Toolkit generated classes and structs for Shin Megami Tensei V: Vengeance (UE 4.27)</Description>
+		
+		<!-- Link to your Source Code [GitHub Page, etc.] -->
+		<RepositoryUrl>https://github.com/rirurin/UE.Toolkit.GeneratedTypes</RepositoryUrl>
+		
+		<!-- SPDX License Identifier: https://spdx.org/licenses/ -->
+		<PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
+		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+    </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="UE.Toolkit.Core" Version="1.10.1" />
+  </ItemGroup>
+
+</Project>
