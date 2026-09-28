@@ -15,7 +15,7 @@
 
 	<!-- Use Semantic Versioning -->
 	<Authors>Rirurin</Authors>
-	<Version>1.0.0</Version>
+	<Version>1.0.1</Version>
 
 	<!-- Description of your Package -->
 	<Description>UE Toolkit generated classes and structs for Life is Strange: Double Exposure (UE 5.2)</Description>
@@ -30,7 +30,7 @@
   </PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="UE.Toolkit.Core" Version="1.10.1" />
+		<PackageReference Include="UE.Toolkit.Core" Version="1.10.4" />
 	</ItemGroup>
 
 </Project>
