@@ -1206,7 +1206,7 @@ public class AActor : UObject, ITypeRepr<AActor_Repr>
 		return ((ObjectParam?)Return)!.Value != nint.Zero ? new(Inner.GetFactory().CreateUObject(((ObjectParam?)Return)!.Value)) : null;
 	}
 
-	public unsafe UActorComponent? AddComponentByClass( UActorComponent? Class, bool bManualAttachment, ref FTransform RelativeTransform, bool bDeferredFinish)
+	public unsafe UActorComponent? AddComponentByClass( UClass? Class, bool bManualAttachment, ref FTransform RelativeTransform, bool bDeferredFinish)
 	{
 		nint Class_Ptr = Class?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("AddComponentByClass", [
@@ -1381,7 +1381,7 @@ public class AActor : UObject, ITypeRepr<AActor_Repr>
 		return ((NameParam?)Return)!.Value;
 	}
 
-	public unsafe UActorComponent? GetComponentByClass( UActorComponent? ComponentClass)
+	public unsafe UActorComponent? GetComponentByClass( UClass? ComponentClass)
 	{
 		nint ComponentClass_Ptr = ComponentClass?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("GetComponentByClass", [
@@ -1390,7 +1390,7 @@ public class AActor : UObject, ITypeRepr<AActor_Repr>
 		return ((ObjectParam?)Return)!.Value != nint.Zero ? new(Inner.GetFactory().CreateUObject(((ObjectParam?)Return)!.Value)) : null;
 	}
 
-	public unsafe TArray<Ptr<UActorComponent_Repr>> GetComponentsByInterface( UInterface? Interface)
+	public unsafe TArray<Ptr<UActorComponent_Repr>> GetComponentsByInterface( UClass? Interface)
 	{
 		nint Interface_Ptr = Interface?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("GetComponentsByInterface", [
@@ -1401,7 +1401,7 @@ public class AActor : UObject, ITypeRepr<AActor_Repr>
 		return ReturnValue;
 	}
 
-	public unsafe TArray<Ptr<UActorComponent_Repr>> GetComponentsByTag( UActorComponent? ComponentClass, FName Tag)
+	public unsafe TArray<Ptr<UActorComponent_Repr>> GetComponentsByTag( UClass? ComponentClass, FName Tag)
 	{
 		nint ComponentClass_Ptr = ComponentClass?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("GetComponentsByTag", [
@@ -1505,7 +1505,7 @@ public class AActor : UObject, ITypeRepr<AActor_Repr>
 		return (ENetRole)(((ByteParam?)Return)!.Value);
 	}
 
-	public unsafe void GetOverlappingActors( ref TArray<Ptr<AActor_Repr>> OverlappingActors, AActor? ClassFilter)
+	public unsafe void GetOverlappingActors( ref TArray<Ptr<AActor_Repr>> OverlappingActors, UClass? ClassFilter)
 	{
 		nint ClassFilter_Ptr = ClassFilter?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("GetOverlappingActors", [
@@ -1783,7 +1783,7 @@ public class AActor : UObject, ITypeRepr<AActor_Repr>
 		return ReturnValue;
 	}
 
-	public unsafe TArray<Ptr<UActorComponent_Repr>> K2_GetComponentsByClass( UActorComponent? ComponentClass)
+	public unsafe TArray<Ptr<UActorComponent_Repr>> K2_GetComponentsByClass( UClass? ComponentClass)
 	{
 		nint ComponentClass_Ptr = ComponentClass?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("K2_GetComponentsByClass", [
@@ -4394,7 +4394,7 @@ public class UPrimitiveComponent : USceneComponent, ITypeRepr<UPrimitiveComponen
 		return ((IntParam?)Return)!.Value;
 	}
 
-	public unsafe void GetOverlappingActors( ref TArray<Ptr<AActor_Repr>> OverlappingActors, AActor? ClassFilter)
+	public unsafe void GetOverlappingActors( ref TArray<Ptr<AActor_Repr>> OverlappingActors, UClass? ClassFilter)
 	{
 		nint ClassFilter_Ptr = ClassFilter?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("GetOverlappingActors", [
@@ -6021,7 +6021,7 @@ public class UNiagaraComponentRendererProperties : UNiagaraRendererProperties, I
 
 	public new unsafe UNiagaraComponentRendererProperties_Repr* Repr => (UNiagaraComponentRendererProperties_Repr*)Inner.Ptr;
 
-	public unsafe USceneComponent? ComponentType
+	public unsafe UClass? ComponentType
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("ComponentType")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("ComponentType")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("ComponentType")) = value?.Inner.Ptr ?? nint.Zero;
@@ -11025,7 +11025,7 @@ public class ANiagaraPreviewGrid : AActor, ITypeRepr<ANiagaraPreviewGrid_Repr>
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("PreviewAxisY")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe ANiagaraPreviewBase? PreviewClass
+	public unsafe UClass? PreviewClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("PreviewClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("PreviewClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("PreviewClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -12575,7 +12575,7 @@ public class UMovieSceneBindingExtensions : UBlueprintFunctionLibrary, ITypeRepr
 
 	public new unsafe UMovieSceneBindingExtensions_Repr* Repr => (UMovieSceneBindingExtensions_Repr*)Inner.Ptr;
 
-	public unsafe UMovieSceneTrack? AddTrack( ref FSequencerBindingProxy InBinding, UMovieSceneTrack? TrackType)
+	public unsafe UMovieSceneTrack? AddTrack( ref FSequencerBindingProxy InBinding, UClass? TrackType)
 	{
 		nint TrackType_Ptr = TrackType?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("AddTrack", [
@@ -12585,7 +12585,7 @@ public class UMovieSceneBindingExtensions : UBlueprintFunctionLibrary, ITypeRepr
 		return ((ObjectParam?)Return)!.Value != nint.Zero ? new(Inner.GetFactory().CreateUObject(((ObjectParam?)Return)!.Value)) : null;
 	}
 
-	public unsafe TArray<Ptr<UMovieSceneTrack_Repr>> FindTracksByExactType( ref FSequencerBindingProxy InBinding, UMovieSceneTrack? TrackType)
+	public unsafe TArray<Ptr<UMovieSceneTrack_Repr>> FindTracksByExactType( ref FSequencerBindingProxy InBinding, UClass? TrackType)
 	{
 		nint TrackType_Ptr = TrackType?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("FindTracksByExactType", [
@@ -12597,7 +12597,7 @@ public class UMovieSceneBindingExtensions : UBlueprintFunctionLibrary, ITypeRepr
 		return ReturnValue;
 	}
 
-	public unsafe TArray<Ptr<UMovieSceneTrack_Repr>> FindTracksByType( ref FSequencerBindingProxy InBinding, UMovieSceneTrack? TrackType)
+	public unsafe TArray<Ptr<UMovieSceneTrack_Repr>> FindTracksByType( ref FSequencerBindingProxy InBinding, UClass? TrackType)
 	{
 		nint TrackType_Ptr = TrackType?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("FindTracksByType", [
@@ -12665,7 +12665,7 @@ public class UMovieSceneBindingExtensions : UBlueprintFunctionLibrary, ITypeRepr
 		return ReturnValue;
 	}
 
-	public unsafe UObject? GetPossessedObjectClass( ref FSequencerBindingProxy InBinding)
+	public unsafe UClass? GetPossessedObjectClass( ref FSequencerBindingProxy InBinding)
 	{
 		_ = Inner.ProcessEvent("GetPossessedObjectClass", [
 			new StructParam(new((FSequencerBindingProxy*)Unsafe.AsPointer(ref InBinding)), 24)
@@ -12969,7 +12969,7 @@ public class UMovieScenePropertyTrackExtensions : UBlueprintFunctionLibrary, ITy
 
 	public new unsafe UMovieScenePropertyTrackExtensions_Repr* Repr => (UMovieScenePropertyTrackExtensions_Repr*)Inner.Ptr;
 
-	public unsafe UObject? GetObjectPropertyClass( UMovieSceneObjectPropertyTrack? Track)
+	public unsafe UClass? GetObjectPropertyClass( UMovieSceneObjectPropertyTrack? Track)
 	{
 		nint Track_Ptr = Track?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("GetObjectPropertyClass", [
@@ -13005,7 +13005,7 @@ public class UMovieScenePropertyTrackExtensions : UBlueprintFunctionLibrary, ITy
 		return ((NameParam?)Return)!.Value;
 	}
 
-	public unsafe void SetObjectPropertyClass( UMovieSceneObjectPropertyTrack? Track, UObject? PropertyClass)
+	public unsafe void SetObjectPropertyClass( UMovieSceneObjectPropertyTrack? Track, UClass? PropertyClass)
 	{
 		nint Track_Ptr = Track?.Inner.Ptr ?? nint.Zero;
 		nint PropertyClass_Ptr = PropertyClass?.Inner.Ptr ?? nint.Zero;
@@ -14326,7 +14326,7 @@ public class UMovieSceneSectionExtensions : UBlueprintFunctionLibrary, ITypeRepr
 
 	public new unsafe UMovieSceneSectionExtensions_Repr* Repr => (UMovieSceneSectionExtensions_Repr*)Inner.Ptr;
 
-	public unsafe TArray<Ptr<UMovieSceneScriptingChannel_Repr>> FindChannelsByType( UMovieSceneSection? Section, UMovieSceneScriptingChannel? ChannelType)
+	public unsafe TArray<Ptr<UMovieSceneScriptingChannel_Repr>> FindChannelsByType( UMovieSceneSection? Section, UClass? ChannelType)
 	{
 		nint Section_Ptr = Section?.Inner.Ptr ?? nint.Zero;
 		nint ChannelType_Ptr = ChannelType?.Inner.Ptr ?? nint.Zero;
@@ -14525,7 +14525,7 @@ public class UMovieSceneSequenceExtensions : UBlueprintFunctionLibrary, ITypeRep
 		return ((IntParam?)Return)!.Value;
 	}
 
-	public unsafe UMovieSceneTrack? AddMasterTrack( UMovieSceneSequence? Sequence, UMovieSceneTrack? TrackType)
+	public unsafe UMovieSceneTrack? AddMasterTrack( UMovieSceneSequence? Sequence, UClass? TrackType)
 	{
 		nint Sequence_Ptr = Sequence?.Inner.Ptr ?? nint.Zero;
 		nint TrackType_Ptr = TrackType?.Inner.Ptr ?? nint.Zero;
@@ -14559,7 +14559,7 @@ public class UMovieSceneSequenceExtensions : UBlueprintFunctionLibrary, ITypeRep
 		return ((ObjectParam?)Return)!.Value != nint.Zero ? new(Inner.GetFactory().CreateUObject(((ObjectParam?)Return)!.Value)) : null;
 	}
 
-	public unsafe FSequencerBindingProxy AddSpawnableFromClass( UMovieSceneSequence? Sequence, UObject? ClassToSpawn)
+	public unsafe FSequencerBindingProxy AddSpawnableFromClass( UMovieSceneSequence? Sequence, UClass? ClassToSpawn)
 	{
 		nint Sequence_Ptr = Sequence?.Inner.Ptr ?? nint.Zero;
 		nint ClassToSpawn_Ptr = ClassToSpawn?.Inner.Ptr ?? nint.Zero;
@@ -14646,7 +14646,7 @@ public class UMovieSceneSequenceExtensions : UBlueprintFunctionLibrary, ITypeRep
 		return ((IntParam?)Return)!.Value;
 	}
 
-	public unsafe TArray<Ptr<UMovieSceneTrack_Repr>> FindMasterTracksByExactType( UMovieSceneSequence? Sequence, UMovieSceneTrack? TrackType)
+	public unsafe TArray<Ptr<UMovieSceneTrack_Repr>> FindMasterTracksByExactType( UMovieSceneSequence? Sequence, UClass? TrackType)
 	{
 		nint Sequence_Ptr = Sequence?.Inner.Ptr ?? nint.Zero;
 		nint TrackType_Ptr = TrackType?.Inner.Ptr ?? nint.Zero;
@@ -14659,7 +14659,7 @@ public class UMovieSceneSequenceExtensions : UBlueprintFunctionLibrary, ITypeRep
 		return ReturnValue;
 	}
 
-	public unsafe TArray<Ptr<UMovieSceneTrack_Repr>> FindMasterTracksByType( UMovieSceneSequence? Sequence, UMovieSceneTrack? TrackType)
+	public unsafe TArray<Ptr<UMovieSceneTrack_Repr>> FindMasterTracksByType( UMovieSceneSequence? Sequence, UClass? TrackType)
 	{
 		nint Sequence_Ptr = Sequence?.Inner.Ptr ?? nint.Zero;
 		nint TrackType_Ptr = TrackType?.Inner.Ptr ?? nint.Zero;
@@ -16846,7 +16846,7 @@ public class UNetConnection : UPlayer, ITypeRepr<UNetConnection_Repr>
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("Driver")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe UPackageMap? PackageMapClass
+	public unsafe UClass? PackageMapClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("PackageMapClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("PackageMapClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("PackageMapClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -17142,13 +17142,13 @@ public class UNetDriver : UObject, ITypeRepr<UNetDriver_Repr>
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("WorldPackage")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe UObject? NetConnectionClass_2
+	public unsafe UClass? NetConnectionClass_2
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("NetConnectionClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("NetConnectionClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("NetConnectionClass")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe UObject? ReplicationDriverClass_2
+	public unsafe UClass? ReplicationDriverClass_2
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("ReplicationDriverClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("ReplicationDriverClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("ReplicationDriverClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -18733,7 +18733,7 @@ public class AOnlineBeaconHostObject : AActor, ITypeRepr<AOnlineBeaconHostObject
 		get => (FString*)(Inner.Ptr + GetFieldOffset("BeaconTypeName"));
 	}
 
-	public unsafe AOnlineBeaconClient? ClientBeaconActorClass
+	public unsafe UClass? ClientBeaconActorClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("ClientBeaconActorClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("ClientBeaconActorClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("ClientBeaconActorClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -21544,13 +21544,13 @@ public class USkeletalMeshComponent : USkinnedMeshComponent, ITypeRepr<USkeletal
 
 	public new unsafe USkeletalMeshComponent_Repr* Repr => (USkeletalMeshComponent_Repr*)Inner.Ptr;
 
-	public unsafe UObject? AnimBlueprintGeneratedClass
+	public unsafe UClass? AnimBlueprintGeneratedClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("AnimBlueprintGeneratedClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("AnimBlueprintGeneratedClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("AnimBlueprintGeneratedClass")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe UAnimInstance? AnimClass
+	public unsafe UClass? AnimClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("AnimClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("AnimClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("AnimClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -21848,7 +21848,7 @@ public class USkeletalMeshComponent : USkinnedMeshComponent, ITypeRepr<USkeletal
 		get => (FMulticastScriptDelegate*)(Inner.Ptr + GetFieldOffset("OnConstraintBroken"));
 	}
 
-	public unsafe UClothingSimulationFactory? ClothingSimulationFactory
+	public unsafe UClass? ClothingSimulationFactory
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("ClothingSimulationFactory")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("ClothingSimulationFactory")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("ClothingSimulationFactory")) = value?.Inner.Ptr ?? nint.Zero;
@@ -21975,7 +21975,7 @@ public class USkeletalMeshComponent : USkinnedMeshComponent, ITypeRepr<USkeletal
 		return (EAnimationMode)(((ByteParam?)Return)!.Value);
 	}
 
-	public unsafe UObject? GetAnimClass()
+	public unsafe UClass? GetAnimClass()
 	{
 		_ = Inner.ProcessEvent("GetAnimClass", [], out var Return);
 		return ((ObjectParam?)Return)!.Value != nint.Zero ? new(Inner.GetFactory().CreateUObject(((ObjectParam?)Return)!.Value)) : null;
@@ -22092,7 +22092,7 @@ public class USkeletalMeshComponent : USkinnedMeshComponent, ITypeRepr<USkeletal
 		], out _);
 	}
 
-	public unsafe UAnimInstance? GetLinkedAnimLayerInstanceByClass( UAnimInstance? InClass)
+	public unsafe UAnimInstance? GetLinkedAnimLayerInstanceByClass( UClass? InClass)
 	{
 		nint InClass_Ptr = InClass?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("GetLinkedAnimLayerInstanceByClass", [
@@ -22216,7 +22216,7 @@ public class USkeletalMeshComponent : USkinnedMeshComponent, ITypeRepr<USkeletal
 		return ((BoolParam?)Return)!.Value;
 	}
 
-	public unsafe void LinkAnimClassLayers( UAnimInstance? InClass)
+	public unsafe void LinkAnimClassLayers( UClass? InClass)
 	{
 		nint InClass_Ptr = InClass?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("LinkAnimClassLayers", [
@@ -22224,7 +22224,7 @@ public class USkeletalMeshComponent : USkinnedMeshComponent, ITypeRepr<USkeletal
 		], out _);
 	}
 
-	public unsafe void LinkAnimGraphByTag( FName InTag, UAnimInstance? InClass)
+	public unsafe void LinkAnimGraphByTag( FName InTag, UClass? InClass)
 	{
 		nint InClass_Ptr = InClass?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("LinkAnimGraphByTag", [
@@ -22398,7 +22398,7 @@ public class USkeletalMeshComponent : USkinnedMeshComponent, ITypeRepr<USkeletal
 		], out _);
 	}
 
-	public unsafe void SetAnimClass( UObject? NewClass)
+	public unsafe void SetAnimClass( UClass? NewClass)
 	{
 		nint NewClass_Ptr = NewClass?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("SetAnimClass", [
@@ -22580,7 +22580,7 @@ public class USkeletalMeshComponent : USkinnedMeshComponent, ITypeRepr<USkeletal
 		], out _);
 	}
 
-	public unsafe void UnlinkAnimClassLayers( UAnimInstance? InClass)
+	public unsafe void UnlinkAnimClassLayers( UClass? InClass)
 	{
 		nint InClass_Ptr = InClass?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("UnlinkAnimClassLayers", [
@@ -22930,7 +22930,7 @@ public class UAnimInstance : UObject, ITypeRepr<UAnimInstance_Repr>
 		], out _);
 	}
 
-	public unsafe UAnimInstance? GetLinkedAnimLayerInstanceByClass( UAnimInstance? InClass)
+	public unsafe UAnimInstance? GetLinkedAnimLayerInstanceByClass( UClass? InClass)
 	{
 		nint InClass_Ptr = InClass?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("GetLinkedAnimLayerInstanceByClass", [
@@ -22947,7 +22947,7 @@ public class UAnimInstance : UObject, ITypeRepr<UAnimInstance_Repr>
 		return ((ObjectParam?)Return)!.Value != nint.Zero ? new(Inner.GetFactory().CreateUObject(((ObjectParam?)Return)!.Value)) : null;
 	}
 
-	public unsafe UAnimInstance? GetLinkedAnimLayerInstanceByGroupAndClass( FName InGroup, UAnimInstance? InClass)
+	public unsafe UAnimInstance? GetLinkedAnimLayerInstanceByGroupAndClass( FName InGroup, UClass? InClass)
 	{
 		nint InClass_Ptr = InClass?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("GetLinkedAnimLayerInstanceByGroupAndClass", [
@@ -23090,7 +23090,7 @@ public class UAnimInstance : UObject, ITypeRepr<UAnimInstance_Repr>
 		return ((BoolParam?)Return)!.Value;
 	}
 
-	public unsafe void LinkAnimClassLayers( UAnimInstance? InClass)
+	public unsafe void LinkAnimClassLayers( UClass? InClass)
 	{
 		nint InClass_Ptr = InClass?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("LinkAnimClassLayers", [
@@ -23098,7 +23098,7 @@ public class UAnimInstance : UObject, ITypeRepr<UAnimInstance_Repr>
 		], out _);
 	}
 
-	public unsafe void LinkAnimGraphByTag( FName InTag, UAnimInstance? InClass)
+	public unsafe void LinkAnimGraphByTag( FName InTag, UClass? InClass)
 	{
 		nint InClass_Ptr = InClass?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("LinkAnimGraphByTag", [
@@ -23364,7 +23364,7 @@ public class UAnimInstance : UObject, ITypeRepr<UAnimInstance_Repr>
 		return ((ObjectParam?)Return)!.Value != nint.Zero ? new(Inner.GetFactory().CreateUObject(((ObjectParam?)Return)!.Value)) : null;
 	}
 
-	public unsafe void UnlinkAnimClassLayers( UAnimInstance? InClass)
+	public unsafe void UnlinkAnimClassLayers( UClass? InClass)
 	{
 		nint InClass_Ptr = InClass?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("UnlinkAnimClassLayers", [
@@ -23515,7 +23515,7 @@ public class UDataAsset : UObject, ITypeRepr<UDataAsset_Repr>
 
 	public new unsafe UDataAsset_Repr* Repr => (UDataAsset_Repr*)Inner.Ptr;
 
-	public unsafe UDataAsset? NativeClass
+	public unsafe UClass? NativeClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("NativeClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("NativeClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("NativeClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -23788,7 +23788,7 @@ public class APawn : AActor, ITypeRepr<APawn_Repr>
 		set => *(byte*)(Inner.Ptr + GetFieldOffset("RemoteViewPitch")) = value;
 	}
 
-	public unsafe AController? AIControllerClass
+	public unsafe UClass? AIControllerClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("AIControllerClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("AIControllerClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("AIControllerClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -25389,7 +25389,7 @@ public class AAIController : AController, ITypeRepr<AAIController_Repr>
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("CachedGameplayTasksComponent")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe UNavigationQueryFilter? DefaultNavigationFilterClass
+	public unsafe UClass? DefaultNavigationFilterClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("DefaultNavigationFilterClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("DefaultNavigationFilterClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("DefaultNavigationFilterClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -25400,7 +25400,7 @@ public class AAIController : AController, ITypeRepr<AAIController_Repr>
 		get => (FMulticastScriptDelegate*)(Inner.Ptr + GetFieldOffset("ReceiveMoveCompleted"));
 	}
 
-	public unsafe void ClaimTaskResource( UGameplayTaskResource? ResourceClass)
+	public unsafe void ClaimTaskResource( UClass? ResourceClass)
 	{
 		nint ResourceClass_Ptr = ResourceClass?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("ClaimTaskResource", [
@@ -25485,7 +25485,7 @@ public class AAIController : AController, ITypeRepr<AAIController_Repr>
 		], out _);
 	}
 
-	public unsafe EPathFollowingRequestResult MoveToActor( AActor? Goal, float AcceptanceRadius, bool bStopOnOverlap, bool bUsePathfinding, bool bCanStrafe, UNavigationQueryFilter? FilterClass, bool bAllowPartialPath)
+	public unsafe EPathFollowingRequestResult MoveToActor( AActor? Goal, float AcceptanceRadius, bool bStopOnOverlap, bool bUsePathfinding, bool bCanStrafe, UClass? FilterClass, bool bAllowPartialPath)
 	{
 		nint Goal_Ptr = Goal?.Inner.Ptr ?? nint.Zero;
 		nint FilterClass_Ptr = FilterClass?.Inner.Ptr ?? nint.Zero;
@@ -25501,7 +25501,7 @@ public class AAIController : AController, ITypeRepr<AAIController_Repr>
 		return (EPathFollowingRequestResult)(((ByteParam?)Return)!.Value);
 	}
 
-	public unsafe EPathFollowingRequestResult MoveToLocation( ref FVector Dest, float AcceptanceRadius, bool bStopOnOverlap, bool bUsePathfinding, bool bProjectDestinationToNavigation, bool bCanStrafe, UNavigationQueryFilter? FilterClass, bool bAllowPartialPath)
+	public unsafe EPathFollowingRequestResult MoveToLocation( ref FVector Dest, float AcceptanceRadius, bool bStopOnOverlap, bool bUsePathfinding, bool bProjectDestinationToNavigation, bool bCanStrafe, UClass? FilterClass, bool bAllowPartialPath)
 	{
 		nint FilterClass_Ptr = FilterClass?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("MoveToLocation", [
@@ -25559,7 +25559,7 @@ public class AAIController : AController, ITypeRepr<AAIController_Repr>
 		], out _);
 	}
 
-	public unsafe void UnclaimTaskResource( UGameplayTaskResource? ResourceClass)
+	public unsafe void UnclaimTaskResource( UClass? ResourceClass)
 	{
 		nint ResourceClass_Ptr = ResourceClass?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("UnclaimTaskResource", [
@@ -26645,7 +26645,7 @@ public class UDebugMenuBPI : UObject, ITypeRepr<UDebugMenuBPI_Repr>
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("_Actor")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe bool Create( UObject? WorldContextObject, UObject? InClass, float X, float Y)
+	public unsafe bool Create( UObject? WorldContextObject, UClass? InClass, float X, float Y)
 	{
 		nint WorldContextObject_Ptr = WorldContextObject?.Inner.Ptr ?? nint.Zero;
 		nint InClass_Ptr = InClass?.Inner.Ptr ?? nint.Zero;
@@ -26820,7 +26820,7 @@ public class APlayerController : AController, ITypeRepr<APlayerController_Repr>
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("PlayerCameraManager")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe APlayerCameraManager? PlayerCameraManagerClass
+	public unsafe UClass? PlayerCameraManagerClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("PlayerCameraManagerClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("PlayerCameraManagerClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("PlayerCameraManagerClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -26881,7 +26881,7 @@ public class APlayerController : AController, ITypeRepr<APlayerController_Repr>
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("CheatManager")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe UCheatManager? CheatClass
+	public unsafe UClass? CheatClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("CheatClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("CheatClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("CheatClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -27281,7 +27281,7 @@ public class APlayerController : AController, ITypeRepr<APlayerController_Repr>
 		], out _);
 	}
 
-	public unsafe void ClientReceiveLocalizedMessage( ULocalMessage? Message, int SWITCH, APlayerState? RelatedPlayerState_1, APlayerState? RelatedPlayerState_2, UObject? OptionalObject)
+	public unsafe void ClientReceiveLocalizedMessage( UClass? Message, int SWITCH, APlayerState? RelatedPlayerState_1, APlayerState? RelatedPlayerState_2, UObject? OptionalObject)
 	{
 		nint Message_Ptr = Message?.Inner.Ptr ?? nint.Zero;
 		nint RelatedPlayerState_1_Ptr = RelatedPlayerState_1?.Inner.Ptr ?? nint.Zero;
@@ -27383,7 +27383,7 @@ public class APlayerController : AController, ITypeRepr<APlayerController_Repr>
 		], out _);
 	}
 
-	public unsafe void ClientSetHUD( AHUD? NewHUDClass)
+	public unsafe void ClientSetHUD( UClass? NewHUDClass)
 	{
 		nint NewHUDClass_Ptr = NewHUDClass?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("ClientSetHUD", [
@@ -27407,7 +27407,7 @@ public class APlayerController : AController, ITypeRepr<APlayerController_Repr>
 		], out _);
 	}
 
-	public unsafe void ClientSpawnCameraLensEffect( AEmitterCameraLensEffectBase? LensEffectEmitterClass)
+	public unsafe void ClientSpawnCameraLensEffect( UClass? LensEffectEmitterClass)
 	{
 		nint LensEffectEmitterClass_Ptr = LensEffectEmitterClass?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("ClientSpawnCameraLensEffect", [
@@ -27415,7 +27415,7 @@ public class APlayerController : AController, ITypeRepr<APlayerController_Repr>
 		], out _);
 	}
 
-	public unsafe void ClientStartCameraShake( UCameraShakeBase? Shake, float Scale, ECameraShakePlaySpace PlaySpace, FRotator UserPlaySpaceRot)
+	public unsafe void ClientStartCameraShake( UClass? Shake, float Scale, ECameraShakePlaySpace PlaySpace, FRotator UserPlaySpaceRot)
 	{
 		nint Shake_Ptr = Shake?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("ClientStartCameraShake", [
@@ -27426,7 +27426,7 @@ public class APlayerController : AController, ITypeRepr<APlayerController_Repr>
 		], out _);
 	}
 
-	public unsafe void ClientStartCameraShakeFromSource( UCameraShakeBase? Shake, UCameraShakeSourceComponent? SourceComponent)
+	public unsafe void ClientStartCameraShakeFromSource( UClass? Shake, UCameraShakeSourceComponent? SourceComponent)
 	{
 		nint Shake_Ptr = Shake?.Inner.Ptr ?? nint.Zero;
 		nint SourceComponent_Ptr = SourceComponent?.Inner.Ptr ?? nint.Zero;
@@ -27449,7 +27449,7 @@ public class APlayerController : AController, ITypeRepr<APlayerController_Repr>
 		], out _);
 	}
 
-	public unsafe void ClientStopCameraShake( UCameraShakeBase? Shake, bool bImmediately)
+	public unsafe void ClientStopCameraShake( UClass? Shake, bool bImmediately)
 	{
 		nint Shake_Ptr = Shake?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("ClientStopCameraShake", [
@@ -30418,7 +30418,7 @@ public class UMatineeCameraShake : UCameraShakeBase, ITypeRepr<UMatineeCameraSha
 		], out _);
 	}
 
-	public unsafe UMatineeCameraShake? StartMatineeCameraShake( APlayerCameraManager? PlayerCameraManager, UMatineeCameraShake? ShakeClass, float Scale, ECameraShakePlaySpace PlaySpace, FRotator UserPlaySpaceRot)
+	public unsafe UMatineeCameraShake? StartMatineeCameraShake( APlayerCameraManager? PlayerCameraManager, UClass? ShakeClass, float Scale, ECameraShakePlaySpace PlaySpace, FRotator UserPlaySpaceRot)
 	{
 		nint PlayerCameraManager_Ptr = PlayerCameraManager?.Inner.Ptr ?? nint.Zero;
 		nint ShakeClass_Ptr = ShakeClass?.Inner.Ptr ?? nint.Zero;
@@ -30432,7 +30432,7 @@ public class UMatineeCameraShake : UCameraShakeBase, ITypeRepr<UMatineeCameraSha
 		return ((ObjectParam?)Return)!.Value != nint.Zero ? new(Inner.GetFactory().CreateUObject(((ObjectParam?)Return)!.Value)) : null;
 	}
 
-	public unsafe UMatineeCameraShake? StartMatineeCameraShakeFromSource( APlayerCameraManager? PlayerCameraManager, UMatineeCameraShake? ShakeClass, UCameraShakeSourceComponent? SourceComponent, float Scale, ECameraShakePlaySpace PlaySpace, FRotator UserPlaySpaceRot)
+	public unsafe UMatineeCameraShake? StartMatineeCameraShakeFromSource( APlayerCameraManager? PlayerCameraManager, UClass? ShakeClass, UCameraShakeSourceComponent? SourceComponent, float Scale, ECameraShakePlaySpace PlaySpace, FRotator UserPlaySpaceRot)
 	{
 		nint PlayerCameraManager_Ptr = PlayerCameraManager?.Inner.Ptr ?? nint.Zero;
 		nint ShakeClass_Ptr = ShakeClass?.Inner.Ptr ?? nint.Zero;
@@ -30594,7 +30594,7 @@ public class UNiagaraDataInterfaceCameraShake : UNiagaraDataInterface, ITypeRepr
 
 	public new unsafe UNiagaraDataInterfaceCameraShake_Repr* Repr => (UNiagaraDataInterfaceCameraShake_Repr*)Inner.Ptr;
 
-	public unsafe UNiagaraCameraShake? NiagaraCameraShake
+	public unsafe UClass? NiagaraCameraShake
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("NiagaraCameraShake")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("NiagaraCameraShake")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("NiagaraCameraShake")) = value?.Inner.Ptr ?? nint.Zero;
@@ -31473,7 +31473,7 @@ public class APreviewWorldUpdater : AActor, ITypeRepr<APreviewWorldUpdater_Repr>
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("OneShotEffect")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe AActor? SpawnPendingActorClass
+	public unsafe UClass? SpawnPendingActorClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("SpawnPendingActorClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SpawnPendingActorClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("SpawnPendingActorClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -31607,7 +31607,7 @@ public class APreviewWorldUpdater : AActor, ITypeRepr<APreviewWorldUpdater_Repr>
 		], out _);
 	}
 
-	public unsafe AActor? SetTargetActor( AActor? ActorClass, bool IsResetCamera)
+	public unsafe AActor? SetTargetActor( UClass? ActorClass, bool IsResetCamera)
 	{
 		nint ActorClass_Ptr = ActorClass?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("SetTargetActor", [
@@ -31617,7 +31617,7 @@ public class APreviewWorldUpdater : AActor, ITypeRepr<APreviewWorldUpdater_Repr>
 		return ((ObjectParam?)Return)!.Value != nint.Zero ? new(Inner.GetFactory().CreateUObject(((ObjectParam?)Return)!.Value)) : null;
 	}
 
-	public unsafe AActor? SpawnAttachedActor( AActor? ActorClass)
+	public unsafe AActor? SpawnAttachedActor( UClass? ActorClass)
 	{
 		nint ActorClass_Ptr = ActorClass?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("SpawnAttachedActor", [
@@ -45417,7 +45417,7 @@ public class ULevelVariantSets : UObject, ITypeRepr<ULevelVariantSets_Repr>
 
 	public new unsafe ULevelVariantSets_Repr* Repr => (ULevelVariantSets_Repr*)Inner.Ptr;
 
-	public unsafe UObject? DirectorClass
+	public unsafe UClass? DirectorClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("DirectorClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("DirectorClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("DirectorClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -45612,7 +45612,7 @@ public class UPropertyValue : UObject, ITypeRepr<UPropertyValue_Repr>
 		set => *(bool*)(Inner.Ptr + GetFieldOffset("bHasRecordedData")) = value;
 	}
 
-	public unsafe UObject? LeafPropertyClass
+	public unsafe UClass? LeafPropertyClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("LeafPropertyClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("LeafPropertyClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("LeafPropertyClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -60294,7 +60294,7 @@ public class UAppAnimCtrl : UObject, ITypeRepr<UAppAnimCtrl_Repr>
 
 	public new unsafe UAppAnimCtrl_Repr* Repr => (UAppAnimCtrl_Repr*)Inner.Ptr;
 
-	public unsafe ACharacter? pCharacterClass
+	public unsafe UClass? pCharacterClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("pCharacterClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("pCharacterClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("pCharacterClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -61641,7 +61641,7 @@ public class UAppCharAnimDataAsset : UDataAsset, ITypeRepr<UAppCharAnimDataAsset
 		set => *(int*)(Inner.Ptr + GetFieldOffset("CharId")) = value;
 	}
 
-	public unsafe UObject? AnimInstance
+	public unsafe UClass? AnimInstance
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("AnimInstance")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("AnimInstance")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("AnimInstance")) = value?.Inner.Ptr ?? nint.Zero;
@@ -62187,7 +62187,7 @@ public class UShapeComponent : UPrimitiveComponent, ITypeRepr<UShapeComponent_Re
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("ShapeBodySetup")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe UNavAreaBase? AreaClass
+	public unsafe UClass? AreaClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("AreaClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("AreaClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("AreaClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -62976,7 +62976,7 @@ public class UCheatManager : UObject, ITypeRepr<UCheatManager_Repr>
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("DebugCameraControllerRef")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe ADebugCameraController? DebugCameraControllerClass
+	public unsafe UClass? DebugCameraControllerClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("DebugCameraControllerClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("DebugCameraControllerClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("DebugCameraControllerClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -63079,7 +63079,7 @@ public class UCheatManager : UObject, ITypeRepr<UCheatManager_Repr>
 		], out _);
 	}
 
-	public unsafe void DestroyAll( AActor? aClass)
+	public unsafe void DestroyAll( UClass? aClass)
 	{
 		nint aClass_Ptr = aClass?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("DestroyAll", [
@@ -63092,7 +63092,7 @@ public class UCheatManager : UObject, ITypeRepr<UCheatManager_Repr>
 		_ = Inner.ProcessEvent("DestroyAllPawnsExceptTarget", [], out _);
 	}
 
-	public unsafe void DestroyPawns( APawn? aClass)
+	public unsafe void DestroyPawns( UClass? aClass)
 	{
 		nint aClass_Ptr = aClass?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("DestroyPawns", [
@@ -63289,7 +63289,7 @@ public class UCheatManager : UObject, ITypeRepr<UCheatManager_Repr>
 		], out _);
 	}
 
-	public unsafe void ViewClass( AActor? DesiredClass)
+	public unsafe void ViewClass( UClass? DesiredClass)
 	{
 		nint DesiredClass_Ptr = DesiredClass?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("ViewClass", [
@@ -64351,19 +64351,19 @@ public class AAppPropsCardContainer : AAppActor, ITypeRepr<AAppPropsCardContaine
 		get => (TArray<FAppPropsCardData>*)(Inner.Ptr + GetFieldOffset("CardList"));
 	}
 
-	public unsafe AAppPropsCore? PersonaCardClass
+	public unsafe UClass? PersonaCardClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("PersonaCardClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("PersonaCardClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("PersonaCardClass")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe AAppPropsCore? MajorCardClass
+	public unsafe UClass? MajorCardClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("MajorCardClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("MajorCardClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("MajorCardClass")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe AAppPropsCore? MinorCardClass
+	public unsafe UClass? MinorCardClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("MinorCardClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("MinorCardClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("MinorCardClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -65024,7 +65024,7 @@ public class AAstreaProgressActor : AAppActor, ITypeRepr<AAstreaProgressActor_Re
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("mAssetLoader_")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe UObject? mBpClass_
+	public unsafe UClass? mBpClass_
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("mBpClass_")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("mBpClass_")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("mBpClass_")) = value?.Inner.Ptr ?? nint.Zero;
@@ -65689,7 +65689,7 @@ public class AAtlEvtEventManager : AAppActor, ITypeRepr<AAtlEvtEventManager_Repr
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("EventSkipWidget")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe UEventSkipWidgetDelegate? EventSkipWidgetClass
+	public unsafe UClass? EventSkipWidgetClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("EventSkipWidgetClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("EventSkipWidgetClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("EventSkipWidgetClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -67142,7 +67142,7 @@ public class UAtlEvtSubsystem : UGameInstanceSubsystem, ITypeRepr<UAtlEvtSubsyst
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("AssetOverrideLoader")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe ACharacter? AssetOverrideSubClass
+	public unsafe UClass? AssetOverrideSubClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("AssetOverrideSubClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("AssetOverrideSubClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("AssetOverrideSubClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -74266,13 +74266,13 @@ public class ABtlFormula : AAppActor, ITypeRepr<ABtlFormula_Repr>
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("Calc")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe ABtlCalcBase? CalcAsset
+	public unsafe UClass? CalcAsset
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("CalcAsset")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("CalcAsset")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("CalcAsset")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe UBtlCalcParamAstrea? AstreaParamAsset
+	public unsafe UClass? AstreaParamAsset
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("AstreaParamAsset")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("AstreaParamAsset")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("AstreaParamAsset")) = value?.Inner.Ptr ?? nint.Zero;
@@ -74723,7 +74723,7 @@ public class UBtlCoreComponent : UActorComponent, ITypeRepr<UBtlCoreComponent_Re
 		get => (TArray<Ptr<ABtlActor_Repr>>*)(Inner.Ptr + GetFieldOffset("PlayerDataAddedStockList"));
 	}
 
-	public unsafe AAppActor? DebugMonitorData
+	public unsafe UClass? DebugMonitorData
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("DebugMonitorData")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("DebugMonitorData")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("DebugMonitorData")) = value?.Inner.Ptr ?? nint.Zero;
@@ -78569,7 +78569,7 @@ public class ABtlEventAlloutShuffleMonitor : AAppActor, ITypeRepr<ABtlEventAllou
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("pShuffle")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe ABtlShuffleMainBase? ShuffleUIBp
+	public unsafe UClass? ShuffleUIBp
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("ShuffleUIBp")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("ShuffleUIBp")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("ShuffleUIBp")) = value?.Inner.Ptr ?? nint.Zero;
@@ -78734,7 +78734,7 @@ public class UBtlEventController : UAppActorComponent, ITypeRepr<UBtlEventContro
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("BtlCore")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe AAppActor? SequencerObserveClass
+	public unsafe UClass? SequencerObserveClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("SequencerObserveClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SequencerObserveClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("SequencerObserveClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -78959,7 +78959,7 @@ public class ABtlFadeManager : AAppActor, ITypeRepr<ABtlFadeManager_Repr>
 		get => (TArray<FBtlFadeParam>*)(Inner.Ptr + GetFieldOffset("fadeParam"));
 	}
 
-	public unsafe ABtlFadeManager? LoadClass
+	public unsafe UClass? LoadClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("LoadClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("LoadClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("LoadClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -80560,7 +80560,7 @@ public class UBtlGuiDrawComponent : UAppActorComponent, ITypeRepr<UBtlGuiDrawCom
 		], out _);
 	}
 
-	public unsafe void TranslateObjectToAsset( UObject? Obj, UObject? TranslateClass, ref UObject? OutAsset)
+	public unsafe void TranslateObjectToAsset( UObject? Obj, UClass? TranslateClass, ref UObject? OutAsset)
 	{
 		nint Obj_Ptr = Obj?.Inner.Ptr ?? nint.Zero;
 		nint TranslateClass_Ptr = TranslateClass?.Inner.Ptr ?? nint.Zero;
@@ -80622,19 +80622,19 @@ public class UBtlEncountWipeLoader : UObject, ITypeRepr<UBtlEncountWipeLoader_Re
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("Chara")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe ABtlEncountWipeCore? EncountBp
+	public unsafe UClass? EncountBp
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("EncountBp")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("EncountBp")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("EncountBp")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe ABtlEncountWipeCore? EventEncountBp
+	public unsafe UClass? EventEncountBp
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("EventEncountBp")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("EventEncountBp")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("EventEncountBp")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe ABtlEncountWipeCore? PinthEncountBp
+	public unsafe UClass? PinthEncountBp
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("PinthEncountBp")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("PinthEncountBp")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("PinthEncountBp")) = value?.Inner.Ptr ?? nint.Zero;
@@ -80984,7 +80984,7 @@ public class ABtlGuiFBufferCapture : AAppActor, ITypeRepr<ABtlGuiFBufferCapture_
 
 	public new unsafe ABtlGuiFBufferCapture_Repr* Repr => (ABtlGuiFBufferCapture_Repr*)Inner.Ptr;
 
-	public unsafe ABtlGuiFBufferCapture? LoadClass
+	public unsafe UClass? LoadClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("LoadClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("LoadClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("LoadClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -82088,7 +82088,7 @@ public class ABtlGuiResourcesLoadWatcher : ABtlGuiResourcesBase, ITypeRepr<ABtlG
 
 	public new unsafe ABtlGuiResourcesLoadWatcher_Repr* Repr => (ABtlGuiResourcesLoadWatcher_Repr*)Inner.Ptr;
 
-	public unsafe ABtlGuiResourcesActor? LoadClass
+	public unsafe UClass? LoadClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("LoadClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("LoadClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("LoadClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -82155,7 +82155,7 @@ public class UBtlGuiResources : UAppActorComponent, ITypeRepr<UBtlGuiResources_R
 		return ((BoolParam?)Return)!.Value;
 	}
 
-	public unsafe void GetAddResources( UObject? ResourcesClass, ref UObject? OutResources)
+	public unsafe void GetAddResources( UClass? ResourcesClass, ref UObject? OutResources)
 	{
 		nint ResourcesClass_Ptr = ResourcesClass?.Inner.Ptr ?? nint.Zero;
 		nint OutResources_Ptr = OutResources?.Inner.Ptr ?? nint.Zero;
@@ -82166,7 +82166,7 @@ public class UBtlGuiResources : UAppActorComponent, ITypeRepr<UBtlGuiResources_R
 		OutResources = OutResources_Ptr != nint.Zero ? new(Inner.GetFactory().CreateUObject(OutResources_Ptr)) : null;
 	}
 
-	public unsafe void GetAddResourcesPure( UObject? ResourcesClass, ref UObject? OutResources)
+	public unsafe void GetAddResourcesPure( UClass? ResourcesClass, ref UObject? OutResources)
 	{
 		nint ResourcesClass_Ptr = ResourcesClass?.Inner.Ptr ?? nint.Zero;
 		nint OutResources_Ptr = OutResources?.Inner.Ptr ?? nint.Zero;
@@ -82273,7 +82273,7 @@ public class UBtlGuiResources : UAppActorComponent, ITypeRepr<UBtlGuiResources_R
 		return ReturnValue;
 	}
 
-	public unsafe void GetResources( FName ResourcesName, UObject? ResourcesClass, ref UObject? OutResources)
+	public unsafe void GetResources( FName ResourcesName, UClass? ResourcesClass, ref UObject? OutResources)
 	{
 		nint ResourcesClass_Ptr = ResourcesClass?.Inner.Ptr ?? nint.Zero;
 		nint OutResources_Ptr = OutResources?.Inner.Ptr ?? nint.Zero;
@@ -82285,7 +82285,7 @@ public class UBtlGuiResources : UAppActorComponent, ITypeRepr<UBtlGuiResources_R
 		OutResources = OutResources_Ptr != nint.Zero ? new(Inner.GetFactory().CreateUObject(OutResources_Ptr)) : null;
 	}
 
-	public unsafe void GetResourcesPure( FName ResourcesName, UObject? ResourcesClass, ref UObject? OutResources)
+	public unsafe void GetResourcesPure( FName ResourcesName, UClass? ResourcesClass, ref UObject? OutResources)
 	{
 		nint ResourcesClass_Ptr = ResourcesClass?.Inner.Ptr ?? nint.Zero;
 		nint OutResources_Ptr = OutResources?.Inner.Ptr ?? nint.Zero;
@@ -83008,7 +83008,7 @@ public class ABtlManager : AAppActor, ITypeRepr<ABtlManager_Repr>
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("Loader")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe ABtlControlBase? ControlAsset
+	public unsafe UClass? ControlAsset
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("ControlAsset")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("ControlAsset")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("ControlAsset")) = value?.Inner.Ptr ?? nint.Zero;
@@ -83368,13 +83368,13 @@ public class ABtlPhaseResult : ABtlPhaseVictory, ITypeRepr<ABtlPhaseResult_Repr>
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("ReactBackGround")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe ABtlResultUIBase? ResutlUIBp
+	public unsafe UClass? ResutlUIBp
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("ResutlUIBp")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("ResutlUIBp")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("ResutlUIBp")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe ABtlShuffleMainBase? ShuffleUIBp
+	public unsafe UClass? ShuffleUIBp
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("ShuffleUIBp")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("ShuffleUIBp")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("ShuffleUIBp")) = value?.Inner.Ptr ?? nint.Zero;
@@ -83641,13 +83641,13 @@ public class ABtlResultResourceManager : AAppActor, ITypeRepr<ABtlResultResource
 
 	public new unsafe ABtlResultResourceManager_Repr* Repr => (ABtlResultResourceManager_Repr*)Inner.Ptr;
 
-	public unsafe ABtlResultUIBase? ResutlUIBp
+	public unsafe UClass? ResutlUIBp
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("ResutlUIBp")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("ResutlUIBp")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("ResutlUIBp")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe ABtlShuffleMainBase? ShuffleUIBp
+	public unsafe UClass? ShuffleUIBp
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("ShuffleUIBp")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("ShuffleUIBp")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("ShuffleUIBp")) = value?.Inner.Ptr ?? nint.Zero;
@@ -84621,7 +84621,7 @@ public class ABtlShakeManager : AAppActor, ITypeRepr<ABtlShakeManager_Repr>
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("childActor")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe ABtlShakeManager? ShakeAsset
+	public unsafe UClass? ShakeAsset
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("ShakeAsset")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("ShakeAsset")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("ShakeAsset")) = value?.Inner.Ptr ?? nint.Zero;
@@ -85863,7 +85863,7 @@ public class UBtlSkillGeneratorComponent : UActorComponent, ITypeRepr<UBtlSkillG
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("pSkill")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe ABtlSkill? SkillAsset
+	public unsafe UClass? SkillAsset
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("SkillAsset")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SkillAsset")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("SkillAsset")) = value?.Inner.Ptr ?? nint.Zero;
@@ -87204,7 +87204,7 @@ public class UCampPlayerModelControllerItem : UCampModelControllerItem, ITypeRep
 
 	public new unsafe UCampPlayerModelControllerItem_Repr* Repr => (UCampPlayerModelControllerItem_Repr*)Inner.Ptr;
 
-	public unsafe ACharacter? pCharacterClass
+	public unsafe UClass? pCharacterClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("pCharacterClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("pCharacterClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("pCharacterClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -88002,7 +88002,7 @@ public class UCldCommonData : UObject, ITypeRepr<UCldCommonData_Repr>
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("mDatesData_")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe UObject? mBpClass_
+	public unsafe UClass? mBpClass_
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("mBpClass_")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("mBpClass_")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("mBpClass_")) = value?.Inner.Ptr ?? nint.Zero;
@@ -88138,7 +88138,7 @@ public class ACldSchedulerActor : AAppActor, ITypeRepr<ACldSchedulerActor_Repr>
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("mAssetLoader_")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe UObject? mBpClass_
+	public unsafe UClass? mBpClass_
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("mBpClass_")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("mBpClass_")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("mBpClass_")) = value?.Inner.Ptr ?? nint.Zero;
@@ -89319,7 +89319,7 @@ public class ACmpMainActor : AAppActor, ITypeRepr<ACmpMainActor_Repr>
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("pAssetLoader")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe ACampSceneCapture? SceneCaptureClass
+	public unsafe UClass? SceneCaptureClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("SceneCaptureClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SceneCaptureClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("SceneCaptureClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -89911,7 +89911,7 @@ public class ACmpMainActor : AAppActor, ITypeRepr<ACmpMainActor_Repr>
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("pCmpMainLoadActor")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe ACharacter? pHeroCharaClass
+	public unsafe UClass? pHeroCharaClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("pHeroCharaClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("pHeroCharaClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("pHeroCharaClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -90906,7 +90906,7 @@ public class UCmpSystem : UCmpMenuBase, ITypeRepr<UCmpSystem_Repr>
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("pDictionary")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe AUITutorialDraw? pTutorialDrawClass
+	public unsafe UClass? pTutorialDrawClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("pTutorialDrawClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("pTutorialDrawClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("pTutorialDrawClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -96320,7 +96320,7 @@ public class UFadePgBattleEventWipe : UFadeProgramBase, ITypeRepr<UFadePgBattleE
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("pActor")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe AFadePgBattleEventWipeActor? LoadClass
+	public unsafe UClass? LoadClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("LoadClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("LoadClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("LoadClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -96966,7 +96966,7 @@ public class AFclAntiqueShop : AFclShopBase, ITypeRepr<AFclAntiqueShop_Repr>
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("pParamLayoutDataAntique")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe AFclAntiqueShopDrawActor? _DrawActorClass
+	public unsafe UClass? _DrawActorClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("_DrawActorClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("_DrawActorClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("_DrawActorClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -97875,7 +97875,7 @@ public class AFclWeaponShop : AFclShopBase, ITypeRepr<AFclWeaponShop_Repr>
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("pLayoutDataTableOther")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe AFclWeaponShopDrawActor? _DrawActorClass
+	public unsafe UClass? _DrawActorClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("_DrawActorClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("_DrawActorClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("_DrawActorClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -98436,7 +98436,7 @@ public class UFldAnimalCompCore : UFldLocalActorComp, ITypeRepr<UFldAnimalCompCo
 		get => (TArray<Ptr<AActor_Repr>>*)(Inner.Ptr + GetFieldOffset("mOverlapTargets_"));
 	}
 
-	public unsafe AAppPropsCore? CreateAnimalActor( UWorld? InWorld, int InIndex, AAppPropsCore? InClassPtr, FTransform InTransform, AActor? InOwner)
+	public unsafe AAppPropsCore? CreateAnimalActor( UWorld? InWorld, int InIndex, UClass? InClassPtr, FTransform InTransform, AActor? InOwner)
 	{
 		nint InWorld_Ptr = InWorld?.Inner.Ptr ?? nint.Zero;
 		nint InClassPtr_Ptr = InClassPtr?.Inner.Ptr ?? nint.Zero;
@@ -101097,7 +101097,7 @@ public class AFldHitCore : AFldLocalActor, ITypeRepr<AFldHitCore_Repr>
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("HitComp_")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe AUtlProcActor? mOverlapBluePrint_
+	public unsafe UClass? mOverlapBluePrint_
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("mOverlapBluePrint_")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("mOverlapBluePrint_")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("mOverlapBluePrint_")) = value?.Inner.Ptr ?? nint.Zero;
@@ -101109,7 +101109,7 @@ public class AFldHitCore : AFldLocalActor, ITypeRepr<AFldHitCore_Repr>
 		set => *(bool*)(Inner.Ptr + GetFieldOffset("mOverlapKeyLock_")) = value;
 	}
 
-	public unsafe AUtlProcActor? mKeyPushBluePrint_
+	public unsafe UClass? mKeyPushBluePrint_
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("mKeyPushBluePrint_")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("mKeyPushBluePrint_")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("mKeyPushBluePrint_")) = value?.Inner.Ptr ?? nint.Zero;
@@ -101309,13 +101309,13 @@ public class AFldHitCharacter : AFldHitCore, ITypeRepr<AFldHitCharacter_Repr>
 		set => *(bool*)(Inner.Ptr + GetFieldOffset("mReturnBaseRotator_")) = value;
 	}
 
-	public unsafe ACharacterBaseCore? mCharaBaseClass_
+	public unsafe UClass? mCharaBaseClass_
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("mCharaBaseClass_")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("mCharaBaseClass_")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("mCharaBaseClass_")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe ANpcBaseCore? mNpcBaseClass_
+	public unsafe UClass? mNpcBaseClass_
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("mNpcBaseClass_")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("mNpcBaseClass_")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("mNpcBaseClass_")) = value?.Inner.Ptr ?? nint.Zero;
@@ -101631,7 +101631,7 @@ public class UFldCommonData : UObject, ITypeRepr<UFldCommonData_Repr>
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("mTableDat_")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe UObject? mBpClass_
+	public unsafe UClass? mBpClass_
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("mBpClass_")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("mBpClass_")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("mBpClass_")) = value?.Inner.Ptr ?? nint.Zero;
@@ -102224,7 +102224,7 @@ public class AFldDbgEmMaker : AActor, ITypeRepr<AFldDbgEmMaker_Repr>
 
 	public new unsafe AFldDbgEmMaker_Repr* Repr => (AFldDbgEmMaker_Repr*)Inner.Ptr;
 
-	public unsafe UObject? EmClass
+	public unsafe UClass? EmClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("EmClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("EmClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("EmClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -102291,7 +102291,7 @@ public class AFldDbgMaker : AActor, ITypeRepr<AFldDbgMaker_Repr>
 
 	public new unsafe AFldDbgMaker_Repr* Repr => (AFldDbgMaker_Repr*)Inner.Ptr;
 
-	public unsafe UObject? PlayerClass
+	public unsafe UClass? PlayerClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("PlayerClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("PlayerClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("PlayerClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -102314,13 +102314,13 @@ public class AFldDbgMaker : AActor, ITypeRepr<AFldDbgMaker_Repr>
 		get => (FFldPlayerHolder*)(Inner.Ptr + GetFieldOffset("Player"));
 	}
 
-	public unsafe UObject? PartnerClass
+	public unsafe UClass? PartnerClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("PartnerClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("PartnerClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("PartnerClass")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe UObject? KoroPartnerClass
+	public unsafe UClass? KoroPartnerClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("KoroPartnerClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("KoroPartnerClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("KoroPartnerClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -102478,7 +102478,7 @@ public class AFldDbgNpcMaker : AActor, ITypeRepr<AFldDbgNpcMaker_Repr>
 
 	public new unsafe AFldDbgNpcMaker_Repr* Repr => (AFldDbgNpcMaker_Repr*)Inner.Ptr;
 
-	public unsafe UObject? NpcClass
+	public unsafe UClass? NpcClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("NpcClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("NpcClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("NpcClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -109006,61 +109006,61 @@ public class UFldManagerSubsystem : UGameInstanceSubsystem, ITypeRepr<UFldManage
 		set => *(float*)(Inner.Ptr + GetFieldOffset("mMoveFloorTimer_")) = value;
 	}
 
-	public unsafe ACharacterBaseCore? mDefaultPlayerClass_
+	public unsafe UClass? mDefaultPlayerClass_
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("mDefaultPlayerClass_")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("mDefaultPlayerClass_")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("mDefaultPlayerClass_")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe ACharacterBaseCore? mDungeonPlayerClass_
+	public unsafe UClass? mDungeonPlayerClass_
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("mDungeonPlayerClass_")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("mDungeonPlayerClass_")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("mDungeonPlayerClass_")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe ACharacterBaseCore? mDungeonPlayerClass_Astrea_
+	public unsafe UClass? mDungeonPlayerClass_Astrea_
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("mDungeonPlayerClass_Astrea_")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("mDungeonPlayerClass_Astrea_")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("mDungeonPlayerClass_Astrea_")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe AFldCameraBase? mDefaultCameraClass_
+	public unsafe UClass? mDefaultCameraClass_
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("mDefaultCameraClass_")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("mDefaultCameraClass_")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("mDefaultCameraClass_")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe AFldCameraBase? mDungeonCameraClass_
+	public unsafe UClass? mDungeonCameraClass_
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("mDungeonCameraClass_")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("mDungeonCameraClass_")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("mDungeonCameraClass_")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe AFldCameraBase? mDngEntranceCameraClassAstrea_
+	public unsafe UClass? mDngEntranceCameraClassAstrea_
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("mDngEntranceCameraClassAstrea_")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("mDngEntranceCameraClassAstrea_")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("mDngEntranceCameraClassAstrea_")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe AFldCameraBase? mDngFinalFloorCameraClassAstrea_
+	public unsafe UClass? mDngFinalFloorCameraClassAstrea_
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("mDngFinalFloorCameraClassAstrea_")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("mDngFinalFloorCameraClassAstrea_")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("mDngFinalFloorCameraClassAstrea_")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe AFldCamera? mTransCameraClass_
+	public unsafe UClass? mTransCameraClass_
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("mTransCameraClass_")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("mTransCameraClass_")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("mTransCameraClass_")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe ACharacterBaseCore? mFollowerClass_
+	public unsafe UClass? mFollowerClass_
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("mFollowerClass_")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("mFollowerClass_")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("mFollowerClass_")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe ACharacterBaseCore? mFollowerKoromaruClass_
+	public unsafe UClass? mFollowerKoromaruClass_
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("mFollowerKoromaruClass_")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("mFollowerKoromaruClass_")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("mFollowerKoromaruClass_")) = value?.Inner.Ptr ?? nint.Zero;
@@ -109171,7 +109171,7 @@ public class UFldManagerSubsystem : UGameInstanceSubsystem, ITypeRepr<UFldManage
 		], out _);
 	}
 
-	public unsafe void ProcLevelBluePrint( ACharacterBaseCore? DefaultPlayerClass, ACharacterBaseCore? DungeonPlayerClass, ACharacterBaseCore? DungeonPlayerClass_Astrea, AFldCameraBase? DefaultCameraClass, AFldCameraBase? DungeonCameraClass, AFldCamera? TransCameraClass, ACharacterBaseCore? FollowerClass, ACharacterBaseCore? FollowerKoromaruClass, UObject? WorldContextObject, FLatentActionInfo LatentInfo, AFldCameraBase? DngEntranceCameraClassAstrea, AFldCameraBase? DngFinalFloorCameraClassAstrea)
+	public unsafe void ProcLevelBluePrint( UClass? DefaultPlayerClass, UClass? DungeonPlayerClass, UClass? DungeonPlayerClass_Astrea, UClass? DefaultCameraClass, UClass? DungeonCameraClass, UClass? TransCameraClass, UClass? FollowerClass, UClass? FollowerKoromaruClass, UObject? WorldContextObject, FLatentActionInfo LatentInfo, UClass? DngEntranceCameraClassAstrea, UClass? DngFinalFloorCameraClassAstrea)
 	{
 		nint DefaultPlayerClass_Ptr = DefaultPlayerClass?.Inner.Ptr ?? nint.Zero;
 		nint DungeonPlayerClass_Ptr = DungeonPlayerClass?.Inner.Ptr ?? nint.Zero;
@@ -112192,7 +112192,7 @@ public class UGlobalWork : UGameInstance, ITypeRepr<UGlobalWork_Repr>
 		], out _);
 	}
 
-	public unsafe AActor? SpawnActorFromClassSubLevelIndex( AActor? ActorClass, ESubLevelIndex SubLevelIndex, FTransform Transform)
+	public unsafe AActor? SpawnActorFromClassSubLevelIndex( UClass? ActorClass, ESubLevelIndex SubLevelIndex, FTransform Transform)
 	{
 		nint ActorClass_Ptr = ActorClass?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("SpawnActorFromClassSubLevelIndex", [
@@ -112835,7 +112835,7 @@ public class AHandwritingSpawner : AAppActor, ITypeRepr<AHandwritingSpawner_Repr
 
 	public new unsafe AHandwritingSpawner_Repr* Repr => (AHandwritingSpawner_Repr*)Inner.Ptr;
 
-	public unsafe AHandwritingEffectBase? HandwritingEffectObj
+	public unsafe UClass? HandwritingEffectObj
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("HandwritingEffectObj")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("HandwritingEffectObj")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("HandwritingEffectObj")) = value?.Inner.Ptr ?? nint.Zero;
@@ -113021,7 +113021,7 @@ public class UHandwritingSubsystem : UGameInstanceSubsystem, ITypeRepr<UHandwrit
 		get => (TMap<EAtlEvtHandwritingType, Ptr<TSoftClassPtr<AHandwritingEffectBase_Repr>>>*)(Inner.Ptr + GetFieldOffset("PreloadedHandwritingEffectObjMap_Event"));
 	}
 
-	public unsafe AHandwritingSpawner? HandwritingSpawnerDefaultClass
+	public unsafe UClass? HandwritingSpawnerDefaultClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("HandwritingSpawnerDefaultClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("HandwritingSpawnerDefaultClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("HandwritingSpawnerDefaultClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -113358,55 +113358,55 @@ public class AGameModeBase : AInfo, ITypeRepr<AGameModeBase_Repr>
 		get => (FString*)(Inner.Ptr + GetFieldOffset("OptionsString"));
 	}
 
-	public unsafe AGameSession? GameSessionClass
+	public unsafe UClass? GameSessionClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("GameSessionClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("GameSessionClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("GameSessionClass")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe AGameStateBase? GameStateClass
+	public unsafe UClass? GameStateClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("GameStateClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("GameStateClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("GameStateClass")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe APlayerController? PlayerControllerClass
+	public unsafe UClass? PlayerControllerClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("PlayerControllerClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("PlayerControllerClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("PlayerControllerClass")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe APlayerState? PlayerStateClass
+	public unsafe UClass? PlayerStateClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("PlayerStateClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("PlayerStateClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("PlayerStateClass")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe AHUD? HUDClass
+	public unsafe UClass? HUDClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("HUDClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("HUDClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("HUDClass")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe APawn? DefaultPawnClass
+	public unsafe UClass? DefaultPawnClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("DefaultPawnClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("DefaultPawnClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("DefaultPawnClass")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe ASpectatorPawn? SpectatorClass
+	public unsafe UClass? SpectatorClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("SpectatorClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SpectatorClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("SpectatorClass")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe APlayerController? ReplaySpectatorPlayerControllerClass
+	public unsafe UClass? ReplaySpectatorPlayerControllerClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("ReplaySpectatorPlayerControllerClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("ReplaySpectatorPlayerControllerClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("ReplaySpectatorPlayerControllerClass")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe AServerStatReplicator? ServerStatReplicatorClass
+	public unsafe UClass? ServerStatReplicatorClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("ServerStatReplicatorClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("ServerStatReplicatorClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("ServerStatReplicatorClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -113493,7 +113493,7 @@ public class AGameModeBase : AInfo, ITypeRepr<AGameModeBase_Repr>
 		return ((ObjectParam?)Return)!.Value != nint.Zero ? new(Inner.GetFactory().CreateUObject(((ObjectParam?)Return)!.Value)) : null;
 	}
 
-	public unsafe UObject? GetDefaultPawnClassForController( AController? InController)
+	public unsafe UClass? GetDefaultPawnClassForController( AController? InController)
 	{
 		nint InController_Ptr = InController?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("GetDefaultPawnClassForController", [
@@ -113739,7 +113739,7 @@ public class AHT_UMGTestGameModeBase : AGameModeBase, ITypeRepr<AHT_UMGTestGameM
 
 	public new unsafe AHT_UMGTestGameModeBase_Repr* Repr => (AHT_UMGTestGameModeBase_Repr*)Inner.Ptr;
 
-	public unsafe UUserWidget? StartingWidgetClass
+	public unsafe UClass? StartingWidgetClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("StartingWidgetClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("StartingWidgetClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("StartingWidgetClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -113751,7 +113751,7 @@ public class AHT_UMGTestGameModeBase : AGameModeBase, ITypeRepr<AHT_UMGTestGameM
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("CurrentWidget")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe void ChangeMenuWidget( UUserWidget? NewWidgetClass)
+	public unsafe void ChangeMenuWidget( UClass? NewWidgetClass)
 	{
 		nint NewWidgetClass_Ptr = NewWidgetClass?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("ChangeMenuWidget", [
@@ -114893,7 +114893,7 @@ public class UMsgProcWindow_Performance : UMsgProcWindowBase, ITypeRepr<UMsgProc
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("m_pPerformanceLoader")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe AitfMsgProgWindow_TUTRIALDraw? PerformanceDrawClass
+	public unsafe UClass? PerformanceDrawClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("PerformanceDrawClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("PerformanceDrawClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("PerformanceDrawClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -115254,7 +115254,7 @@ public class UMsgProcWindow_System : UMsgProcWindowBase, ITypeRepr<UMsgProcWindo
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("m_pSystemLoader")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe AitfMsgProgWindow_TUTRIALDraw? SystemDrawClass
+	public unsafe UClass? SystemDrawClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("SystemDrawClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SystemDrawClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("SystemDrawClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -115343,7 +115343,7 @@ public class UMsgProcWindow_Tutorial : UMsgProcWindowBase, ITypeRepr<UMsgProcWin
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("m_pTutrialLoader")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe AitfMsgProgWindow_TUTRIALDraw? TutrialDrawClass
+	public unsafe UClass? TutrialDrawClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("TutrialDrawClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("TutrialDrawClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("TutrialDrawClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -116520,7 +116520,7 @@ public class UKernelBpLib : UBlueprintFunctionLibrary, ITypeRepr<UKernelBpLib_Re
 		return ((BoolParam?)Return)!.Value;
 	}
 
-	public unsafe void SetTestCharacter( UObject? WorldContextObject, ACharacter? In, FTransform Location)
+	public unsafe void SetTestCharacter( UObject? WorldContextObject, UClass? In, FTransform Location)
 	{
 		nint WorldContextObject_Ptr = WorldContextObject?.Inner.Ptr ?? nint.Zero;
 		nint In_Ptr = In?.Inner.Ptr ?? nint.Zero;
@@ -116991,7 +116991,7 @@ public class ULoading : UObject, ITypeRepr<ULoading_Repr>
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("pLoadingDraw")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe ALoadingDraw? LoadingDrawClass
+	public unsafe UClass? LoadingDrawClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("LoadingDrawClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("LoadingDrawClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("LoadingDrawClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -117382,7 +117382,7 @@ public class AMailActor : AUIBaseActor, ITypeRepr<AMailActor_Repr>
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("ScrActor_")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe AMailDraw? MailDrawActorSC
+	public unsafe UClass? MailDrawActorSC
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("MailDrawActorSC")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("MailDrawActorSC")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("MailDrawActorSC")) = value?.Inner.Ptr ?? nint.Zero;
@@ -118491,7 +118491,7 @@ public class UModelTestComp : UActorComponent, ITypeRepr<UModelTestComp_Repr>
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("mpDebugMenu")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe ACharacter? mCharClass
+	public unsafe UClass? mCharClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("mCharClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("mCharClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("mCharClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -118912,7 +118912,7 @@ public class AMoviePlayActorBase : AAppActor, ITypeRepr<AMoviePlayActorBase_Repr
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("MainActor")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe AMoviePlayActorBase? SubClass
+	public unsafe UClass? SubClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("SubClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SubClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("SubClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -121309,7 +121309,7 @@ public class AHUD : AActor, ITypeRepr<AHUD_Repr>
 		get => (TArray<FDebugTextInfo>*)(Inner.Ptr + GetFieldOffset("DebugTextList"));
 	}
 
-	public unsafe AActor? ShowDebugTargetDesiredClass
+	public unsafe UClass? ShowDebugTargetDesiredClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("ShowDebugTargetDesiredClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("ShowDebugTargetDesiredClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("ShowDebugTargetDesiredClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -121484,7 +121484,7 @@ public class AHUD : AActor, ITypeRepr<AHUD_Repr>
 		], out _);
 	}
 
-	public unsafe void GetActorsInSelectionRectangle( AActor? ClassFilter, ref FVector2D FirstPoint, ref FVector2D SecondPoint, ref TArray<Ptr<AActor_Repr>> OutActors, bool bIncludeNonCollidingComponents, bool bActorMustBeFullyEnclosed)
+	public unsafe void GetActorsInSelectionRectangle( UClass? ClassFilter, ref FVector2D FirstPoint, ref FVector2D SecondPoint, ref TArray<Ptr<AActor_Repr>> OutActors, bool bIncludeNonCollidingComponents, bool bActorMustBeFullyEnclosed)
 	{
 		nint ClassFilter_Ptr = ClassFilter?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("GetActorsInSelectionRectangle", [
@@ -121598,7 +121598,7 @@ public class AHUD : AActor, ITypeRepr<AHUD_Repr>
 		], out _);
 	}
 
-	public unsafe void ShowDebugForReticleTargetToggle( AActor? DesiredClass)
+	public unsafe void ShowDebugForReticleTargetToggle( UClass? DesiredClass)
 	{
 		nint DesiredClass_Ptr = DesiredClass?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("ShowDebugForReticleTargetToggle", [
@@ -122359,7 +122359,7 @@ public class ARightsNotation : AAppActor, ITypeRepr<ARightsNotation_Repr>
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("m_pLoader")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe ARightsNotationDraw? pLoadDrawClass
+	public unsafe UClass? pLoadDrawClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("pLoadDrawClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("pLoadDrawClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("pLoadDrawClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -123404,7 +123404,7 @@ public class ASimpleShopDraw : AFclShopBase, ITypeRepr<ASimpleShopDraw_Repr>
 		get => (TArray<int>*)(Inner.Ptr + GetFieldOffset("SaveItemNum"));
 	}
 
-	public unsafe ASimpleShopDraw? ShimpleShopDrawClass
+	public unsafe UClass? ShimpleShopDrawClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("ShimpleShopDrawClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("ShimpleShopDrawClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("ShimpleShopDrawClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -124431,7 +124431,7 @@ public class AStaffRoll : AUIDrawBaseActor, ITypeRepr<AStaffRoll_Repr>
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("m_pStaffRollDrawLoader")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe AStaffRollDraw? StaffRollDrawClass
+	public unsafe UClass? StaffRollDrawClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("StaffRollDrawClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("StaffRollDrawClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("StaffRollDrawClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -124878,7 +124878,7 @@ public class ASuzukiDrawTest : AAppActor, ITypeRepr<ASuzukiDrawTest_Repr>
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("pAssetLoader")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe ASuzukiDrawTestDraw? SuzukiDrawTestDrawClass
+	public unsafe UClass? SuzukiDrawTestDrawClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("SuzukiDrawTestDrawClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SuzukiDrawTestDrawClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("SuzukiDrawTestDrawClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -125343,13 +125343,13 @@ public class ATestNishidaGameMode : AGameModeBase, ITypeRepr<ATestNishidaGameMod
 
 	public new unsafe ATestNishidaGameMode_Repr* Repr => (ATestNishidaGameMode_Repr*)Inner.Ptr;
 
-	public unsafe UTestNishidaResource? m_pTestNishidaResource
+	public unsafe UClass? m_pTestNishidaResource
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("m_pTestNishidaResource")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("m_pTestNishidaResource")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("m_pTestNishidaResource")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe ATestNishidaResourceActor? m_pTestNishidaResourceActor
+	public unsafe UClass? m_pTestNishidaResourceActor
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("m_pTestNishidaResourceActor")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("m_pTestNishidaResourceActor")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("m_pTestNishidaResourceActor")) = value?.Inner.Ptr ?? nint.Zero;
@@ -125736,7 +125736,7 @@ public class ATitleActor : AAppActor, ITypeRepr<ATitleActor_Repr>
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("m_GamerTagWidget")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe UUserWidget? m_GamerTagWidgetClass
+	public unsafe UClass? m_GamerTagWidgetClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("m_GamerTagWidgetClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("m_GamerTagWidgetClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("m_GamerTagWidgetClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -125777,13 +125777,13 @@ public class ATitleActor : AAppActor, ITypeRepr<ATitleActor_Repr>
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("LogoActorAstrea")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe ATitleLogoActor? LogoActorSC
+	public unsafe UClass? LogoActorSC
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("LogoActorSC")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("LogoActorSC")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("LogoActorSC")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe ATitleLogoActor? LogoActorSC_Astrea
+	public unsafe UClass? LogoActorSC_Astrea
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("LogoActorSC_Astrea")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("LogoActorSC_Astrea")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("LogoActorSC_Astrea")) = value?.Inner.Ptr ?? nint.Zero;
@@ -125993,7 +125993,7 @@ public class ATitleCredit : AUIDrawBaseActor, ITypeRepr<ATitleCredit_Repr>
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("m_pStaffRollDrawLoader")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe AStaffRollDraw? StaffRollDrawClass
+	public unsafe UClass? StaffRollDrawClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("StaffRollDrawClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("StaffRollDrawClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("StaffRollDrawClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -126458,7 +126458,7 @@ public class UTitleStateNewGame : UTitleStateBase, ITypeRepr<UTitleStateNewGame_
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("DifficultySelection")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe ADifficultySelectionActor? DifficultySelectionSC
+	public unsafe UClass? DifficultySelectionSC
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("DifficultySelectionSC")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("DifficultySelectionSC")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("DifficultySelectionSC")) = value?.Inner.Ptr ?? nint.Zero;
@@ -127313,7 +127313,7 @@ public class AUIArcanaCardCapture : AUIDrawBaseActor, ITypeRepr<AUIArcanaCardCap
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("pUISceneCapture2D")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe AUISceneCapture? UISceneCaptureClass
+	public unsafe UClass? UISceneCaptureClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("UISceneCaptureClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("UISceneCaptureClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("UISceneCaptureClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -127471,7 +127471,7 @@ public class AUIBackLog : AAppActor, ITypeRepr<AUIBackLog_Repr>
 		get => (FMulticastScriptDelegate*)(Inner.Ptr + GetFieldOffset("OnFinishedDelegate"));
 	}
 
-	public unsafe AUIBackLogDraw? BackLoadDrawClass
+	public unsafe UClass? BackLoadDrawClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("BackLoadDrawClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("BackLoadDrawClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("BackLoadDrawClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -129350,7 +129350,7 @@ public class AUICmpCalendar : AUIBaseActor, ITypeRepr<AUICmpCalendar_Repr>
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("Drawer_")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe AUICmpCalendar? CalendarBPClass
+	public unsafe UClass? CalendarBPClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("CalendarBPClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("CalendarBPClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("CalendarBPClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -129743,7 +129743,7 @@ public class UUICombine : UObject, ITypeRepr<UUICombine_Repr>
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("pAssetLoader")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe AUIPersonaModelActor? pBPPersonaBaseCore
+	public unsafe UClass? pBPPersonaBaseCore
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("pBPPersonaBaseCore")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("pBPPersonaBaseCore")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("pBPPersonaBaseCore")) = value?.Inner.Ptr ?? nint.Zero;
@@ -130137,7 +130137,7 @@ public class AUIConfiguration : AUIBaseActor, ITypeRepr<AUIConfiguration_Repr>
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("NetWaitDialog")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe AUIConfigurationDraw? DrawActorSC
+	public unsafe UClass? DrawActorSC
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("DrawActorSC")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("DrawActorSC")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("DrawActorSC")) = value?.Inner.Ptr ?? nint.Zero;
@@ -133246,7 +133246,7 @@ public class AUIDataInheritanceActor : AAppActor, ITypeRepr<AUIDataInheritanceAc
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("DifficultySelection")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe ADifficultySelectionActor? DifficultySelectionSC
+	public unsafe UClass? DifficultySelectionSC
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("DifficultySelectionSC")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("DifficultySelectionSC")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("DifficultySelectionSC")) = value?.Inner.Ptr ?? nint.Zero;
@@ -133815,7 +133815,7 @@ public class AUIDictionary : AAppActor, ITypeRepr<AUIDictionary_Repr>
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("pTutorialDraw")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe AUITutorialDraw? pTutorialDrawClass
+	public unsafe UClass? pTutorialDrawClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("pTutorialDrawClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("pTutorialDrawClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("pTutorialDrawClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -133971,7 +133971,7 @@ public class AUIDungeonTransfer : AUIBaseActor, ITypeRepr<AUIDungeonTransfer_Rep
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("m_Data")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe UUIDungeonTransferData? DataAsset
+	public unsafe UClass? DataAsset
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("DataAsset")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("DataAsset")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("DataAsset")) = value?.Inner.Ptr ?? nint.Zero;
@@ -135218,7 +135218,7 @@ public class AUIGenericSelect : AUIBaseActor, ITypeRepr<AUIGenericSelect_Repr>
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("pAssetLoader")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe AUIGenericSelectDraw? pDrawClass
+	public unsafe UClass? pDrawClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("pDrawClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("pDrawClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("pDrawClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -135845,7 +135845,7 @@ public class AUIHeroParameterStatus : AUIBaseActor, ITypeRepr<AUIHeroParameterSt
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("m_pHeroParamDrawActor")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe AUIHeroParameterStatusDraw? m_pHeroParamDrawActorSC
+	public unsafe UClass? m_pHeroParamDrawActorSC
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("m_pHeroParamDrawActorSC")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("m_pHeroParamDrawActorSC")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("m_pHeroParamDrawActorSC")) = value?.Inner.Ptr ?? nint.Zero;
@@ -136047,7 +136047,7 @@ public class AUISaveLoad : AAppActor, ITypeRepr<AUISaveLoad_Repr>
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("SaveManagerInst")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe ASaveLoadDraw? DrawActorSC
+	public unsafe UClass? DrawActorSC
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("DrawActorSC")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("DrawActorSC")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("DrawActorSC")) = value?.Inner.Ptr ?? nint.Zero;
@@ -137513,7 +137513,7 @@ public class ANameEntry : AUIBaseActor, ITypeRepr<ANameEntry_Repr>
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("CnvCharDataAsset_")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe AUINameEntryDraw? NameEntryDrawSubClass
+	public unsafe UClass? NameEntryDrawSubClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("NameEntryDrawSubClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("NameEntryDrawSubClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("NameEntryDrawSubClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -139961,7 +139961,7 @@ public class AUIPoetryActor : AAppActor, ITypeRepr<AUIPoetryActor_Repr>
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("pAssetLoader")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe AUIPoetryDraw? UIPoetryDrawClass
+	public unsafe UClass? UIPoetryDrawClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("UIPoetryDrawClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("UIPoetryDrawClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("UIPoetryDrawClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -140459,7 +140459,7 @@ public class AUIPreviewWorldUpdater : AActor, ITypeRepr<AUIPreviewWorldUpdater_R
 		get => (TSoftObjectPtr<UWorld_Repr>*)(Inner.Ptr + GetFieldOffset("PreviewWorld"));
 	}
 
-	public unsafe void GetAllActorsOfClass( UObject? WorldContextObject, AActor? ActorClass, ref TArray<Ptr<AActor_Repr>> OutActors)
+	public unsafe void GetAllActorsOfClass( UObject? WorldContextObject, UClass? ActorClass, ref TArray<Ptr<AActor_Repr>> OutActors)
 	{
 		nint WorldContextObject_Ptr = WorldContextObject?.Inner.Ptr ?? nint.Zero;
 		nint ActorClass_Ptr = ActorClass?.Inner.Ptr ?? nint.Zero;
@@ -140568,7 +140568,7 @@ public class AUIRankUpDraw : AUIBaseActor, ITypeRepr<AUIRankUpDraw_Repr>
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("pAssetLoader")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe AUICmmRankUpBG? UIBGActorClass
+	public unsafe UClass? UIBGActorClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("UIBGActorClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("UIBGActorClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("UIBGActorClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -140580,7 +140580,7 @@ public class AUIRankUpDraw : AUIBaseActor, ITypeRepr<AUIRankUpDraw_Repr>
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("pUIBGActor")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe AUICmmRankUpDraw? UICmmRankUpDrawClass
+	public unsafe UClass? UICmmRankUpDrawClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("UICmmRankUpDrawClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("UICmmRankUpDrawClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("UICmmRankUpDrawClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -140592,7 +140592,7 @@ public class AUIRankUpDraw : AUIBaseActor, ITypeRepr<AUIRankUpDraw_Repr>
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("pUICmmRankUpDraw")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe AUICmmRankUPAnimManager? RankUpAnimManagerClass
+	public unsafe UClass? RankUpAnimManagerClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("RankUpAnimManagerClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("RankUpAnimManagerClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("RankUpAnimManagerClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -140995,7 +140995,7 @@ public class AUIRestore : AAppActor, ITypeRepr<AUIRestore_Repr>
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("Loader")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe ASaveLoadDraw? DrawActorSC
+	public unsafe UClass? DrawActorSC
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("DrawActorSC")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("DrawActorSC")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("DrawActorSC")) = value?.Inner.Ptr ?? nint.Zero;
@@ -142650,7 +142650,7 @@ public class AUITutorial : AAppActor, ITypeRepr<AUITutorial_Repr>
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("pTutorialDraw")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe AUITutorialDraw? pTutorialDrawClass
+	public unsafe UClass? pTutorialDrawClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("pTutorialDrawClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("pTutorialDrawClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("pTutorialDrawClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -144565,7 +144565,7 @@ public class UUIVelvetRoomOwner : UObject, ITypeRepr<UUIVelvetRoomOwner_Repr>
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("m_pVelvetRoomDraw")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe AUIVelvetRoomDraw? m_pVelvetRoomDrawClass
+	public unsafe UClass? m_pVelvetRoomDrawClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("m_pVelvetRoomDrawClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("m_pVelvetRoomDrawClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("m_pVelvetRoomDrawClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -145154,7 +145154,7 @@ public class AUIVoiceAction : AUIVoiceBase, ITypeRepr<AUIVoiceAction_Repr>
 
 	public new unsafe AUIVoiceAction_Repr* Repr => (AUIVoiceAction_Repr*)Inner.Ptr;
 
-	public unsafe AUIVoiceActionDraw? VoiceActionDrawSubClass
+	public unsafe UClass? VoiceActionDrawSubClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("VoiceActionDrawSubClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("VoiceActionDrawSubClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("VoiceActionDrawSubClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -145669,7 +145669,7 @@ public class AUIVoiceAnswer : AUIVoiceBase, ITypeRepr<AUIVoiceAnswer_Repr>
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("BmdAsset_")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe AUIVoiceAnswerDraw? VoiceAnswerDrawSubClass
+	public unsafe UClass? VoiceAnswerDrawSubClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("VoiceAnswerDrawSubClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("VoiceAnswerDrawSubClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("VoiceAnswerDrawSubClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -146511,7 +146511,7 @@ public class UUtlBpObjManager : UGameInstanceSubsystem, ITypeRepr<UUtlBpObjManag
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("mObject_")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe UUtlBpObjCore? CreateBluePrint( UObject? ObjectClass)
+	public unsafe UUtlBpObjCore? CreateBluePrint( UClass? ObjectClass)
 	{
 		nint ObjectClass_Ptr = ObjectClass?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("CreateBluePrint", [
@@ -150685,7 +150685,7 @@ public class AARActor : AActor, ITypeRepr<AARActor_Repr>
 
 	public new unsafe AARActor_Repr* Repr => (AARActor_Repr*)Inner.Ptr;
 
-	public unsafe UARComponent? AddARComponent( UARComponent? InComponentClass, ref FGuid NativeID)
+	public unsafe UARComponent? AddARComponent( UClass? InComponentClass, ref FGuid NativeID)
 	{
 		nint InComponentClass_Ptr = InComponentClass?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("AddARComponent", [
@@ -150822,7 +150822,7 @@ public class UARBlueprintLibrary : UBlueprintFunctionLibrary, ITypeRepr<UARBluep
 		return ReturnValue;
 	}
 
-	public unsafe TArray<Ptr<UARTrackedGeometry_Repr>> GetAllGeometriesByClass( UARTrackedGeometry? GeometryClass)
+	public unsafe TArray<Ptr<UARTrackedGeometry_Repr>> GetAllGeometriesByClass( UClass? GeometryClass)
 	{
 		nint GeometryClass_Ptr = GeometryClass?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("GetAllGeometriesByClass", [
@@ -152450,7 +152450,7 @@ public class UARLifeCycleComponent : USceneComponent, ITypeRepr<UARLifeCycleComp
 		get => (FMulticastScriptDelegate*)(Inner.Ptr + GetFieldOffset("OnARActorToBeDestroyedDelegate"));
 	}
 
-	public unsafe void InstanceARActorSpawnedDelegate__DelegateSignature( UObject? ComponentClass, FGuid NativeID, AARActor? SpawnedActor)
+	public unsafe void InstanceARActorSpawnedDelegate__DelegateSignature( UClass? ComponentClass, FGuid NativeID, AARActor? SpawnedActor)
 	{
 		nint ComponentClass_Ptr = ComponentClass?.Inner.Ptr ?? nint.Zero;
 		nint SpawnedActor_Ptr = SpawnedActor?.Inner.Ptr ?? nint.Zero;
@@ -152477,7 +152477,7 @@ public class UARLifeCycleComponent : USceneComponent, ITypeRepr<UARLifeCycleComp
 		], out _);
 	}
 
-	public unsafe void ServerSpawnARActor( UObject? ComponentClass, FGuid NativeID)
+	public unsafe void ServerSpawnARActor( UClass? ComponentClass, FGuid NativeID)
 	{
 		nint ComponentClass_Ptr = ComponentClass?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("ServerSpawnARActor", [
@@ -152959,61 +152959,61 @@ public class UARSessionConfig : UDataAsset, ITypeRepr<UARSessionConfig_Repr>
 		set => *(EARSceneReconstruction*)(Inner.Ptr + GetFieldOffset("SceneReconstructionMethod")) = value;
 	}
 
-	public unsafe UARPlaneComponent? PlaneComponentClass
+	public unsafe UClass? PlaneComponentClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("PlaneComponentClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("PlaneComponentClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("PlaneComponentClass")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe UARPointComponent? PointComponentClass
+	public unsafe UClass? PointComponentClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("PointComponentClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("PointComponentClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("PointComponentClass")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe UARFaceComponent? FaceComponentClass
+	public unsafe UClass? FaceComponentClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("FaceComponentClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("FaceComponentClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("FaceComponentClass")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe UARImageComponent? ImageComponentClass
+	public unsafe UClass? ImageComponentClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("ImageComponentClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("ImageComponentClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("ImageComponentClass")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe UARQRCodeComponent? QRCodeComponentClass
+	public unsafe UClass? QRCodeComponentClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("QRCodeComponentClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("QRCodeComponentClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("QRCodeComponentClass")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe UARPoseComponent? PoseComponentClass
+	public unsafe UClass? PoseComponentClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("PoseComponentClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("PoseComponentClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("PoseComponentClass")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe UAREnvironmentProbeComponent? EnvironmentProbeComponentClass
+	public unsafe UClass? EnvironmentProbeComponentClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("EnvironmentProbeComponentClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("EnvironmentProbeComponentClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("EnvironmentProbeComponentClass")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe UARObjectComponent? ObjectComponentClass
+	public unsafe UClass? ObjectComponentClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("ObjectComponentClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("ObjectComponentClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("ObjectComponentClass")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe UARMeshComponent? MeshComponentClass
+	public unsafe UClass? MeshComponentClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("MeshComponentClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("MeshComponentClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("MeshComponentClass")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe UARGeoAnchorComponent? GeoAnchorComponentClass
+	public unsafe UClass? GeoAnchorComponentClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("GeoAnchorComponentClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("GeoAnchorComponentClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("GeoAnchorComponentClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -153380,7 +153380,7 @@ public class AGameMode : AGameModeBase, ITypeRepr<AGameMode_Repr>
 		set => *(int*)(Inner.Ptr + GetFieldOffset("NumTravellingPlayers")) = value;
 	}
 
-	public unsafe ULocalMessage? EngineMessageClass
+	public unsafe UClass? EngineMessageClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("EngineMessageClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("EngineMessageClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("EngineMessageClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -153570,7 +153570,7 @@ public class AGameStateBase : AInfo, ITypeRepr<AGameStateBase_Repr>
 
 	public new unsafe AGameStateBase_Repr* Repr => (AGameStateBase_Repr*)Inner.Ptr;
 
-	public unsafe AGameModeBase? GameModeClass
+	public unsafe UClass? GameModeClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("GameModeClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("GameModeClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("GameModeClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -153582,7 +153582,7 @@ public class AGameStateBase : AInfo, ITypeRepr<AGameStateBase_Repr>
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("AuthorityGameMode")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe ASpectatorPawn? SpectatorClass
+	public unsafe UClass? SpectatorClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("SpectatorClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SpectatorClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("SpectatorClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -157671,7 +157671,7 @@ public class UFoliageType_Actor : UFoliageType, ITypeRepr<UFoliageType_Actor_Rep
 
 	public new unsafe UFoliageType_Actor_Repr* Repr => (UFoliageType_Actor_Repr*)Inner.Ptr;
 
-	public unsafe AActor? ActorClass
+	public unsafe UClass? ActorClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("ActorClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("ActorClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("ActorClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -157722,7 +157722,7 @@ public class UFoliageType_InstancedStaticMesh : UFoliageType, ITypeRepr<UFoliage
 		get => (TArray<Ptr<UMaterialInterface_Repr>>*)(Inner.Ptr + GetFieldOffset("OverrideMaterials"));
 	}
 
-	public unsafe UFoliageInstancedStaticMeshComponent? ComponentClass
+	public unsafe UClass? ComponentClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("ComponentClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("ComponentClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("ComponentClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -164608,7 +164608,7 @@ public class UMovieSceneCameraShakeSection : UMovieSceneSection, ITypeRepr<UMovi
 		get => (FMovieSceneCameraShakeSectionData*)(Inner.Ptr + GetFieldOffset("ShakeData"));
 	}
 
-	public unsafe UCameraShakeBase? ShakeClass
+	public unsafe UClass? ShakeClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("ShakeClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("ShakeClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("ShakeClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -166141,7 +166141,7 @@ public class UMovieSceneObjectPropertyTrack : UMovieScenePropertyTrack, ITypeRep
 
 	public new unsafe UMovieSceneObjectPropertyTrack_Repr* Repr => (UMovieSceneObjectPropertyTrack_Repr*)Inner.Ptr;
 
-	public unsafe UObject? PropertyClass
+	public unsafe UClass? PropertyClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("PropertyClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("PropertyClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("PropertyClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -169336,7 +169336,7 @@ public class UDynamicEntryBox : UDynamicEntryBoxBase, ITypeRepr<UDynamicEntryBox
 
 	public new unsafe UDynamicEntryBox_Repr* Repr => (UDynamicEntryBox_Repr*)Inner.Ptr;
 
-	public unsafe UUserWidget? EntryWidgetClass
+	public unsafe UClass? EntryWidgetClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("EntryWidgetClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("EntryWidgetClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("EntryWidgetClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -169348,7 +169348,7 @@ public class UDynamicEntryBox : UDynamicEntryBoxBase, ITypeRepr<UDynamicEntryBox
 		return ((ObjectParam?)Return)!.Value != nint.Zero ? new(Inner.GetFactory().CreateUObject(((ObjectParam?)Return)!.Value)) : null;
 	}
 
-	public unsafe UUserWidget? BP_CreateEntryOfClass( UUserWidget? EntryClass)
+	public unsafe UUserWidget? BP_CreateEntryOfClass( UClass? EntryClass)
 	{
 		nint EntryClass_Ptr = EntryClass?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("BP_CreateEntryOfClass", [
@@ -171019,7 +171019,7 @@ public class UListViewBase : UWidget, ITypeRepr<UListViewBase_Repr>
 
 	public new unsafe UListViewBase_Repr* Repr => (UListViewBase_Repr*)Inner.Ptr;
 
-	public unsafe UUserWidget? EntryWidgetClass
+	public unsafe UClass? EntryWidgetClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("EntryWidgetClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("EntryWidgetClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("EntryWidgetClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -171454,7 +171454,7 @@ public class UMenuAnchor : UContentWidget, ITypeRepr<UMenuAnchor_Repr>
 
 	public new unsafe UMenuAnchor_Repr* Repr => (UMenuAnchor_Repr*)Inner.Ptr;
 
-	public unsafe UUserWidget? MenuClass
+	public unsafe UClass? MenuClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("MenuClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("MenuClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("MenuClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -172726,7 +172726,7 @@ public class URichTextBlock : UTextLayoutWidget, ITypeRepr<URichTextBlock_Repr>
 		_ = Inner.ProcessEvent("ClearAllDefaultStyleOverrides", [], out _);
 	}
 
-	public unsafe URichTextBlockDecorator? GetDecoratorByClass( URichTextBlockDecorator? DecoratorClass)
+	public unsafe URichTextBlockDecorator? GetDecoratorByClass( UClass? DecoratorClass)
 	{
 		nint DecoratorClass_Ptr = DecoratorClass?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("GetDecoratorByClass", [
@@ -175746,7 +175746,7 @@ public class UViewport : UContentWidget, ITypeRepr<UViewport_Repr>
 		], out _);
 	}
 
-	public unsafe AActor? Spawn( AActor? ActorClass)
+	public unsafe AActor? Spawn( UClass? ActorClass)
 	{
 		nint ActorClass_Ptr = ActorClass?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("Spawn", [
@@ -176292,7 +176292,7 @@ public class UWidgetBlueprintLibrary : UBlueprintFunctionLibrary, ITypeRepr<UWid
 		return ReturnValue;
 	}
 
-	public unsafe UUserWidget? Create( UObject? WorldContextObject, UUserWidget? WidgetType, APlayerController? OwningPlayer)
+	public unsafe UUserWidget? Create( UObject? WorldContextObject, UClass? WidgetType, APlayerController? OwningPlayer)
 	{
 		nint WorldContextObject_Ptr = WorldContextObject?.Inner.Ptr ?? nint.Zero;
 		nint WidgetType_Ptr = WidgetType?.Inner.Ptr ?? nint.Zero;
@@ -176305,7 +176305,7 @@ public class UWidgetBlueprintLibrary : UBlueprintFunctionLibrary, ITypeRepr<UWid
 		return ((ObjectParam?)Return)!.Value != nint.Zero ? new(Inner.GetFactory().CreateUObject(((ObjectParam?)Return)!.Value)) : null;
 	}
 
-	public unsafe UDragDropOperation? CreateDragDropOperation( UDragDropOperation? OperationClass)
+	public unsafe UDragDropOperation? CreateDragDropOperation( UClass? OperationClass)
 	{
 		nint OperationClass_Ptr = OperationClass?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("CreateDragDropOperation", [
@@ -176414,7 +176414,7 @@ public class UWidgetBlueprintLibrary : UBlueprintFunctionLibrary, ITypeRepr<UWid
 		return ReturnValue;
 	}
 
-	public unsafe void GetAllWidgetsOfClass( UObject? WorldContextObject, ref TArray<Ptr<UUserWidget_Repr>> FoundWidgets, UUserWidget? WidgetClass, bool TopLevelOnly)
+	public unsafe void GetAllWidgetsOfClass( UObject? WorldContextObject, ref TArray<Ptr<UUserWidget_Repr>> FoundWidgets, UClass? WidgetClass, bool TopLevelOnly)
 	{
 		nint WorldContextObject_Ptr = WorldContextObject?.Inner.Ptr ?? nint.Zero;
 		nint WidgetClass_Ptr = WidgetClass?.Inner.Ptr ?? nint.Zero;
@@ -176426,7 +176426,7 @@ public class UWidgetBlueprintLibrary : UBlueprintFunctionLibrary, ITypeRepr<UWid
 		], out _);
 	}
 
-	public unsafe void GetAllWidgetsWithInterface( UObject? WorldContextObject, ref TArray<Ptr<UUserWidget_Repr>> FoundWidgets, UInterface? Interface, bool TopLevelOnly)
+	public unsafe void GetAllWidgetsWithInterface( UObject? WorldContextObject, ref TArray<Ptr<UUserWidget_Repr>> FoundWidgets, UClass? Interface, bool TopLevelOnly)
 	{
 		nint WorldContextObject_Ptr = WorldContextObject?.Inner.Ptr ?? nint.Zero;
 		nint Interface_Ptr = Interface?.Inner.Ptr ?? nint.Zero;
@@ -176843,7 +176843,7 @@ public class UWidgetComponent : UMeshComponent, ITypeRepr<UWidgetComponent_Repr>
 		set => *(EWidgetTimingPolicy*)(Inner.Ptr + GetFieldOffset("TimingPolicy")) = value;
 	}
 
-	public unsafe UUserWidget? WidgetClass
+	public unsafe UClass? WidgetClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("WidgetClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("WidgetClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("WidgetClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -180419,7 +180419,7 @@ public class UAssetRegistryHelpers : UObject, ITypeRepr<UAssetRegistryHelpers_Re
 		return ReturnValue;
 	}
 
-	public unsafe UObject? GetClass( ref FAssetData InAssetData)
+	public unsafe UClass? GetClass( ref FAssetData InAssetData)
 	{
 		_ = Inner.ProcessEvent("GetClass", [
 			new StructParam(new((FAssetData*)Unsafe.AsPointer(ref InAssetData)), 96)
@@ -180785,7 +180785,7 @@ public class UBlueprintGameplayTagLibrary : UBlueprintFunctionLibrary, ITypeRepr
 		return ((BoolParam?)Return)!.Value;
 	}
 
-	public unsafe void GetAllActorsOfClassMatchingTagQuery( UObject? WorldContextObject, AActor? ActorClass, ref FGameplayTagQuery GameplayTagQuery, ref TArray<Ptr<AActor_Repr>> OutActors)
+	public unsafe void GetAllActorsOfClassMatchingTagQuery( UObject? WorldContextObject, UClass? ActorClass, ref FGameplayTagQuery GameplayTagQuery, ref TArray<Ptr<AActor_Repr>> OutActors)
 	{
 		nint WorldContextObject_Ptr = WorldContextObject?.Inner.Ptr ?? nint.Zero;
 		nint ActorClass_Ptr = ActorClass?.Inner.Ptr ?? nint.Zero;
@@ -184247,7 +184247,7 @@ public class ULevelSequence : UMovieSceneSequence, ITypeRepr<ULevelSequence_Repr
 		get => (TMap<FString, FLevelSequenceObject>*)(Inner.Ptr + GetFieldOffset("PossessedObjects"));
 	}
 
-	public unsafe UObject? DirectorClass
+	public unsafe UClass? DirectorClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("DirectorClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("DirectorClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("DirectorClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -184267,7 +184267,7 @@ public class ULevelSequence : UMovieSceneSequence, ITypeRepr<ULevelSequence_Repr
 		return ((ObjectParam?)Return)!.Value != nint.Zero ? new(Inner.GetFactory().CreateUObject(((ObjectParam?)Return)!.Value)) : null;
 	}
 
-	public unsafe UObject? FindMetaDataByClass( UObject? InClass)
+	public unsafe UObject? FindMetaDataByClass( UClass? InClass)
 	{
 		nint InClass_Ptr = InClass?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("FindMetaDataByClass", [
@@ -184276,7 +184276,7 @@ public class ULevelSequence : UMovieSceneSequence, ITypeRepr<ULevelSequence_Repr
 		return ((ObjectParam?)Return)!.Value != nint.Zero ? new(Inner.GetFactory().CreateUObject(((ObjectParam?)Return)!.Value)) : null;
 	}
 
-	public unsafe UObject? FindOrAddMetaDataByClass( UObject? InClass)
+	public unsafe UObject? FindOrAddMetaDataByClass( UClass? InClass)
 	{
 		nint InClass_Ptr = InClass?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("FindOrAddMetaDataByClass", [
@@ -184285,7 +184285,7 @@ public class ULevelSequence : UMovieSceneSequence, ITypeRepr<ULevelSequence_Repr
 		return ((ObjectParam?)Return)!.Value != nint.Zero ? new(Inner.GetFactory().CreateUObject(((ObjectParam?)Return)!.Value)) : null;
 	}
 
-	public unsafe void RemoveMetaDataByClass( UObject? InClass)
+	public unsafe void RemoveMetaDataByClass( UClass? InClass)
 	{
 		nint InClass_Ptr = InClass?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("RemoveMetaDataByClass", [
@@ -184446,7 +184446,7 @@ public class ULevelSequenceBurnIn : UUserWidget, ITypeRepr<ULevelSequenceBurnIn_
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("LevelSequenceActor")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe ULevelSequenceBurnInInitSettings? GetSettingsClass()
+	public unsafe UClass? GetSettingsClass()
 	{
 		_ = Inner.ProcessEvent("GetSettingsClass", [], out var Return);
 		return ((ObjectParam?)Return)!.Value != nint.Zero ? new(Inner.GetFactory().CreateUObject(((ObjectParam?)Return)!.Value)) : null;
@@ -184582,13 +184582,13 @@ public class UBlueprintCore : UObject, ITypeRepr<UBlueprintCore_Repr>
 
 	public new unsafe UBlueprintCore_Repr* Repr => (UBlueprintCore_Repr*)Inner.Ptr;
 
-	public unsafe UObject? SkeletonGeneratedClass
+	public unsafe UClass? SkeletonGeneratedClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("SkeletonGeneratedClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SkeletonGeneratedClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("SkeletonGeneratedClass")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe UObject? GeneratedClass
+	public unsafe UClass? GeneratedClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("GeneratedClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("GeneratedClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("GeneratedClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -184635,7 +184635,7 @@ public class UBlueprint : UBlueprintCore, ITypeRepr<UBlueprint_Repr>
 
 	public new unsafe UBlueprint_Repr* Repr => (UBlueprint_Repr*)Inner.Ptr;
 
-	public unsafe UObject? ParentClass
+	public unsafe UClass? ParentClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("ParentClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("ParentClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("ParentClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -185452,7 +185452,7 @@ public class UMovieSceneCapture : UObject, ITypeRepr<UMovieSceneCapture_Repr>
 		return ((ObjectParam?)Return)!.Value != nint.Zero ? new(Inner.GetFactory().CreateUObject(((ObjectParam?)Return)!.Value)) : null;
 	}
 
-	public unsafe void SetAudioCaptureProtocolType( UMovieSceneCaptureProtocolBase? ProtocolType)
+	public unsafe void SetAudioCaptureProtocolType( UClass? ProtocolType)
 	{
 		nint ProtocolType_Ptr = ProtocolType?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("SetAudioCaptureProtocolType", [
@@ -185460,7 +185460,7 @@ public class UMovieSceneCapture : UObject, ITypeRepr<UMovieSceneCapture_Repr>
 		], out _);
 	}
 
-	public unsafe void SetImageCaptureProtocolType( UMovieSceneCaptureProtocolBase? ProtocolType)
+	public unsafe void SetImageCaptureProtocolType( UClass? ProtocolType)
 	{
 		nint ProtocolType_Ptr = ProtocolType?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("SetImageCaptureProtocolType", [
@@ -192753,7 +192753,7 @@ public class UCameraShakeSourceComponent : USceneComponent, ITypeRepr<UCameraSha
 		set => *(float*)(Inner.Ptr + GetFieldOffset("OuterAttenuationRadius")) = value;
 	}
 
-	public unsafe UCameraShakeBase? CameraShake
+	public unsafe UClass? CameraShake
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("CameraShake")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("CameraShake")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("CameraShake")) = value?.Inner.Ptr ?? nint.Zero;
@@ -192778,7 +192778,7 @@ public class UCameraShakeSourceComponent : USceneComponent, ITypeRepr<UCameraSha
 		_ = Inner.ProcessEvent("Start", [], out _);
 	}
 
-	public unsafe void StartCameraShake( UCameraShakeBase? InCameraShake, float Scale, ECameraShakePlaySpace PlaySpace, FRotator UserPlaySpaceRot)
+	public unsafe void StartCameraShake( UClass? InCameraShake, float Scale, ECameraShakePlaySpace PlaySpace, FRotator UserPlaySpaceRot)
 	{
 		nint InCameraShake_Ptr = InCameraShake?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("StartCameraShake", [
@@ -192796,7 +192796,7 @@ public class UCameraShakeSourceComponent : USceneComponent, ITypeRepr<UCameraSha
 		], out _);
 	}
 
-	public unsafe void StopAllCameraShakesOfType( UCameraShakeBase? InCameraShake, bool bImmediately)
+	public unsafe void StopAllCameraShakesOfType( UClass? InCameraShake, bool bImmediately)
 	{
 		nint InCameraShake_Ptr = InCameraShake?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("StopAllCameraShakesOfType", [
@@ -193301,7 +193301,7 @@ public class UCanvasRenderTarget2D : UTextureRenderTarget2D, ITypeRepr<UCanvasRe
 		set => *(bool*)(Inner.Ptr + GetFieldOffset("bShouldClearRenderTargetOnReceiveUpdate")) = value;
 	}
 
-	public unsafe UCanvasRenderTarget2D? CreateCanvasRenderTarget2D( UObject? WorldContextObject, UCanvasRenderTarget2D? CanvasRenderTarget2DClass, int Width, int Height)
+	public unsafe UCanvasRenderTarget2D? CreateCanvasRenderTarget2D( UObject? WorldContextObject, UClass? CanvasRenderTarget2DClass, int Width, int Height)
 	{
 		nint WorldContextObject_Ptr = WorldContextObject?.Inner.Ptr ?? nint.Zero;
 		nint CanvasRenderTarget2DClass_Ptr = CanvasRenderTarget2DClass?.Inner.Ptr ?? nint.Zero;
@@ -193562,7 +193562,7 @@ public class UChildActorComponent : USceneComponent, ITypeRepr<UChildActorCompon
 
 	public new unsafe UChildActorComponent_Repr* Repr => (UChildActorComponent_Repr*)Inner.Ptr;
 
-	public unsafe AActor? ChildActorClass
+	public unsafe UClass? ChildActorClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("ChildActorClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("ChildActorClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("ChildActorClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -193580,7 +193580,7 @@ public class UChildActorComponent : USceneComponent, ITypeRepr<UChildActorCompon
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("ChildActorTemplate")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe void SetChildActorClass( AActor? InClass)
+	public unsafe void SetChildActorClass( UClass? InClass)
 	{
 		nint InClass_Ptr = InClass?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("SetChildActorClass", [
@@ -194060,7 +194060,7 @@ public class UEngine : UObject, ITypeRepr<UEngine_Repr>
 		get => (TArray<FString>*)(Inner.Ptr + GetFieldOffset("AdditionalFontNames"));
 	}
 
-	public unsafe UConsole? ConsoleClass
+	public unsafe UClass? ConsoleClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("ConsoleClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("ConsoleClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("ConsoleClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -194071,7 +194071,7 @@ public class UEngine : UObject, ITypeRepr<UEngine_Repr>
 		get => (FSoftClassPath*)(Inner.Ptr + GetFieldOffset("ConsoleClassName"));
 	}
 
-	public unsafe UGameViewportClient? GameViewportClientClass
+	public unsafe UClass? GameViewportClientClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("GameViewportClientClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("GameViewportClientClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("GameViewportClientClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -194082,7 +194082,7 @@ public class UEngine : UObject, ITypeRepr<UEngine_Repr>
 		get => (FSoftClassPath*)(Inner.Ptr + GetFieldOffset("GameViewportClientClassName"));
 	}
 
-	public unsafe ULocalPlayer? LocalPlayerClass
+	public unsafe UClass? LocalPlayerClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("LocalPlayerClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("LocalPlayerClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("LocalPlayerClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -194093,7 +194093,7 @@ public class UEngine : UObject, ITypeRepr<UEngine_Repr>
 		get => (FSoftClassPath*)(Inner.Ptr + GetFieldOffset("LocalPlayerClassName"));
 	}
 
-	public unsafe AWorldSettings? WorldSettingsClass
+	public unsafe UClass? WorldSettingsClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("WorldSettingsClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("WorldSettingsClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("WorldSettingsClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -194109,7 +194109,7 @@ public class UEngine : UObject, ITypeRepr<UEngine_Repr>
 		get => (FSoftClassPath*)(Inner.Ptr + GetFieldOffset("NavigationSystemClassName"));
 	}
 
-	public unsafe UNavigationSystemBase? NavigationSystemClass_2
+	public unsafe UClass? NavigationSystemClass_2
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("NavigationSystemClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("NavigationSystemClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("NavigationSystemClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -194120,7 +194120,7 @@ public class UEngine : UObject, ITypeRepr<UEngine_Repr>
 		get => (FSoftClassPath*)(Inner.Ptr + GetFieldOffset("NavigationSystemConfigClassName"));
 	}
 
-	public unsafe UNavigationSystemConfig? NavigationSystemConfigClass_2
+	public unsafe UClass? NavigationSystemConfigClass_2
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("NavigationSystemConfigClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("NavigationSystemConfigClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("NavigationSystemConfigClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -194131,7 +194131,7 @@ public class UEngine : UObject, ITypeRepr<UEngine_Repr>
 		get => (FSoftClassPath*)(Inner.Ptr + GetFieldOffset("AvoidanceManagerClassName"));
 	}
 
-	public unsafe UAvoidanceManager? AvoidanceManagerClass_2
+	public unsafe UClass? AvoidanceManagerClass_2
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("AvoidanceManagerClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("AvoidanceManagerClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("AvoidanceManagerClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -194142,7 +194142,7 @@ public class UEngine : UObject, ITypeRepr<UEngine_Repr>
 		get => (FSoftClassPath*)(Inner.Ptr + GetFieldOffset("AIControllerClassName"));
 	}
 
-	public unsafe UPhysicsCollisionHandler? PhysicsCollisionHandlerClass
+	public unsafe UClass? PhysicsCollisionHandlerClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("PhysicsCollisionHandlerClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("PhysicsCollisionHandlerClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("PhysicsCollisionHandlerClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -194158,7 +194158,7 @@ public class UEngine : UObject, ITypeRepr<UEngine_Repr>
 		get => (FSoftClassPath*)(Inner.Ptr + GetFieldOffset("GameUserSettingsClassName"));
 	}
 
-	public unsafe UGameUserSettings? GameUserSettingsClass_2
+	public unsafe UClass? GameUserSettingsClass_2
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("GameUserSettingsClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("GameUserSettingsClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("GameUserSettingsClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -194170,7 +194170,7 @@ public class UEngine : UObject, ITypeRepr<UEngine_Repr>
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("GameUserSettings")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe ALevelScriptActor? LevelScriptActorClass
+	public unsafe UClass? LevelScriptActorClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("LevelScriptActorClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("LevelScriptActorClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("LevelScriptActorClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -199673,7 +199673,7 @@ public class UEdGraph : UObject, ITypeRepr<UEdGraph_Repr>
 
 	public new unsafe UEdGraph_Repr* Repr => (UEdGraph_Repr*)Inner.Ptr;
 
-	public unsafe UEdGraphSchema? Schema
+	public unsafe UClass? Schema
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("Schema")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("Schema")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("Schema")) = value?.Inner.Ptr ?? nint.Zero;
@@ -200894,7 +200894,7 @@ public class UExporter : UObject, ITypeRepr<UExporter_Repr>
 
 	public new unsafe UExporter_Repr* Repr => (UExporter_Repr*)Inner.Ptr;
 
-	public unsafe UObject? SupportedClass
+	public unsafe UClass? SupportedClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("SupportedClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SupportedClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("SupportedClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -201902,7 +201902,7 @@ public class UGameplayStatics : UBlueprintFunctionLibrary, ITypeRepr<UGameplaySt
 		], out _);
 	}
 
-	public unsafe float ApplyDamage( AActor? DamagedActor, float BaseDamage, AController? EventInstigator, AActor? DamageCauser, UDamageType? DamageTypeClass)
+	public unsafe float ApplyDamage( AActor? DamagedActor, float BaseDamage, AController? EventInstigator, AActor? DamageCauser, UClass? DamageTypeClass)
 	{
 		nint DamagedActor_Ptr = DamagedActor?.Inner.Ptr ?? nint.Zero;
 		nint EventInstigator_Ptr = EventInstigator?.Inner.Ptr ?? nint.Zero;
@@ -201918,7 +201918,7 @@ public class UGameplayStatics : UBlueprintFunctionLibrary, ITypeRepr<UGameplaySt
 		return ((FloatParam?)Return)!.Value;
 	}
 
-	public unsafe float ApplyPointDamage( AActor? DamagedActor, float BaseDamage, ref FVector HitFromDirection, ref FHitResult HitInfo, AController? EventInstigator, AActor? DamageCauser, UDamageType? DamageTypeClass)
+	public unsafe float ApplyPointDamage( AActor? DamagedActor, float BaseDamage, ref FVector HitFromDirection, ref FHitResult HitInfo, AController? EventInstigator, AActor? DamageCauser, UClass? DamageTypeClass)
 	{
 		nint DamagedActor_Ptr = DamagedActor?.Inner.Ptr ?? nint.Zero;
 		nint EventInstigator_Ptr = EventInstigator?.Inner.Ptr ?? nint.Zero;
@@ -201936,7 +201936,7 @@ public class UGameplayStatics : UBlueprintFunctionLibrary, ITypeRepr<UGameplaySt
 		return ((FloatParam?)Return)!.Value;
 	}
 
-	public unsafe bool ApplyRadialDamage( UObject? WorldContextObject, float BaseDamage, ref FVector Origin, float DamageRadius, UDamageType? DamageTypeClass, ref TArray<Ptr<AActor_Repr>> IgnoreActors, AActor? DamageCauser, AController? InstigatedByController, bool bDoFullDamage, ECollisionChannel DamagePreventionChannel)
+	public unsafe bool ApplyRadialDamage( UObject? WorldContextObject, float BaseDamage, ref FVector Origin, float DamageRadius, UClass? DamageTypeClass, ref TArray<Ptr<AActor_Repr>> IgnoreActors, AActor? DamageCauser, AController? InstigatedByController, bool bDoFullDamage, ECollisionChannel DamagePreventionChannel)
 	{
 		nint WorldContextObject_Ptr = WorldContextObject?.Inner.Ptr ?? nint.Zero;
 		nint DamageTypeClass_Ptr = DamageTypeClass?.Inner.Ptr ?? nint.Zero;
@@ -201957,7 +201957,7 @@ public class UGameplayStatics : UBlueprintFunctionLibrary, ITypeRepr<UGameplaySt
 		return ((BoolParam?)Return)!.Value;
 	}
 
-	public unsafe bool ApplyRadialDamageWithFalloff( UObject? WorldContextObject, float BaseDamage, float MinimumDamage, ref FVector Origin, float DamageInnerRadius, float DamageOuterRadius, float DamageFalloff, UDamageType? DamageTypeClass, ref TArray<Ptr<AActor_Repr>> IgnoreActors, AActor? DamageCauser, AController? InstigatedByController, ECollisionChannel DamagePreventionChannel)
+	public unsafe bool ApplyRadialDamageWithFalloff( UObject? WorldContextObject, float BaseDamage, float MinimumDamage, ref FVector Origin, float DamageInnerRadius, float DamageOuterRadius, float DamageFalloff, UClass? DamageTypeClass, ref TArray<Ptr<AActor_Repr>> IgnoreActors, AActor? DamageCauser, AController? InstigatedByController, ECollisionChannel DamagePreventionChannel)
 	{
 		nint WorldContextObject_Ptr = WorldContextObject?.Inner.Ptr ?? nint.Zero;
 		nint DamageTypeClass_Ptr = DamageTypeClass?.Inner.Ptr ?? nint.Zero;
@@ -201997,7 +201997,7 @@ public class UGameplayStatics : UBlueprintFunctionLibrary, ITypeRepr<UGameplaySt
 		return ((BoolParam?)Return)!.Value;
 	}
 
-	public unsafe AActor? BeginDeferredActorSpawnFromClass( UObject? WorldContextObject, AActor? ActorClass, ref FTransform SpawnTransform, ESpawnActorCollisionHandlingMethod CollisionHandlingOverride, AActor? Owner)
+	public unsafe AActor? BeginDeferredActorSpawnFromClass( UObject? WorldContextObject, UClass? ActorClass, ref FTransform SpawnTransform, ESpawnActorCollisionHandlingMethod CollisionHandlingOverride, AActor? Owner)
 	{
 		nint WorldContextObject_Ptr = WorldContextObject?.Inner.Ptr ?? nint.Zero;
 		nint ActorClass_Ptr = ActorClass?.Inner.Ptr ?? nint.Zero;
@@ -202025,7 +202025,7 @@ public class UGameplayStatics : UBlueprintFunctionLibrary, ITypeRepr<UGameplaySt
 		return ((ObjectParam?)Return)!.Value != nint.Zero ? new(Inner.GetFactory().CreateUObject(((ObjectParam?)Return)!.Value)) : null;
 	}
 
-	public unsafe AActor? BeginSpawningActorFromClass( UObject? WorldContextObject, AActor? ActorClass, ref FTransform SpawnTransform, bool bNoCollisionFail, AActor? Owner)
+	public unsafe AActor? BeginSpawningActorFromClass( UObject? WorldContextObject, UClass? ActorClass, ref FTransform SpawnTransform, bool bNoCollisionFail, AActor? Owner)
 	{
 		nint WorldContextObject_Ptr = WorldContextObject?.Inner.Ptr ?? nint.Zero;
 		nint ActorClass_Ptr = ActorClass?.Inner.Ptr ?? nint.Zero;
@@ -202184,7 +202184,7 @@ public class UGameplayStatics : UBlueprintFunctionLibrary, ITypeRepr<UGameplaySt
 		return ((ObjectParam?)Return)!.Value != nint.Zero ? new(Inner.GetFactory().CreateUObject(((ObjectParam?)Return)!.Value)) : null;
 	}
 
-	public unsafe USaveGame? CreateSaveGameObject( USaveGame? SaveGameClass)
+	public unsafe USaveGame? CreateSaveGameObject( UClass? SaveGameClass)
 	{
 		nint SaveGameClass_Ptr = SaveGameClass?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("CreateSaveGameObject", [
@@ -202323,7 +202323,7 @@ public class UGameplayStatics : UBlueprintFunctionLibrary, ITypeRepr<UGameplaySt
 		], out _);
 	}
 
-	public unsafe AActor? GetActorOfClass( UObject? WorldContextObject, AActor? ActorClass)
+	public unsafe AActor? GetActorOfClass( UObject? WorldContextObject, UClass? ActorClass)
 	{
 		nint WorldContextObject_Ptr = WorldContextObject?.Inner.Ptr ?? nint.Zero;
 		nint ActorClass_Ptr = ActorClass?.Inner.Ptr ?? nint.Zero;
@@ -202334,7 +202334,7 @@ public class UGameplayStatics : UBlueprintFunctionLibrary, ITypeRepr<UGameplaySt
 		return ((ObjectParam?)Return)!.Value != nint.Zero ? new(Inner.GetFactory().CreateUObject(((ObjectParam?)Return)!.Value)) : null;
 	}
 
-	public unsafe void GetAllActorsOfClass( UObject? WorldContextObject, AActor? ActorClass, ref TArray<Ptr<AActor_Repr>> OutActors)
+	public unsafe void GetAllActorsOfClass( UObject? WorldContextObject, UClass? ActorClass, ref TArray<Ptr<AActor_Repr>> OutActors)
 	{
 		nint WorldContextObject_Ptr = WorldContextObject?.Inner.Ptr ?? nint.Zero;
 		nint ActorClass_Ptr = ActorClass?.Inner.Ptr ?? nint.Zero;
@@ -202345,7 +202345,7 @@ public class UGameplayStatics : UBlueprintFunctionLibrary, ITypeRepr<UGameplaySt
 		], out _);
 	}
 
-	public unsafe void GetAllActorsOfClassWithTag( UObject? WorldContextObject, AActor? ActorClass, FName Tag, ref TArray<Ptr<AActor_Repr>> OutActors)
+	public unsafe void GetAllActorsOfClassWithTag( UObject? WorldContextObject, UClass? ActorClass, FName Tag, ref TArray<Ptr<AActor_Repr>> OutActors)
 	{
 		nint WorldContextObject_Ptr = WorldContextObject?.Inner.Ptr ?? nint.Zero;
 		nint ActorClass_Ptr = ActorClass?.Inner.Ptr ?? nint.Zero;
@@ -202357,7 +202357,7 @@ public class UGameplayStatics : UBlueprintFunctionLibrary, ITypeRepr<UGameplaySt
 		], out _);
 	}
 
-	public unsafe void GetAllActorsWithInterface( UObject? WorldContextObject, UInterface? Interface, ref TArray<Ptr<AActor_Repr>> OutActors)
+	public unsafe void GetAllActorsWithInterface( UObject? WorldContextObject, UClass? Interface, ref TArray<Ptr<AActor_Repr>> OutActors)
 	{
 		nint WorldContextObject_Ptr = WorldContextObject?.Inner.Ptr ?? nint.Zero;
 		nint Interface_Ptr = Interface?.Inner.Ptr ?? nint.Zero;
@@ -202492,7 +202492,7 @@ public class UGameplayStatics : UBlueprintFunctionLibrary, ITypeRepr<UGameplaySt
 		return ((IntParam?)Return)!.Value;
 	}
 
-	public unsafe UObject? GetObjectClass( UObject? Object)
+	public unsafe UClass? GetObjectClass( UObject? Object)
 	{
 		nint Object_Ptr = Object?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("GetObjectClass", [
@@ -202864,7 +202864,7 @@ public class UGameplayStatics : UBlueprintFunctionLibrary, ITypeRepr<UGameplaySt
 		], out _);
 	}
 
-	public unsafe void PlayWorldCameraShake( UObject? WorldContextObject, UCameraShakeBase? Shake, FVector Epicenter, float InnerRadius, float OuterRadius, float Falloff, bool bOrientShakeTowardsEpicenter)
+	public unsafe void PlayWorldCameraShake( UObject? WorldContextObject, UClass? Shake, FVector Epicenter, float InnerRadius, float OuterRadius, float Falloff, bool bOrientShakeTowardsEpicenter)
 	{
 		nint WorldContextObject_Ptr = WorldContextObject?.Inner.Ptr ?? nint.Zero;
 		nint Shake_Ptr = Shake?.Inner.Ptr ?? nint.Zero;
@@ -203283,7 +203283,7 @@ public class UGameplayStatics : UBlueprintFunctionLibrary, ITypeRepr<UGameplaySt
 		return ((ObjectParam?)Return)!.Value != nint.Zero ? new(Inner.GetFactory().CreateUObject(((ObjectParam?)Return)!.Value)) : null;
 	}
 
-	public unsafe UObject? SpawnObject( UObject? ObjectClass, UObject? Outer)
+	public unsafe UObject? SpawnObject( UClass? ObjectClass, UObject? Outer)
 	{
 		nint ObjectClass_Ptr = ObjectClass?.Inner.Ptr ?? nint.Zero;
 		nint Outer_Ptr = Outer?.Inner.Ptr ?? nint.Zero;
@@ -206155,7 +206155,7 @@ public class UInterpTrack : UObject, ITypeRepr<UInterpTrack_Repr>
 		get => (TArray<Ptr<UInterpTrack_Repr>>*)(Inner.Ptr + GetFieldOffset("SubTracks"));
 	}
 
-	public unsafe UInterpTrackInst? TrackInstClass
+	public unsafe UClass? TrackInstClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("TrackInstClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("TrackInstClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("TrackInstClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -206649,13 +206649,13 @@ public class UInterpTrackFloatAnimBPParam : UInterpTrackFloatBase, ITypeRepr<UIn
 
 	public new unsafe UInterpTrackFloatAnimBPParam_Repr* Repr => (UInterpTrackFloatAnimBPParam_Repr*)Inner.Ptr;
 
-	public unsafe UObject? AnimBlueprintClass
+	public unsafe UClass? AnimBlueprintClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("AnimBlueprintClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("AnimBlueprintClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("AnimBlueprintClass")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe UAnimInstance? AnimClass
+	public unsafe UClass? AnimClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("AnimClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("AnimClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("AnimClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -208436,7 +208436,7 @@ public class UKismetArrayLibrary : UBlueprintFunctionLibrary, ITypeRepr<UKismetA
 		], out _);
 	}
 
-	public unsafe void FilterArray( ref TArray<Ptr<AActor_Repr>> TargetArray, AActor? FilterClass, ref TArray<Ptr<AActor_Repr>> FilteredArray)
+	public unsafe void FilterArray( ref TArray<Ptr<AActor_Repr>> TargetArray, UClass? FilterClass, ref TArray<Ptr<AActor_Repr>> FilteredArray)
 	{
 		nint FilterClass_Ptr = FilterClass?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("FilterArray", [
@@ -209779,7 +209779,7 @@ public class UKismetMathLibrary : UBlueprintFunctionLibrary, ITypeRepr<UKismetMa
 		return ReturnValue;
 	}
 
-	public unsafe bool ClassIsChildOf( UObject? TestClass, UObject? ParentClass)
+	public unsafe bool ClassIsChildOf( UClass? TestClass, UClass? ParentClass)
 	{
 		nint TestClass_Ptr = TestClass?.Inner.Ptr ?? nint.Zero;
 		nint ParentClass_Ptr = ParentClass?.Inner.Ptr ?? nint.Zero;
@@ -210561,7 +210561,7 @@ public class UKismetMathLibrary : UBlueprintFunctionLibrary, ITypeRepr<UKismetMa
 		return ((BoolParam?)Return)!.Value;
 	}
 
-	public unsafe bool EqualEqual_ClassClass( UObject? A, UObject? B)
+	public unsafe bool EqualEqual_ClassClass( UClass? A, UClass? B)
 	{
 		nint A_Ptr = A?.Inner.Ptr ?? nint.Zero;
 		nint B_Ptr = B?.Inner.Ptr ?? nint.Zero;
@@ -213392,7 +213392,7 @@ public class UKismetMathLibrary : UBlueprintFunctionLibrary, ITypeRepr<UKismetMa
 		return ((BoolParam?)Return)!.Value;
 	}
 
-	public unsafe bool NotEqual_ClassClass( UObject? A, UObject? B)
+	public unsafe bool NotEqual_ClassClass( UClass? A, UClass? B)
 	{
 		nint A_Ptr = A?.Inner.Ptr ?? nint.Zero;
 		nint B_Ptr = B?.Inner.Ptr ?? nint.Zero;
@@ -214380,7 +214380,7 @@ public class UKismetMathLibrary : UBlueprintFunctionLibrary, ITypeRepr<UKismetMa
 		], out _);
 	}
 
-	public unsafe UObject? SelectClass( UObject? A, UObject? B, bool bSelectA)
+	public unsafe UClass? SelectClass( UClass? A, UClass? B, bool bSelectA)
 	{
 		nint A_Ptr = A?.Inner.Ptr ?? nint.Zero;
 		nint B_Ptr = B?.Inner.Ptr ?? nint.Zero;
@@ -216984,7 +216984,7 @@ public class UKismetSystemLibrary : UBlueprintFunctionLibrary, ITypeRepr<UKismet
 		return ((IntParam?)Return)!.Value;
 	}
 
-	public unsafe bool BoxOverlapActors( UObject? WorldContextObject, FVector BoxPos, FVector BoxExtent, ref TArray<EObjectTypeQuery> ObjectTypes, UObject? ActorClassFilter, ref TArray<Ptr<AActor_Repr>> ActorsToIgnore, ref TArray<Ptr<AActor_Repr>> OutActors)
+	public unsafe bool BoxOverlapActors( UObject? WorldContextObject, FVector BoxPos, FVector BoxExtent, ref TArray<EObjectTypeQuery> ObjectTypes, UClass? ActorClassFilter, ref TArray<Ptr<AActor_Repr>> ActorsToIgnore, ref TArray<Ptr<AActor_Repr>> OutActors)
 	{
 		nint WorldContextObject_Ptr = WorldContextObject?.Inner.Ptr ?? nint.Zero;
 		nint ActorClassFilter_Ptr = ActorClassFilter?.Inner.Ptr ?? nint.Zero;
@@ -217000,7 +217000,7 @@ public class UKismetSystemLibrary : UBlueprintFunctionLibrary, ITypeRepr<UKismet
 		return ((BoolParam?)Return)!.Value;
 	}
 
-	public unsafe bool BoxOverlapComponents( UObject? WorldContextObject, FVector BoxPos, FVector Extent, ref TArray<EObjectTypeQuery> ObjectTypes, UObject? ComponentClassFilter, ref TArray<Ptr<AActor_Repr>> ActorsToIgnore, ref TArray<Ptr<UPrimitiveComponent_Repr>> OutComponents)
+	public unsafe bool BoxOverlapComponents( UObject? WorldContextObject, FVector BoxPos, FVector Extent, ref TArray<EObjectTypeQuery> ObjectTypes, UClass? ComponentClassFilter, ref TArray<Ptr<AActor_Repr>> ActorsToIgnore, ref TArray<Ptr<UPrimitiveComponent_Repr>> OutComponents)
 	{
 		nint WorldContextObject_Ptr = WorldContextObject?.Inner.Ptr ?? nint.Zero;
 		nint ComponentClassFilter_Ptr = ComponentClassFilter?.Inner.Ptr ?? nint.Zero;
@@ -217179,7 +217179,7 @@ public class UKismetSystemLibrary : UBlueprintFunctionLibrary, ITypeRepr<UKismet
 		return ((BoolParam?)Return)!.Value;
 	}
 
-	public unsafe bool CapsuleOverlapActors( UObject? WorldContextObject, FVector CapsulePos, float Radius, float HalfHeight, ref TArray<EObjectTypeQuery> ObjectTypes, UObject? ActorClassFilter, ref TArray<Ptr<AActor_Repr>> ActorsToIgnore, ref TArray<Ptr<AActor_Repr>> OutActors)
+	public unsafe bool CapsuleOverlapActors( UObject? WorldContextObject, FVector CapsulePos, float Radius, float HalfHeight, ref TArray<EObjectTypeQuery> ObjectTypes, UClass? ActorClassFilter, ref TArray<Ptr<AActor_Repr>> ActorsToIgnore, ref TArray<Ptr<AActor_Repr>> OutActors)
 	{
 		nint WorldContextObject_Ptr = WorldContextObject?.Inner.Ptr ?? nint.Zero;
 		nint ActorClassFilter_Ptr = ActorClassFilter?.Inner.Ptr ?? nint.Zero;
@@ -217196,7 +217196,7 @@ public class UKismetSystemLibrary : UBlueprintFunctionLibrary, ITypeRepr<UKismet
 		return ((BoolParam?)Return)!.Value;
 	}
 
-	public unsafe bool CapsuleOverlapComponents( UObject? WorldContextObject, FVector CapsulePos, float Radius, float HalfHeight, ref TArray<EObjectTypeQuery> ObjectTypes, UObject? ComponentClassFilter, ref TArray<Ptr<AActor_Repr>> ActorsToIgnore, ref TArray<Ptr<UPrimitiveComponent_Repr>> OutComponents)
+	public unsafe bool CapsuleOverlapComponents( UObject? WorldContextObject, FVector CapsulePos, float Radius, float HalfHeight, ref TArray<EObjectTypeQuery> ObjectTypes, UClass? ComponentClassFilter, ref TArray<Ptr<AActor_Repr>> ActorsToIgnore, ref TArray<Ptr<UPrimitiveComponent_Repr>> OutComponents)
 	{
 		nint WorldContextObject_Ptr = WorldContextObject?.Inner.Ptr ?? nint.Zero;
 		nint ComponentClassFilter_Ptr = ComponentClassFilter?.Inner.Ptr ?? nint.Zero;
@@ -217350,7 +217350,7 @@ public class UKismetSystemLibrary : UBlueprintFunctionLibrary, ITypeRepr<UKismet
 		_ = Inner.ProcessEvent("CollectGarbage", [], out _);
 	}
 
-	public unsafe bool ComponentOverlapActors( UPrimitiveComponent? Component, ref FTransform ComponentTransform, ref TArray<EObjectTypeQuery> ObjectTypes, UObject? ActorClassFilter, ref TArray<Ptr<AActor_Repr>> ActorsToIgnore, ref TArray<Ptr<AActor_Repr>> OutActors)
+	public unsafe bool ComponentOverlapActors( UPrimitiveComponent? Component, ref FTransform ComponentTransform, ref TArray<EObjectTypeQuery> ObjectTypes, UClass? ActorClassFilter, ref TArray<Ptr<AActor_Repr>> ActorsToIgnore, ref TArray<Ptr<AActor_Repr>> OutActors)
 	{
 		nint Component_Ptr = Component?.Inner.Ptr ?? nint.Zero;
 		nint ActorClassFilter_Ptr = ActorClassFilter?.Inner.Ptr ?? nint.Zero;
@@ -217365,7 +217365,7 @@ public class UKismetSystemLibrary : UBlueprintFunctionLibrary, ITypeRepr<UKismet
 		return ((BoolParam?)Return)!.Value;
 	}
 
-	public unsafe bool ComponentOverlapComponents( UPrimitiveComponent? Component, ref FTransform ComponentTransform, ref TArray<EObjectTypeQuery> ObjectTypes, UObject? ComponentClassFilter, ref TArray<Ptr<AActor_Repr>> ActorsToIgnore, ref TArray<Ptr<UPrimitiveComponent_Repr>> OutComponents)
+	public unsafe bool ComponentOverlapComponents( UPrimitiveComponent? Component, ref FTransform ComponentTransform, ref TArray<EObjectTypeQuery> ObjectTypes, UClass? ComponentClassFilter, ref TArray<Ptr<AActor_Repr>> ActorsToIgnore, ref TArray<Ptr<UPrimitiveComponent_Repr>> OutComponents)
 	{
 		nint Component_Ptr = Component?.Inner.Ptr ?? nint.Zero;
 		nint ComponentClassFilter_Ptr = ComponentClassFilter?.Inner.Ptr ?? nint.Zero;
@@ -217387,7 +217387,7 @@ public class UKismetSystemLibrary : UBlueprintFunctionLibrary, ITypeRepr<UKismet
 		], out _);
 	}
 
-	public unsafe TSoftClassPtr<UObject_Repr> Conv_ClassToSoftClassReference( ref UObject? Class)
+	public unsafe TSoftClassPtr<UObject_Repr> Conv_ClassToSoftClassReference( ref UClass? Class)
 	{
 		nint Class_Ptr = Class?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("Conv_ClassToSoftClassReference", [
@@ -217444,7 +217444,7 @@ public class UKismetSystemLibrary : UBlueprintFunctionLibrary, ITypeRepr<UKismet
 		return ReturnValue;
 	}
 
-	public unsafe UObject? Conv_SoftClassReferenceToClass( ref TSoftClassPtr<UObject_Repr> SoftClass)
+	public unsafe UClass? Conv_SoftClassReferenceToClass( ref TSoftClassPtr<UObject_Repr> SoftClass)
 	{
 		_ = Inner.ProcessEvent("Conv_SoftClassReferenceToClass", [
 			new SoftClassParam(new((TSoftClassPtr<int>*)Unsafe.AsPointer(ref SoftClass)))
@@ -217520,7 +217520,7 @@ public class UKismetSystemLibrary : UBlueprintFunctionLibrary, ITypeRepr<UKismet
 		], out _);
 	}
 
-	public unsafe bool DoesImplementInterface( UObject? TestObject, UInterface? Interface)
+	public unsafe bool DoesImplementInterface( UObject? TestObject, UClass? Interface)
 	{
 		nint TestObject_Ptr = TestObject?.Inner.Ptr ?? nint.Zero;
 		nint Interface_Ptr = Interface?.Inner.Ptr ?? nint.Zero;
@@ -217851,7 +217851,7 @@ public class UKismetSystemLibrary : UBlueprintFunctionLibrary, ITypeRepr<UKismet
 		], out _);
 	}
 
-	public unsafe void GetActorListFromComponentList( ref TArray<Ptr<UPrimitiveComponent_Repr>> ComponentList, UObject? ActorClassFilter, ref TArray<Ptr<AActor_Repr>> OutActorList)
+	public unsafe void GetActorListFromComponentList( ref TArray<Ptr<UPrimitiveComponent_Repr>> ComponentList, UClass? ActorClassFilter, ref TArray<Ptr<AActor_Repr>> OutActorList)
 	{
 		nint ActorClassFilter_Ptr = ActorClassFilter?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("GetActorListFromComponentList", [
@@ -217867,7 +217867,7 @@ public class UKismetSystemLibrary : UBlueprintFunctionLibrary, ITypeRepr<UKismet
 		return ((IntParam?)Return)!.Value;
 	}
 
-	public unsafe FString GetClassDisplayName( UObject? Class)
+	public unsafe FString GetClassDisplayName( UClass? Class)
 	{
 		nint Class_Ptr = Class?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("GetClassDisplayName", [
@@ -217876,7 +217876,7 @@ public class UKismetSystemLibrary : UBlueprintFunctionLibrary, ITypeRepr<UKismet
 		return ((StringParam?)Return)!.Value;
 	}
 
-	public unsafe UObject? GetClassFromPrimaryAssetId( FPrimaryAssetId PrimaryAssetId)
+	public unsafe UClass? GetClassFromPrimaryAssetId( FPrimaryAssetId PrimaryAssetId)
 	{
 		_ = Inner.ProcessEvent("GetClassFromPrimaryAssetId", [
 			new StructParam(new(&PrimaryAssetId), 16)
@@ -218099,7 +218099,7 @@ public class UKismetSystemLibrary : UBlueprintFunctionLibrary, ITypeRepr<UKismet
 		return ReturnValue;
 	}
 
-	public unsafe FPrimaryAssetId GetPrimaryAssetIdFromClass( UObject? Class)
+	public unsafe FPrimaryAssetId GetPrimaryAssetIdFromClass( UClass? Class)
 	{
 		nint Class_Ptr = Class?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("GetPrimaryAssetIdFromClass", [
@@ -218336,7 +218336,7 @@ public class UKismetSystemLibrary : UBlueprintFunctionLibrary, ITypeRepr<UKismet
 		return ((BoolParam?)Return)!.Value;
 	}
 
-	public unsafe bool IsValidClass( UObject? Class)
+	public unsafe bool IsValidClass( UClass? Class)
 	{
 		nint Class_Ptr = Class?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("IsValidClass", [
@@ -218806,7 +218806,7 @@ public class UKismetSystemLibrary : UBlueprintFunctionLibrary, ITypeRepr<UKismet
 		], out _);
 	}
 
-	public unsafe UObject? LoadClassAsset_Blocking( TSoftClassPtr<UObject_Repr> AssetClass)
+	public unsafe UClass? LoadClassAsset_Blocking( TSoftClassPtr<UObject_Repr> AssetClass)
 	{
 		_ = Inner.ProcessEvent("LoadClassAsset_Blocking", [
 			new SoftClassParam(new((TSoftClassPtr<int>*)(&AssetClass)))
@@ -218959,7 +218959,7 @@ public class UKismetSystemLibrary : UBlueprintFunctionLibrary, ITypeRepr<UKismet
 		return ((BoolParam?)Return)!.Value;
 	}
 
-	public unsafe void OnAssetClassLoaded__DelegateSignature( UObject? Loaded)
+	public unsafe void OnAssetClassLoaded__DelegateSignature( UClass? Loaded)
 	{
 		nint Loaded_Ptr = Loaded?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("OnAssetClassLoaded__DelegateSignature", [
@@ -219096,7 +219096,7 @@ public class UKismetSystemLibrary : UBlueprintFunctionLibrary, ITypeRepr<UKismet
 		], out _);
 	}
 
-	public unsafe void SetClassPropertyByName( UObject? Object, FName PropertyName, UObject? Value)
+	public unsafe void SetClassPropertyByName( UObject? Object, FName PropertyName, UClass? Value)
 	{
 		nint Object_Ptr = Object?.Inner.Ptr ?? nint.Zero;
 		nint Value_Ptr = Value?.Inner.Ptr ?? nint.Zero;
@@ -219361,7 +219361,7 @@ public class UKismetSystemLibrary : UBlueprintFunctionLibrary, ITypeRepr<UKismet
 		], out _);
 	}
 
-	public unsafe bool SphereOverlapActors( UObject? WorldContextObject, FVector SpherePos, float SphereRadius, ref TArray<EObjectTypeQuery> ObjectTypes, UObject? ActorClassFilter, ref TArray<Ptr<AActor_Repr>> ActorsToIgnore, ref TArray<Ptr<AActor_Repr>> OutActors)
+	public unsafe bool SphereOverlapActors( UObject? WorldContextObject, FVector SpherePos, float SphereRadius, ref TArray<EObjectTypeQuery> ObjectTypes, UClass? ActorClassFilter, ref TArray<Ptr<AActor_Repr>> ActorsToIgnore, ref TArray<Ptr<AActor_Repr>> OutActors)
 	{
 		nint WorldContextObject_Ptr = WorldContextObject?.Inner.Ptr ?? nint.Zero;
 		nint ActorClassFilter_Ptr = ActorClassFilter?.Inner.Ptr ?? nint.Zero;
@@ -219377,7 +219377,7 @@ public class UKismetSystemLibrary : UBlueprintFunctionLibrary, ITypeRepr<UKismet
 		return ((BoolParam?)Return)!.Value;
 	}
 
-	public unsafe bool SphereOverlapComponents( UObject? WorldContextObject, FVector SpherePos, float SphereRadius, ref TArray<EObjectTypeQuery> ObjectTypes, UObject? ComponentClassFilter, ref TArray<Ptr<AActor_Repr>> ActorsToIgnore, ref TArray<Ptr<UPrimitiveComponent_Repr>> OutComponents)
+	public unsafe bool SphereOverlapComponents( UObject? WorldContextObject, FVector SpherePos, float SphereRadius, ref TArray<EObjectTypeQuery> ObjectTypes, UClass? ComponentClassFilter, ref TArray<Ptr<AActor_Repr>> ActorsToIgnore, ref TArray<Ptr<UPrimitiveComponent_Repr>> OutComponents)
 	{
 		nint WorldContextObject_Ptr = WorldContextObject?.Inner.Ptr ?? nint.Zero;
 		nint ComponentClassFilter_Ptr = ComponentClassFilter?.Inner.Ptr ?? nint.Zero;
@@ -221566,7 +221566,7 @@ public class ULocalPlayer : UPlayer, ITypeRepr<ULocalPlayer_Repr>
 		set => *(EAspectRatioAxisConstraint*)(Inner.Ptr + GetFieldOffset("AspectRatioAxisConstraint")) = value;
 	}
 
-	public unsafe APlayerController? PendingLevelPlayerControllerClass
+	public unsafe UClass? PendingLevelPlayerControllerClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("PendingLevelPlayerControllerClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("PendingLevelPlayerControllerClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("PendingLevelPlayerControllerClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -232611,7 +232611,7 @@ public class UObjectLibrary : UObject, ITypeRepr<UObjectLibrary_Repr>
 
 	public new unsafe UObjectLibrary_Repr* Repr => (UObjectLibrary_Repr*)Inner.Ptr;
 
-	public unsafe UObject? ObjectBaseClass
+	public unsafe UClass? ObjectBaseClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("ObjectBaseClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("ObjectBaseClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("ObjectBaseClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -232771,7 +232771,7 @@ public class APainCausingVolume : APhysicsVolume, ITypeRepr<APainCausingVolume_R
 		set => *(float*)(Inner.Ptr + GetFieldOffset("DamagePerSec")) = value;
 	}
 
-	public unsafe UDamageType? DamageType
+	public unsafe UClass? DamageType
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("DamageType")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("DamageType")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("DamageType")) = value?.Inner.Ptr ?? nint.Zero;
@@ -233315,7 +233315,7 @@ public class UParticleSystem : UFXSystemAsset, ITypeRepr<UParticleSystem_Repr>
 		get => (TArray<FNamedEmitterMaterial>*)(Inner.Ptr + GetFieldOffset("NamedMaterialSlots"));
 	}
 
-	public unsafe bool ContainsEmitterType( UObject? TypeData)
+	public unsafe bool ContainsEmitterType( UClass? TypeData)
 	{
 		nint TypeData_Ptr = TypeData?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("ContainsEmitterType", [
@@ -242201,7 +242201,7 @@ public class APlayerCameraManager : AActor, ITypeRepr<APlayerCameraManager_Repr>
 		set => *(float*)(Inner.Ptr + GetFieldOffset("ServerUpdateCameraTimeout")) = value;
 	}
 
-	public unsafe AEmitterCameraLensEffectBase? AddCameraLensEffect( AEmitterCameraLensEffectBase? LensEffectEmitterClass)
+	public unsafe AEmitterCameraLensEffectBase? AddCameraLensEffect( UClass? LensEffectEmitterClass)
 	{
 		nint LensEffectEmitterClass_Ptr = LensEffectEmitterClass?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("AddCameraLensEffect", [
@@ -242210,7 +242210,7 @@ public class APlayerCameraManager : AActor, ITypeRepr<APlayerCameraManager_Repr>
 		return ((ObjectParam?)Return)!.Value != nint.Zero ? new(Inner.GetFactory().CreateUObject(((ObjectParam?)Return)!.Value)) : null;
 	}
 
-	public unsafe UCameraModifier? AddNewCameraModifier( UCameraModifier? ModifierClass)
+	public unsafe UCameraModifier? AddNewCameraModifier( UClass? ModifierClass)
 	{
 		nint ModifierClass_Ptr = ModifierClass?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("AddNewCameraModifier", [
@@ -242236,7 +242236,7 @@ public class APlayerCameraManager : AActor, ITypeRepr<APlayerCameraManager_Repr>
 		_ = Inner.ProcessEvent("ClearCameraLensEffects", [], out _);
 	}
 
-	public unsafe UCameraModifier? FindCameraModifierByClass( UCameraModifier? ModifierClass)
+	public unsafe UCameraModifier? FindCameraModifierByClass( UClass? ModifierClass)
 	{
 		nint ModifierClass_Ptr = ModifierClass?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("FindCameraModifierByClass", [
@@ -242364,7 +242364,7 @@ public class APlayerCameraManager : AActor, ITypeRepr<APlayerCameraManager_Repr>
 		], out _);
 	}
 
-	public unsafe UCameraShakeBase? StartCameraShake( UCameraShakeBase? ShakeClass, float Scale, ECameraShakePlaySpace PlaySpace, FRotator UserPlaySpaceRot)
+	public unsafe UCameraShakeBase? StartCameraShake( UClass? ShakeClass, float Scale, ECameraShakePlaySpace PlaySpace, FRotator UserPlaySpaceRot)
 	{
 		nint ShakeClass_Ptr = ShakeClass?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("StartCameraShake", [
@@ -242376,7 +242376,7 @@ public class APlayerCameraManager : AActor, ITypeRepr<APlayerCameraManager_Repr>
 		return ((ObjectParam?)Return)!.Value != nint.Zero ? new(Inner.GetFactory().CreateUObject(((ObjectParam?)Return)!.Value)) : null;
 	}
 
-	public unsafe UCameraShakeBase? StartCameraShakeFromSource( UCameraShakeBase? ShakeClass, UCameraShakeSourceComponent? SourceComponent, float Scale, ECameraShakePlaySpace PlaySpace, FRotator UserPlaySpaceRot)
+	public unsafe UCameraShakeBase? StartCameraShakeFromSource( UClass? ShakeClass, UCameraShakeSourceComponent? SourceComponent, float Scale, ECameraShakePlaySpace PlaySpace, FRotator UserPlaySpaceRot)
 	{
 		nint ShakeClass_Ptr = ShakeClass?.Inner.Ptr ?? nint.Zero;
 		nint SourceComponent_Ptr = SourceComponent?.Inner.Ptr ?? nint.Zero;
@@ -242422,7 +242422,7 @@ public class APlayerCameraManager : AActor, ITypeRepr<APlayerCameraManager_Repr>
 		], out _);
 	}
 
-	public unsafe void StopAllInstancesOfCameraShake( UCameraShakeBase? Shake, bool bImmediately)
+	public unsafe void StopAllInstancesOfCameraShake( UClass? Shake, bool bImmediately)
 	{
 		nint Shake_Ptr = Shake?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("StopAllInstancesOfCameraShake", [
@@ -242431,7 +242431,7 @@ public class APlayerCameraManager : AActor, ITypeRepr<APlayerCameraManager_Repr>
 		], out _);
 	}
 
-	public unsafe void StopAllInstancesOfCameraShakeFromSource( UCameraShakeBase? Shake, UCameraShakeSourceComponent? SourceComponent, bool bImmediately)
+	public unsafe void StopAllInstancesOfCameraShakeFromSource( UClass? Shake, UCameraShakeSourceComponent? SourceComponent, bool bImmediately)
 	{
 		nint Shake_Ptr = Shake?.Inner.Ptr ?? nint.Zero;
 		nint SourceComponent_Ptr = SourceComponent?.Inner.Ptr ?? nint.Zero;
@@ -242689,7 +242689,7 @@ public class APlayerState : AInfo, ITypeRepr<APlayerState_Repr>
 		set => *(int*)(Inner.Ptr + GetFieldOffset("StartTime")) = value;
 	}
 
-	public unsafe ULocalMessage? EngineMessageClass
+	public unsafe UClass? EngineMessageClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("EngineMessageClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("EngineMessageClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("EngineMessageClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -246054,7 +246054,7 @@ public class USCS_Node : UObject, ITypeRepr<USCS_Node_Repr>
 
 	public new unsafe USCS_Node_Repr* Repr => (USCS_Node_Repr*)Inner.Ptr;
 
-	public unsafe UObject? ComponentClass
+	public unsafe UClass? ComponentClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("ComponentClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("ComponentClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("ComponentClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -246752,7 +246752,7 @@ public class USkeletalMesh : UStreamableRenderAsset, ITypeRepr<USkeletalMesh_Rep
 		get => (TArray<Ptr<UMorphTarget_Repr>>*)(Inner.Ptr + GetFieldOffset("MorphTargets"));
 	}
 
-	public unsafe UAnimInstance? PostProcessAnimBlueprint
+	public unsafe UClass? PostProcessAnimBlueprint
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("PostProcessAnimBlueprint")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("PostProcessAnimBlueprint")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("PostProcessAnimBlueprint")) = value?.Inner.Ptr ?? nint.Zero;
@@ -249780,7 +249780,7 @@ public class USoundfieldSubmix : USoundSubmixWithParentBase, ITypeRepr<USoundfie
 		get => (TArray<Ptr<USoundfieldEffectBase_Repr>>*)(Inner.Ptr + GetFieldOffset("SoundfieldEffectChain"));
 	}
 
-	public unsafe USoundfieldEncodingSettingsBase? EncodingSettingsClass
+	public unsafe UClass? EncodingSettingsClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("EncodingSettingsClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("EncodingSettingsClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("EncodingSettingsClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -249822,7 +249822,7 @@ public class UEndpointSubmix : USoundSubmixBase, ITypeRepr<UEndpointSubmix_Repr>
 		set => *(FName*)(Inner.Ptr + GetFieldOffset("EndpointType")) = value;
 	}
 
-	public unsafe UAudioEndpointSettingsBase? EndpointSettingsClass
+	public unsafe UClass? EndpointSettingsClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("EndpointSettingsClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("EndpointSettingsClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("EndpointSettingsClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -249869,7 +249869,7 @@ public class USoundfieldEndpointSubmix : USoundSubmixBase, ITypeRepr<USoundfield
 		set => *(FName*)(Inner.Ptr + GetFieldOffset("SoundfieldEndpointType")) = value;
 	}
 
-	public unsafe UAudioEndpointSettingsBase? EndpointSettingsClass
+	public unsafe UClass? EndpointSettingsClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("EndpointSettingsClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("EndpointSettingsClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("EndpointSettingsClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -249881,7 +249881,7 @@ public class USoundfieldEndpointSubmix : USoundSubmixBase, ITypeRepr<USoundfield
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("EndpointSettings")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe USoundfieldEncodingSettingsBase? EncodingSettingsClass
+	public unsafe UClass? EncodingSettingsClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("EncodingSettingsClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("EncodingSettingsClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("EncodingSettingsClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -251607,7 +251607,7 @@ public class USubsystemBlueprintLibrary : UBlueprintFunctionLibrary, ITypeRepr<U
 
 	public new unsafe USubsystemBlueprintLibrary_Repr* Repr => (USubsystemBlueprintLibrary_Repr*)Inner.Ptr;
 
-	public unsafe UEngineSubsystem? GetEngineSubsystem( UEngineSubsystem? Class)
+	public unsafe UEngineSubsystem? GetEngineSubsystem( UClass? Class)
 	{
 		nint Class_Ptr = Class?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("GetEngineSubsystem", [
@@ -251616,7 +251616,7 @@ public class USubsystemBlueprintLibrary : UBlueprintFunctionLibrary, ITypeRepr<U
 		return ((ObjectParam?)Return)!.Value != nint.Zero ? new(Inner.GetFactory().CreateUObject(((ObjectParam?)Return)!.Value)) : null;
 	}
 
-	public unsafe UGameInstanceSubsystem? GetGameInstanceSubsystem( UObject? ContextObject, UGameInstanceSubsystem? Class)
+	public unsafe UGameInstanceSubsystem? GetGameInstanceSubsystem( UObject? ContextObject, UClass? Class)
 	{
 		nint ContextObject_Ptr = ContextObject?.Inner.Ptr ?? nint.Zero;
 		nint Class_Ptr = Class?.Inner.Ptr ?? nint.Zero;
@@ -251627,7 +251627,7 @@ public class USubsystemBlueprintLibrary : UBlueprintFunctionLibrary, ITypeRepr<U
 		return ((ObjectParam?)Return)!.Value != nint.Zero ? new(Inner.GetFactory().CreateUObject(((ObjectParam?)Return)!.Value)) : null;
 	}
 
-	public unsafe ULocalPlayerSubsystem? GetLocalPlayerSubsystem( UObject? ContextObject, ULocalPlayerSubsystem? Class)
+	public unsafe ULocalPlayerSubsystem? GetLocalPlayerSubsystem( UObject? ContextObject, UClass? Class)
 	{
 		nint ContextObject_Ptr = ContextObject?.Inner.Ptr ?? nint.Zero;
 		nint Class_Ptr = Class?.Inner.Ptr ?? nint.Zero;
@@ -251638,7 +251638,7 @@ public class USubsystemBlueprintLibrary : UBlueprintFunctionLibrary, ITypeRepr<U
 		return ((ObjectParam?)Return)!.Value != nint.Zero ? new(Inner.GetFactory().CreateUObject(((ObjectParam?)Return)!.Value)) : null;
 	}
 
-	public unsafe ULocalPlayerSubsystem? GetLocalPlayerSubSystemFromPlayerController( APlayerController? PlayerController, ULocalPlayerSubsystem? Class)
+	public unsafe ULocalPlayerSubsystem? GetLocalPlayerSubSystemFromPlayerController( APlayerController? PlayerController, UClass? Class)
 	{
 		nint PlayerController_Ptr = PlayerController?.Inner.Ptr ?? nint.Zero;
 		nint Class_Ptr = Class?.Inner.Ptr ?? nint.Zero;
@@ -251649,7 +251649,7 @@ public class USubsystemBlueprintLibrary : UBlueprintFunctionLibrary, ITypeRepr<U
 		return ((ObjectParam?)Return)!.Value != nint.Zero ? new(Inner.GetFactory().CreateUObject(((ObjectParam?)Return)!.Value)) : null;
 	}
 
-	public unsafe UWorldSubsystem? GetWorldSubsystem( UObject? ContextObject, UWorldSubsystem? Class)
+	public unsafe UWorldSubsystem? GetWorldSubsystem( UObject? ContextObject, UClass? Class)
 	{
 		nint ContextObject_Ptr = ContextObject?.Inner.Ptr ?? nint.Zero;
 		nint Class_Ptr = Class?.Inner.Ptr ?? nint.Zero;
@@ -253264,7 +253264,7 @@ public class UUserInterfaceSettings : UDeveloperSettings, ITypeRepr<UUserInterfa
 		get => (TArray<Ptr<UObject_Repr>>*)(Inner.Ptr + GetFieldOffset("CursorClasses"));
 	}
 
-	public unsafe UObject? CustomScalingRuleClassInstance
+	public unsafe UClass? CustomScalingRuleClassInstance
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("CustomScalingRuleClassInstance")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("CustomScalingRuleClassInstance")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("CustomScalingRuleClassInstance")) = value?.Inner.Ptr ?? nint.Zero;
@@ -254838,7 +254838,7 @@ public class AWorldSettings : AInfo, ITypeRepr<AWorldSettings_Repr>
 		set => *(float*)(Inner.Ptr + GetFieldOffset("KillZ")) = value;
 	}
 
-	public unsafe UDamageType? KillZDamageType
+	public unsafe UClass? KillZDamageType
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("KillZDamageType")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("KillZDamageType")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("KillZDamageType")) = value?.Inner.Ptr ?? nint.Zero;
@@ -254856,25 +254856,25 @@ public class AWorldSettings : AInfo, ITypeRepr<AWorldSettings_Repr>
 		set => *(float*)(Inner.Ptr + GetFieldOffset("GlobalGravityZ")) = value;
 	}
 
-	public unsafe ADefaultPhysicsVolume? DefaultPhysicsVolumeClass
+	public unsafe UClass? DefaultPhysicsVolumeClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("DefaultPhysicsVolumeClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("DefaultPhysicsVolumeClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("DefaultPhysicsVolumeClass")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe UPhysicsCollisionHandler? PhysicsCollisionHandlerClass
+	public unsafe UClass? PhysicsCollisionHandlerClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("PhysicsCollisionHandlerClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("PhysicsCollisionHandlerClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("PhysicsCollisionHandlerClass")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe AGameModeBase? DefaultGameMode
+	public unsafe UClass? DefaultGameMode
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("DefaultGameMode")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("DefaultGameMode")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("DefaultGameMode")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe AGameNetworkManager? GameNetworkManagerClass
+	public unsafe UClass? GameNetworkManagerClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("GameNetworkManagerClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("GameNetworkManagerClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("GameNetworkManagerClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -255000,7 +255000,7 @@ public class AWorldSettings : AInfo, ITypeRepr<AWorldSettings_Repr>
 		set => *(int*)(Inner.Ptr + GetFieldOffset("MaxNumberOfBookmarks")) = value;
 	}
 
-	public unsafe UBookmarkBase? DefaultBookmarkClass
+	public unsafe UClass? DefaultBookmarkClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("DefaultBookmarkClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("DefaultBookmarkClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("DefaultBookmarkClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -255011,7 +255011,7 @@ public class AWorldSettings : AInfo, ITypeRepr<AWorldSettings_Repr>
 		get => (TArray<Ptr<UBookmarkBase_Repr>>*)(Inner.Ptr + GetFieldOffset("BookmarkArray"));
 	}
 
-	public unsafe UBookmarkBase? LastBookmarkClass
+	public unsafe UClass? LastBookmarkClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("LastBookmarkClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("LastBookmarkClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("LastBookmarkClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -255747,7 +255747,7 @@ public class UGameplayTask_ClaimResource : UGameplayTask, ITypeRepr<UGameplayTas
 
 	public new unsafe UGameplayTask_ClaimResource_Repr* Repr => (UGameplayTask_ClaimResource_Repr*)Inner.Ptr;
 
-	public unsafe UGameplayTask_ClaimResource? ClaimResource( TScriptInterface<UGameplayTaskOwnerInterface_Repr> InTaskOwner, UGameplayTaskResource? ResourceClass, byte Priority, FName TaskInstanceName)
+	public unsafe UGameplayTask_ClaimResource? ClaimResource( TScriptInterface<UGameplayTaskOwnerInterface_Repr> InTaskOwner, UClass? ResourceClass, byte Priority, FName TaskInstanceName)
 	{
 		nint ResourceClass_Ptr = ResourceClass?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("ClaimResource", [
@@ -255805,7 +255805,7 @@ public class UGameplayTask_SpawnActor : UGameplayTask, ITypeRepr<UGameplayTask_S
 		get => (FMulticastScriptDelegate*)(Inner.Ptr + GetFieldOffset("DidNotSpawn"));
 	}
 
-	public unsafe AActor? ClassToSpawn
+	public unsafe UClass? ClassToSpawn
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("ClassToSpawn")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("ClassToSpawn")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("ClassToSpawn")) = value?.Inner.Ptr ?? nint.Zero;
@@ -255833,7 +255833,7 @@ public class UGameplayTask_SpawnActor : UGameplayTask, ITypeRepr<UGameplayTask_S
 		], out _);
 	}
 
-	public unsafe UGameplayTask_SpawnActor? SpawnActor( TScriptInterface<UGameplayTaskOwnerInterface_Repr> TaskOwner, FVector SpawnLocation, FRotator SpawnRotation, AActor? Class, bool bSpawnOnlyOnAuthority)
+	public unsafe UGameplayTask_SpawnActor? SpawnActor( TScriptInterface<UGameplayTaskOwnerInterface_Repr> TaskOwner, FVector SpawnLocation, FRotator SpawnRotation, UClass? Class, bool bSpawnOnlyOnAuthority)
 	{
 		nint Class_Ptr = Class?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("SpawnActor", [
@@ -256562,97 +256562,97 @@ public class UNavAreaMeta_SwitchByAgent : UNavAreaMeta, ITypeRepr<UNavAreaMeta_S
 
 	public new unsafe UNavAreaMeta_SwitchByAgent_Repr* Repr => (UNavAreaMeta_SwitchByAgent_Repr*)Inner.Ptr;
 
-	public unsafe UNavArea? Agent0Area
+	public unsafe UClass? Agent0Area
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("Agent0Area")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("Agent0Area")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("Agent0Area")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe UNavArea? Agent1Area
+	public unsafe UClass? Agent1Area
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("Agent1Area")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("Agent1Area")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("Agent1Area")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe UNavArea? Agent2Area
+	public unsafe UClass? Agent2Area
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("Agent2Area")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("Agent2Area")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("Agent2Area")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe UNavArea? Agent3Area
+	public unsafe UClass? Agent3Area
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("Agent3Area")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("Agent3Area")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("Agent3Area")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe UNavArea? Agent4Area
+	public unsafe UClass? Agent4Area
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("Agent4Area")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("Agent4Area")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("Agent4Area")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe UNavArea? Agent5Area
+	public unsafe UClass? Agent5Area
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("Agent5Area")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("Agent5Area")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("Agent5Area")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe UNavArea? Agent6Area
+	public unsafe UClass? Agent6Area
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("Agent6Area")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("Agent6Area")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("Agent6Area")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe UNavArea? Agent7Area
+	public unsafe UClass? Agent7Area
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("Agent7Area")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("Agent7Area")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("Agent7Area")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe UNavArea? Agent8Area
+	public unsafe UClass? Agent8Area
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("Agent8Area")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("Agent8Area")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("Agent8Area")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe UNavArea? Agent9Area
+	public unsafe UClass? Agent9Area
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("Agent9Area")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("Agent9Area")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("Agent9Area")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe UNavArea? Agent10Area
+	public unsafe UClass? Agent10Area
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("Agent10Area")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("Agent10Area")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("Agent10Area")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe UNavArea? Agent11Area
+	public unsafe UClass? Agent11Area
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("Agent11Area")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("Agent11Area")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("Agent11Area")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe UNavArea? Agent12Area
+	public unsafe UClass? Agent12Area
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("Agent12Area")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("Agent12Area")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("Agent12Area")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe UNavArea? Agent13Area
+	public unsafe UClass? Agent13Area
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("Agent13Area")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("Agent13Area")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("Agent13Area")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe UNavArea? Agent14Area
+	public unsafe UClass? Agent14Area
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("Agent14Area")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("Agent14Area")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("Agent14Area")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe UNavArea? Agent15Area
+	public unsafe UClass? Agent15Area
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("Agent15Area")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("Agent15Area")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("Agent15Area")) = value?.Inner.Ptr ?? nint.Zero;
@@ -256710,7 +256710,7 @@ public class UNavCollision : UNavCollisionBase, ITypeRepr<UNavCollision_Repr>
 		get => (TArray<FNavCollisionBox>*)(Inner.Ptr + GetFieldOffset("BoxCollision"));
 	}
 
-	public unsafe UNavArea? AreaClass
+	public unsafe UClass? AreaClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("AreaClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("AreaClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("AreaClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -257197,7 +257197,7 @@ public class UNavigationSystemV1 : UNavigationSystemBase, ITypeRepr<UNavigationS
 		set => *(float*)(Inner.Ptr + GetFieldOffset("DirtyAreasUpdateFreq")) = value;
 	}
 
-	public unsafe UNavigationPath? FindPathToActorSynchronously( UObject? WorldContextObject, ref FVector PathStart, AActor? GoalActor, float TetherDistance, AActor? PathfindingContext, UNavigationQueryFilter? FilterClass)
+	public unsafe UNavigationPath? FindPathToActorSynchronously( UObject? WorldContextObject, ref FVector PathStart, AActor? GoalActor, float TetherDistance, AActor? PathfindingContext, UClass? FilterClass)
 	{
 		nint WorldContextObject_Ptr = WorldContextObject?.Inner.Ptr ?? nint.Zero;
 		nint GoalActor_Ptr = GoalActor?.Inner.Ptr ?? nint.Zero;
@@ -257214,7 +257214,7 @@ public class UNavigationSystemV1 : UNavigationSystemBase, ITypeRepr<UNavigationS
 		return ((ObjectParam?)Return)!.Value != nint.Zero ? new(Inner.GetFactory().CreateUObject(((ObjectParam?)Return)!.Value)) : null;
 	}
 
-	public unsafe UNavigationPath? FindPathToLocationSynchronously( UObject? WorldContextObject, ref FVector PathStart, ref FVector PathEnd, AActor? PathfindingContext, UNavigationQueryFilter? FilterClass)
+	public unsafe UNavigationPath? FindPathToLocationSynchronously( UObject? WorldContextObject, ref FVector PathStart, ref FVector PathEnd, AActor? PathfindingContext, UClass? FilterClass)
 	{
 		nint WorldContextObject_Ptr = WorldContextObject?.Inner.Ptr ?? nint.Zero;
 		nint PathfindingContext_Ptr = PathfindingContext?.Inner.Ptr ?? nint.Zero;
@@ -257238,7 +257238,7 @@ public class UNavigationSystemV1 : UNavigationSystemBase, ITypeRepr<UNavigationS
 		return ((ObjectParam?)Return)!.Value != nint.Zero ? new(Inner.GetFactory().CreateUObject(((ObjectParam?)Return)!.Value)) : null;
 	}
 
-	public unsafe ENavigationQueryResult GetPathCost( UObject? WorldContextObject, ref FVector PathStart, ref FVector PathEnd, ref float PathCost, ANavigationData? NavData, UNavigationQueryFilter? FilterClass)
+	public unsafe ENavigationQueryResult GetPathCost( UObject? WorldContextObject, ref FVector PathStart, ref FVector PathEnd, ref float PathCost, ANavigationData? NavData, UClass? FilterClass)
 	{
 		nint WorldContextObject_Ptr = WorldContextObject?.Inner.Ptr ?? nint.Zero;
 		nint NavData_Ptr = NavData?.Inner.Ptr ?? nint.Zero;
@@ -257254,7 +257254,7 @@ public class UNavigationSystemV1 : UNavigationSystemBase, ITypeRepr<UNavigationS
 		return (ENavigationQueryResult)(((ByteParam?)Return)!.Value);
 	}
 
-	public unsafe ENavigationQueryResult GetPathLength( UObject? WorldContextObject, ref FVector PathStart, ref FVector PathEnd, ref float PathLength, ANavigationData? NavData, UNavigationQueryFilter? FilterClass)
+	public unsafe ENavigationQueryResult GetPathLength( UObject? WorldContextObject, ref FVector PathStart, ref FVector PathEnd, ref float PathLength, ANavigationData? NavData, UClass? FilterClass)
 	{
 		nint WorldContextObject_Ptr = WorldContextObject?.Inner.Ptr ?? nint.Zero;
 		nint NavData_Ptr = NavData?.Inner.Ptr ?? nint.Zero;
@@ -257270,7 +257270,7 @@ public class UNavigationSystemV1 : UNavigationSystemBase, ITypeRepr<UNavigationS
 		return (ENavigationQueryResult)(((ByteParam?)Return)!.Value);
 	}
 
-	public unsafe FVector GetRandomPointInNavigableRadius( UObject? WorldContextObject, ref FVector Origin, float Radius, ANavigationData? NavData, UNavigationQueryFilter? FilterClass)
+	public unsafe FVector GetRandomPointInNavigableRadius( UObject? WorldContextObject, ref FVector Origin, float Radius, ANavigationData? NavData, UClass? FilterClass)
 	{
 		nint WorldContextObject_Ptr = WorldContextObject?.Inner.Ptr ?? nint.Zero;
 		nint NavData_Ptr = NavData?.Inner.Ptr ?? nint.Zero;
@@ -257287,7 +257287,7 @@ public class UNavigationSystemV1 : UNavigationSystemBase, ITypeRepr<UNavigationS
 		return ReturnValue;
 	}
 
-	public unsafe FVector GetRandomReachablePointInRadius( UObject? WorldContextObject, ref FVector Origin, float Radius, ANavigationData? NavData, UNavigationQueryFilter? FilterClass)
+	public unsafe FVector GetRandomReachablePointInRadius( UObject? WorldContextObject, ref FVector Origin, float Radius, ANavigationData? NavData, UClass? FilterClass)
 	{
 		nint WorldContextObject_Ptr = WorldContextObject?.Inner.Ptr ?? nint.Zero;
 		nint NavData_Ptr = NavData?.Inner.Ptr ?? nint.Zero;
@@ -257322,7 +257322,7 @@ public class UNavigationSystemV1 : UNavigationSystemBase, ITypeRepr<UNavigationS
 		return ((BoolParam?)Return)!.Value;
 	}
 
-	public unsafe bool K2_GetRandomLocationInNavigableRadius( UObject? WorldContextObject, ref FVector Origin, ref FVector RandomLocation, float Radius, ANavigationData? NavData, UNavigationQueryFilter? FilterClass)
+	public unsafe bool K2_GetRandomLocationInNavigableRadius( UObject? WorldContextObject, ref FVector Origin, ref FVector RandomLocation, float Radius, ANavigationData? NavData, UClass? FilterClass)
 	{
 		nint WorldContextObject_Ptr = WorldContextObject?.Inner.Ptr ?? nint.Zero;
 		nint NavData_Ptr = NavData?.Inner.Ptr ?? nint.Zero;
@@ -257338,7 +257338,7 @@ public class UNavigationSystemV1 : UNavigationSystemBase, ITypeRepr<UNavigationS
 		return ((BoolParam?)Return)!.Value;
 	}
 
-	public unsafe bool K2_GetRandomPointInNavigableRadius( UObject? WorldContextObject, ref FVector Origin, ref FVector RandomLocation, float Radius, ANavigationData? NavData, UNavigationQueryFilter? FilterClass)
+	public unsafe bool K2_GetRandomPointInNavigableRadius( UObject? WorldContextObject, ref FVector Origin, ref FVector RandomLocation, float Radius, ANavigationData? NavData, UClass? FilterClass)
 	{
 		nint WorldContextObject_Ptr = WorldContextObject?.Inner.Ptr ?? nint.Zero;
 		nint NavData_Ptr = NavData?.Inner.Ptr ?? nint.Zero;
@@ -257354,7 +257354,7 @@ public class UNavigationSystemV1 : UNavigationSystemBase, ITypeRepr<UNavigationS
 		return ((BoolParam?)Return)!.Value;
 	}
 
-	public unsafe bool K2_GetRandomReachablePointInRadius( UObject? WorldContextObject, ref FVector Origin, ref FVector RandomLocation, float Radius, ANavigationData? NavData, UNavigationQueryFilter? FilterClass)
+	public unsafe bool K2_GetRandomReachablePointInRadius( UObject? WorldContextObject, ref FVector Origin, ref FVector RandomLocation, float Radius, ANavigationData? NavData, UClass? FilterClass)
 	{
 		nint WorldContextObject_Ptr = WorldContextObject?.Inner.Ptr ?? nint.Zero;
 		nint NavData_Ptr = NavData?.Inner.Ptr ?? nint.Zero;
@@ -257370,7 +257370,7 @@ public class UNavigationSystemV1 : UNavigationSystemBase, ITypeRepr<UNavigationS
 		return ((BoolParam?)Return)!.Value;
 	}
 
-	public unsafe bool K2_ProjectPointToNavigation( UObject? WorldContextObject, ref FVector Point, ref FVector ProjectedLocation, ANavigationData? NavData, UNavigationQueryFilter? FilterClass, FVector QueryExtent)
+	public unsafe bool K2_ProjectPointToNavigation( UObject? WorldContextObject, ref FVector Point, ref FVector ProjectedLocation, ANavigationData? NavData, UClass? FilterClass, FVector QueryExtent)
 	{
 		nint WorldContextObject_Ptr = WorldContextObject?.Inner.Ptr ?? nint.Zero;
 		nint NavData_Ptr = NavData?.Inner.Ptr ?? nint.Zero;
@@ -257386,7 +257386,7 @@ public class UNavigationSystemV1 : UNavigationSystemBase, ITypeRepr<UNavigationS
 		return ((BoolParam?)Return)!.Value;
 	}
 
-	public unsafe bool K2_ReplaceAreaInOctreeData( UObject? Object, UNavArea? OldArea, UNavArea? NewArea)
+	public unsafe bool K2_ReplaceAreaInOctreeData( UObject? Object, UClass? OldArea, UClass? NewArea)
 	{
 		nint Object_Ptr = Object?.Inner.Ptr ?? nint.Zero;
 		nint OldArea_Ptr = OldArea?.Inner.Ptr ?? nint.Zero;
@@ -257399,7 +257399,7 @@ public class UNavigationSystemV1 : UNavigationSystemBase, ITypeRepr<UNavigationS
 		return ((BoolParam?)Return)!.Value;
 	}
 
-	public unsafe bool NavigationRaycast( UObject? WorldContextObject, ref FVector RayStart, ref FVector RayEnd, ref FVector HitLocation, UNavigationQueryFilter? FilterClass, AController? Querier)
+	public unsafe bool NavigationRaycast( UObject? WorldContextObject, ref FVector RayStart, ref FVector RayEnd, ref FVector HitLocation, UClass? FilterClass, AController? Querier)
 	{
 		nint WorldContextObject_Ptr = WorldContextObject?.Inner.Ptr ?? nint.Zero;
 		nint FilterClass_Ptr = FilterClass?.Inner.Ptr ?? nint.Zero;
@@ -257423,7 +257423,7 @@ public class UNavigationSystemV1 : UNavigationSystemBase, ITypeRepr<UNavigationS
 		], out _);
 	}
 
-	public unsafe FVector ProjectPointToNavigation( UObject? WorldContextObject, ref FVector Point, ANavigationData? NavData, UNavigationQueryFilter? FilterClass, FVector QueryExtent)
+	public unsafe FVector ProjectPointToNavigation( UObject? WorldContextObject, ref FVector Point, ANavigationData? NavData, UClass? FilterClass, FVector QueryExtent)
 	{
 		nint WorldContextObject_Ptr = WorldContextObject?.Inner.Ptr ?? nint.Zero;
 		nint NavData_Ptr = NavData?.Inner.Ptr ?? nint.Zero;
@@ -257764,7 +257764,7 @@ public class ANavigationTestingActor : AActor, ITypeRepr<ANavigationTestingActor
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("OtherActor")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe UNavigationQueryFilter? FilterClass
+	public unsafe UClass? FilterClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("FilterClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("FilterClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("FilterClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -257924,13 +257924,13 @@ public class UNavLinkCustomComponent : UNavRelevantComponent, ITypeRepr<UNavLink
 		set => *(uint*)(Inner.Ptr + GetFieldOffset("NavLinkUserId")) = value;
 	}
 
-	public unsafe UNavArea? EnabledAreaClass
+	public unsafe UClass? EnabledAreaClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("EnabledAreaClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("EnabledAreaClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("EnabledAreaClass")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe UNavArea? DisabledAreaClass
+	public unsafe UClass? DisabledAreaClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("DisabledAreaClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("DisabledAreaClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("DisabledAreaClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -257991,7 +257991,7 @@ public class UNavLinkCustomComponent : UNavRelevantComponent, ITypeRepr<UNavLink
 		get => (FVector*)(Inner.Ptr + GetFieldOffset("ObstacleExtent"));
 	}
 
-	public unsafe UNavArea? ObstacleAreaClass
+	public unsafe UClass? ObstacleAreaClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("ObstacleAreaClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("ObstacleAreaClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("ObstacleAreaClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -258215,7 +258215,7 @@ public class UNavModifierComponent : UNavRelevantComponent, ITypeRepr<UNavModifi
 
 	public new unsafe UNavModifierComponent_Repr* Repr => (UNavModifierComponent_Repr*)Inner.Ptr;
 
-	public unsafe UNavArea? AreaClass
+	public unsafe UClass? AreaClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("AreaClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("AreaClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("AreaClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -258232,7 +258232,7 @@ public class UNavModifierComponent : UNavRelevantComponent, ITypeRepr<UNavModifi
 		set => *(byte*)(Inner.Ptr + GetFieldOffset("bIncludeAgentHeight")) ^= (byte)(Convert.ToByte(bIncludeAgentHeight != value) * 1);
 	}
 
-	public unsafe void SetAreaClass( UNavArea? NewAreaClass)
+	public unsafe void SetAreaClass( UClass? NewAreaClass)
 	{
 		nint NewAreaClass_Ptr = NewAreaClass?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("SetAreaClass", [
@@ -258269,7 +258269,7 @@ public class ANavModifierVolume : AVolume, ITypeRepr<ANavModifierVolume_Repr>
 
 	public new unsafe ANavModifierVolume_Repr* Repr => (ANavModifierVolume_Repr*)Inner.Ptr;
 
-	public unsafe UNavArea? AreaClass
+	public unsafe UClass? AreaClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("AreaClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("AreaClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("AreaClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -258281,7 +258281,7 @@ public class ANavModifierVolume : AVolume, ITypeRepr<ANavModifierVolume_Repr>
 		set => *(bool*)(Inner.Ptr + GetFieldOffset("bMaskFillCollisionUnderneathForNavmesh")) = value;
 	}
 
-	public unsafe void SetAreaClass( UNavArea? NewAreaClass)
+	public unsafe void SetAreaClass( UClass? NewAreaClass)
 	{
 		nint NewAreaClass_Ptr = NewAreaClass?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("SetAreaClass", [
@@ -258792,7 +258792,7 @@ public class ARecastNavMesh : ANavigationData, ITypeRepr<ARecastNavMesh_Repr>
 		set => *(float*)(Inner.Ptr + GetFieldOffset("VerticalDeviationFromGroundCompensation")) = value;
 	}
 
-	public unsafe bool K2_ReplaceAreaInTileBounds( FBox Bounds, UNavArea? OldArea, UNavArea? NewArea, bool ReplaceLinks)
+	public unsafe bool K2_ReplaceAreaInTileBounds( FBox Bounds, UClass? OldArea, UClass? NewArea, bool ReplaceLinks)
 	{
 		nint OldArea_Ptr = OldArea?.Inner.Ptr ?? nint.Zero;
 		nint NewArea_Ptr = NewArea?.Inner.Ptr ?? nint.Zero;
@@ -259098,7 +259098,7 @@ public class UAIBlueprintHelperLibrary : UBlueprintFunctionLibrary, ITypeRepr<UA
 		], out _);
 	}
 
-	public unsafe APawn? SpawnAIFromClass( UObject? WorldContextObject, APawn? PawnClass, UBehaviorTree? BehaviorTree, FVector Location, FRotator Rotation, bool bNoCollisionFail, AActor? Owner)
+	public unsafe APawn? SpawnAIFromClass( UObject? WorldContextObject, UClass? PawnClass, UBehaviorTree? BehaviorTree, FVector Location, FRotator Rotation, bool bNoCollisionFail, AActor? Owner)
 	{
 		nint WorldContextObject_Ptr = WorldContextObject?.Inner.Ptr ?? nint.Zero;
 		nint PawnClass_Ptr = PawnClass?.Inner.Ptr ?? nint.Zero;
@@ -259307,7 +259307,7 @@ public class UAIPerceptionComponent : UActorComponent, ITypeRepr<UAIPerceptionCo
 		get => (TArray<Ptr<UAISenseConfig_Repr>>*)(Inner.Ptr + GetFieldOffset("SensesConfig"));
 	}
 
-	public unsafe UAISense? DominantSense
+	public unsafe UClass? DominantSense
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("DominantSense")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("DominantSense")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("DominantSense")) = value?.Inner.Ptr ?? nint.Zero;
@@ -259349,7 +259349,7 @@ public class UAIPerceptionComponent : UActorComponent, ITypeRepr<UAIPerceptionCo
 		return ((BoolParam?)Return)!.Value;
 	}
 
-	public unsafe void GetCurrentlyPerceivedActors( UAISense? SenseToUse, ref TArray<Ptr<AActor_Repr>> OutActors)
+	public unsafe void GetCurrentlyPerceivedActors( UClass? SenseToUse, ref TArray<Ptr<AActor_Repr>> OutActors)
 	{
 		nint SenseToUse_Ptr = SenseToUse?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("GetCurrentlyPerceivedActors", [
@@ -259358,7 +259358,7 @@ public class UAIPerceptionComponent : UActorComponent, ITypeRepr<UAIPerceptionCo
 		], out _);
 	}
 
-	public unsafe void GetKnownPerceivedActors( UAISense? SenseToUse, ref TArray<Ptr<AActor_Repr>> OutActors)
+	public unsafe void GetKnownPerceivedActors( UClass? SenseToUse, ref TArray<Ptr<AActor_Repr>> OutActors)
 	{
 		nint SenseToUse_Ptr = SenseToUse?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("GetKnownPerceivedActors", [
@@ -259367,7 +259367,7 @@ public class UAIPerceptionComponent : UActorComponent, ITypeRepr<UAIPerceptionCo
 		], out _);
 	}
 
-	public unsafe void GetPerceivedActors( UAISense? SenseToUse, ref TArray<Ptr<AActor_Repr>> OutActors)
+	public unsafe void GetPerceivedActors( UClass? SenseToUse, ref TArray<Ptr<AActor_Repr>> OutActors)
 	{
 		nint SenseToUse_Ptr = SenseToUse?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("GetPerceivedActors", [
@@ -259383,7 +259383,7 @@ public class UAIPerceptionComponent : UActorComponent, ITypeRepr<UAIPerceptionCo
 		], out _);
 	}
 
-	public unsafe void GetPerceivedHostileActorsBySense( UAISense? SenseToUse, ref TArray<Ptr<AActor_Repr>> OutActors)
+	public unsafe void GetPerceivedHostileActorsBySense( UClass? SenseToUse, ref TArray<Ptr<AActor_Repr>> OutActors)
 	{
 		nint SenseToUse_Ptr = SenseToUse?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("GetPerceivedHostileActorsBySense", [
@@ -259406,7 +259406,7 @@ public class UAIPerceptionComponent : UActorComponent, ITypeRepr<UAIPerceptionCo
 		_ = Inner.ProcessEvent("RequestStimuliListenerUpdate", [], out _);
 	}
 
-	public unsafe void SetSenseEnabled( UAISense? SenseClass, bool bEnable)
+	public unsafe void SetSenseEnabled( UClass? SenseClass, bool bEnable)
 	{
 		nint SenseClass_Ptr = SenseClass?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("SetSenseEnabled", [
@@ -259483,7 +259483,7 @@ public class UAIPerceptionStimuliSourceComponent : UActorComponent, ITypeRepr<UA
 		get => (TArray<Ptr<UAISense_Repr>>*)(Inner.Ptr + GetFieldOffset("RegisterAsSourceForSenses"));
 	}
 
-	public unsafe void RegisterForSense( UAISense? SenseClass)
+	public unsafe void RegisterForSense( UClass? SenseClass)
 	{
 		nint SenseClass_Ptr = SenseClass?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("RegisterForSense", [
@@ -259501,7 +259501,7 @@ public class UAIPerceptionStimuliSourceComponent : UActorComponent, ITypeRepr<UA
 		_ = Inner.ProcessEvent("UnregisterFromPerceptionSystem", [], out _);
 	}
 
-	public unsafe void UnregisterFromSense( UAISense? SenseClass)
+	public unsafe void UnregisterFromSense( UClass? SenseClass)
 	{
 		nint SenseClass_Ptr = SenseClass?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("UnregisterFromSense", [
@@ -259581,7 +259581,7 @@ public class UAIPerceptionSystem : UAISubsystem, ITypeRepr<UAIPerceptionSystem_R
 		set => *(float*)(Inner.Ptr + GetFieldOffset("PerceptionAgingRate")) = value;
 	}
 
-	public unsafe UAISense? GetSenseClassForStimulus( UObject? WorldContextObject, ref FAIStimulus Stimulus)
+	public unsafe UClass? GetSenseClassForStimulus( UObject? WorldContextObject, ref FAIStimulus Stimulus)
 	{
 		nint WorldContextObject_Ptr = WorldContextObject?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("GetSenseClassForStimulus", [
@@ -259600,7 +259600,7 @@ public class UAIPerceptionSystem : UAISubsystem, ITypeRepr<UAIPerceptionSystem_R
 		], out _);
 	}
 
-	public unsafe bool RegisterPerceptionStimuliSource( UObject? WorldContextObject, UAISense? Sense, AActor? Target)
+	public unsafe bool RegisterPerceptionStimuliSource( UObject? WorldContextObject, UClass? Sense, AActor? Target)
 	{
 		nint WorldContextObject_Ptr = WorldContextObject?.Inner.Ptr ?? nint.Zero;
 		nint Sense_Ptr = Sense?.Inner.Ptr ?? nint.Zero;
@@ -259795,7 +259795,7 @@ public class UAISense_Blueprint : UAISense, ITypeRepr<UAISense_Blueprint_Repr>
 
 	public new unsafe UAISense_Blueprint_Repr* Repr => (UAISense_Blueprint_Repr*)Inner.Ptr;
 
-	public unsafe UUserDefinedStruct? ListenerDataType
+	public unsafe UClass? ListenerDataType
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("ListenerDataType")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("ListenerDataType")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("ListenerDataType")) = value?.Inner.Ptr ?? nint.Zero;
@@ -260258,7 +260258,7 @@ public class UAISenseConfig_Blueprint : UAISenseConfig, ITypeRepr<UAISenseConfig
 
 	public new unsafe UAISenseConfig_Blueprint_Repr* Repr => (UAISenseConfig_Blueprint_Repr*)Inner.Ptr;
 
-	public unsafe UAISense_Blueprint? Implementation
+	public unsafe UClass? Implementation
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("Implementation")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("Implementation")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("Implementation")) = value?.Inner.Ptr ?? nint.Zero;
@@ -260291,7 +260291,7 @@ public class UAISenseConfig_Damage : UAISenseConfig, ITypeRepr<UAISenseConfig_Da
 
 	public new unsafe UAISenseConfig_Damage_Repr* Repr => (UAISenseConfig_Damage_Repr*)Inner.Ptr;
 
-	public unsafe UAISense_Damage? Implementation
+	public unsafe UClass? Implementation
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("Implementation")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("Implementation")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("Implementation")) = value?.Inner.Ptr ?? nint.Zero;
@@ -260324,7 +260324,7 @@ public class UAISenseConfig_Hearing : UAISenseConfig, ITypeRepr<UAISenseConfig_H
 
 	public new unsafe UAISenseConfig_Hearing_Repr* Repr => (UAISenseConfig_Hearing_Repr*)Inner.Ptr;
 
-	public unsafe UAISense_Hearing? Implementation
+	public unsafe UClass? Implementation
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("Implementation")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("Implementation")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("Implementation")) = value?.Inner.Ptr ?? nint.Zero;
@@ -260409,7 +260409,7 @@ public class UAISenseConfig_Sight : UAISenseConfig, ITypeRepr<UAISenseConfig_Sig
 
 	public new unsafe UAISenseConfig_Sight_Repr* Repr => (UAISenseConfig_Sight_Repr*)Inner.Ptr;
 
-	public unsafe UAISense_Sight? Implementation
+	public unsafe UClass? Implementation
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("Implementation")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("Implementation")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("Implementation")) = value?.Inner.Ptr ?? nint.Zero;
@@ -261327,7 +261327,7 @@ public class UBlackboardComponent : UActorComponent, ITypeRepr<UBlackboardCompon
 		return ((BoolParam?)Return)!.Value;
 	}
 
-	public unsafe UObject? GetValueAsClass( ref FName KeyName)
+	public unsafe UClass? GetValueAsClass( ref FName KeyName)
 	{
 		_ = Inner.ProcessEvent("GetValueAsClass", [
 			new NameParam(new((FName*)Unsafe.AsPointer(ref KeyName)))
@@ -261419,7 +261419,7 @@ public class UBlackboardComponent : UActorComponent, ITypeRepr<UBlackboardCompon
 		], out _);
 	}
 
-	public unsafe void SetValueAsClass( ref FName KeyName, UObject? ClassValue)
+	public unsafe void SetValueAsClass( ref FName KeyName, UClass? ClassValue)
 	{
 		nint ClassValue_Ptr = ClassValue?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("SetValueAsClass", [
@@ -261619,7 +261619,7 @@ public class UBlackboardKeyType_Class : UBlackboardKeyType, ITypeRepr<UBlackboar
 
 	public new unsafe UBlackboardKeyType_Class_Repr* Repr => (UBlackboardKeyType_Class_Repr*)Inner.Ptr;
 
-	public unsafe UObject? BaseClass
+	public unsafe UClass? BaseClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("BaseClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("BaseClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("BaseClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -261812,7 +261812,7 @@ public class UBlackboardKeyType_Object : UBlackboardKeyType, ITypeRepr<UBlackboa
 
 	public new unsafe UBlackboardKeyType_Object_Repr* Repr => (UBlackboardKeyType_Object_Repr*)Inner.Ptr;
 
-	public unsafe UObject? BaseClass
+	public unsafe UClass? BaseClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("BaseClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("BaseClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("BaseClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -262684,7 +262684,7 @@ public class UBTDecorator_DoesPathExist : UBTDecorator, ITypeRepr<UBTDecorator_D
 		set => *(EPathExistanceQueryType*)(Inner.Ptr + GetFieldOffset("PathQueryType")) = value;
 	}
 
-	public unsafe UNavigationQueryFilter? FilterClass
+	public unsafe UClass? FilterClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("FilterClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("FilterClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("FilterClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -262813,7 +262813,7 @@ public class UBTDecorator_IsBBEntryOfClass : UBTDecorator_BlackboardBase, ITypeR
 
 	public new unsafe UBTDecorator_IsBBEntryOfClass_Repr* Repr => (UBTDecorator_IsBBEntryOfClass_Repr*)Inner.Ptr;
 
-	public unsafe UObject? TestClass
+	public unsafe UClass? TestClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("TestClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("TestClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("TestClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -263147,7 +263147,7 @@ public class UBTFunctionLibrary : UBlueprintFunctionLibrary, ITypeRepr<UBTFuncti
 		return ((BoolParam?)Return)!.Value;
 	}
 
-	public unsafe UObject? GetBlackboardValueAsClass( UBTNode? NodeOwner, ref FBlackboardKeySelector Key)
+	public unsafe UClass? GetBlackboardValueAsClass( UBTNode? NodeOwner, ref FBlackboardKeySelector Key)
 	{
 		nint NodeOwner_Ptr = NodeOwner?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("GetBlackboardValueAsClass", [
@@ -263269,7 +263269,7 @@ public class UBTFunctionLibrary : UBlueprintFunctionLibrary, ITypeRepr<UBTFuncti
 		], out _);
 	}
 
-	public unsafe void SetBlackboardValueAsClass( UBTNode? NodeOwner, ref FBlackboardKeySelector Key, UObject? Value)
+	public unsafe void SetBlackboardValueAsClass( UBTNode? NodeOwner, ref FBlackboardKeySelector Key, UClass? Value)
 	{
 		nint NodeOwner_Ptr = NodeOwner?.Inner.Ptr ?? nint.Zero;
 		nint Value_Ptr = Value?.Inner.Ptr ?? nint.Zero;
@@ -264013,7 +264013,7 @@ public class UBTTask_MoveTo : UBTTask_BlackboardBase, ITypeRepr<UBTTask_MoveTo_R
 		set => *(float*)(Inner.Ptr + GetFieldOffset("AcceptableRadius")) = value;
 	}
 
-	public unsafe UNavigationQueryFilter? FilterClass
+	public unsafe UClass? FilterClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("FilterClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("FilterClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("FilterClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -265136,7 +265136,7 @@ public class UEnvQueryGenerator : UEnvQueryNode, ITypeRepr<UEnvQueryGenerator_Re
 		get => (FString*)(Inner.Ptr + GetFieldOffset("OptionName"));
 	}
 
-	public unsafe UEnvQueryItemType? ItemType
+	public unsafe UClass? ItemType
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("ItemType")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("ItemType")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("ItemType")) = value?.Inner.Ptr ?? nint.Zero;
@@ -265177,7 +265177,7 @@ public class UEnvQueryGenerator_ActorsOfClass : UEnvQueryGenerator, ITypeRepr<UE
 
 	public new unsafe UEnvQueryGenerator_ActorsOfClass_Repr* Repr => (UEnvQueryGenerator_ActorsOfClass_Repr*)Inner.Ptr;
 
-	public unsafe AActor? SearchedActorClass
+	public unsafe UClass? SearchedActorClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("SearchedActorClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SearchedActorClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("SearchedActorClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -265193,7 +265193,7 @@ public class UEnvQueryGenerator_ActorsOfClass : UEnvQueryGenerator, ITypeRepr<UE
 		get => (FAIDataProviderFloatValue*)(Inner.Ptr + GetFieldOffset("SearchRadius"));
 	}
 
-	public unsafe UEnvQueryContext? SearchCenter
+	public unsafe UClass? SearchCenter
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("SearchCenter")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SearchCenter")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("SearchCenter")) = value?.Inner.Ptr ?? nint.Zero;
@@ -265234,13 +265234,13 @@ public class UEnvQueryGenerator_BlueprintBase : UEnvQueryGenerator, ITypeRepr<UE
 		get => (FText*)(Inner.Ptr + GetFieldOffset("GeneratorsActionDescription"));
 	}
 
-	public unsafe UEnvQueryContext? Context
+	public unsafe UClass? Context
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("Context")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("Context")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("Context")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe UEnvQueryItemType? GeneratedItemType
+	public unsafe UClass? GeneratedItemType
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("GeneratedItemType")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("GeneratedItemType")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("GeneratedItemType")) = value?.Inner.Ptr ?? nint.Zero;
@@ -265320,7 +265320,7 @@ public class UEnvQueryGenerator_Composite : UEnvQueryGenerator, ITypeRepr<UEnvQu
 		set => *(byte*)(Inner.Ptr + GetFieldOffset("bHasMatchingItemType")) ^= (byte)(Convert.ToByte(bHasMatchingItemType != value) * 2);
 	}
 
-	public unsafe UEnvQueryItemType? ForcedItemType
+	public unsafe UClass? ForcedItemType
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("ForcedItemType")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("ForcedItemType")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("ForcedItemType")) = value?.Inner.Ptr ?? nint.Zero;
@@ -265408,7 +265408,7 @@ public class UEnvQueryGenerator_Cone : UEnvQueryGenerator_ProjectedPoints, IType
 		get => (FAIDataProviderFloatValue*)(Inner.Ptr + GetFieldOffset("Range"));
 	}
 
-	public unsafe UEnvQueryContext? CenterActor
+	public unsafe UClass? CenterActor
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("CenterActor")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("CenterActor")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("CenterActor")) = value?.Inner.Ptr ?? nint.Zero;
@@ -265452,7 +265452,7 @@ public class UEnvQueryGenerator_CurrentLocation : UEnvQueryGenerator, ITypeRepr<
 
 	public new unsafe UEnvQueryGenerator_CurrentLocation_Repr* Repr => (UEnvQueryGenerator_CurrentLocation_Repr*)Inner.Ptr;
 
-	public unsafe UEnvQueryContext? QueryContext
+	public unsafe UClass? QueryContext
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("QueryContext")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("QueryContext")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("QueryContext")) = value?.Inner.Ptr ?? nint.Zero;
@@ -265521,7 +265521,7 @@ public class UEnvQueryGenerator_Donut : UEnvQueryGenerator_ProjectedPoints, ITyp
 		set => *(bool*)(Inner.Ptr + GetFieldOffset("bUseSpiralPattern")) = value;
 	}
 
-	public unsafe UEnvQueryContext? Center
+	public unsafe UClass? Center
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("Center")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("Center")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("Center")) = value?.Inner.Ptr ?? nint.Zero;
@@ -265605,7 +265605,7 @@ public class UEnvQueryGenerator_OnCircle : UEnvQueryGenerator_ProjectedPoints, I
 		set => *(float*)(Inner.Ptr + GetFieldOffset("AngleRadians")) = value;
 	}
 
-	public unsafe UEnvQueryContext? CircleCenter
+	public unsafe UClass? CircleCenter
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("CircleCenter")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("CircleCenter")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("CircleCenter")) = value?.Inner.Ptr ?? nint.Zero;
@@ -265681,7 +265681,7 @@ public class UEnvQueryGenerator_SimpleGrid : UEnvQueryGenerator_ProjectedPoints,
 		get => (FAIDataProviderFloatValue*)(Inner.Ptr + GetFieldOffset("SpaceBetween"));
 	}
 
-	public unsafe UEnvQueryContext? GenerateAround
+	public unsafe UClass? GenerateAround
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("GenerateAround")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("GenerateAround")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("GenerateAround")) = value?.Inner.Ptr ?? nint.Zero;
@@ -265721,7 +265721,7 @@ public class UEnvQueryGenerator_PathingGrid : UEnvQueryGenerator_SimpleGrid, ITy
 		get => (FAIDataProviderBoolValue*)(Inner.Ptr + GetFieldOffset("PathToItem"));
 	}
 
-	public unsafe UNavigationQueryFilter? NavigationFilter
+	public unsafe UClass? NavigationFilter
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("NavigationFilter")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("NavigationFilter")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("NavigationFilter")) = value?.Inner.Ptr ?? nint.Zero;
@@ -265767,7 +265767,7 @@ public class UEnvQueryInstanceBlueprintWrapper : UObject, ITypeRepr<UEnvQueryIns
 		set => *(int*)(Inner.Ptr + GetFieldOffset("QueryID")) = value;
 	}
 
-	public unsafe UEnvQueryItemType? ItemType
+	public unsafe UClass? ItemType
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("ItemType")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("ItemType")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("ItemType")) = value?.Inner.Ptr ?? nint.Zero;
@@ -266060,7 +266060,7 @@ public class UEnvQueryManager : UAISubsystem, ITypeRepr<UEnvQueryManager_Repr>
 		set => *(double*)(Inner.Ptr + GetFieldOffset("QueryCountWarningInterval")) = value;
 	}
 
-	public unsafe UEnvQueryInstanceBlueprintWrapper? RunEQSQuery( UObject? WorldContextObject, UEnvQuery? QueryTemplate, UObject? Querier, EEnvQueryRunMode RunMode, UEnvQueryInstanceBlueprintWrapper? WrapperClass)
+	public unsafe UEnvQueryInstanceBlueprintWrapper? RunEQSQuery( UObject? WorldContextObject, UEnvQuery? QueryTemplate, UObject? Querier, EEnvQueryRunMode RunMode, UClass? WrapperClass)
 	{
 		nint WorldContextObject_Ptr = WorldContextObject?.Inner.Ptr ?? nint.Zero;
 		nint QueryTemplate_Ptr = QueryTemplate?.Inner.Ptr ?? nint.Zero;
@@ -266305,7 +266305,7 @@ public class UEnvQueryTest_Distance : UEnvQueryTest, ITypeRepr<UEnvQueryTest_Dis
 		set => *(EEnvTestDistance*)(Inner.Ptr + GetFieldOffset("TestMode")) = value;
 	}
 
-	public unsafe UEnvQueryContext? DistanceTo
+	public unsafe UClass? DistanceTo
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("DistanceTo")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("DistanceTo")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("DistanceTo")) = value?.Inner.Ptr ?? nint.Zero;
@@ -266481,7 +266481,7 @@ public class UEnvQueryTest_Pathfinding : UEnvQueryTest, ITypeRepr<UEnvQueryTest_
 		set => *(EEnvTestPathfinding*)(Inner.Ptr + GetFieldOffset("TestMode")) = value;
 	}
 
-	public unsafe UEnvQueryContext? Context
+	public unsafe UClass? Context
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("Context")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("Context")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("Context")) = value?.Inner.Ptr ?? nint.Zero;
@@ -266497,7 +266497,7 @@ public class UEnvQueryTest_Pathfinding : UEnvQueryTest, ITypeRepr<UEnvQueryTest_
 		get => (FAIDataProviderBoolValue*)(Inner.Ptr + GetFieldOffset("SkipUnreachable"));
 	}
 
-	public unsafe UNavigationQueryFilter? FilterClass
+	public unsafe UClass? FilterClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("FilterClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("FilterClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("FilterClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -266643,7 +266643,7 @@ public class UEnvQueryTest_Trace : UEnvQueryTest, ITypeRepr<UEnvQueryTest_Trace_
 		get => (FAIDataProviderFloatValue*)(Inner.Ptr + GetFieldOffset("ContextHeightOffset"));
 	}
 
-	public unsafe UEnvQueryContext? Context_2
+	public unsafe UClass? Context_2
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("Context")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("Context")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("Context")) = value?.Inner.Ptr ?? nint.Zero;
@@ -266680,13 +266680,13 @@ public class UEnvQueryTest_Volume : UEnvQueryTest, ITypeRepr<UEnvQueryTest_Volum
 
 	public new unsafe UEnvQueryTest_Volume_Repr* Repr => (UEnvQueryTest_Volume_Repr*)Inner.Ptr;
 
-	public unsafe UEnvQueryContext? VolumeContext
+	public unsafe UClass? VolumeContext
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("VolumeContext")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("VolumeContext")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("VolumeContext")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe AVolume? VolumeClass
+	public unsafe UClass? VolumeClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("VolumeClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("VolumeClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("VolumeClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -267310,7 +267310,7 @@ public class UPawnAction : UObject, ITypeRepr<UPawnAction_Repr>
 		set => *(byte*)(Inner.Ptr + GetFieldOffset("bAlwaysNotifyOnFinished")) ^= (byte)(Convert.ToByte(bAlwaysNotifyOnFinished != value) * 8);
 	}
 
-	public unsafe UPawnAction? CreateActionInstance( UObject? WorldContextObject, UPawnAction? ActionClass)
+	public unsafe UPawnAction? CreateActionInstance( UObject? WorldContextObject, UClass? ActionClass)
 	{
 		nint WorldContextObject_Ptr = WorldContextObject?.Inner.Ptr ?? nint.Zero;
 		nint ActionClass_Ptr = ActionClass?.Inner.Ptr ?? nint.Zero;
@@ -267453,7 +267453,7 @@ public class UPawnAction_Move : UPawnAction, ITypeRepr<UPawnAction_Move_Repr>
 		set => *(float*)(Inner.Ptr + GetFieldOffset("AcceptableRadius")) = value;
 	}
 
-	public unsafe UNavigationQueryFilter? FilterClass
+	public unsafe UClass? FilterClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("FilterClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("FilterClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("FilterClass")) = value?.Inner.Ptr ?? nint.Zero;
@@ -302214,6 +302214,16 @@ public unsafe struct FLeanAmount
 	[FieldOffset(0x4)] public float FB; // Size: 0x4
 }
 
+[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0x18)]
+public unsafe struct FDynamicMontageParams
+{
+	[FieldOffset(0x0)] public UAnimSequenceBase_Repr* Animation; // Size: 0x8
+	[FieldOffset(0x8)] public float BlendInTime; // Size: 0x4
+	[FieldOffset(0xC)] public float BlendOutTime; // Size: 0x4
+	[FieldOffset(0x10)] public float PlayRate; // Size: 0x4
+	[FieldOffset(0x14)] public float StartTime; // Size: 0x4
+}
+
 [StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0x20)]
 public unsafe struct FRotateInPlace_Asset
 {
@@ -302223,16 +302233,6 @@ public unsafe struct FRotateInPlace_Asset
 	[FieldOffset(0x14)] public float FastTurnRate; // Size: 0x4
 	[FieldOffset(0x18)] public float SlowPlayRate; // Size: 0x4
 	[FieldOffset(0x1C)] public float FastPlayRate; // Size: 0x4
-}
-
-[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0x18)]
-public unsafe struct FDynamicMontageParams
-{
-	[FieldOffset(0x0)] public UAnimSequenceBase_Repr* Animation; // Size: 0x8
-	[FieldOffset(0x8)] public float BlendInTime; // Size: 0x4
-	[FieldOffset(0xC)] public float BlendOutTime; // Size: 0x4
-	[FieldOffset(0x10)] public float PlayRate; // Size: 0x4
-	[FieldOffset(0x14)] public float StartTime; // Size: 0x4
 }
 
 [StructLayout(LayoutKind.Explicit, Pack = 4, Size = 0x10)]
@@ -302424,6 +302424,46 @@ public unsafe struct ABP_FldFreeCameraDungeon_C_Repr
 }
 
 
+public class ABP_FldCamera_C : AFldCamera, ITypeRepr<ABP_FldCamera_C_Repr>
+{
+	private static Dictionary<string, int>? FieldOffsets;
+	public ABP_FldCamera_C(IUObject inner, bool genOffsets = true) : base(inner, false)
+	{
+		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
+	}
+
+	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
+
+	public new unsafe ABP_FldCamera_C_Repr* Repr => (ABP_FldCamera_C_Repr*)Inner.Ptr;
+
+	public unsafe UChildActorComponent? Far
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("Far")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("Far")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("Far")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe UChildActorComponent? Near
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("Near")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("Near")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("Near")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+}
+
+[StructLayout(LayoutKind.Explicit, Pack = 16, Size = 0x7C0)]
+public unsafe struct ABP_FldCamera_C_Repr
+{
+	[FieldOffset(0x0)] public AFldCamera_Repr Super; // Size: 0x7B0
+	[FieldOffset(0x7B0)] public UChildActorComponent_Repr* Far; // Size: 0x8
+	[FieldOffset(0x7B8)] public UChildActorComponent_Repr* Near; // Size: 0x8
+
+	public ABP_FldCamera_C ToManaged(IUnrealFactory factory)
+	{
+		fixed (ABP_FldCamera_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
+	}
+}
+
+
 [StructLayout(LayoutKind.Explicit, Pack = 16, Size = 0x40)]
 public unsafe struct FALS_ComponentAndTransform
 {
@@ -302472,45 +302512,49 @@ public unsafe struct UALS_Controller_BPI_C_Repr
 }
 
 
-public class ABP_FldCamera_C : AFldCamera, ITypeRepr<ABP_FldCamera_C_Repr>
+[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0x28)]
+public unsafe struct FMantle_Params
 {
-	private static Dictionary<string, int>? FieldOffsets;
-	public ABP_FldCamera_C(IUObject inner, bool genOffsets = true) : base(inner, false)
-	{
-		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
-	}
-
-	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
-
-	public new unsafe ABP_FldCamera_C_Repr* Repr => (ABP_FldCamera_C_Repr*)Inner.Ptr;
-
-	public unsafe UChildActorComponent? Far
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("Far")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("Far")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("Far")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe UChildActorComponent? Near
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("Near")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("Near")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("Near")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
+	[FieldOffset(0x0)] public UAnimMontage_Repr* AnimMontage; // Size: 0x8
+	[FieldOffset(0x8)] public UCurveVector_Repr* PositionCorrectionCurve; // Size: 0x8
+	[FieldOffset(0x10)] public float StartingPosition; // Size: 0x4
+	[FieldOffset(0x14)] public float PlayRate; // Size: 0x4
+	[FieldOffset(0x18)] public FVector StartingOffset; // Size: 0xC
 }
 
-[StructLayout(LayoutKind.Explicit, Pack = 16, Size = 0x7C0)]
-public unsafe struct ABP_FldCamera_C_Repr
+[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0x38)]
+public unsafe struct FMantle_Asset
 {
-	[FieldOffset(0x0)] public AFldCamera_Repr Super; // Size: 0x7B0
-	[FieldOffset(0x7B0)] public UChildActorComponent_Repr* Far; // Size: 0x8
-	[FieldOffset(0x7B8)] public UChildActorComponent_Repr* Near; // Size: 0x8
-
-	public ABP_FldCamera_C ToManaged(IUnrealFactory factory)
-	{
-		fixed (ABP_FldCamera_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
-	}
+	[FieldOffset(0x0)] public UAnimMontage_Repr* AnimMontage; // Size: 0x8
+	[FieldOffset(0x8)] public UCurveVector_Repr* PositionCorrectionCurve; // Size: 0x8
+	[FieldOffset(0x10)] public FVector StartingOffset; // Size: 0xC
+	[FieldOffset(0x1C)] public float LowHeight; // Size: 0x4
+	[FieldOffset(0x20)] public float LowPlayRate; // Size: 0x4
+	[FieldOffset(0x24)] public float LowStartPosition; // Size: 0x4
+	[FieldOffset(0x28)] public float HighHeight; // Size: 0x4
+	[FieldOffset(0x2C)] public float HighPlayRate; // Size: 0x4
+	[FieldOffset(0x30)] public float HighStartPosition; // Size: 0x4
 }
 
+[StructLayout(LayoutKind.Explicit, Pack = 4, Size = 0x14)]
+public unsafe struct FMantle_TraceSettings
+{
+	[FieldOffset(0x0)] public float MaxLedgeHeight; // Size: 0x4
+	[FieldOffset(0x4)] public float MinLedgeHeight; // Size: 0x4
+	[FieldOffset(0x8)] public float ReachDistance; // Size: 0x4
+	[FieldOffset(0xC)] public float ForwardTraceRadius; // Size: 0x4
+	[FieldOffset(0x10)] public float DownwardTraceRadius; // Size: 0x4
+}
+
+[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0x20)]
+public unsafe struct FMovementSettings
+{
+	[FieldOffset(0x0)] public float WalkSpeed; // Size: 0x4
+	[FieldOffset(0x4)] public float RunSpeed; // Size: 0x4
+	[FieldOffset(0x8)] public float SprintSpeed; // Size: 0x4
+	[FieldOffset(0x10)] public UCurveVector_Repr* MovementCurve; // Size: 0x8
+	[FieldOffset(0x18)] public UCurveFloat_Repr* RotationRateCurve; // Size: 0x8
+}
 
 public class UALS_Animation_BPI_C : UInterface, ITypeRepr<UALS_Animation_BPI_C_Repr>
 {
@@ -302556,48 +302600,116 @@ public unsafe struct UALS_Animation_BPI_C_Repr
 }
 
 
+public class UALS_Character_BPI_C : UInterface, ITypeRepr<UALS_Character_BPI_C_Repr>
+{
+	private static Dictionary<string, int>? FieldOffsets;
+	public UALS_Character_BPI_C(IUObject inner, bool genOffsets = true) : base(inner, false)
+	{
+		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
+	}
+
+	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
+
+	public new unsafe UALS_Character_BPI_C_Repr* Repr => (UALS_Character_BPI_C_Repr*)Inner.Ptr;
+
+	public unsafe void BPI_Get_CurrentStates( ref EMovementMode PawnMovementMode, ref ALS_MovementState MovementState, ref ALS_MovementState PrevMovementState, ref ALS_MovementAction MovementAction, ref ALS_RotationMode RotationMode, ref ALS_Gait ActualGait, ref ALS_Stance ActualStance, ref ALS_ViewMode ViewMode, ref ALS_OverlayState OverlayState)
+	{
+		_ = Inner.ProcessEvent("BPI_Get_CurrentStates", [
+			new ByteParam(new((byte*)Unsafe.AsPointer(ref PawnMovementMode))),
+			new ByteParam(new((byte*)Unsafe.AsPointer(ref MovementState))),
+			new ByteParam(new((byte*)Unsafe.AsPointer(ref PrevMovementState))),
+			new ByteParam(new((byte*)Unsafe.AsPointer(ref MovementAction))),
+			new ByteParam(new((byte*)Unsafe.AsPointer(ref RotationMode))),
+			new ByteParam(new((byte*)Unsafe.AsPointer(ref ActualGait))),
+			new ByteParam(new((byte*)Unsafe.AsPointer(ref ActualStance))),
+			new ByteParam(new((byte*)Unsafe.AsPointer(ref ViewMode))),
+			new ByteParam(new((byte*)Unsafe.AsPointer(ref OverlayState)))
+		], out _);
+	}
+
+	public unsafe void BPI_Get_EssentialValues( ref FVector Velocity, ref FVector Acceleration, ref FVector MovementInput, ref bool IsMoving, ref bool HasMovementInput, ref float Speed, ref float MovementInputAmount, ref FRotator AimingRotation, ref float AimYawRate)
+	{
+		_ = Inner.ProcessEvent("BPI_Get_EssentialValues", [
+			new StructParam(new((FVector*)Unsafe.AsPointer(ref Velocity)), 12),
+			new StructParam(new((FVector*)Unsafe.AsPointer(ref Acceleration)), 12),
+			new StructParam(new((FVector*)Unsafe.AsPointer(ref MovementInput)), 12),
+			new BoolParam(new((bool*)Unsafe.AsPointer(ref IsMoving)), 255),
+			new BoolParam(new((bool*)Unsafe.AsPointer(ref HasMovementInput)), 255),
+			new FloatParam(new((float*)Unsafe.AsPointer(ref Speed))),
+			new FloatParam(new((float*)Unsafe.AsPointer(ref MovementInputAmount))),
+			new StructParam(new((FRotator*)Unsafe.AsPointer(ref AimingRotation)), 12),
+			new FloatParam(new((float*)Unsafe.AsPointer(ref AimYawRate)))
+		], out _);
+	}
+
+	public unsafe void BPI_Set_MovementState( ALS_MovementState NewMovementState)
+	{
+		_ = Inner.ProcessEvent("BPI_Set_MovementState", [
+			new ByteParam(new((byte*)(&NewMovementState)))
+		], out _);
+	}
+
+	public unsafe void BPI_Set_MovementAction( ALS_MovementAction NewMovementAction)
+	{
+		_ = Inner.ProcessEvent("BPI_Set_MovementAction", [
+			new ByteParam(new((byte*)(&NewMovementAction)))
+		], out _);
+	}
+
+	public unsafe void BPI_Set_RotationMode( ALS_RotationMode NewRotationMode)
+	{
+		_ = Inner.ProcessEvent("BPI_Set_RotationMode", [
+			new ByteParam(new((byte*)(&NewRotationMode)))
+		], out _);
+	}
+
+	public unsafe void BPI_Set_Gait( ALS_Gait NewGait)
+	{
+		_ = Inner.ProcessEvent("BPI_Set_Gait", [
+			new ByteParam(new((byte*)(&NewGait)))
+		], out _);
+	}
+
+	public unsafe void BPI_Set_ViewMode( ALS_ViewMode NewViewMode)
+	{
+		_ = Inner.ProcessEvent("BPI_Set_ViewMode", [
+			new ByteParam(new((byte*)(&NewViewMode)))
+		], out _);
+	}
+
+	public unsafe void BPI_Set_OverlayState( ALS_OverlayState NewOverlayState)
+	{
+		_ = Inner.ProcessEvent("BPI_Set_OverlayState", [
+			new ByteParam(new((byte*)(&NewOverlayState)))
+		], out _);
+	}
+
+}
+
 [StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0x28)]
-public unsafe struct FMantle_Params
+public unsafe struct UALS_Character_BPI_C_Repr
 {
-	[FieldOffset(0x0)] public UAnimMontage_Repr* AnimMontage; // Size: 0x8
-	[FieldOffset(0x8)] public UCurveVector_Repr* PositionCorrectionCurve; // Size: 0x8
-	[FieldOffset(0x10)] public float StartingPosition; // Size: 0x4
-	[FieldOffset(0x14)] public float PlayRate; // Size: 0x4
-	[FieldOffset(0x18)] public FVector StartingOffset; // Size: 0xC
+	[FieldOffset(0x0)] public UInterface_Repr Super; // Size: 0x28
+	public UALS_Character_BPI_C ToManaged(IUnrealFactory factory)
+	{
+		fixed (UALS_Character_BPI_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
+	}
 }
 
-[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0x20)]
-public unsafe struct FMovementSettings
+
+[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0x40)]
+public unsafe struct FMovementSettings_Stance
 {
-	[FieldOffset(0x0)] public float WalkSpeed; // Size: 0x4
-	[FieldOffset(0x4)] public float RunSpeed; // Size: 0x4
-	[FieldOffset(0x8)] public float SprintSpeed; // Size: 0x4
-	[FieldOffset(0x10)] public UCurveVector_Repr* MovementCurve; // Size: 0x8
-	[FieldOffset(0x18)] public UCurveFloat_Repr* RotationRateCurve; // Size: 0x8
+	[FieldOffset(0x0)] public FMovementSettings Standing; // Size: 0x20
+	[FieldOffset(0x20)] public FMovementSettings Crouching; // Size: 0x20
 }
 
-[StructLayout(LayoutKind.Explicit, Pack = 4, Size = 0x14)]
-public unsafe struct FMantle_TraceSettings
+[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0xC0)]
+public unsafe struct FMovementSettings_State
 {
-	[FieldOffset(0x0)] public float MaxLedgeHeight; // Size: 0x4
-	[FieldOffset(0x4)] public float MinLedgeHeight; // Size: 0x4
-	[FieldOffset(0x8)] public float ReachDistance; // Size: 0x4
-	[FieldOffset(0xC)] public float ForwardTraceRadius; // Size: 0x4
-	[FieldOffset(0x10)] public float DownwardTraceRadius; // Size: 0x4
-}
-
-[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0x38)]
-public unsafe struct FMantle_Asset
-{
-	[FieldOffset(0x0)] public UAnimMontage_Repr* AnimMontage; // Size: 0x8
-	[FieldOffset(0x8)] public UCurveVector_Repr* PositionCorrectionCurve; // Size: 0x8
-	[FieldOffset(0x10)] public FVector StartingOffset; // Size: 0xC
-	[FieldOffset(0x1C)] public float LowHeight; // Size: 0x4
-	[FieldOffset(0x20)] public float LowPlayRate; // Size: 0x4
-	[FieldOffset(0x24)] public float LowStartPosition; // Size: 0x4
-	[FieldOffset(0x28)] public float HighHeight; // Size: 0x4
-	[FieldOffset(0x2C)] public float HighPlayRate; // Size: 0x4
-	[FieldOffset(0x30)] public float HighStartPosition; // Size: 0x4
+	[FieldOffset(0x0)] public FMovementSettings_Stance VelocityDirection; // Size: 0x40
+	[FieldOffset(0x40)] public FMovementSettings_Stance LookingDirection; // Size: 0x40
+	[FieldOffset(0x80)] public FMovementSettings_Stance Aiming; // Size: 0x40
 }
 
 public class UBPFL_ABPCostume_C : UBlueprintFunctionLibrary, ITypeRepr<UBPFL_ABPCostume_C_Repr>
@@ -302825,103 +302937,6 @@ public unsafe struct UBPFL_ABPCostume_C_Repr
 }
 
 
-public class UALS_Character_BPI_C : UInterface, ITypeRepr<UALS_Character_BPI_C_Repr>
-{
-	private static Dictionary<string, int>? FieldOffsets;
-	public UALS_Character_BPI_C(IUObject inner, bool genOffsets = true) : base(inner, false)
-	{
-		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
-	}
-
-	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
-
-	public new unsafe UALS_Character_BPI_C_Repr* Repr => (UALS_Character_BPI_C_Repr*)Inner.Ptr;
-
-	public unsafe void BPI_Get_CurrentStates( ref EMovementMode PawnMovementMode, ref ALS_MovementState MovementState, ref ALS_MovementState PrevMovementState, ref ALS_MovementAction MovementAction, ref ALS_RotationMode RotationMode, ref ALS_Gait ActualGait, ref ALS_Stance ActualStance, ref ALS_ViewMode ViewMode, ref ALS_OverlayState OverlayState)
-	{
-		_ = Inner.ProcessEvent("BPI_Get_CurrentStates", [
-			new ByteParam(new((byte*)Unsafe.AsPointer(ref PawnMovementMode))),
-			new ByteParam(new((byte*)Unsafe.AsPointer(ref MovementState))),
-			new ByteParam(new((byte*)Unsafe.AsPointer(ref PrevMovementState))),
-			new ByteParam(new((byte*)Unsafe.AsPointer(ref MovementAction))),
-			new ByteParam(new((byte*)Unsafe.AsPointer(ref RotationMode))),
-			new ByteParam(new((byte*)Unsafe.AsPointer(ref ActualGait))),
-			new ByteParam(new((byte*)Unsafe.AsPointer(ref ActualStance))),
-			new ByteParam(new((byte*)Unsafe.AsPointer(ref ViewMode))),
-			new ByteParam(new((byte*)Unsafe.AsPointer(ref OverlayState)))
-		], out _);
-	}
-
-	public unsafe void BPI_Get_EssentialValues( ref FVector Velocity, ref FVector Acceleration, ref FVector MovementInput, ref bool IsMoving, ref bool HasMovementInput, ref float Speed, ref float MovementInputAmount, ref FRotator AimingRotation, ref float AimYawRate)
-	{
-		_ = Inner.ProcessEvent("BPI_Get_EssentialValues", [
-			new StructParam(new((FVector*)Unsafe.AsPointer(ref Velocity)), 12),
-			new StructParam(new((FVector*)Unsafe.AsPointer(ref Acceleration)), 12),
-			new StructParam(new((FVector*)Unsafe.AsPointer(ref MovementInput)), 12),
-			new BoolParam(new((bool*)Unsafe.AsPointer(ref IsMoving)), 255),
-			new BoolParam(new((bool*)Unsafe.AsPointer(ref HasMovementInput)), 255),
-			new FloatParam(new((float*)Unsafe.AsPointer(ref Speed))),
-			new FloatParam(new((float*)Unsafe.AsPointer(ref MovementInputAmount))),
-			new StructParam(new((FRotator*)Unsafe.AsPointer(ref AimingRotation)), 12),
-			new FloatParam(new((float*)Unsafe.AsPointer(ref AimYawRate)))
-		], out _);
-	}
-
-	public unsafe void BPI_Set_MovementState( ALS_MovementState NewMovementState)
-	{
-		_ = Inner.ProcessEvent("BPI_Set_MovementState", [
-			new ByteParam(new((byte*)(&NewMovementState)))
-		], out _);
-	}
-
-	public unsafe void BPI_Set_MovementAction( ALS_MovementAction NewMovementAction)
-	{
-		_ = Inner.ProcessEvent("BPI_Set_MovementAction", [
-			new ByteParam(new((byte*)(&NewMovementAction)))
-		], out _);
-	}
-
-	public unsafe void BPI_Set_RotationMode( ALS_RotationMode NewRotationMode)
-	{
-		_ = Inner.ProcessEvent("BPI_Set_RotationMode", [
-			new ByteParam(new((byte*)(&NewRotationMode)))
-		], out _);
-	}
-
-	public unsafe void BPI_Set_Gait( ALS_Gait NewGait)
-	{
-		_ = Inner.ProcessEvent("BPI_Set_Gait", [
-			new ByteParam(new((byte*)(&NewGait)))
-		], out _);
-	}
-
-	public unsafe void BPI_Set_ViewMode( ALS_ViewMode NewViewMode)
-	{
-		_ = Inner.ProcessEvent("BPI_Set_ViewMode", [
-			new ByteParam(new((byte*)(&NewViewMode)))
-		], out _);
-	}
-
-	public unsafe void BPI_Set_OverlayState( ALS_OverlayState NewOverlayState)
-	{
-		_ = Inner.ProcessEvent("BPI_Set_OverlayState", [
-			new ByteParam(new((byte*)(&NewOverlayState)))
-		], out _);
-	}
-
-}
-
-[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0x28)]
-public unsafe struct UALS_Character_BPI_C_Repr
-{
-	[FieldOffset(0x0)] public UInterface_Repr Super; // Size: 0x28
-	public UALS_Character_BPI_C ToManaged(IUnrealFactory factory)
-	{
-		fixed (UALS_Character_BPI_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
-	}
-}
-
-
 public class UBPI_GetMeshBaseVariable_C : UInterface, ITypeRepr<UBPI_GetMeshBaseVariable_C_Repr>
 {
 	private static Dictionary<string, int>? FieldOffsets;
@@ -303020,21 +303035,6 @@ public unsafe struct UABPI_HairLayer_C_Repr
 	}
 }
 
-
-[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0x40)]
-public unsafe struct FMovementSettings_Stance
-{
-	[FieldOffset(0x0)] public FMovementSettings Standing; // Size: 0x20
-	[FieldOffset(0x20)] public FMovementSettings Crouching; // Size: 0x20
-}
-
-[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0xC0)]
-public unsafe struct FMovementSettings_State
-{
-	[FieldOffset(0x0)] public FMovementSettings_Stance VelocityDirection; // Size: 0x40
-	[FieldOffset(0x40)] public FMovementSettings_Stance LookingDirection; // Size: 0x40
-	[FieldOffset(0x80)] public FMovementSettings_Stance Aiming; // Size: 0x40
-}
 
 public class UBPI_Get_PC0001_Variables_C : UInterface, ITypeRepr<UBPI_Get_PC0001_Variables_C_Repr>
 {
@@ -305530,6 +305530,14 @@ public unsafe struct ABP_MainCharaBase_C_Repr
 	}
 }
 
+
+[StructLayout(LayoutKind.Explicit, Pack = 4, Size = 0xC)]
+public unsafe struct FFBtlAttackSEParam
+{
+	[FieldOffset(0x0)] public int SENoAttack; // Size: 0x4
+	[FieldOffset(0x4)] public int SENoAttackLong; // Size: 0x4
+	[FieldOffset(0x8)] public int SENoAttackCritical; // Size: 0x4
+}
 
 public class UABP_CH_MeshBase_C : UAnimInstanceCore, ITypeRepr<UABP_CH_MeshBase_C_Repr>
 {
@@ -312580,7 +312588,7 @@ public class UABP_PC0001_C : UABP_CH_MeshBase_C, ITypeRepr<UABP_PC0001_C_Repr>
 		set => *(bool*)(Inner.Ptr + GetFieldOffset("Is_PlayMoveToMain")) = value;
 	}
 
-	public unsafe UAnimInstance? ACL_AttachPocket
+	public unsafe UClass? ACL_AttachPocket
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("ACL_AttachPocket")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("ACL_AttachPocket")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("ACL_AttachPocket")) = value?.Inner.Ptr ?? nint.Zero;
@@ -313010,6 +313018,36 @@ public class ABP_FldPlayerDUNGEON_C : ABP_FldPlayer_C, ITypeRepr<ABP_FldPlayerDU
 		get => (FPointerToUberGraphFrame*)(Inner.Ptr + GetFieldOffset("UberGraphFrame"));
 	}
 
+	public unsafe UStaticMeshComponent? SizeCheck
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("SizeCheck")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SizeCheck")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("SizeCheck")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe UChildActorComponent? DashAttackArea
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("DashAttackArea")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("DashAttackArea")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("DashAttackArea")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe UChildActorComponent? ObjectAutoDestroyArea
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("ObjectAutoDestroyArea")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("ObjectAutoDestroyArea")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("ObjectAutoDestroyArea")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe UChildActorComponent? TargetDetectAreaLongRange
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("TargetDetectAreaLongRange")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("TargetDetectAreaLongRange")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("TargetDetectAreaLongRange")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe UChildActorComponent? AttackAreaLongRange
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("AttackAreaLongRange")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("AttackAreaLongRange")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("AttackAreaLongRange")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
 	public unsafe UChildActorComponent? SearchArea
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("SearchArea")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SearchArea")))) : null;
@@ -313082,7 +313120,7 @@ public class ABP_FldPlayerDUNGEON_C : ABP_FldPlayer_C, ITypeRepr<ABP_FldPlayerDU
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("FldPlayerDungeonComp")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe UChildActorComponent? AttackArea
+	public unsafe UChildActorComponent? AttackArea_2
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("AttackArea")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("AttackArea")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("AttackArea")) = value?.Inner.Ptr ?? nint.Zero;
@@ -313129,24 +313167,29 @@ public class ABP_FldPlayerDUNGEON_C : ABP_FldPlayer_C, ITypeRepr<ABP_FldPlayerDU
 
 }
 
-[StructLayout(LayoutKind.Explicit, Pack = 16, Size = 0x9C0)]
+[StructLayout(LayoutKind.Explicit, Pack = 16, Size = 0x9E8)]
 public unsafe struct ABP_FldPlayerDUNGEON_C_Repr
 {
 	[FieldOffset(0x0)] public ABP_FldPlayer_C_Repr Super; // Size: 0x950
 	[FieldOffset(0x950)] public FPointerToUberGraphFrame UberGraphFrame; // Size: 0x8
-	[FieldOffset(0x958)] public UChildActorComponent_Repr* SearchArea; // Size: 0x8
-	[FieldOffset(0x960)] public UPostProcessComponent_Repr* PostProcess; // Size: 0x8
-	[FieldOffset(0x968)] public UFldPartnerStartPointComp_Repr* FldPartnerStartPointComp2; // Size: 0x8
-	[FieldOffset(0x970)] public UFldPartnerStartPointComp_Repr* FldPartnerStartPointComp1; // Size: 0x8
-	[FieldOffset(0x978)] public UFldPartnerStartPointComp_Repr* FldPartnerStartPointComp0; // Size: 0x8
-	[FieldOffset(0x980)] public UFldPartnerPointComp_Repr* FldPartnerPointComp5; // Size: 0x8
-	[FieldOffset(0x988)] public UFldPartnerPointComp_Repr* FldPartnerPointComp4; // Size: 0x8
-	[FieldOffset(0x990)] public UFldPartnerPointComp_Repr* FldPartnerPointComp3; // Size: 0x8
-	[FieldOffset(0x998)] public UFldPartnerPointComp_Repr* FldPartnerPointComp2; // Size: 0x8
-	[FieldOffset(0x9A0)] public UFldPartnerPointComp_Repr* FldPartnerPointComp1; // Size: 0x8
-	[FieldOffset(0x9A8)] public UFldPartnerPointComp_Repr* FldPartnerPointComp_6; // Size: 0x8
-	[FieldOffset(0x9B0)] public UFldPlayerDungeonComp_Repr* FldPlayerDungeonComp; // Size: 0x8
-	[FieldOffset(0x9B8)] public UChildActorComponent_Repr* AttackArea; // Size: 0x8
+	[FieldOffset(0x958)] public UStaticMeshComponent_Repr* SizeCheck; // Size: 0x8
+	[FieldOffset(0x960)] public UChildActorComponent_Repr* DashAttackArea; // Size: 0x8
+	[FieldOffset(0x968)] public UChildActorComponent_Repr* ObjectAutoDestroyArea; // Size: 0x8
+	[FieldOffset(0x970)] public UChildActorComponent_Repr* TargetDetectAreaLongRange; // Size: 0x8
+	[FieldOffset(0x978)] public UChildActorComponent_Repr* AttackAreaLongRange; // Size: 0x8
+	[FieldOffset(0x980)] public UChildActorComponent_Repr* SearchArea; // Size: 0x8
+	[FieldOffset(0x988)] public UPostProcessComponent_Repr* PostProcess; // Size: 0x8
+	[FieldOffset(0x990)] public UFldPartnerStartPointComp_Repr* FldPartnerStartPointComp2; // Size: 0x8
+	[FieldOffset(0x998)] public UFldPartnerStartPointComp_Repr* FldPartnerStartPointComp1; // Size: 0x8
+	[FieldOffset(0x9A0)] public UFldPartnerStartPointComp_Repr* FldPartnerStartPointComp0; // Size: 0x8
+	[FieldOffset(0x9A8)] public UFldPartnerPointComp_Repr* FldPartnerPointComp5; // Size: 0x8
+	[FieldOffset(0x9B0)] public UFldPartnerPointComp_Repr* FldPartnerPointComp4; // Size: 0x8
+	[FieldOffset(0x9B8)] public UFldPartnerPointComp_Repr* FldPartnerPointComp3; // Size: 0x8
+	[FieldOffset(0x9C0)] public UFldPartnerPointComp_Repr* FldPartnerPointComp2; // Size: 0x8
+	[FieldOffset(0x9C8)] public UFldPartnerPointComp_Repr* FldPartnerPointComp1; // Size: 0x8
+	[FieldOffset(0x9D0)] public UFldPartnerPointComp_Repr* FldPartnerPointComp_6; // Size: 0x8
+	[FieldOffset(0x9D8)] public UFldPlayerDungeonComp_Repr* FldPlayerDungeonComp; // Size: 0x8
+	[FieldOffset(0x9E0)] public UChildActorComponent_Repr* AttackArea_2; // Size: 0x8
 
 	public ABP_FldPlayerDUNGEON_C ToManaged(IUnrealFactory factory)
 	{
@@ -313261,50 +313304,6 @@ public unsafe struct ABP_FldPlayerDAILY_C_Repr
 }
 
 
-public class ABP_F001_Route_C : AFldAnimObj, ITypeRepr<ABP_F001_Route_C_Repr>
-{
-	private static Dictionary<string, int>? FieldOffsets;
-	public ABP_F001_Route_C(IUObject inner, bool genOffsets = true) : base(inner, false)
-	{
-		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
-	}
-
-	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
-
-	public new unsafe ABP_F001_Route_C_Repr* Repr => (ABP_F001_Route_C_Repr*)Inner.Ptr;
-
-	public unsafe FPointerToUberGraphFrame* UberGraphFrame
-	{
-		get => (FPointerToUberGraphFrame*)(Inner.Ptr + GetFieldOffset("UberGraphFrame"));
-	}
-
-	public unsafe USkeletalMeshComponent? SK_F001_SymbolRoute
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("SK_F001_SymbolRoute")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SK_F001_SymbolRoute")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("SK_F001_SymbolRoute")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe void ReceiveBeginPlay()
-	{
-		_ = Inner.ProcessEvent("ReceiveBeginPlay", [], out _);
-	}
-
-}
-
-[StructLayout(LayoutKind.Explicit, Pack = 16, Size = 0x320)]
-public unsafe struct ABP_F001_Route_C_Repr
-{
-	[FieldOffset(0x0)] public AFldAnimObj_Repr Super; // Size: 0x310
-	[FieldOffset(0x310)] public FPointerToUberGraphFrame UberGraphFrame; // Size: 0x8
-	[FieldOffset(0x318)] public USkeletalMeshComponent_Repr* SK_F001_SymbolRoute; // Size: 0x8
-
-	public ABP_F001_Route_C ToManaged(IUnrealFactory factory)
-	{
-		fixed (ABP_F001_Route_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
-	}
-}
-
-
 public class ALV_FMain_Gameplay_C : ALevelScriptActor, ITypeRepr<ALV_FMain_Gameplay_C_Repr>
 {
 	private static Dictionary<string, int>? FieldOffsets;
@@ -313322,61 +313321,61 @@ public class ALV_FMain_Gameplay_C : ALevelScriptActor, ITypeRepr<ALV_FMain_Gamep
 		get => (FPointerToUberGraphFrame*)(Inner.Ptr + GetFieldOffset("UberGraphFrame"));
 	}
 
-	public unsafe ACharacterBaseCore? PlayerClass
+	public unsafe UClass? PlayerClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("PlayerClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("PlayerClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("PlayerClass")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe AFldCameraBase? CameraClass
+	public unsafe UClass? CameraClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("CameraClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("CameraClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("CameraClass")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe ACharacterBaseCore? DungeonPlayerClass
+	public unsafe UClass? DungeonPlayerClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("DungeonPlayerClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("DungeonPlayerClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("DungeonPlayerClass")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe AFldCameraBase? DungeonCameraClass
+	public unsafe UClass? DungeonCameraClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("DungeonCameraClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("DungeonCameraClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("DungeonCameraClass")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe AFldCameraBase? DngEntranceCameraClassAstrea
+	public unsafe UClass? DngEntranceCameraClassAstrea
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("DngEntranceCameraClassAstrea")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("DngEntranceCameraClassAstrea")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("DngEntranceCameraClassAstrea")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe ACharacterBaseCore? FollowerClass
+	public unsafe UClass? FollowerClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("FollowerClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("FollowerClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("FollowerClass")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe ACharacterBaseCore? FollowerKoromaruClass
+	public unsafe UClass? FollowerKoromaruClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("FollowerKoromaruClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("FollowerKoromaruClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("FollowerKoromaruClass")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe AFldCamera? TransCameraClass
+	public unsafe UClass? TransCameraClass
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("TransCameraClass")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("TransCameraClass")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("TransCameraClass")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe ACharacterBaseCore? DungeonPlayerClassAstrea
+	public unsafe UClass? DungeonPlayerClassAstrea
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("DungeonPlayerClassAstrea")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("DungeonPlayerClassAstrea")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("DungeonPlayerClassAstrea")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe AFldCameraBase? DngFinalFloorCameraClassAstrea
+	public unsafe UClass? DngFinalFloorCameraClassAstrea
 	{
 		get => *(nint*)(Inner.Ptr + GetFieldOffset("DngFinalFloorCameraClassAstrea")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("DngFinalFloorCameraClassAstrea")))) : null;
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("DngFinalFloorCameraClassAstrea")) = value?.Inner.Ptr ?? nint.Zero;
@@ -313566,43 +313565,6 @@ public unsafe struct ABP_LoadingDraw_C_Repr
 }
 
 
-public class ABP_Sche_EveryDay_C : AUtlProcActor, ITypeRepr<ABP_Sche_EveryDay_C_Repr>
-{
-	private static Dictionary<string, int>? FieldOffsets;
-	public ABP_Sche_EveryDay_C(IUObject inner, bool genOffsets = true) : base(inner, false)
-	{
-		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
-	}
-
-	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
-
-	public new unsafe ABP_Sche_EveryDay_C_Repr* Repr => (ABP_Sche_EveryDay_C_Repr*)Inner.Ptr;
-
-	public unsafe FPointerToUberGraphFrame* UberGraphFrame
-	{
-		get => (FPointerToUberGraphFrame*)(Inner.Ptr + GetFieldOffset("UberGraphFrame"));
-	}
-
-	public unsafe void StartProc()
-	{
-		_ = Inner.ProcessEvent("StartProc", [], out _);
-	}
-
-}
-
-[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0x2B8)]
-public unsafe struct ABP_Sche_EveryDay_C_Repr
-{
-	[FieldOffset(0x0)] public AUtlProcActor_Repr Super; // Size: 0x2B0
-	[FieldOffset(0x2B0)] public FPointerToUberGraphFrame UberGraphFrame; // Size: 0x8
-
-	public ABP_Sche_EveryDay_C ToManaged(IUnrealFactory factory)
-	{
-		fixed (ABP_Sche_EveryDay_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
-	}
-}
-
-
 public class ABP_Sche_EveryTime_C : AUtlProcActor, ITypeRepr<ABP_Sche_EveryTime_C_Repr>
 {
 	private static Dictionary<string, int>? FieldOffsets;
@@ -313640,239 +313602,39 @@ public unsafe struct ABP_Sche_EveryTime_C_Repr
 }
 
 
-public class ABP_F001_SymbolShrine_C : AFldAnimObj, ITypeRepr<ABP_F001_SymbolShrine_C_Repr>
+public class ABP_Sche_EveryDay_C : AUtlProcActor, ITypeRepr<ABP_Sche_EveryDay_C_Repr>
 {
 	private static Dictionary<string, int>? FieldOffsets;
-	public ABP_F001_SymbolShrine_C(IUObject inner, bool genOffsets = true) : base(inner, false)
+	public ABP_Sche_EveryDay_C(IUObject inner, bool genOffsets = true) : base(inner, false)
 	{
 		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
 	}
 
 	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
 
-	public new unsafe ABP_F001_SymbolShrine_C_Repr* Repr => (ABP_F001_SymbolShrine_C_Repr*)Inner.Ptr;
+	public new unsafe ABP_Sche_EveryDay_C_Repr* Repr => (ABP_Sche_EveryDay_C_Repr*)Inner.Ptr;
 
 	public unsafe FPointerToUberGraphFrame* UberGraphFrame
 	{
 		get => (FPointerToUberGraphFrame*)(Inner.Ptr + GetFieldOffset("UberGraphFrame"));
 	}
 
-	public unsafe USpotLightComponent? SpotLight_B11
+	public unsafe void StartProc()
 	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_B11")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_B11")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_B11")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe USpotLightComponent? SpotLight_B01
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_B01")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_B01")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_B01")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe USpotLightComponent? SpotLight_A11
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_A11")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_A11")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_A11")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe USpotLightComponent? SpotLight_A01
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_A01")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_A01")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_A01")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe UUITownMapSymbolComponent? UITownMapSymbol
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("UITownMapSymbol")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("UITownMapSymbol")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("UITownMapSymbol")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe USkeletalMeshComponent? SK_F001_Symbol
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("SK_F001_Symbol")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SK_F001_Symbol")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("SK_F001_Symbol")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe void ReceiveBeginPlay()
-	{
-		_ = Inner.ProcessEvent("ReceiveBeginPlay", [], out _);
+		_ = Inner.ProcessEvent("StartProc", [], out _);
 	}
 
 }
 
-[StructLayout(LayoutKind.Explicit, Pack = 16, Size = 0x348)]
-public unsafe struct ABP_F001_SymbolShrine_C_Repr
+[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0x2B8)]
+public unsafe struct ABP_Sche_EveryDay_C_Repr
 {
-	[FieldOffset(0x0)] public AFldAnimObj_Repr Super; // Size: 0x310
-	[FieldOffset(0x310)] public FPointerToUberGraphFrame UberGraphFrame; // Size: 0x8
-	[FieldOffset(0x318)] public USpotLightComponent_Repr* SpotLight_B11; // Size: 0x8
-	[FieldOffset(0x320)] public USpotLightComponent_Repr* SpotLight_B01; // Size: 0x8
-	[FieldOffset(0x328)] public USpotLightComponent_Repr* SpotLight_A11; // Size: 0x8
-	[FieldOffset(0x330)] public USpotLightComponent_Repr* SpotLight_A01; // Size: 0x8
-	[FieldOffset(0x338)] public UUITownMapSymbolComponent_Repr* UITownMapSymbol; // Size: 0x8
-	[FieldOffset(0x340)] public USkeletalMeshComponent_Repr* SK_F001_Symbol; // Size: 0x8
+	[FieldOffset(0x0)] public AUtlProcActor_Repr Super; // Size: 0x2B0
+	[FieldOffset(0x2B0)] public FPointerToUberGraphFrame UberGraphFrame; // Size: 0x8
 
-	public ABP_F001_SymbolShrine_C ToManaged(IUnrealFactory factory)
+	public ABP_Sche_EveryDay_C ToManaged(IUnrealFactory factory)
 	{
-		fixed (ABP_F001_SymbolShrine_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
-	}
-}
-
-
-public class ABP_F001_SymbolSchool_C : AFldAnimObj, ITypeRepr<ABP_F001_SymbolSchool_C_Repr>
-{
-	private static Dictionary<string, int>? FieldOffsets;
-	public ABP_F001_SymbolSchool_C(IUObject inner, bool genOffsets = true) : base(inner, false)
-	{
-		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
-	}
-
-	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
-
-	public new unsafe ABP_F001_SymbolSchool_C_Repr* Repr => (ABP_F001_SymbolSchool_C_Repr*)Inner.Ptr;
-
-	public unsafe FPointerToUberGraphFrame* UberGraphFrame
-	{
-		get => (FPointerToUberGraphFrame*)(Inner.Ptr + GetFieldOffset("UberGraphFrame"));
-	}
-
-	public unsafe USpotLightComponent? SpotLight_B11
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_B11")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_B11")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_B11")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe USpotLightComponent? SpotLight_B01
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_B01")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_B01")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_B01")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe USpotLightComponent? SpotLight_A11
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_A11")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_A11")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_A11")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe USpotLightComponent? SpotLight_A01
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_A01")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_A01")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_A01")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe UUITownMapSymbolComponent? UITownMapSymbol
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("UITownMapSymbol")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("UITownMapSymbol")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("UITownMapSymbol")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe USkeletalMeshComponent? SK_F001_Symbol
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("SK_F001_Symbol")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SK_F001_Symbol")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("SK_F001_Symbol")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe void ReceiveBeginPlay()
-	{
-		_ = Inner.ProcessEvent("ReceiveBeginPlay", [], out _);
-	}
-
-}
-
-[StructLayout(LayoutKind.Explicit, Pack = 16, Size = 0x348)]
-public unsafe struct ABP_F001_SymbolSchool_C_Repr
-{
-	[FieldOffset(0x0)] public AFldAnimObj_Repr Super; // Size: 0x310
-	[FieldOffset(0x310)] public FPointerToUberGraphFrame UberGraphFrame; // Size: 0x8
-	[FieldOffset(0x318)] public USpotLightComponent_Repr* SpotLight_B11; // Size: 0x8
-	[FieldOffset(0x320)] public USpotLightComponent_Repr* SpotLight_B01; // Size: 0x8
-	[FieldOffset(0x328)] public USpotLightComponent_Repr* SpotLight_A11; // Size: 0x8
-	[FieldOffset(0x330)] public USpotLightComponent_Repr* SpotLight_A01; // Size: 0x8
-	[FieldOffset(0x338)] public UUITownMapSymbolComponent_Repr* UITownMapSymbol; // Size: 0x8
-	[FieldOffset(0x340)] public USkeletalMeshComponent_Repr* SK_F001_Symbol; // Size: 0x8
-
-	public ABP_F001_SymbolSchool_C ToManaged(IUnrealFactory factory)
-	{
-		fixed (ABP_F001_SymbolSchool_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
-	}
-}
-
-
-public class ABP_F001_SymbolDomitory_C : AFldAnimObj, ITypeRepr<ABP_F001_SymbolDomitory_C_Repr>
-{
-	private static Dictionary<string, int>? FieldOffsets;
-	public ABP_F001_SymbolDomitory_C(IUObject inner, bool genOffsets = true) : base(inner, false)
-	{
-		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
-	}
-
-	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
-
-	public new unsafe ABP_F001_SymbolDomitory_C_Repr* Repr => (ABP_F001_SymbolDomitory_C_Repr*)Inner.Ptr;
-
-	public unsafe FPointerToUberGraphFrame* UberGraphFrame
-	{
-		get => (FPointerToUberGraphFrame*)(Inner.Ptr + GetFieldOffset("UberGraphFrame"));
-	}
-
-	public unsafe USpotLightComponent? SpotLight_B11
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_B11")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_B11")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_B11")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe USpotLightComponent? SpotLight_B01
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_B01")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_B01")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_B01")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe USpotLightComponent? SpotLight_A11
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_A11")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_A11")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_A11")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe USpotLightComponent? SpotLight_A01
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_A01")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_A01")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_A01")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe UUITownMapSymbolComponent? UITownMapSymbol
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("UITownMapSymbol")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("UITownMapSymbol")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("UITownMapSymbol")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe USkeletalMeshComponent? SK_F001_Symbol
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("SK_F001_Symbol")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SK_F001_Symbol")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("SK_F001_Symbol")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe void ReceiveBeginPlay()
-	{
-		_ = Inner.ProcessEvent("ReceiveBeginPlay", [], out _);
-	}
-
-}
-
-[StructLayout(LayoutKind.Explicit, Pack = 16, Size = 0x348)]
-public unsafe struct ABP_F001_SymbolDomitory_C_Repr
-{
-	[FieldOffset(0x0)] public AFldAnimObj_Repr Super; // Size: 0x310
-	[FieldOffset(0x310)] public FPointerToUberGraphFrame UberGraphFrame; // Size: 0x8
-	[FieldOffset(0x318)] public USpotLightComponent_Repr* SpotLight_B11; // Size: 0x8
-	[FieldOffset(0x320)] public USpotLightComponent_Repr* SpotLight_B01; // Size: 0x8
-	[FieldOffset(0x328)] public USpotLightComponent_Repr* SpotLight_A11; // Size: 0x8
-	[FieldOffset(0x330)] public USpotLightComponent_Repr* SpotLight_A01; // Size: 0x8
-	[FieldOffset(0x338)] public UUITownMapSymbolComponent_Repr* UITownMapSymbol; // Size: 0x8
-	[FieldOffset(0x340)] public USkeletalMeshComponent_Repr* SK_F001_Symbol; // Size: 0x8
-
-	public ABP_F001_SymbolDomitory_C ToManaged(IUnrealFactory factory)
-	{
-		fixed (ABP_F001_SymbolDomitory_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
+		fixed (ABP_Sche_EveryDay_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
 	}
 }
 
@@ -314073,85 +313835,6 @@ public unsafe struct ABP_UI_AccessIcon_Talk_C_Repr
 	public ABP_UI_AccessIcon_Talk_C ToManaged(IUnrealFactory factory)
 	{
 		fixed (ABP_UI_AccessIcon_Talk_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
-	}
-}
-
-
-public class ABP_F001_SymbolIwatodai_C : AFldAnimObj, ITypeRepr<ABP_F001_SymbolIwatodai_C_Repr>
-{
-	private static Dictionary<string, int>? FieldOffsets;
-	public ABP_F001_SymbolIwatodai_C(IUObject inner, bool genOffsets = true) : base(inner, false)
-	{
-		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
-	}
-
-	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
-
-	public new unsafe ABP_F001_SymbolIwatodai_C_Repr* Repr => (ABP_F001_SymbolIwatodai_C_Repr*)Inner.Ptr;
-
-	public unsafe FPointerToUberGraphFrame* UberGraphFrame
-	{
-		get => (FPointerToUberGraphFrame*)(Inner.Ptr + GetFieldOffset("UberGraphFrame"));
-	}
-
-	public unsafe USpotLightComponent? SpotLight_B11
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_B11")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_B11")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_B11")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe USpotLightComponent? SpotLight_B01
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_B01")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_B01")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_B01")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe USpotLightComponent? SpotLight_A11
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_A11")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_A11")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_A11")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe USpotLightComponent? SpotLight_A01
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_A01")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_A01")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_A01")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe UUITownMapSymbolComponent? UITownMapSymbol
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("UITownMapSymbol")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("UITownMapSymbol")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("UITownMapSymbol")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe USkeletalMeshComponent? SK_F001_Symbol
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("SK_F001_Symbol")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SK_F001_Symbol")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("SK_F001_Symbol")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe void ReceiveBeginPlay()
-	{
-		_ = Inner.ProcessEvent("ReceiveBeginPlay", [], out _);
-	}
-
-}
-
-[StructLayout(LayoutKind.Explicit, Pack = 16, Size = 0x348)]
-public unsafe struct ABP_F001_SymbolIwatodai_C_Repr
-{
-	[FieldOffset(0x0)] public AFldAnimObj_Repr Super; // Size: 0x310
-	[FieldOffset(0x310)] public FPointerToUberGraphFrame UberGraphFrame; // Size: 0x8
-	[FieldOffset(0x318)] public USpotLightComponent_Repr* SpotLight_B11; // Size: 0x8
-	[FieldOffset(0x320)] public USpotLightComponent_Repr* SpotLight_B01; // Size: 0x8
-	[FieldOffset(0x328)] public USpotLightComponent_Repr* SpotLight_A11; // Size: 0x8
-	[FieldOffset(0x330)] public USpotLightComponent_Repr* SpotLight_A01; // Size: 0x8
-	[FieldOffset(0x338)] public UUITownMapSymbolComponent_Repr* UITownMapSymbol; // Size: 0x8
-	[FieldOffset(0x340)] public USkeletalMeshComponent_Repr* SK_F001_Symbol; // Size: 0x8
-
-	public ABP_F001_SymbolIwatodai_C ToManaged(IUnrealFactory factory)
-	{
-		fixed (ABP_F001_SymbolIwatodai_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
 	}
 }
 
@@ -314396,160 +314079,324 @@ public unsafe struct ABP_UI_AccessIcon_Walking_C_Repr
 }
 
 
-public class ABP_F001_SymbolPortIsland_C : AFldAnimObj, ITypeRepr<ABP_F001_SymbolPortIsland_C_Repr>
+public class ABP_PersonaBase_C : APersonaBaseCore, ITypeRepr<ABP_PersonaBase_C_Repr>
 {
 	private static Dictionary<string, int>? FieldOffsets;
-	public ABP_F001_SymbolPortIsland_C(IUObject inner, bool genOffsets = true) : base(inner, false)
+	public ABP_PersonaBase_C(IUObject inner, bool genOffsets = true) : base(inner, false)
 	{
 		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
 	}
 
 	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
 
-	public new unsafe ABP_F001_SymbolPortIsland_C_Repr* Repr => (ABP_F001_SymbolPortIsland_C_Repr*)Inner.Ptr;
+	public new unsafe ABP_PersonaBase_C_Repr* Repr => (ABP_PersonaBase_C_Repr*)Inner.Ptr;
 
 	public unsafe FPointerToUberGraphFrame* UberGraphFrame
 	{
 		get => (FPointerToUberGraphFrame*)(Inner.Ptr + GetFieldOffset("UberGraphFrame"));
 	}
 
-	public unsafe USpotLightComponent? SpotLight_B11
+	public unsafe TArray<Ptr<ABP_CharaPointLight_C_Repr>>* OverlapPointLights
 	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_B11")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_B11")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_B11")) = value?.Inner.Ptr ?? nint.Zero;
+		get => (TArray<Ptr<ABP_CharaPointLight_C_Repr>>*)(Inner.Ptr + GetFieldOffset("OverlapPointLights"));
 	}
 
-	public unsafe USpotLightComponent? SpotLight_B01
+	public unsafe int NumberOfPointLights
 	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_B01")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_B01")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_B01")) = value?.Inner.Ptr ?? nint.Zero;
+		get => *(int*)(Inner.Ptr + GetFieldOffset("NumberOfPointLights"));
+		set => *(int*)(Inner.Ptr + GetFieldOffset("NumberOfPointLights")) = value;
 	}
 
-	public unsafe USpotLightComponent? SpotLight_A11
+	public unsafe TArray<Ptr<AActor_Repr>>* ClosestPointLight
 	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_A11")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_A11")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_A11")) = value?.Inner.Ptr ?? nint.Zero;
+		get => (TArray<Ptr<AActor_Repr>>*)(Inner.Ptr + GetFieldOffset("ClosestPointLight"));
 	}
 
-	public unsafe USpotLightComponent? SpotLight_A01
+	public unsafe TArray<Ptr<UMaterialInstanceDynamic_Repr>>* DynamicMIs
 	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_A01")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_A01")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_A01")) = value?.Inner.Ptr ?? nint.Zero;
+		get => (TArray<Ptr<UMaterialInstanceDynamic_Repr>>*)(Inner.Ptr + GetFieldOffset("DynamicMIs"));
 	}
 
-	public unsafe UUITownMapSymbolComponent? UITownMapSymbol
+	public unsafe float BoundsScale
 	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("UITownMapSymbol")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("UITownMapSymbol")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("UITownMapSymbol")) = value?.Inner.Ptr ?? nint.Zero;
+		get => *(float*)(Inner.Ptr + GetFieldOffset("BoundsScale"));
+		set => *(float*)(Inner.Ptr + GetFieldOffset("BoundsScale")) = value;
 	}
 
-	public unsafe USkeletalMeshComponent? SK_F001_Symbol
+	public unsafe float NiagaraDesiredAge
 	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("SK_F001_Symbol")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SK_F001_Symbol")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("SK_F001_Symbol")) = value?.Inner.Ptr ?? nint.Zero;
+		get => *(float*)(Inner.Ptr + GetFieldOffset("NiagaraDesiredAge"));
+		set => *(float*)(Inner.Ptr + GetFieldOffset("NiagaraDesiredAge")) = value;
 	}
 
-	public unsafe void ReceiveBeginPlay()
+	public unsafe bool bNiagaraOffscreen
 	{
-		_ = Inner.ProcessEvent("ReceiveBeginPlay", [], out _);
+		get => *(bool*)(Inner.Ptr + GetFieldOffset("bNiagaraOffscreen"));
+		set => *(bool*)(Inner.Ptr + GetFieldOffset("bNiagaraOffscreen")) = value;
+	}
+
+	public unsafe TArray<Ptr<UNiagaraComponent_Repr>>* NiagaraComponents
+	{
+		get => (TArray<Ptr<UNiagaraComponent_Repr>>*)(Inner.Ptr + GetFieldOffset("NiagaraComponents"));
+	}
+
+	public unsafe float LastRenderTimeOnScreen
+	{
+		get => *(float*)(Inner.Ptr + GetFieldOffset("LastRenderTimeOnScreen"));
+		set => *(float*)(Inner.Ptr + GetFieldOffset("LastRenderTimeOnScreen")) = value;
+	}
+
+	public unsafe FVector* StartPositionVec_VG
+	{
+		get => (FVector*)(Inner.Ptr + GetFieldOffset("StartPositionVec_VG"));
+	}
+
+	public unsafe FVector* EndPositionVec_VG
+	{
+		get => (FVector*)(Inner.Ptr + GetFieldOffset("EndPositionVec_VG"));
+	}
+
+	public unsafe void ReceiveActorEndOverlap( AActor? OtherActor)
+	{
+		nint OtherActor_Ptr = OtherActor?.Inner.Ptr ?? nint.Zero;
+		_ = Inner.ProcessEvent("ReceiveActorEndOverlap", [
+			new ObjectParam(new(&OtherActor_Ptr))
+		], out _);
+	}
+
+	public unsafe void ReceiveActorBeginOverlap( AActor? OtherActor)
+	{
+		nint OtherActor_Ptr = OtherActor?.Inner.Ptr ?? nint.Zero;
+		_ = Inner.ProcessEvent("ReceiveActorBeginOverlap", [
+			new ObjectParam(new(&OtherActor_Ptr))
+		], out _);
+	}
+
+	public unsafe void ReceiveTick( float DeltaSeconds)
+	{
+		_ = Inner.ProcessEvent("ReceiveTick", [
+			new FloatParam(new(&DeltaSeconds))
+		], out _);
+	}
+
+	public unsafe void UserConstructionScript( int Temp_int_Array_Index_Variable, FVector CallFunc_GetSocketLocation_ReturnValue, FLinearColor CallFunc_Conv_VectorToLinearColor_ReturnValue, FLinearColor CallFunc_Conv_VectorToLinearColor_ReturnValue_1, FVector CallFunc_GetSocketLocation_ReturnValue_1, int Temp_int_Loop_Counter_Variable, int CallFunc_Add_IntInt_ReturnValue, UMaterialInstanceDynamic? CallFunc_Array_Get_Item, bool CallFunc_IsValid_ReturnValue, int CallFunc_Array_Length_ReturnValue, bool CallFunc_Less_IntInt_ReturnValue)
+	{
+		nint CallFunc_Array_Get_Item_Ptr = CallFunc_Array_Get_Item?.Inner.Ptr ?? nint.Zero;
+		_ = Inner.ProcessEvent("UserConstructionScript", [
+			new IntParam(new(&Temp_int_Array_Index_Variable)),
+			new StructParam(new(&CallFunc_GetSocketLocation_ReturnValue), 12),
+			new StructParam(new(&CallFunc_Conv_VectorToLinearColor_ReturnValue), 16),
+			new StructParam(new(&CallFunc_Conv_VectorToLinearColor_ReturnValue_1), 16),
+			new StructParam(new(&CallFunc_GetSocketLocation_ReturnValue_1), 12),
+			new IntParam(new(&Temp_int_Loop_Counter_Variable)),
+			new IntParam(new(&CallFunc_Add_IntInt_ReturnValue)),
+			new ObjectParam(new(&CallFunc_Array_Get_Item_Ptr)),
+			new BoolParam(new(&CallFunc_IsValid_ReturnValue), 255),
+			new IntParam(new(&CallFunc_Array_Length_ReturnValue)),
+			new BoolParam(new(&CallFunc_Less_IntInt_ReturnValue), 255)
+		], out _);
+	}
+
+	public unsafe void CreateDMI( UMeshComponent? MeshComponent, TArray<Ptr<UMaterialInterface_Repr>> Materials, TArray<Ptr<UMaterialInterface_Repr>> CallFunc_GetMaterials_ReturnValue, int Temp_int_Variable, int CallFunc_Array_LastIndex_ReturnValue, UMaterialInterface? CallFunc_Array_Get_Item, bool CallFunc_LessEqual_IntInt_ReturnValue, FString CallFunc_GetDisplayName_ReturnValue, FString CallFunc_Concat_StrStr_ReturnValue, FName CallFunc_Conv_StringToName_ReturnValue, int CallFunc_Add_IntInt_ReturnValue, UMaterialInstanceDynamic? CallFunc_CreateDynamicMaterialInstance_ReturnValue)
+	{
+		nint MeshComponent_Ptr = MeshComponent?.Inner.Ptr ?? nint.Zero;
+		nint CallFunc_Array_Get_Item_Ptr = CallFunc_Array_Get_Item?.Inner.Ptr ?? nint.Zero;
+		nint CallFunc_CreateDynamicMaterialInstance_ReturnValue_Ptr = CallFunc_CreateDynamicMaterialInstance_ReturnValue?.Inner.Ptr ?? nint.Zero;
+		_ = Inner.ProcessEvent("CreateDMI", [
+			new ObjectParam(new(&MeshComponent_Ptr)),
+			new ArrayParam(new((TArray<int>*)(&Materials))),
+			new ArrayParam(new((TArray<int>*)(&CallFunc_GetMaterials_ReturnValue))),
+			new IntParam(new(&Temp_int_Variable)),
+			new IntParam(new(&CallFunc_Array_LastIndex_ReturnValue)),
+			new ObjectParam(new(&CallFunc_Array_Get_Item_Ptr)),
+			new BoolParam(new(&CallFunc_LessEqual_IntInt_ReturnValue), 255),
+			new StringParam(new(&CallFunc_GetDisplayName_ReturnValue)),
+			new StringParam(new(&CallFunc_Concat_StrStr_ReturnValue)),
+			new NameParam(new(&CallFunc_Conv_StringToName_ReturnValue)),
+			new IntParam(new(&CallFunc_Add_IntInt_ReturnValue)),
+			new ObjectParam(new(&CallFunc_CreateDynamicMaterialInstance_ReturnValue_Ptr))
+		], out _);
+	}
+
+	public unsafe void SetPointLightParameter( UMaterialInstanceDynamic? MIDObjectReference, int Temp_int_Loop_Counter_Variable, int CallFunc_Array_Length_ReturnValue, int CallFunc_Add_IntInt_ReturnValue, bool CallFunc_Less_IntInt_ReturnValue, int Temp_int_Array_Index_Variable, AActor? CallFunc_Array_Get_Item, FString CallFunc_Conv_IntToString_ReturnValue, ABP_CharaPointLight_C? K2Node_DynamicCast_AsBP_Chara_Point_Light, bool K2Node_DynamicCast_bSuccess, FString CallFunc_Concat_StrStr_ReturnValue, FName CallFunc_Conv_StringToName_ReturnValue, FString CallFunc_Conv_IntToString_ReturnValue_1, FVector CallFunc_K2_GetComponentLocation_ReturnValue, FString CallFunc_Concat_StrStr_ReturnValue_1, FLinearColor CallFunc_Conv_VectorToLinearColor_ReturnValue, FName CallFunc_Conv_StringToName_ReturnValue_1, FString CallFunc_Conv_IntToString_ReturnValue_2, FString CallFunc_Concat_StrStr_ReturnValue_2, FString CallFunc_Conv_IntToString_ReturnValue_3, FName CallFunc_Conv_StringToName_ReturnValue_2, FString CallFunc_Concat_StrStr_ReturnValue_3, FName CallFunc_Conv_StringToName_ReturnValue_3, FString CallFunc_Conv_IntToString_ReturnValue_4, FString CallFunc_Concat_StrStr_ReturnValue_4, FString CallFunc_Conv_IntToString_ReturnValue_5, FName CallFunc_Conv_StringToName_ReturnValue_4, FString CallFunc_Concat_StrStr_ReturnValue_5, FName CallFunc_Conv_StringToName_ReturnValue_5, FString CallFunc_Conv_IntToString_ReturnValue_6, FString CallFunc_Concat_StrStr_ReturnValue_6, FName CallFunc_Conv_StringToName_ReturnValue_6)
+	{
+		nint MIDObjectReference_Ptr = MIDObjectReference?.Inner.Ptr ?? nint.Zero;
+		nint CallFunc_Array_Get_Item_Ptr = CallFunc_Array_Get_Item?.Inner.Ptr ?? nint.Zero;
+		nint K2Node_DynamicCast_AsBP_Chara_Point_Light_Ptr = K2Node_DynamicCast_AsBP_Chara_Point_Light?.Inner.Ptr ?? nint.Zero;
+		_ = Inner.ProcessEvent("SetPointLightParameter", [
+			new ObjectParam(new(&MIDObjectReference_Ptr)),
+			new IntParam(new(&Temp_int_Loop_Counter_Variable)),
+			new IntParam(new(&CallFunc_Array_Length_ReturnValue)),
+			new IntParam(new(&CallFunc_Add_IntInt_ReturnValue)),
+			new BoolParam(new(&CallFunc_Less_IntInt_ReturnValue), 255),
+			new IntParam(new(&Temp_int_Array_Index_Variable)),
+			new ObjectParam(new(&CallFunc_Array_Get_Item_Ptr)),
+			new StringParam(new(&CallFunc_Conv_IntToString_ReturnValue)),
+			new ObjectParam(new(&K2Node_DynamicCast_AsBP_Chara_Point_Light_Ptr)),
+			new BoolParam(new(&K2Node_DynamicCast_bSuccess), 255),
+			new StringParam(new(&CallFunc_Concat_StrStr_ReturnValue)),
+			new NameParam(new(&CallFunc_Conv_StringToName_ReturnValue)),
+			new StringParam(new(&CallFunc_Conv_IntToString_ReturnValue_1)),
+			new StructParam(new(&CallFunc_K2_GetComponentLocation_ReturnValue), 12),
+			new StringParam(new(&CallFunc_Concat_StrStr_ReturnValue_1)),
+			new StructParam(new(&CallFunc_Conv_VectorToLinearColor_ReturnValue), 16),
+			new NameParam(new(&CallFunc_Conv_StringToName_ReturnValue_1)),
+			new StringParam(new(&CallFunc_Conv_IntToString_ReturnValue_2)),
+			new StringParam(new(&CallFunc_Concat_StrStr_ReturnValue_2)),
+			new StringParam(new(&CallFunc_Conv_IntToString_ReturnValue_3)),
+			new NameParam(new(&CallFunc_Conv_StringToName_ReturnValue_2)),
+			new StringParam(new(&CallFunc_Concat_StrStr_ReturnValue_3)),
+			new NameParam(new(&CallFunc_Conv_StringToName_ReturnValue_3)),
+			new StringParam(new(&CallFunc_Conv_IntToString_ReturnValue_4)),
+			new StringParam(new(&CallFunc_Concat_StrStr_ReturnValue_4)),
+			new StringParam(new(&CallFunc_Conv_IntToString_ReturnValue_5)),
+			new NameParam(new(&CallFunc_Conv_StringToName_ReturnValue_4)),
+			new StringParam(new(&CallFunc_Concat_StrStr_ReturnValue_5)),
+			new NameParam(new(&CallFunc_Conv_StringToName_ReturnValue_5)),
+			new StringParam(new(&CallFunc_Conv_IntToString_ReturnValue_6)),
+			new StringParam(new(&CallFunc_Concat_StrStr_ReturnValue_6)),
+			new NameParam(new(&CallFunc_Conv_StringToName_ReturnValue_6))
+		], out _);
+	}
+
+	public unsafe void SetDMIParameter_Tick( int Temp_int_Loop_Counter_Variable, int CallFunc_Add_IntInt_ReturnValue, int Temp_int_Array_Index_Variable, float CallFunc_BreakVector_X, float CallFunc_BreakVector_Y, float CallFunc_BreakVector_Z, int Temp_int_Loop_Counter_Variable_1, int CallFunc_Add_IntInt_ReturnValue_1, FLinearColor CallFunc_Conv_VectorToLinearColor_ReturnValue, FLinearColor CallFunc_Conv_VectorToLinearColor_ReturnValue_1, float CallFunc_BreakVector_X_1, float CallFunc_BreakVector_Y_1, float CallFunc_BreakVector_Z_1, int Temp_int_Array_Index_Variable_1, FVector CallFunc_GetSocketLocation_ReturnValue, FVector CallFunc_GetSocketLocation_ReturnValue_1, float CallFunc_BreakVector_X_2, float CallFunc_BreakVector_Y_2, float CallFunc_BreakVector_Z_2, float CallFunc_BreakVector_X_3, float CallFunc_BreakVector_Y_3, float CallFunc_BreakVector_Z_3, bool CallFunc_NearlyEqual_FloatFloat_ReturnValue, bool CallFunc_NearlyEqual_FloatFloat_ReturnValue_1, UMaterialInstanceDynamic? CallFunc_Array_Get_Item, UMaterialInstanceDynamic? CallFunc_Array_Get_Item_1, bool CallFunc_IsValid_ReturnValue, bool CallFunc_IsValid_ReturnValue_1, int CallFunc_Array_Length_ReturnValue, int CallFunc_Array_Length_ReturnValue_1, bool CallFunc_Less_IntInt_ReturnValue, bool CallFunc_Less_IntInt_ReturnValue_1)
+	{
+		nint CallFunc_Array_Get_Item_Ptr = CallFunc_Array_Get_Item?.Inner.Ptr ?? nint.Zero;
+		nint CallFunc_Array_Get_Item_1_Ptr = CallFunc_Array_Get_Item_1?.Inner.Ptr ?? nint.Zero;
+		_ = Inner.ProcessEvent("SetDMIParameter_Tick", [
+			new IntParam(new(&Temp_int_Loop_Counter_Variable)),
+			new IntParam(new(&CallFunc_Add_IntInt_ReturnValue)),
+			new IntParam(new(&Temp_int_Array_Index_Variable)),
+			new FloatParam(new(&CallFunc_BreakVector_X)),
+			new FloatParam(new(&CallFunc_BreakVector_Y)),
+			new FloatParam(new(&CallFunc_BreakVector_Z)),
+			new IntParam(new(&Temp_int_Loop_Counter_Variable_1)),
+			new IntParam(new(&CallFunc_Add_IntInt_ReturnValue_1)),
+			new StructParam(new(&CallFunc_Conv_VectorToLinearColor_ReturnValue), 16),
+			new StructParam(new(&CallFunc_Conv_VectorToLinearColor_ReturnValue_1), 16),
+			new FloatParam(new(&CallFunc_BreakVector_X_1)),
+			new FloatParam(new(&CallFunc_BreakVector_Y_1)),
+			new FloatParam(new(&CallFunc_BreakVector_Z_1)),
+			new IntParam(new(&Temp_int_Array_Index_Variable_1)),
+			new StructParam(new(&CallFunc_GetSocketLocation_ReturnValue), 12),
+			new StructParam(new(&CallFunc_GetSocketLocation_ReturnValue_1), 12),
+			new FloatParam(new(&CallFunc_BreakVector_X_2)),
+			new FloatParam(new(&CallFunc_BreakVector_Y_2)),
+			new FloatParam(new(&CallFunc_BreakVector_Z_2)),
+			new FloatParam(new(&CallFunc_BreakVector_X_3)),
+			new FloatParam(new(&CallFunc_BreakVector_Y_3)),
+			new FloatParam(new(&CallFunc_BreakVector_Z_3)),
+			new BoolParam(new(&CallFunc_NearlyEqual_FloatFloat_ReturnValue), 255),
+			new BoolParam(new(&CallFunc_NearlyEqual_FloatFloat_ReturnValue_1), 255),
+			new ObjectParam(new(&CallFunc_Array_Get_Item_Ptr)),
+			new ObjectParam(new(&CallFunc_Array_Get_Item_1_Ptr)),
+			new BoolParam(new(&CallFunc_IsValid_ReturnValue), 255),
+			new BoolParam(new(&CallFunc_IsValid_ReturnValue_1), 255),
+			new IntParam(new(&CallFunc_Array_Length_ReturnValue)),
+			new IntParam(new(&CallFunc_Array_Length_ReturnValue_1)),
+			new BoolParam(new(&CallFunc_Less_IntInt_ReturnValue), 255),
+			new BoolParam(new(&CallFunc_Less_IntInt_ReturnValue_1), 255)
+		], out _);
+	}
+
+	public unsafe void SetScalarParameterValueEx( UMaterialInstanceDynamic? Material, FName ParameterName, float ParameterValue, float requestValue, float CallFunc_K2_GetScalarParameterValue_ReturnValue, bool CallFunc_NearlyEqual_FloatFloat_ReturnValue)
+	{
+		nint Material_Ptr = Material?.Inner.Ptr ?? nint.Zero;
+		_ = Inner.ProcessEvent("SetScalarParameterValueEx", [
+			new ObjectParam(new(&Material_Ptr)),
+			new NameParam(new(&ParameterName)),
+			new FloatParam(new(&ParameterValue)),
+			new FloatParam(new(&requestValue)),
+			new FloatParam(new(&CallFunc_K2_GetScalarParameterValue_ReturnValue)),
+			new BoolParam(new(&CallFunc_NearlyEqual_FloatFloat_ReturnValue), 255)
+		], out _);
+	}
+
+	public unsafe void GetClosestPointLights( int MaxNumOfPointLights, TArray<float> LightDistance, float Distance, int Temp_int_Loop_Counter_Variable, int CallFunc_Add_IntInt_ReturnValue, int Temp_int_Array_Index_Variable, bool CallFunc_EqualEqual_IntInt_ReturnValue, int CallFunc_Subtract_IntInt_ReturnValue, int Temp_int_Variable, bool CallFunc_Less_FloatFloat_ReturnValue, int CallFunc_Add_IntInt_ReturnValue_1, bool CallFunc_LessEqual_IntInt_ReturnValue, TArray<float> K2Node_MakeArray_Array, bool CallFunc_GreaterEqual_IntInt_ReturnValue, bool Temp_bool_Variable, bool CallFunc_Not_PreBool_ReturnValue, AActor? CallFunc_Array_Get_Item, int CallFunc_Array_Length_ReturnValue, bool CallFunc_Less_IntInt_ReturnValue, bool CallFunc_BooleanAND_ReturnValue, float CallFunc_GetDistanceTo_ReturnValue)
+	{
+		nint CallFunc_Array_Get_Item_Ptr = CallFunc_Array_Get_Item?.Inner.Ptr ?? nint.Zero;
+		_ = Inner.ProcessEvent("GetClosestPointLights", [
+			new IntParam(new(&MaxNumOfPointLights)),
+			new ArrayParam(new((TArray<int>*)(&LightDistance))),
+			new FloatParam(new(&Distance)),
+			new IntParam(new(&Temp_int_Loop_Counter_Variable)),
+			new IntParam(new(&CallFunc_Add_IntInt_ReturnValue)),
+			new IntParam(new(&Temp_int_Array_Index_Variable)),
+			new BoolParam(new(&CallFunc_EqualEqual_IntInt_ReturnValue), 255),
+			new IntParam(new(&CallFunc_Subtract_IntInt_ReturnValue)),
+			new IntParam(new(&Temp_int_Variable)),
+			new BoolParam(new(&CallFunc_Less_FloatFloat_ReturnValue), 255),
+			new IntParam(new(&CallFunc_Add_IntInt_ReturnValue_1)),
+			new BoolParam(new(&CallFunc_LessEqual_IntInt_ReturnValue), 255),
+			new ArrayParam(new((TArray<int>*)(&K2Node_MakeArray_Array))),
+			new BoolParam(new(&CallFunc_GreaterEqual_IntInt_ReturnValue), 255),
+			new BoolParam(new(&Temp_bool_Variable), 255),
+			new BoolParam(new(&CallFunc_Not_PreBool_ReturnValue), 255),
+			new ObjectParam(new(&CallFunc_Array_Get_Item_Ptr)),
+			new IntParam(new(&CallFunc_Array_Length_ReturnValue)),
+			new BoolParam(new(&CallFunc_Less_IntInt_ReturnValue), 255),
+			new BoolParam(new(&CallFunc_BooleanAND_ReturnValue), 255),
+			new FloatParam(new(&CallFunc_GetDistanceTo_ReturnValue))
+		], out _);
+	}
+
+	public unsafe void Set_Niagara_Offscreen_Mode( int Temp_int_Array_Index_Variable, int Temp_int_Loop_Counter_Variable, int CallFunc_Add_IntInt_ReturnValue, int CallFunc_Array_Length_ReturnValue, bool CallFunc_Greater_IntInt_ReturnValue, int CallFunc_Array_Length_ReturnValue_1, TArray<Ptr<USceneComponent_Repr>> CallFunc_GetChildrenComponents_Children, int CallFunc_Array_Length_ReturnValue_2, USceneComponent? CallFunc_Array_Get_Item, bool CallFunc_Less_IntInt_ReturnValue, UNiagaraComponent? K2Node_DynamicCast_AsNiagara_Particle_System, bool K2Node_DynamicCast_bSuccess)
+	{
+		nint CallFunc_Array_Get_Item_Ptr = CallFunc_Array_Get_Item?.Inner.Ptr ?? nint.Zero;
+		nint K2Node_DynamicCast_AsNiagara_Particle_System_Ptr = K2Node_DynamicCast_AsNiagara_Particle_System?.Inner.Ptr ?? nint.Zero;
+		_ = Inner.ProcessEvent("Set Niagara Offscreen Mode", [
+			new IntParam(new(&Temp_int_Array_Index_Variable)),
+			new IntParam(new(&Temp_int_Loop_Counter_Variable)),
+			new IntParam(new(&CallFunc_Add_IntInt_ReturnValue)),
+			new IntParam(new(&CallFunc_Array_Length_ReturnValue)),
+			new BoolParam(new(&CallFunc_Greater_IntInt_ReturnValue), 255),
+			new IntParam(new(&CallFunc_Array_Length_ReturnValue_1)),
+			new ArrayParam(new((TArray<int>*)(&CallFunc_GetChildrenComponents_Children))),
+			new IntParam(new(&CallFunc_Array_Length_ReturnValue_2)),
+			new ObjectParam(new(&CallFunc_Array_Get_Item_Ptr)),
+			new BoolParam(new(&CallFunc_Less_IntInt_ReturnValue), 255),
+			new ObjectParam(new(&K2Node_DynamicCast_AsNiagara_Particle_System_Ptr)),
+			new BoolParam(new(&K2Node_DynamicCast_bSuccess), 255)
+		], out _);
+	}
+
+	public unsafe void SetNiagaraOffscreenTick( float DeltaSeconds, int Temp_int_Array_Index_Variable, int Temp_int_Loop_Counter_Variable, int CallFunc_Add_IntInt_ReturnValue, UNiagaraComponent? CallFunc_Array_Get_Item, int CallFunc_Array_Length_ReturnValue, bool CallFunc_Less_IntInt_ReturnValue, float CallFunc_Add_FloatFloat_ReturnValue)
+	{
+		nint CallFunc_Array_Get_Item_Ptr = CallFunc_Array_Get_Item?.Inner.Ptr ?? nint.Zero;
+		_ = Inner.ProcessEvent("SetNiagaraOffscreenTick", [
+			new FloatParam(new(&DeltaSeconds)),
+			new IntParam(new(&Temp_int_Array_Index_Variable)),
+			new IntParam(new(&Temp_int_Loop_Counter_Variable)),
+			new IntParam(new(&CallFunc_Add_IntInt_ReturnValue)),
+			new ObjectParam(new(&CallFunc_Array_Get_Item_Ptr)),
+			new IntParam(new(&CallFunc_Array_Length_ReturnValue)),
+			new BoolParam(new(&CallFunc_Less_IntInt_ReturnValue), 255),
+			new FloatParam(new(&CallFunc_Add_FloatFloat_ReturnValue))
+		], out _);
 	}
 
 }
 
-[StructLayout(LayoutKind.Explicit, Pack = 16, Size = 0x348)]
-public unsafe struct ABP_F001_SymbolPortIsland_C_Repr
+[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0x304)]
+public unsafe struct ABP_PersonaBase_C_Repr
 {
-	[FieldOffset(0x0)] public AFldAnimObj_Repr Super; // Size: 0x310
-	[FieldOffset(0x310)] public FPointerToUberGraphFrame UberGraphFrame; // Size: 0x8
-	[FieldOffset(0x318)] public USpotLightComponent_Repr* SpotLight_B11; // Size: 0x8
-	[FieldOffset(0x320)] public USpotLightComponent_Repr* SpotLight_B01; // Size: 0x8
-	[FieldOffset(0x328)] public USpotLightComponent_Repr* SpotLight_A11; // Size: 0x8
-	[FieldOffset(0x330)] public USpotLightComponent_Repr* SpotLight_A01; // Size: 0x8
-	[FieldOffset(0x338)] public UUITownMapSymbolComponent_Repr* UITownMapSymbol; // Size: 0x8
-	[FieldOffset(0x340)] public USkeletalMeshComponent_Repr* SK_F001_Symbol; // Size: 0x8
+	[FieldOffset(0x0)] public APersonaBaseCore_Repr Super; // Size: 0x288
+	[FieldOffset(0x288)] public FPointerToUberGraphFrame UberGraphFrame; // Size: 0x8
+	[FieldOffset(0x290)] public TArray<nint /* Ptr<ABP_CharaPointLight_C_Repr> */> OverlapPointLights; // Size: 0x10
+	[FieldOffset(0x2A0)] public int NumberOfPointLights; // Size: 0x4
+	[FieldOffset(0x2A8)] public TArray<nint /* Ptr<AActor_Repr> */> ClosestPointLight; // Size: 0x10
+	[FieldOffset(0x2B8)] public TArray<nint /* Ptr<UMaterialInstanceDynamic_Repr> */> DynamicMIs; // Size: 0x10
+	[FieldOffset(0x2C8)] public float BoundsScale; // Size: 0x4
+	[FieldOffset(0x2CC)] public float NiagaraDesiredAge; // Size: 0x4
+	[FieldOffset(0x2D0)] public bool bNiagaraOffscreen; // Size: 0x1
+	[FieldOffset(0x2D8)] public TArray<nint /* Ptr<UNiagaraComponent_Repr> */> NiagaraComponents; // Size: 0x10
+	[FieldOffset(0x2E8)] public float LastRenderTimeOnScreen; // Size: 0x4
+	[FieldOffset(0x2EC)] public FVector StartPositionVec_VG; // Size: 0xC
+	[FieldOffset(0x2F8)] public FVector EndPositionVec_VG; // Size: 0xC
 
-	public ABP_F001_SymbolPortIsland_C ToManaged(IUnrealFactory factory)
+	public ABP_PersonaBase_C ToManaged(IUnrealFactory factory)
 	{
-		fixed (ABP_F001_SymbolPortIsland_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
-	}
-}
-
-
-public class ABP_F001_SymbolMall_C : AFldAnimObj, ITypeRepr<ABP_F001_SymbolMall_C_Repr>
-{
-	private static Dictionary<string, int>? FieldOffsets;
-	public ABP_F001_SymbolMall_C(IUObject inner, bool genOffsets = true) : base(inner, false)
-	{
-		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
-	}
-
-	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
-
-	public new unsafe ABP_F001_SymbolMall_C_Repr* Repr => (ABP_F001_SymbolMall_C_Repr*)Inner.Ptr;
-
-	public unsafe FPointerToUberGraphFrame* UberGraphFrame
-	{
-		get => (FPointerToUberGraphFrame*)(Inner.Ptr + GetFieldOffset("UberGraphFrame"));
-	}
-
-	public unsafe USpotLightComponent? SpotLight_B11
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_B11")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_B11")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_B11")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe USpotLightComponent? SpotLight_B01
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_B01")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_B01")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_B01")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe USpotLightComponent? SpotLight_A11
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_A11")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_A11")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_A11")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe USpotLightComponent? SpotLight_A01
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_A01")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_A01")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_A01")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe UUITownMapSymbolComponent? UITownMapSymbol
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("UITownMapSymbol")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("UITownMapSymbol")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("UITownMapSymbol")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe USkeletalMeshComponent? SK_F001_Symbol
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("SK_F001_Symbol")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SK_F001_Symbol")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("SK_F001_Symbol")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe void ReceiveBeginPlay()
-	{
-		_ = Inner.ProcessEvent("ReceiveBeginPlay", [], out _);
-	}
-
-}
-
-[StructLayout(LayoutKind.Explicit, Pack = 16, Size = 0x348)]
-public unsafe struct ABP_F001_SymbolMall_C_Repr
-{
-	[FieldOffset(0x0)] public AFldAnimObj_Repr Super; // Size: 0x310
-	[FieldOffset(0x310)] public FPointerToUberGraphFrame UberGraphFrame; // Size: 0x8
-	[FieldOffset(0x318)] public USpotLightComponent_Repr* SpotLight_B11; // Size: 0x8
-	[FieldOffset(0x320)] public USpotLightComponent_Repr* SpotLight_B01; // Size: 0x8
-	[FieldOffset(0x328)] public USpotLightComponent_Repr* SpotLight_A11; // Size: 0x8
-	[FieldOffset(0x330)] public USpotLightComponent_Repr* SpotLight_A01; // Size: 0x8
-	[FieldOffset(0x338)] public UUITownMapSymbolComponent_Repr* UITownMapSymbol; // Size: 0x8
-	[FieldOffset(0x340)] public USkeletalMeshComponent_Repr* SK_F001_Symbol; // Size: 0x8
-
-	public ABP_F001_SymbolMall_C ToManaged(IUnrealFactory factory)
-	{
-		fixed (ABP_F001_SymbolMall_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
+		fixed (ABP_PersonaBase_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
 	}
 }
 
@@ -314634,38 +314481,39 @@ public unsafe struct ABP_UI_AccessIcon_Commu_C_Repr
 }
 
 
-public class ABP_UI_Handwriting_Buzz_Read_00_C : AActor, ITypeRepr<ABP_UI_Handwriting_Buzz_Read_00_C_Repr>
+public class UBP_BtlCharacterTidy_C : UAppActorComponent, ITypeRepr<UBP_BtlCharacterTidy_C_Repr>
 {
 	private static Dictionary<string, int>? FieldOffsets;
-	public ABP_UI_Handwriting_Buzz_Read_00_C(IUObject inner, bool genOffsets = true) : base(inner, false)
+	public UBP_BtlCharacterTidy_C(IUObject inner, bool genOffsets = true) : base(inner, false)
 	{
 		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
 	}
 
 	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
 
-	public new unsafe ABP_UI_Handwriting_Buzz_Read_00_C_Repr* Repr => (ABP_UI_Handwriting_Buzz_Read_00_C_Repr*)Inner.Ptr;
+	public new unsafe UBP_BtlCharacterTidy_C_Repr* Repr => (UBP_BtlCharacterTidy_C_Repr*)Inner.Ptr;
 
 	public unsafe FPointerToUberGraphFrame* UberGraphFrame
 	{
 		get => (FPointerToUberGraphFrame*)(Inner.Ptr + GetFieldOffset("UberGraphFrame"));
 	}
 
-	public unsafe UNiagaraComponent? Niagara
+	public unsafe UCurveVector? CRV_CharaTargetShake
 	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("Niagara")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("Niagara")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("Niagara")) = value?.Inner.Ptr ?? nint.Zero;
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("CRV_CharaTargetShake")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("CRV_CharaTargetShake")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("CRV_CharaTargetShake")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
-	public unsafe USceneComponent? DefaultSceneRoot
+	public unsafe bool IsShake
 	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("DefaultSceneRoot")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("DefaultSceneRoot")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("DefaultSceneRoot")) = value?.Inner.Ptr ?? nint.Zero;
+		get => *(bool*)(Inner.Ptr + GetFieldOffset("IsShake"));
+		set => *(bool*)(Inner.Ptr + GetFieldOffset("IsShake")) = value;
 	}
 
-	public unsafe void ReceiveBeginPlay()
+	public unsafe float ShakeTime
 	{
-		_ = Inner.ProcessEvent("ReceiveBeginPlay", [], out _);
+		get => *(float*)(Inner.Ptr + GetFieldOffset("ShakeTime"));
+		set => *(float*)(Inner.Ptr + GetFieldOffset("ShakeTime")) = value;
 	}
 
 	public unsafe void ReceiveTick( float DeltaSeconds)
@@ -314675,19 +314523,824 @@ public class ABP_UI_Handwriting_Buzz_Read_00_C : AActor, ITypeRepr<ABP_UI_Handwr
 		], out _);
 	}
 
+	public unsafe void StartTargetShake()
+	{
+		_ = Inner.ProcessEvent("StartTargetShake", [], out _);
+	}
+
+	public unsafe void GetTargetShakePos( ref FVector Positon, FVector Pos, FVector CallFunc_GetVectorValue_ReturnValue)
+	{
+		_ = Inner.ProcessEvent("GetTargetShakePos", [
+			new StructParam(new((FVector*)Unsafe.AsPointer(ref Positon)), 12),
+			new StructParam(new(&Pos), 12),
+			new StructParam(new(&CallFunc_GetVectorValue_ReturnValue), 12)
+		], out _);
+	}
+
 }
 
-[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0x238)]
-public unsafe struct ABP_UI_Handwriting_Buzz_Read_00_C_Repr
+[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0xE0)]
+public unsafe struct UBP_BtlCharacterTidy_C_Repr
 {
-	[FieldOffset(0x0)] public AActor_Repr Super; // Size: 0x220
-	[FieldOffset(0x220)] public FPointerToUberGraphFrame UberGraphFrame; // Size: 0x8
-	[FieldOffset(0x228)] public UNiagaraComponent_Repr* Niagara; // Size: 0x8
-	[FieldOffset(0x230)] public USceneComponent_Repr* DefaultSceneRoot; // Size: 0x8
+	[FieldOffset(0x0)] public UAppActorComponent_Repr Super; // Size: 0xC8
+	[FieldOffset(0xC8)] public FPointerToUberGraphFrame UberGraphFrame; // Size: 0x8
+	[FieldOffset(0xD0)] public UCurveVector_Repr* CRV_CharaTargetShake; // Size: 0x8
+	[FieldOffset(0xD8)] public bool IsShake; // Size: 0x1
+	[FieldOffset(0xDC)] public float ShakeTime; // Size: 0x4
 
-	public ABP_UI_Handwriting_Buzz_Read_00_C ToManaged(IUnrealFactory factory)
+	public UBP_BtlCharacterTidy_C ToManaged(IUnrealFactory factory)
 	{
-		fixed (ABP_UI_Handwriting_Buzz_Read_00_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
+		fixed (UBP_BtlCharacterTidy_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
+	}
+}
+
+
+[StructLayout(LayoutKind.Explicit, Pack = 4, Size = 0xC)]
+public unsafe struct FFBtlVector3
+{
+	[FieldOffset(0x0)] public float X; // Size: 0x4
+	[FieldOffset(0x4)] public float Y; // Size: 0x4
+	[FieldOffset(0x8)] public float Z; // Size: 0x4
+}
+
+public class UPlayAtomCue_C : UAnimNotify, ITypeRepr<UPlayAtomCue_C_Repr>
+{
+	private static Dictionary<string, int>? FieldOffsets;
+	public UPlayAtomCue_C(IUObject inner, bool genOffsets = true) : base(inner, false)
+	{
+		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
+	}
+
+	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
+
+	public new unsafe UPlayAtomCue_C_Repr* Repr => (UPlayAtomCue_C_Repr*)Inner.Ptr;
+
+	public unsafe USoundAtomCue? Sound
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("Sound")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("Sound")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("Sound")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe FName Bone
+	{
+		get => *(FName*)(Inner.Ptr + GetFieldOffset("Bone"));
+		set => *(FName*)(Inner.Ptr + GetFieldOffset("Bone")) = value;
+	}
+
+	public unsafe bool follow
+	{
+		get => *(bool*)(Inner.Ptr + GetFieldOffset("follow"));
+		set => *(bool*)(Inner.Ptr + GetFieldOffset("follow")) = value;
+	}
+
+	public unsafe float VolumeMultiplier
+	{
+		get => *(float*)(Inner.Ptr + GetFieldOffset("VolumeMultiplier"));
+		set => *(float*)(Inner.Ptr + GetFieldOffset("VolumeMultiplier")) = value;
+	}
+
+	public unsafe float PitchMultiplier
+	{
+		get => *(float*)(Inner.Ptr + GetFieldOffset("PitchMultiplier"));
+		set => *(float*)(Inner.Ptr + GetFieldOffset("PitchMultiplier")) = value;
+	}
+
+	public unsafe bool Received_Notify( USkeletalMeshComponent? MeshComp, UAnimSequenceBase? Animation)
+	{
+		nint MeshComp_Ptr = MeshComp?.Inner.Ptr ?? nint.Zero;
+		nint Animation_Ptr = Animation?.Inner.Ptr ?? nint.Zero;
+		_ = Inner.ProcessEvent("Received_Notify", [
+			new ObjectParam(new(&MeshComp_Ptr)),
+			new ObjectParam(new(&Animation_Ptr))
+		], out var Return);
+		return ((BoolParam?)Return)!.Value;
+	}
+
+	public unsafe FString GetNotifyName()
+	{
+		_ = Inner.ProcessEvent("GetNotifyName", [], out var Return);
+		return ((StringParam?)Return)!.Value;
+	}
+
+}
+
+[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0x54)]
+public unsafe struct UPlayAtomCue_C_Repr
+{
+	[FieldOffset(0x0)] public UAnimNotify_Repr Super; // Size: 0x38
+	[FieldOffset(0x38)] public USoundAtomCue_Repr* Sound; // Size: 0x8
+	[FieldOffset(0x40)] public FName Bone; // Size: 0x8
+	[FieldOffset(0x48)] public bool follow; // Size: 0x1
+	[FieldOffset(0x4C)] public float VolumeMultiplier; // Size: 0x4
+	[FieldOffset(0x50)] public float PitchMultiplier; // Size: 0x4
+
+	public UPlayAtomCue_C ToManaged(IUnrealFactory factory)
+	{
+		fixed (UPlayAtomCue_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
+	}
+}
+
+
+public class UBP_BtlResidentDataComp_C : UBtlResidentDataBase, ITypeRepr<UBP_BtlResidentDataComp_C_Repr>
+{
+	private static Dictionary<string, int>? FieldOffsets;
+	public UBP_BtlResidentDataComp_C(IUObject inner, bool genOffsets = true) : base(inner, false)
+	{
+		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
+	}
+
+	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
+
+	public new unsafe UBP_BtlResidentDataComp_C_Repr* Repr => (UBP_BtlResidentDataComp_C_Repr*)Inner.Ptr;
+
+	public unsafe FPointerToUberGraphFrame* UberGraphFrame
+	{
+		get => (FPointerToUberGraphFrame*)(Inner.Ptr + GetFieldOffset("UberGraphFrame"));
+	}
+
+	public unsafe TArray<Ptr<TSoftObjectPtr<UNiagaraSystem_Repr>>>* StatusEffectList
+	{
+		get => (TArray<Ptr<TSoftObjectPtr<UNiagaraSystem_Repr>>>*)(Inner.Ptr + GetFieldOffset("StatusEffectList"));
+	}
+
+	public unsafe void LoadAsync()
+	{
+		_ = Inner.ProcessEvent("LoadAsync", [], out _);
+	}
+
+	public unsafe void OnLoaded_8537D89D49349AFF693E8B9442142DF0( UObject? Loaded)
+	{
+		nint Loaded_Ptr = Loaded?.Inner.Ptr ?? nint.Zero;
+		_ = Inner.ProcessEvent("OnLoaded_8537D89D49349AFF693E8B9442142DF0", [
+			new ObjectParam(new(&Loaded_Ptr))
+		], out _);
+	}
+
+	public unsafe void OnLoaded_8537D89D49349AFF693E8B9491BD2D61( UObject? Loaded)
+	{
+		nint Loaded_Ptr = Loaded?.Inner.Ptr ?? nint.Zero;
+		_ = Inner.ProcessEvent("OnLoaded_8537D89D49349AFF693E8B9491BD2D61", [
+			new ObjectParam(new(&Loaded_Ptr))
+		], out _);
+	}
+
+	public unsafe void OnLoaded_8537D89D49349AFF693E8B94ECB4AD37( UObject? Loaded)
+	{
+		nint Loaded_Ptr = Loaded?.Inner.Ptr ?? nint.Zero;
+		_ = Inner.ProcessEvent("OnLoaded_8537D89D49349AFF693E8B94ECB4AD37", [
+			new ObjectParam(new(&Loaded_Ptr))
+		], out _);
+	}
+
+	public unsafe void OnLoaded_8537D89D49349AFF693E8B94E0CFAA77( UObject? Loaded)
+	{
+		nint Loaded_Ptr = Loaded?.Inner.Ptr ?? nint.Zero;
+		_ = Inner.ProcessEvent("OnLoaded_8537D89D49349AFF693E8B94E0CFAA77", [
+			new ObjectParam(new(&Loaded_Ptr))
+		], out _);
+	}
+
+	public unsafe void OnLoaded_8537D89D49349AFF693E8B943C8EF7D3( UObject? Loaded)
+	{
+		nint Loaded_Ptr = Loaded?.Inner.Ptr ?? nint.Zero;
+		_ = Inner.ProcessEvent("OnLoaded_8537D89D49349AFF693E8B943C8EF7D3", [
+			new ObjectParam(new(&Loaded_Ptr))
+		], out _);
+	}
+
+	public unsafe void OnLoaded_8537D89D49349AFF693E8B941C796B3E( UObject? Loaded)
+	{
+		nint Loaded_Ptr = Loaded?.Inner.Ptr ?? nint.Zero;
+		_ = Inner.ProcessEvent("OnLoaded_8537D89D49349AFF693E8B941C796B3E", [
+			new ObjectParam(new(&Loaded_Ptr))
+		], out _);
+	}
+
+	public unsafe void OnLoaded_8537D89D49349AFF693E8B94343FC687( UObject? Loaded)
+	{
+		nint Loaded_Ptr = Loaded?.Inner.Ptr ?? nint.Zero;
+		_ = Inner.ProcessEvent("OnLoaded_8537D89D49349AFF693E8B94343FC687", [
+			new ObjectParam(new(&Loaded_Ptr))
+		], out _);
+	}
+
+	public unsafe void OnLoaded_8537D89D49349AFF693E8B94393B7AFD( UObject? Loaded)
+	{
+		nint Loaded_Ptr = Loaded?.Inner.Ptr ?? nint.Zero;
+		_ = Inner.ProcessEvent("OnLoaded_8537D89D49349AFF693E8B94393B7AFD", [
+			new ObjectParam(new(&Loaded_Ptr))
+		], out _);
+	}
+
+	public unsafe void OnLoaded_8537D89D49349AFF693E8B9451E033A8( UObject? Loaded)
+	{
+		nint Loaded_Ptr = Loaded?.Inner.Ptr ?? nint.Zero;
+		_ = Inner.ProcessEvent("OnLoaded_8537D89D49349AFF693E8B9451E033A8", [
+			new ObjectParam(new(&Loaded_Ptr))
+		], out _);
+	}
+
+	public unsafe void OnLoaded_8537D89D49349AFF693E8B94F82B107D( UObject? Loaded)
+	{
+		nint Loaded_Ptr = Loaded?.Inner.Ptr ?? nint.Zero;
+		_ = Inner.ProcessEvent("OnLoaded_8537D89D49349AFF693E8B94F82B107D", [
+			new ObjectParam(new(&Loaded_Ptr))
+		], out _);
+	}
+
+	public unsafe void OnLoaded_8537D89D49349AFF693E8B94846FB045( UObject? Loaded)
+	{
+		nint Loaded_Ptr = Loaded?.Inner.Ptr ?? nint.Zero;
+		_ = Inner.ProcessEvent("OnLoaded_8537D89D49349AFF693E8B94846FB045", [
+			new ObjectParam(new(&Loaded_Ptr))
+		], out _);
+	}
+
+	public unsafe void OnLoaded_8537D89D49349AFF693E8B94547F5CA5( UObject? Loaded)
+	{
+		nint Loaded_Ptr = Loaded?.Inner.Ptr ?? nint.Zero;
+		_ = Inner.ProcessEvent("OnLoaded_8537D89D49349AFF693E8B94547F5CA5", [
+			new ObjectParam(new(&Loaded_Ptr))
+		], out _);
+	}
+
+	public unsafe void OnLoaded_8537D89D49349AFF693E8B9422923015( UObject? Loaded)
+	{
+		nint Loaded_Ptr = Loaded?.Inner.Ptr ?? nint.Zero;
+		_ = Inner.ProcessEvent("OnLoaded_8537D89D49349AFF693E8B9422923015", [
+			new ObjectParam(new(&Loaded_Ptr))
+		], out _);
+	}
+
+	public unsafe void GetSummonFX( ref UNiagaraSystem? SummonFX)
+	{
+		nint SummonFX_Ptr = SummonFX?.Inner.Ptr ?? nint.Zero;
+		_ = Inner.ProcessEvent("GetSummonFX", [
+			new ObjectParam(new(&SummonFX_Ptr))
+		], out _);
+		SummonFX = SummonFX_Ptr != nint.Zero ? new(Inner.GetFactory().CreateUObject(SummonFX_Ptr)) : null;
+	}
+
+	public unsafe void GetStatusEffect( EBtlBadStatusIcon Index, ref TSoftObjectPtr<UNiagaraSystem_Repr> SoftObj, EBtlBadStatusIcon Temp_byte_Variable, int Temp_int_Variable, int Temp_int_Variable_1, int Temp_int_Variable_2, int Temp_int_Variable_3, int Temp_int_Variable_4, int Temp_int_Variable_5, int Temp_int_Variable_6, int Temp_int_Variable_7, int Temp_int_Variable_8, int Temp_int_Variable_9, int Temp_int_Variable_10, int Temp_int_Variable_11, int Temp_int_Variable_12, int Temp_int_Variable_13, int Temp_int_Variable_14, int K2Node_Select_Default, bool CallFunc_GreaterEqual_IntInt_ReturnValue, TSoftObjectPtr<UNiagaraSystem_Repr> CallFunc_Array_Get_Item)
+	{
+		_ = Inner.ProcessEvent("GetStatusEffect", [
+			new EnumParam(new(&Index), 1),
+			new SoftObjectParam(new((TSoftObjectPtr<int>*)Unsafe.AsPointer(ref SoftObj))),
+			new EnumParam(new(&Temp_byte_Variable), 1),
+			new IntParam(new(&Temp_int_Variable)),
+			new IntParam(new(&Temp_int_Variable_1)),
+			new IntParam(new(&Temp_int_Variable_2)),
+			new IntParam(new(&Temp_int_Variable_3)),
+			new IntParam(new(&Temp_int_Variable_4)),
+			new IntParam(new(&Temp_int_Variable_5)),
+			new IntParam(new(&Temp_int_Variable_6)),
+			new IntParam(new(&Temp_int_Variable_7)),
+			new IntParam(new(&Temp_int_Variable_8)),
+			new IntParam(new(&Temp_int_Variable_9)),
+			new IntParam(new(&Temp_int_Variable_10)),
+			new IntParam(new(&Temp_int_Variable_11)),
+			new IntParam(new(&Temp_int_Variable_12)),
+			new IntParam(new(&Temp_int_Variable_13)),
+			new IntParam(new(&Temp_int_Variable_14)),
+			new IntParam(new(&K2Node_Select_Default)),
+			new BoolParam(new(&CallFunc_GreaterEqual_IntInt_ReturnValue), 255),
+			new SoftObjectParam(new((TSoftObjectPtr<int>*)(&CallFunc_Array_Get_Item)))
+		], out _);
+	}
+
+}
+
+[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0x158)]
+public unsafe struct UBP_BtlResidentDataComp_C_Repr
+{
+	[FieldOffset(0x0)] public UBtlResidentDataBase_Repr Super; // Size: 0x140
+	[FieldOffset(0x140)] public FPointerToUberGraphFrame UberGraphFrame; // Size: 0x8
+	[FieldOffset(0x148)] public TArray<nint /* Ptr<TSoftObjectPtr<nint__*_UNiagaraSystem_Repr_*_>> */> StatusEffectList; // Size: 0x10
+
+	public UBP_BtlResidentDataComp_C ToManaged(IUnrealFactory factory)
+	{
+		fixed (UBP_BtlResidentDataComp_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
+	}
+}
+
+
+public class ABP_BtlSpawnedActorParent_C : AAppActor, ITypeRepr<ABP_BtlSpawnedActorParent_C_Repr>
+{
+	private static Dictionary<string, int>? FieldOffsets;
+	public ABP_BtlSpawnedActorParent_C(IUObject inner, bool genOffsets = true) : base(inner, false)
+	{
+		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
+	}
+
+	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
+
+	public new unsafe ABP_BtlSpawnedActorParent_C_Repr* Repr => (ABP_BtlSpawnedActorParent_C_Repr*)Inner.Ptr;
+
+	public unsafe USceneComponent? DefaultSceneRoot
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("DefaultSceneRoot")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("DefaultSceneRoot")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("DefaultSceneRoot")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+}
+
+[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0x280)]
+public unsafe struct ABP_BtlSpawnedActorParent_C_Repr
+{
+	[FieldOffset(0x0)] public AAppActor_Repr Super; // Size: 0x278
+	[FieldOffset(0x278)] public USceneComponent_Repr* DefaultSceneRoot; // Size: 0x8
+
+	public ABP_BtlSpawnedActorParent_C ToManaged(IUnrealFactory factory)
+	{
+		fixed (ABP_BtlSpawnedActorParent_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
+	}
+}
+
+
+public class ABP_BtlHitEffectEX_C : AAppActor, ITypeRepr<ABP_BtlHitEffectEX_C_Repr>
+{
+	private static Dictionary<string, int>? FieldOffsets;
+	public ABP_BtlHitEffectEX_C(IUObject inner, bool genOffsets = true) : base(inner, false)
+	{
+		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
+	}
+
+	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
+
+	public new unsafe ABP_BtlHitEffectEX_C_Repr* Repr => (ABP_BtlHitEffectEX_C_Repr*)Inner.Ptr;
+
+	public unsafe FPointerToUberGraphFrame* UberGraphFrame
+	{
+		get => (FPointerToUberGraphFrame*)(Inner.Ptr + GetFieldOffset("UberGraphFrame"));
+	}
+
+	public unsafe USceneComponent? DefaultSceneRoot
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("DefaultSceneRoot")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("DefaultSceneRoot")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("DefaultSceneRoot")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe TSoftObjectPtr<UNiagaraSystem_Repr>* EffectToPlay
+	{
+		get => (TSoftObjectPtr<UNiagaraSystem_Repr>*)(Inner.Ptr + GetFieldOffset("EffectToPlay"));
+	}
+
+	public unsafe int SENo
+	{
+		get => *(int*)(Inner.Ptr + GetFieldOffset("SENo"));
+		set => *(int*)(Inner.Ptr + GetFieldOffset("SENo")) = value;
+	}
+
+	public unsafe FVector* EffectLocation
+	{
+		get => (FVector*)(Inner.Ptr + GetFieldOffset("EffectLocation"));
+	}
+
+	public unsafe FRotator* EffectRotation
+	{
+		get => (FRotator*)(Inner.Ptr + GetFieldOffset("EffectRotation"));
+	}
+
+	public unsafe UNiagaraComponent? VFX
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("VFX")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("VFX")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("VFX")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe UNiagaraSystem? As_Niagara_System
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("As Niagara System")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("As Niagara System")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("As Niagara System")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe bool IsPlaying
+	{
+		get => *(bool*)(Inner.Ptr + GetFieldOffset("IsPlaying"));
+		set => *(bool*)(Inner.Ptr + GetFieldOffset("IsPlaying")) = value;
+	}
+
+	public unsafe void ReceiveTick( float DeltaSeconds)
+	{
+		_ = Inner.ProcessEvent("ReceiveTick", [
+			new FloatParam(new(&DeltaSeconds))
+		], out _);
+	}
+
+	public unsafe void ReceiveBeginPlay()
+	{
+		_ = Inner.ProcessEvent("ReceiveBeginPlay", [], out _);
+	}
+
+	public unsafe void OnLoaded_CB5170E841E1DBFFA867F0BDA86E9CE7( UObject? Loaded)
+	{
+		nint Loaded_Ptr = Loaded?.Inner.Ptr ?? nint.Zero;
+		_ = Inner.ProcessEvent("OnLoaded_CB5170E841E1DBFFA867F0BDA86E9CE7", [
+			new ObjectParam(new(&Loaded_Ptr))
+		], out _);
+	}
+
+}
+
+[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0x2E1)]
+public unsafe struct ABP_BtlHitEffectEX_C_Repr
+{
+	[FieldOffset(0x0)] public AAppActor_Repr Super; // Size: 0x278
+	[FieldOffset(0x278)] public FPointerToUberGraphFrame UberGraphFrame; // Size: 0x8
+	[FieldOffset(0x280)] public USceneComponent_Repr* DefaultSceneRoot; // Size: 0x8
+	[FieldOffset(0x288)] public TSoftObjectPtr<nint /* UNiagaraSystem_Repr */> EffectToPlay; // Size: 0x28
+	[FieldOffset(0x2B0)] public int SENo; // Size: 0x4
+	[FieldOffset(0x2B4)] public FVector EffectLocation; // Size: 0xC
+	[FieldOffset(0x2C0)] public FRotator EffectRotation; // Size: 0xC
+	[FieldOffset(0x2D0)] public UNiagaraComponent_Repr* VFX; // Size: 0x8
+	[FieldOffset(0x2D8)] public UNiagaraSystem_Repr* As_Niagara_System; // Size: 0x8
+	[FieldOffset(0x2E0)] public bool IsPlaying; // Size: 0x1
+
+	public ABP_BtlHitEffectEX_C ToManaged(IUnrealFactory factory)
+	{
+		fixed (ABP_BtlHitEffectEX_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
+	}
+}
+
+
+public class ABP_ShadowBase_C : AShadowBaseCore, ITypeRepr<ABP_ShadowBase_C_Repr>
+{
+	private static Dictionary<string, int>? FieldOffsets;
+	public ABP_ShadowBase_C(IUObject inner, bool genOffsets = true) : base(inner, false)
+	{
+		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
+	}
+
+	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
+
+	public new unsafe ABP_ShadowBase_C_Repr* Repr => (ABP_ShadowBase_C_Repr*)Inner.Ptr;
+
+	public unsafe FPointerToUberGraphFrame* UberGraphFrame
+	{
+		get => (FPointerToUberGraphFrame*)(Inner.Ptr + GetFieldOffset("UberGraphFrame"));
+	}
+
+	public unsafe float StartPosition_VG
+	{
+		get => *(float*)(Inner.Ptr + GetFieldOffset("StartPosition_VG"));
+		set => *(float*)(Inner.Ptr + GetFieldOffset("StartPosition_VG")) = value;
+	}
+
+	public unsafe float EndPosition_VG
+	{
+		get => *(float*)(Inner.Ptr + GetFieldOffset("EndPosition_VG"));
+		set => *(float*)(Inner.Ptr + GetFieldOffset("EndPosition_VG")) = value;
+	}
+
+	public unsafe TArray<Ptr<UMaterialInstanceDynamic_Repr>>* DynamicMIs
+	{
+		get => (TArray<Ptr<UMaterialInstanceDynamic_Repr>>*)(Inner.Ptr + GetFieldOffset("DynamicMIs"));
+	}
+
+	public unsafe float BoundsScale
+	{
+		get => *(float*)(Inner.Ptr + GetFieldOffset("BoundsScale"));
+		set => *(float*)(Inner.Ptr + GetFieldOffset("BoundsScale")) = value;
+	}
+
+	public unsafe bool bAllPointLightsMode
+	{
+		get => *(bool*)(Inner.Ptr + GetFieldOffset("bAllPointLightsMode"));
+		set => *(bool*)(Inner.Ptr + GetFieldOffset("bAllPointLightsMode")) = value;
+	}
+
+	public unsafe TArray<Ptr<ABP_CharaPointLight_C_Repr>>* AllPointLights
+	{
+		get => (TArray<Ptr<ABP_CharaPointLight_C_Repr>>*)(Inner.Ptr + GetFieldOffset("AllPointLights"));
+	}
+
+	public unsafe TArray<Ptr<ABP_CharaPointLight_C_Repr>>* ClosestPointLights
+	{
+		get => (TArray<Ptr<ABP_CharaPointLight_C_Repr>>*)(Inner.Ptr + GetFieldOffset("ClosestPointLights"));
+	}
+
+	public unsafe float LastRenderTimeOnScreen
+	{
+		get => *(float*)(Inner.Ptr + GetFieldOffset("LastRenderTimeOnScreen"));
+		set => *(float*)(Inner.Ptr + GetFieldOffset("LastRenderTimeOnScreen")) = value;
+	}
+
+	public unsafe void Event_ResetAllPointLightsMode()
+	{
+		_ = Inner.ProcessEvent("Event_ResetAllPointLightsMode", [], out _);
+	}
+
+	public unsafe void Event_GetAllCharaPointLights()
+	{
+		_ = Inner.ProcessEvent("Event_GetAllCharaPointLights", [], out _);
+	}
+
+	public unsafe void ReceiveTick( float DeltaSeconds)
+	{
+		_ = Inner.ProcessEvent("ReceiveTick", [
+			new FloatParam(new(&DeltaSeconds))
+		], out _);
+	}
+
+	public unsafe void UserConstructionScript( int Temp_int_Loop_Counter_Variable, int CallFunc_Add_IntInt_ReturnValue, int Temp_int_Array_Index_Variable, int Temp_int_Array_Index_Variable_1, int Temp_int_Loop_Counter_Variable_1, UMaterialInstanceDynamic? CallFunc_Array_Get_Item, int CallFunc_Add_IntInt_ReturnValue_1, int CallFunc_Array_Length_ReturnValue, bool CallFunc_Less_IntInt_ReturnValue, FVector CallFunc_GetComponentBounds_Origin, FVector CallFunc_GetComponentBounds_BoxExtent, float CallFunc_GetComponentBounds_SphereRadius, float CallFunc_BreakVector_X, float CallFunc_BreakVector_Y, float CallFunc_BreakVector_Z, FVector CallFunc_GetSocketLocation_ReturnValue, FVector CallFunc_GetSocketLocation_ReturnValue_1, float CallFunc_BreakVector_X_1, float CallFunc_BreakVector_Y_1, float CallFunc_BreakVector_Z_1, float CallFunc_BreakVector_X_2, float CallFunc_BreakVector_Y_2, float CallFunc_BreakVector_Z_2, float CallFunc_Subtract_FloatFloat_ReturnValue, float CallFunc_Subtract_FloatFloat_ReturnValue_1, FVector CallFunc_K2_GetComponentScale_ReturnValue, float CallFunc_BreakVector_X_3, float CallFunc_BreakVector_Y_3, float CallFunc_BreakVector_Z_3, UMaterialInstanceDynamic? CallFunc_Array_Get_Item_1, int CallFunc_Array_Length_ReturnValue_1, bool CallFunc_Less_IntInt_ReturnValue_1)
+	{
+		nint CallFunc_Array_Get_Item_Ptr = CallFunc_Array_Get_Item?.Inner.Ptr ?? nint.Zero;
+		nint CallFunc_Array_Get_Item_1_Ptr = CallFunc_Array_Get_Item_1?.Inner.Ptr ?? nint.Zero;
+		_ = Inner.ProcessEvent("UserConstructionScript", [
+			new IntParam(new(&Temp_int_Loop_Counter_Variable)),
+			new IntParam(new(&CallFunc_Add_IntInt_ReturnValue)),
+			new IntParam(new(&Temp_int_Array_Index_Variable)),
+			new IntParam(new(&Temp_int_Array_Index_Variable_1)),
+			new IntParam(new(&Temp_int_Loop_Counter_Variable_1)),
+			new ObjectParam(new(&CallFunc_Array_Get_Item_Ptr)),
+			new IntParam(new(&CallFunc_Add_IntInt_ReturnValue_1)),
+			new IntParam(new(&CallFunc_Array_Length_ReturnValue)),
+			new BoolParam(new(&CallFunc_Less_IntInt_ReturnValue), 255),
+			new StructParam(new(&CallFunc_GetComponentBounds_Origin), 12),
+			new StructParam(new(&CallFunc_GetComponentBounds_BoxExtent), 12),
+			new FloatParam(new(&CallFunc_GetComponentBounds_SphereRadius)),
+			new FloatParam(new(&CallFunc_BreakVector_X)),
+			new FloatParam(new(&CallFunc_BreakVector_Y)),
+			new FloatParam(new(&CallFunc_BreakVector_Z)),
+			new StructParam(new(&CallFunc_GetSocketLocation_ReturnValue), 12),
+			new StructParam(new(&CallFunc_GetSocketLocation_ReturnValue_1), 12),
+			new FloatParam(new(&CallFunc_BreakVector_X_1)),
+			new FloatParam(new(&CallFunc_BreakVector_Y_1)),
+			new FloatParam(new(&CallFunc_BreakVector_Z_1)),
+			new FloatParam(new(&CallFunc_BreakVector_X_2)),
+			new FloatParam(new(&CallFunc_BreakVector_Y_2)),
+			new FloatParam(new(&CallFunc_BreakVector_Z_2)),
+			new FloatParam(new(&CallFunc_Subtract_FloatFloat_ReturnValue)),
+			new FloatParam(new(&CallFunc_Subtract_FloatFloat_ReturnValue_1)),
+			new StructParam(new(&CallFunc_K2_GetComponentScale_ReturnValue), 12),
+			new FloatParam(new(&CallFunc_BreakVector_X_3)),
+			new FloatParam(new(&CallFunc_BreakVector_Y_3)),
+			new FloatParam(new(&CallFunc_BreakVector_Z_3)),
+			new ObjectParam(new(&CallFunc_Array_Get_Item_1_Ptr)),
+			new IntParam(new(&CallFunc_Array_Length_ReturnValue_1)),
+			new BoolParam(new(&CallFunc_Less_IntInt_ReturnValue_1), 255)
+		], out _);
+	}
+
+	public unsafe void CreateDMI( UMeshComponent? MeshComponent, TArray<Ptr<UMaterialInterface_Repr>> Materials, TArray<Ptr<UMaterialInterface_Repr>> CallFunc_GetMaterials_ReturnValue, int Temp_int_Variable, int CallFunc_Array_LastIndex_ReturnValue, UMaterialInterface? CallFunc_Array_Get_Item, bool CallFunc_LessEqual_IntInt_ReturnValue, FString CallFunc_GetDisplayName_ReturnValue, FString CallFunc_Concat_StrStr_ReturnValue, FName CallFunc_Conv_StringToName_ReturnValue, int CallFunc_Add_IntInt_ReturnValue, UMaterialInstanceDynamic? CallFunc_CreateDynamicMaterialInstance_ReturnValue)
+	{
+		nint MeshComponent_Ptr = MeshComponent?.Inner.Ptr ?? nint.Zero;
+		nint CallFunc_Array_Get_Item_Ptr = CallFunc_Array_Get_Item?.Inner.Ptr ?? nint.Zero;
+		nint CallFunc_CreateDynamicMaterialInstance_ReturnValue_Ptr = CallFunc_CreateDynamicMaterialInstance_ReturnValue?.Inner.Ptr ?? nint.Zero;
+		_ = Inner.ProcessEvent("CreateDMI", [
+			new ObjectParam(new(&MeshComponent_Ptr)),
+			new ArrayParam(new((TArray<int>*)(&Materials))),
+			new ArrayParam(new((TArray<int>*)(&CallFunc_GetMaterials_ReturnValue))),
+			new IntParam(new(&Temp_int_Variable)),
+			new IntParam(new(&CallFunc_Array_LastIndex_ReturnValue)),
+			new ObjectParam(new(&CallFunc_Array_Get_Item_Ptr)),
+			new BoolParam(new(&CallFunc_LessEqual_IntInt_ReturnValue), 255),
+			new StringParam(new(&CallFunc_GetDisplayName_ReturnValue)),
+			new StringParam(new(&CallFunc_Concat_StrStr_ReturnValue)),
+			new NameParam(new(&CallFunc_Conv_StringToName_ReturnValue)),
+			new IntParam(new(&CallFunc_Add_IntInt_ReturnValue)),
+			new ObjectParam(new(&CallFunc_CreateDynamicMaterialInstance_ReturnValue_Ptr))
+		], out _);
+	}
+
+	public unsafe void SetPointLightParameter( UMaterialInstanceDynamic? MIDObjectReference, int Temp_int_Array_Index_Variable, int CallFunc_Array_Length_ReturnValue, ABP_CharaPointLight_C? CallFunc_Array_Get_Item, FString CallFunc_Conv_IntToString_ReturnValue, FString CallFunc_Concat_StrStr_ReturnValue, FName CallFunc_Conv_StringToName_ReturnValue, bool CallFunc_IsValid_ReturnValue, FVector CallFunc_K2_GetComponentLocation_ReturnValue, FLinearColor CallFunc_Conv_VectorToLinearColor_ReturnValue, FString CallFunc_Conv_IntToString_ReturnValue_1, FString CallFunc_Conv_IntToString_ReturnValue_2, FString CallFunc_Concat_StrStr_ReturnValue_1, FString CallFunc_Concat_StrStr_ReturnValue_2, FName CallFunc_Conv_StringToName_ReturnValue_1, FName CallFunc_Conv_StringToName_ReturnValue_2, FString CallFunc_Conv_IntToString_ReturnValue_3, FString CallFunc_Conv_IntToString_ReturnValue_4, FString CallFunc_Concat_StrStr_ReturnValue_3, FString CallFunc_Concat_StrStr_ReturnValue_4, FName CallFunc_Conv_StringToName_ReturnValue_3, FName CallFunc_Conv_StringToName_ReturnValue_4, FString CallFunc_Conv_IntToString_ReturnValue_5, FString CallFunc_Conv_IntToString_ReturnValue_6, FString CallFunc_Concat_StrStr_ReturnValue_5, FString CallFunc_Concat_StrStr_ReturnValue_6, FName CallFunc_Conv_StringToName_ReturnValue_5, FName CallFunc_Conv_StringToName_ReturnValue_6, int Temp_int_Loop_Counter_Variable, bool CallFunc_Less_IntInt_ReturnValue, int CallFunc_Add_IntInt_ReturnValue)
+	{
+		nint MIDObjectReference_Ptr = MIDObjectReference?.Inner.Ptr ?? nint.Zero;
+		nint CallFunc_Array_Get_Item_Ptr = CallFunc_Array_Get_Item?.Inner.Ptr ?? nint.Zero;
+		_ = Inner.ProcessEvent("SetPointLightParameter", [
+			new ObjectParam(new(&MIDObjectReference_Ptr)),
+			new IntParam(new(&Temp_int_Array_Index_Variable)),
+			new IntParam(new(&CallFunc_Array_Length_ReturnValue)),
+			new ObjectParam(new(&CallFunc_Array_Get_Item_Ptr)),
+			new StringParam(new(&CallFunc_Conv_IntToString_ReturnValue)),
+			new StringParam(new(&CallFunc_Concat_StrStr_ReturnValue)),
+			new NameParam(new(&CallFunc_Conv_StringToName_ReturnValue)),
+			new BoolParam(new(&CallFunc_IsValid_ReturnValue), 255),
+			new StructParam(new(&CallFunc_K2_GetComponentLocation_ReturnValue), 12),
+			new StructParam(new(&CallFunc_Conv_VectorToLinearColor_ReturnValue), 16),
+			new StringParam(new(&CallFunc_Conv_IntToString_ReturnValue_1)),
+			new StringParam(new(&CallFunc_Conv_IntToString_ReturnValue_2)),
+			new StringParam(new(&CallFunc_Concat_StrStr_ReturnValue_1)),
+			new StringParam(new(&CallFunc_Concat_StrStr_ReturnValue_2)),
+			new NameParam(new(&CallFunc_Conv_StringToName_ReturnValue_1)),
+			new NameParam(new(&CallFunc_Conv_StringToName_ReturnValue_2)),
+			new StringParam(new(&CallFunc_Conv_IntToString_ReturnValue_3)),
+			new StringParam(new(&CallFunc_Conv_IntToString_ReturnValue_4)),
+			new StringParam(new(&CallFunc_Concat_StrStr_ReturnValue_3)),
+			new StringParam(new(&CallFunc_Concat_StrStr_ReturnValue_4)),
+			new NameParam(new(&CallFunc_Conv_StringToName_ReturnValue_3)),
+			new NameParam(new(&CallFunc_Conv_StringToName_ReturnValue_4)),
+			new StringParam(new(&CallFunc_Conv_IntToString_ReturnValue_5)),
+			new StringParam(new(&CallFunc_Conv_IntToString_ReturnValue_6)),
+			new StringParam(new(&CallFunc_Concat_StrStr_ReturnValue_5)),
+			new StringParam(new(&CallFunc_Concat_StrStr_ReturnValue_6)),
+			new NameParam(new(&CallFunc_Conv_StringToName_ReturnValue_5)),
+			new NameParam(new(&CallFunc_Conv_StringToName_ReturnValue_6)),
+			new IntParam(new(&Temp_int_Loop_Counter_Variable)),
+			new BoolParam(new(&CallFunc_Less_IntInt_ReturnValue), 255),
+			new IntParam(new(&CallFunc_Add_IntInt_ReturnValue))
+		], out _);
+	}
+
+	public unsafe void SetDMIParameter_Tick( bool bGradDistanceEqual, int Temp_int_Loop_Counter_Variable, int CallFunc_Add_IntInt_ReturnValue, int Temp_int_Array_Index_Variable, int Temp_int_Array_Index_Variable_1, int Temp_int_Loop_Counter_Variable_1, int CallFunc_Add_IntInt_ReturnValue_1, int Temp_int_Array_Index_Variable_2, int Temp_int_Loop_Counter_Variable_2, int CallFunc_Add_IntInt_ReturnValue_2, int CallFunc_Array_Length_ReturnValue, bool CallFunc_NotEqual_IntInt_ReturnValue, FVector CallFunc_GetComponentBounds_Origin, FVector CallFunc_GetComponentBounds_BoxExtent, float CallFunc_GetComponentBounds_SphereRadius, FVector CallFunc_GetSocketLocation_ReturnValue, float CallFunc_BreakVector_X, float CallFunc_BreakVector_Y, float CallFunc_BreakVector_Z, float CallFunc_BreakVector_X_1, float CallFunc_BreakVector_Y_1, float CallFunc_BreakVector_Z_1, FVector CallFunc_GetSocketLocation_ReturnValue_1, float CallFunc_Subtract_FloatFloat_ReturnValue, float CallFunc_BreakVector_X_2, float CallFunc_BreakVector_Y_2, float CallFunc_BreakVector_Z_2, float CallFunc_Subtract_FloatFloat_ReturnValue_1, UMaterialInstanceDynamic? CallFunc_Array_Get_Item, UMaterialInstanceDynamic? CallFunc_Array_Get_Item_1, bool CallFunc_IsValid_ReturnValue, UMaterialInstanceDynamic? CallFunc_Array_Get_Item_2, bool CallFunc_IsValid_ReturnValue_1, int CallFunc_Array_Length_ReturnValue_1, bool CallFunc_Less_IntInt_ReturnValue, int CallFunc_Array_Length_ReturnValue_2, bool CallFunc_Less_IntInt_ReturnValue_1, int CallFunc_Array_Length_ReturnValue_3, bool CallFunc_Less_IntInt_ReturnValue_2, bool CallFunc_NearlyEqual_FloatFloat_ReturnValue, bool CallFunc_NearlyEqual_FloatFloat_ReturnValue_1)
+	{
+		nint CallFunc_Array_Get_Item_Ptr = CallFunc_Array_Get_Item?.Inner.Ptr ?? nint.Zero;
+		nint CallFunc_Array_Get_Item_1_Ptr = CallFunc_Array_Get_Item_1?.Inner.Ptr ?? nint.Zero;
+		nint CallFunc_Array_Get_Item_2_Ptr = CallFunc_Array_Get_Item_2?.Inner.Ptr ?? nint.Zero;
+		_ = Inner.ProcessEvent("SetDMIParameter_Tick", [
+			new BoolParam(new(&bGradDistanceEqual), 255),
+			new IntParam(new(&Temp_int_Loop_Counter_Variable)),
+			new IntParam(new(&CallFunc_Add_IntInt_ReturnValue)),
+			new IntParam(new(&Temp_int_Array_Index_Variable)),
+			new IntParam(new(&Temp_int_Array_Index_Variable_1)),
+			new IntParam(new(&Temp_int_Loop_Counter_Variable_1)),
+			new IntParam(new(&CallFunc_Add_IntInt_ReturnValue_1)),
+			new IntParam(new(&Temp_int_Array_Index_Variable_2)),
+			new IntParam(new(&Temp_int_Loop_Counter_Variable_2)),
+			new IntParam(new(&CallFunc_Add_IntInt_ReturnValue_2)),
+			new IntParam(new(&CallFunc_Array_Length_ReturnValue)),
+			new BoolParam(new(&CallFunc_NotEqual_IntInt_ReturnValue), 255),
+			new StructParam(new(&CallFunc_GetComponentBounds_Origin), 12),
+			new StructParam(new(&CallFunc_GetComponentBounds_BoxExtent), 12),
+			new FloatParam(new(&CallFunc_GetComponentBounds_SphereRadius)),
+			new StructParam(new(&CallFunc_GetSocketLocation_ReturnValue), 12),
+			new FloatParam(new(&CallFunc_BreakVector_X)),
+			new FloatParam(new(&CallFunc_BreakVector_Y)),
+			new FloatParam(new(&CallFunc_BreakVector_Z)),
+			new FloatParam(new(&CallFunc_BreakVector_X_1)),
+			new FloatParam(new(&CallFunc_BreakVector_Y_1)),
+			new FloatParam(new(&CallFunc_BreakVector_Z_1)),
+			new StructParam(new(&CallFunc_GetSocketLocation_ReturnValue_1), 12),
+			new FloatParam(new(&CallFunc_Subtract_FloatFloat_ReturnValue)),
+			new FloatParam(new(&CallFunc_BreakVector_X_2)),
+			new FloatParam(new(&CallFunc_BreakVector_Y_2)),
+			new FloatParam(new(&CallFunc_BreakVector_Z_2)),
+			new FloatParam(new(&CallFunc_Subtract_FloatFloat_ReturnValue_1)),
+			new ObjectParam(new(&CallFunc_Array_Get_Item_Ptr)),
+			new ObjectParam(new(&CallFunc_Array_Get_Item_1_Ptr)),
+			new BoolParam(new(&CallFunc_IsValid_ReturnValue), 255),
+			new ObjectParam(new(&CallFunc_Array_Get_Item_2_Ptr)),
+			new BoolParam(new(&CallFunc_IsValid_ReturnValue_1), 255),
+			new IntParam(new(&CallFunc_Array_Length_ReturnValue_1)),
+			new BoolParam(new(&CallFunc_Less_IntInt_ReturnValue), 255),
+			new IntParam(new(&CallFunc_Array_Length_ReturnValue_2)),
+			new BoolParam(new(&CallFunc_Less_IntInt_ReturnValue_1), 255),
+			new IntParam(new(&CallFunc_Array_Length_ReturnValue_3)),
+			new BoolParam(new(&CallFunc_Less_IntInt_ReturnValue_2), 255),
+			new BoolParam(new(&CallFunc_NearlyEqual_FloatFloat_ReturnValue), 255),
+			new BoolParam(new(&CallFunc_NearlyEqual_FloatFloat_ReturnValue_1), 255)
+		], out _);
+	}
+
+	public unsafe void SetScalarParameterValueEx( UMaterialInstanceDynamic? Material, FName ParameterName, float ParameterValue, float requestValue, float CallFunc_K2_GetScalarParameterValue_ReturnValue, bool CallFunc_NearlyEqual_FloatFloat_ReturnValue)
+	{
+		nint Material_Ptr = Material?.Inner.Ptr ?? nint.Zero;
+		_ = Inner.ProcessEvent("SetScalarParameterValueEx", [
+			new ObjectParam(new(&Material_Ptr)),
+			new NameParam(new(&ParameterName)),
+			new FloatParam(new(&ParameterValue)),
+			new FloatParam(new(&requestValue)),
+			new FloatParam(new(&CallFunc_K2_GetScalarParameterValue_ReturnValue)),
+			new BoolParam(new(&CallFunc_NearlyEqual_FloatFloat_ReturnValue), 255)
+		], out _);
+	}
+
+	public unsafe void Get_All_Chara_Point_Lights( TArray<Ptr<ABP_CharaPointLight_C_Repr>> CallFunc_GetAllActorsOfClass_OutActors)
+	{
+		_ = Inner.ProcessEvent("Get All Chara Point Lights", [
+			new ArrayParam(new((TArray<int>*)(&CallFunc_GetAllActorsOfClass_OutActors)))
+		], out _);
+	}
+
+	public unsafe void ResetAllPointLightsMode( int Temp_int_Loop_Counter_Variable, int CallFunc_Add_IntInt_ReturnValue, int Temp_int_Array_Index_Variable, int Temp_int_Variable, FString CallFunc_Conv_IntToString_ReturnValue, UMaterialInstanceDynamic? CallFunc_Array_Get_Item, FString CallFunc_Concat_StrStr_ReturnValue, int CallFunc_Array_Length_ReturnValue, FName CallFunc_Conv_StringToName_ReturnValue, bool CallFunc_Less_IntInt_ReturnValue, bool CallFunc_LessEqual_IntInt_ReturnValue, int CallFunc_Add_IntInt_ReturnValue_1)
+	{
+		nint CallFunc_Array_Get_Item_Ptr = CallFunc_Array_Get_Item?.Inner.Ptr ?? nint.Zero;
+		_ = Inner.ProcessEvent("ResetAllPointLightsMode", [
+			new IntParam(new(&Temp_int_Loop_Counter_Variable)),
+			new IntParam(new(&CallFunc_Add_IntInt_ReturnValue)),
+			new IntParam(new(&Temp_int_Array_Index_Variable)),
+			new IntParam(new(&Temp_int_Variable)),
+			new StringParam(new(&CallFunc_Conv_IntToString_ReturnValue)),
+			new ObjectParam(new(&CallFunc_Array_Get_Item_Ptr)),
+			new StringParam(new(&CallFunc_Concat_StrStr_ReturnValue)),
+			new IntParam(new(&CallFunc_Array_Length_ReturnValue)),
+			new NameParam(new(&CallFunc_Conv_StringToName_ReturnValue)),
+			new BoolParam(new(&CallFunc_Less_IntInt_ReturnValue), 255),
+			new BoolParam(new(&CallFunc_LessEqual_IntInt_ReturnValue), 255),
+			new IntParam(new(&CallFunc_Add_IntInt_ReturnValue_1))
+		], out _);
+	}
+
+	public unsafe void GetClosestPointLights( ref TArray<Ptr<ABP_CharaPointLight_C_Repr>> PointLights, int NumOfLights, FVector CenterJntLoc, int MaxNumOfPointLights, TArray<float> LightDistance, float Distance, int CallFunc_Subtract_IntInt_ReturnValue, int CallFunc_Array_Length_ReturnValue, int Temp_int_Variable, int CallFunc_Add_IntInt_ReturnValue, bool CallFunc_LessEqual_IntInt_ReturnValue, int Temp_int_Loop_Counter_Variable, int Temp_int_Array_Index_Variable, bool CallFunc_Less_IntInt_ReturnValue, ABP_CharaPointLight_C? CallFunc_Array_Get_Item, bool CallFunc_IsValid_ReturnValue, FVector CallFunc_K2_GetActorLocation_ReturnValue, float CallFunc_Vector_Distance_ReturnValue, bool CallFunc_EqualEqual_IntInt_ReturnValue, int CallFunc_Add_IntInt_ReturnValue_1, FVector CallFunc_GetSocketLocation_ReturnValue, bool Temp_bool_Variable, bool CallFunc_GreaterEqual_IntInt_ReturnValue, bool CallFunc_Not_PreBool_ReturnValue, bool CallFunc_BooleanAND_ReturnValue, bool CallFunc_Less_FloatFloat_ReturnValue, TArray<float> K2Node_MakeArray_Array)
+	{
+		nint CallFunc_Array_Get_Item_Ptr = CallFunc_Array_Get_Item?.Inner.Ptr ?? nint.Zero;
+		_ = Inner.ProcessEvent("GetClosestPointLights", [
+			new ArrayParam(new((TArray<int>*)Unsafe.AsPointer(ref PointLights))),
+			new IntParam(new(&NumOfLights)),
+			new StructParam(new(&CenterJntLoc), 12),
+			new IntParam(new(&MaxNumOfPointLights)),
+			new ArrayParam(new((TArray<int>*)(&LightDistance))),
+			new FloatParam(new(&Distance)),
+			new IntParam(new(&CallFunc_Subtract_IntInt_ReturnValue)),
+			new IntParam(new(&CallFunc_Array_Length_ReturnValue)),
+			new IntParam(new(&Temp_int_Variable)),
+			new IntParam(new(&CallFunc_Add_IntInt_ReturnValue)),
+			new BoolParam(new(&CallFunc_LessEqual_IntInt_ReturnValue), 255),
+			new IntParam(new(&Temp_int_Loop_Counter_Variable)),
+			new IntParam(new(&Temp_int_Array_Index_Variable)),
+			new BoolParam(new(&CallFunc_Less_IntInt_ReturnValue), 255),
+			new ObjectParam(new(&CallFunc_Array_Get_Item_Ptr)),
+			new BoolParam(new(&CallFunc_IsValid_ReturnValue), 255),
+			new StructParam(new(&CallFunc_K2_GetActorLocation_ReturnValue), 12),
+			new FloatParam(new(&CallFunc_Vector_Distance_ReturnValue)),
+			new BoolParam(new(&CallFunc_EqualEqual_IntInt_ReturnValue), 255),
+			new IntParam(new(&CallFunc_Add_IntInt_ReturnValue_1)),
+			new StructParam(new(&CallFunc_GetSocketLocation_ReturnValue), 12),
+			new BoolParam(new(&Temp_bool_Variable), 255),
+			new BoolParam(new(&CallFunc_GreaterEqual_IntInt_ReturnValue), 255),
+			new BoolParam(new(&CallFunc_Not_PreBool_ReturnValue), 255),
+			new BoolParam(new(&CallFunc_BooleanAND_ReturnValue), 255),
+			new BoolParam(new(&CallFunc_Less_FloatFloat_ReturnValue), 255),
+			new ArrayParam(new((TArray<int>*)(&K2Node_MakeArray_Array)))
+		], out _);
+	}
+
+}
+
+[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0x2D4)]
+public unsafe struct ABP_ShadowBase_C_Repr
+{
+	[FieldOffset(0x0)] public AShadowBaseCore_Repr Super; // Size: 0x288
+	[FieldOffset(0x288)] public FPointerToUberGraphFrame UberGraphFrame; // Size: 0x8
+	[FieldOffset(0x290)] public float StartPosition_VG; // Size: 0x4
+	[FieldOffset(0x294)] public float EndPosition_VG; // Size: 0x4
+	[FieldOffset(0x298)] public TArray<nint /* Ptr<UMaterialInstanceDynamic_Repr> */> DynamicMIs; // Size: 0x10
+	[FieldOffset(0x2A8)] public float BoundsScale; // Size: 0x4
+	[FieldOffset(0x2AC)] public bool bAllPointLightsMode; // Size: 0x1
+	[FieldOffset(0x2B0)] public TArray<nint /* Ptr<ABP_CharaPointLight_C_Repr> */> AllPointLights; // Size: 0x10
+	[FieldOffset(0x2C0)] public TArray<nint /* Ptr<ABP_CharaPointLight_C_Repr> */> ClosestPointLights; // Size: 0x10
+	[FieldOffset(0x2D0)] public float LastRenderTimeOnScreen; // Size: 0x4
+
+	public ABP_ShadowBase_C ToManaged(IUnrealFactory factory)
+	{
+		fixed (ABP_ShadowBase_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
+	}
+}
+
+
+public class UBPI_BtlCharacterContactor_C : UInterface, ITypeRepr<UBPI_BtlCharacterContactor_C_Repr>
+{
+	private static Dictionary<string, int>? FieldOffsets;
+	public UBPI_BtlCharacterContactor_C(IUObject inner, bool genOffsets = true) : base(inner, false)
+	{
+		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
+	}
+
+	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
+
+	public new unsafe UBPI_BtlCharacterContactor_C_Repr* Repr => (UBPI_BtlCharacterContactor_C_Repr*)Inner.Ptr;
+
+	public unsafe void CheckNyxCoreMode( ref bool NyxCoreMode)
+	{
+		_ = Inner.ProcessEvent("CheckNyxCoreMode", [
+			new BoolParam(new((bool*)Unsafe.AsPointer(ref NyxCoreMode)), 255)
+		], out _);
+	}
+
+	public unsafe void EncountHeroRunStop()
+	{
+		_ = Inner.ProcessEvent("EncountHeroRunStop", [], out _);
+	}
+
+	public unsafe void EncountHeroRunStart( float StartAnimationTime)
+	{
+		_ = Inner.ProcessEvent("EncountHeroRunStart", [
+			new FloatParam(new(&StartAnimationTime))
+		], out _);
+	}
+
+	public unsafe void EncountHeroGetShowActor( ref TArray<Ptr<AActor_Repr>> ShowActors)
+	{
+		_ = Inner.ProcessEvent("EncountHeroGetShowActor", [
+			new ArrayParam(new((TArray<int>*)Unsafe.AsPointer(ref ShowActors)))
+		], out _);
+	}
+
+	public unsafe void CheckSkeletalMeshValid( ref bool IsValid)
+	{
+		_ = Inner.ProcessEvent("CheckSkeletalMeshValid", [
+			new BoolParam(new((bool*)Unsafe.AsPointer(ref IsValid)), 255)
+		], out _);
+	}
+
+}
+
+[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0x28)]
+public unsafe struct UBPI_BtlCharacterContactor_C_Repr
+{
+	[FieldOffset(0x0)] public UInterface_Repr Super; // Size: 0x28
+	public UBPI_BtlCharacterContactor_C ToManaged(IUnrealFactory factory)
+	{
+		fixed (UBPI_BtlCharacterContactor_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
 	}
 }
 
@@ -314750,17 +315403,235 @@ public unsafe struct ABP_UI_Handwriting_Buzz_00_C_Repr
 }
 
 
-public class ABP_UI_Handwriting_Whisper_00_C : AActor, ITypeRepr<ABP_UI_Handwriting_Whisper_00_C_Repr>
+[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0x50)]
+public unsafe struct FFBtlAlloutSequencer
+{
+	[FieldOffset(0x0)] public TSoftObjectPtr<nint /* ULevelSequence_Repr */> AlloutA; // Size: 0x28
+	[FieldOffset(0x28)] public TSoftObjectPtr<nint /* ULevelSequence_Repr */> AlloutB; // Size: 0x28
+}
+
+public class ABP_BtlEffectUtensil_C : AAppActor, ITypeRepr<ABP_BtlEffectUtensil_C_Repr>
 {
 	private static Dictionary<string, int>? FieldOffsets;
-	public ABP_UI_Handwriting_Whisper_00_C(IUObject inner, bool genOffsets = true) : base(inner, false)
+	public ABP_BtlEffectUtensil_C(IUObject inner, bool genOffsets = true) : base(inner, false)
 	{
 		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
 	}
 
 	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
 
-	public new unsafe ABP_UI_Handwriting_Whisper_00_C_Repr* Repr => (ABP_UI_Handwriting_Whisper_00_C_Repr*)Inner.Ptr;
+	public new unsafe ABP_BtlEffectUtensil_C_Repr* Repr => (ABP_BtlEffectUtensil_C_Repr*)Inner.Ptr;
+
+	public unsafe FPointerToUberGraphFrame* UberGraphFrame
+	{
+		get => (FPointerToUberGraphFrame*)(Inner.Ptr + GetFieldOffset("UberGraphFrame"));
+	}
+
+	public unsafe USceneComponent? DefaultSceneRoot
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("DefaultSceneRoot")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("DefaultSceneRoot")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("DefaultSceneRoot")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe bool IsPlaying
+	{
+		get => *(bool*)(Inner.Ptr + GetFieldOffset("IsPlaying"));
+		set => *(bool*)(Inner.Ptr + GetFieldOffset("IsPlaying")) = value;
+	}
+
+	public unsafe UNiagaraComponent? VFX
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("VFX")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("VFX")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("VFX")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe UBtlCoreComponent? BtlCore
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("BtlCore")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("BtlCore")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("BtlCore")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe void ReceiveDestroyed()
+	{
+		_ = Inner.ProcessEvent("ReceiveDestroyed", [], out _);
+	}
+
+	public unsafe void ReceiveTick( float DeltaSeconds)
+	{
+		_ = Inner.ProcessEvent("ReceiveTick", [
+			new FloatParam(new(&DeltaSeconds))
+		], out _);
+	}
+
+	public unsafe void SetEffect( UNiagaraComponent? Niagara, UBtlCoreComponent? BtlCore)
+	{
+		nint Niagara_Ptr = Niagara?.Inner.Ptr ?? nint.Zero;
+		nint BtlCore_Ptr = BtlCore?.Inner.Ptr ?? nint.Zero;
+		_ = Inner.ProcessEvent("SetEffect", [
+			new ObjectParam(new(&Niagara_Ptr)),
+			new ObjectParam(new(&BtlCore_Ptr))
+		], out _);
+	}
+
+}
+
+[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0x2A0)]
+public unsafe struct ABP_BtlEffectUtensil_C_Repr
+{
+	[FieldOffset(0x0)] public AAppActor_Repr Super; // Size: 0x278
+	[FieldOffset(0x278)] public FPointerToUberGraphFrame UberGraphFrame; // Size: 0x8
+	[FieldOffset(0x280)] public USceneComponent_Repr* DefaultSceneRoot; // Size: 0x8
+	[FieldOffset(0x288)] public bool IsPlaying; // Size: 0x1
+	[FieldOffset(0x290)] public UNiagaraComponent_Repr* VFX; // Size: 0x8
+	[FieldOffset(0x298)] public UBtlCoreComponent_Repr* BtlCore; // Size: 0x8
+
+	public ABP_BtlEffectUtensil_C ToManaged(IUnrealFactory factory)
+	{
+		fixed (ABP_BtlEffectUtensil_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
+	}
+}
+
+
+public class ABP_BtlEventAttachPoint_C : AAppActor, ITypeRepr<ABP_BtlEventAttachPoint_C_Repr>
+{
+	private static Dictionary<string, int>? FieldOffsets;
+	public ABP_BtlEventAttachPoint_C(IUObject inner, bool genOffsets = true) : base(inner, false)
+	{
+		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
+	}
+
+	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
+
+	public new unsafe ABP_BtlEventAttachPoint_C_Repr* Repr => (ABP_BtlEventAttachPoint_C_Repr*)Inner.Ptr;
+
+	public unsafe USceneComponent? DefaultSceneRoot
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("DefaultSceneRoot")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("DefaultSceneRoot")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("DefaultSceneRoot")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+}
+
+[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0x280)]
+public unsafe struct ABP_BtlEventAttachPoint_C_Repr
+{
+	[FieldOffset(0x0)] public AAppActor_Repr Super; // Size: 0x278
+	[FieldOffset(0x278)] public USceneComponent_Repr* DefaultSceneRoot; // Size: 0x8
+
+	public ABP_BtlEventAttachPoint_C ToManaged(IUnrealFactory factory)
+	{
+		fixed (ABP_BtlEventAttachPoint_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
+	}
+}
+
+
+[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0xA0)]
+public unsafe struct FFBtlTheurgiaSeq
+{
+	[FieldOffset(0x0)] public TSoftObjectPtr<nint /* ULevelSequence_Repr */> Sequence; // Size: 0x28
+	[FieldOffset(0x28)] public TSoftObjectPtr<nint /* ULevelSequence_Repr */> SequenceEvolved; // Size: 0x28
+	[FieldOffset(0x50)] public TSoftObjectPtr<nint /* ULevelSequence_Repr */> SequenceSound; // Size: 0x28
+	[FieldOffset(0x78)] public FVector PersonaScaleA; // Size: 0xC
+	[FieldOffset(0x84)] public FVector PersonaScaleB; // Size: 0xC
+	[FieldOffset(0x90)] public EBtlPersonaSceneAnimationType PersonaLoopAnimType; // Size: 0x1
+	[FieldOffset(0x91)] public bool NeedCommonSkillSceneFromTheurgia; // Size: 0x1
+	[FieldOffset(0x94)] public int TheurgiaVoiceIndex; // Size: 0x4
+	[FieldOffset(0x98)] public bool DisableLOD; // Size: 0x1
+}
+
+[StructLayout(LayoutKind.Explicit, Pack = 4, Size = 0x10)]
+public unsafe struct FFBtlTheurgiaLocOffset
+{
+	[FieldOffset(0x0)] public FVector Location; // Size: 0xC
+	[FieldOffset(0xC)] public float Scale; // Size: 0x4
+}
+
+[StructLayout(LayoutKind.Explicit, Pack = 4, Size = 0x30)]
+public unsafe struct FFBtlCommandCameraEncount
+{
+	[FieldOffset(0x0)] public FFBtlCommandCamera Human; // Size: 0x18
+	[FieldOffset(0x18)] public FFBtlCommandCamera KOROMALU; // Size: 0x18
+}
+
+public class UABP_Pp0901_C : UAnimInstance, ITypeRepr<UABP_Pp0901_C_Repr>
+{
+	private static Dictionary<string, int>? FieldOffsets;
+	public UABP_Pp0901_C(IUObject inner, bool genOffsets = true) : base(inner, false)
+	{
+		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
+	}
+
+	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
+
+	public new unsafe UABP_Pp0901_C_Repr* Repr => (UABP_Pp0901_C_Repr*)Inner.Ptr;
+
+	public unsafe FPointerToUberGraphFrame* UberGraphFrame
+	{
+		get => (FPointerToUberGraphFrame*)(Inner.Ptr + GetFieldOffset("UberGraphFrame"));
+	}
+
+	public unsafe FAnimNode_Root* AnimGraphNode_Root
+	{
+		get => (FAnimNode_Root*)(Inner.Ptr + GetFieldOffset("AnimGraphNode_Root"));
+	}
+
+	public unsafe FAnimNode_Slot* AnimGraphNode_Slot
+	{
+		get => (FAnimNode_Slot*)(Inner.Ptr + GetFieldOffset("AnimGraphNode_Slot"));
+	}
+
+	public unsafe void AnimGraph( ref FPoseLink AnimGraph)
+	{
+		_ = Inner.ProcessEvent("AnimGraph", [
+			new StructParam(new((FPoseLink*)Unsafe.AsPointer(ref AnimGraph)), 16)
+		], out _);
+	}
+
+}
+
+[StructLayout(LayoutKind.Explicit, Pack = 16, Size = 0x340)]
+public unsafe struct UABP_Pp0901_C_Repr
+{
+	[FieldOffset(0x0)] public UAnimInstance_Repr Super; // Size: 0x2C0
+	[FieldOffset(0x2C0)] public FPointerToUberGraphFrame UberGraphFrame; // Size: 0x8
+	[FieldOffset(0x2C8)] public FAnimNode_Root AnimGraphNode_Root; // Size: 0x30
+	[FieldOffset(0x2F8)] public FAnimNode_Slot AnimGraphNode_Slot; // Size: 0x48
+
+	public UABP_Pp0901_C ToManaged(IUnrealFactory factory)
+	{
+		fixed (UABP_Pp0901_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
+	}
+}
+
+
+[StructLayout(LayoutKind.Explicit, Pack = 4, Size = 0x8)]
+public unsafe struct FFBtlGuiAnimationParam
+{
+	[FieldOffset(0x0)] public FVector2D Power; // Size: 0x8
+}
+
+[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0x28)]
+public unsafe struct FFBtlGuiResourcesItem
+{
+	[FieldOffset(0x0)] public TSoftObjectPtr<nint /* UObject_Repr */> _object; // Size: 0x28
+}
+
+public class ABP_UI_Handwriting_Buzz_Read_00_C : AActor, ITypeRepr<ABP_UI_Handwriting_Buzz_Read_00_C_Repr>
+{
+	private static Dictionary<string, int>? FieldOffsets;
+	public ABP_UI_Handwriting_Buzz_Read_00_C(IUObject inner, bool genOffsets = true) : base(inner, false)
+	{
+		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
+	}
+
+	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
+
+	public new unsafe ABP_UI_Handwriting_Buzz_Read_00_C_Repr* Repr => (ABP_UI_Handwriting_Buzz_Read_00_C_Repr*)Inner.Ptr;
+
+	public unsafe FPointerToUberGraphFrame* UberGraphFrame
+	{
+		get => (FPointerToUberGraphFrame*)(Inner.Ptr + GetFieldOffset("UberGraphFrame"));
+	}
 
 	public unsafe UNiagaraComponent? Niagara
 	{
@@ -314774,21 +315645,796 @@ public class ABP_UI_Handwriting_Whisper_00_C : AActor, ITypeRepr<ABP_UI_Handwrit
 		set => *(nint*)(Inner.Ptr + GetFieldOffset("DefaultSceneRoot")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
+	public unsafe void ReceiveBeginPlay()
+	{
+		_ = Inner.ProcessEvent("ReceiveBeginPlay", [], out _);
+	}
+
+	public unsafe void ReceiveTick( float DeltaSeconds)
+	{
+		_ = Inner.ProcessEvent("ReceiveTick", [
+			new FloatParam(new(&DeltaSeconds))
+		], out _);
+	}
+
 }
 
-[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0x230)]
-public unsafe struct ABP_UI_Handwriting_Whisper_00_C_Repr
+[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0x238)]
+public unsafe struct ABP_UI_Handwriting_Buzz_Read_00_C_Repr
 {
 	[FieldOffset(0x0)] public AActor_Repr Super; // Size: 0x220
-	[FieldOffset(0x220)] public UNiagaraComponent_Repr* Niagara; // Size: 0x8
-	[FieldOffset(0x228)] public USceneComponent_Repr* DefaultSceneRoot; // Size: 0x8
+	[FieldOffset(0x220)] public FPointerToUberGraphFrame UberGraphFrame; // Size: 0x8
+	[FieldOffset(0x228)] public UNiagaraComponent_Repr* Niagara; // Size: 0x8
+	[FieldOffset(0x230)] public USceneComponent_Repr* DefaultSceneRoot; // Size: 0x8
 
-	public ABP_UI_Handwriting_Whisper_00_C ToManaged(IUnrealFactory factory)
+	public ABP_UI_Handwriting_Buzz_Read_00_C ToManaged(IUnrealFactory factory)
 	{
-		fixed (ABP_UI_Handwriting_Whisper_00_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
+		fixed (ABP_UI_Handwriting_Buzz_Read_00_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
 	}
 }
 
+
+public class UBP_BtlCoreComponent_C : UBtlCoreComponent, ITypeRepr<UBP_BtlCoreComponent_C_Repr>
+{
+	private static Dictionary<string, int>? FieldOffsets;
+	public UBP_BtlCoreComponent_C(IUObject inner, bool genOffsets = true) : base(inner, false)
+	{
+		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
+	}
+
+	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
+
+	public new unsafe UBP_BtlCoreComponent_C_Repr* Repr => (UBP_BtlCoreComponent_C_Repr*)Inner.Ptr;
+
+}
+
+[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0x570)]
+public unsafe struct UBP_BtlCoreComponent_C_Repr
+{
+	[FieldOffset(0x0)] public UBtlCoreComponent_Repr Super; // Size: 0x570
+	public UBP_BtlCoreComponent_C ToManaged(IUnrealFactory factory)
+	{
+		fixed (UBP_BtlCoreComponent_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
+	}
+}
+
+
+[StructLayout(LayoutKind.Explicit, Pack = 4, Size = 0xC)]
+public unsafe struct FFBtlSkillControl
+{
+	[FieldOffset(0x0)] public bool IsPlay; // Size: 0x1
+	[FieldOffset(0x4)] public int VFXIndex; // Size: 0x4
+	[FieldOffset(0x8)] public bool UseCamera; // Size: 0x1
+}
+
+[StructLayout(LayoutKind.Explicit, Pack = 16, Size = 0x70)]
+public unsafe struct FFBtlSkillRequest
+{
+	[FieldOffset(0x0)] public UNiagaraSystem_Repr* VFX; // Size: 0x8
+	[FieldOffset(0x8)] public float WaitTime; // Size: 0x4
+	[FieldOffset(0x10)] public FTransform Transform; // Size: 0x30
+	[FieldOffset(0x40)] public bool AlreadyRequested; // Size: 0x1
+	[FieldOffset(0x48)] public UNiagaraComponent_Repr* VFXObjectReference; // Size: 0x8
+	[FieldOffset(0x50)] public USoundAtomCue_Repr* SkillSE; // Size: 0x8
+	[FieldOffset(0x58)] public float SoundVolumeRatio; // Size: 0x4
+	[FieldOffset(0x60)] public UAtomComponent_Repr* SKillSEObjectReference; // Size: 0x8
+	[FieldOffset(0x68)] public bool UseSECameraRangeParam; // Size: 0x1
+	[FieldOffset(0x6C)] public float SECameraRangeMax; // Size: 0x4
+}
+
+public class ABP_BtlCutinMannequin_C : AAppActor, ITypeRepr<ABP_BtlCutinMannequin_C_Repr>
+{
+	private static Dictionary<string, int>? FieldOffsets;
+	public ABP_BtlCutinMannequin_C(IUObject inner, bool genOffsets = true) : base(inner, false)
+	{
+		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
+	}
+
+	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
+
+	public new unsafe ABP_BtlCutinMannequin_C_Repr* Repr => (ABP_BtlCutinMannequin_C_Repr*)Inner.Ptr;
+
+	public unsafe UStaticMeshComponent? Mesh
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("Mesh")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("Mesh")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("Mesh")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe USceneComponent? DefaultSceneRoot
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("DefaultSceneRoot")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("DefaultSceneRoot")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("DefaultSceneRoot")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+}
+
+[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0x288)]
+public unsafe struct ABP_BtlCutinMannequin_C_Repr
+{
+	[FieldOffset(0x0)] public AAppActor_Repr Super; // Size: 0x278
+	[FieldOffset(0x278)] public UStaticMeshComponent_Repr* Mesh; // Size: 0x8
+	[FieldOffset(0x280)] public USceneComponent_Repr* DefaultSceneRoot; // Size: 0x8
+
+	public ABP_BtlCutinMannequin_C ToManaged(IUnrealFactory factory)
+	{
+		fixed (ABP_BtlCutinMannequin_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
+	}
+}
+
+
+public class UBP_BtlDataBase_C : UBtlDataBaseComponent, ITypeRepr<UBP_BtlDataBase_C_Repr>
+{
+	private static Dictionary<string, int>? FieldOffsets;
+	public UBP_BtlDataBase_C(IUObject inner, bool genOffsets = true) : base(inner, false)
+	{
+		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
+	}
+
+	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
+
+	public new unsafe UBP_BtlDataBase_C_Repr* Repr => (UBP_BtlDataBase_C_Repr*)Inner.Ptr;
+
+}
+
+[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0xC8)]
+public unsafe struct UBP_BtlDataBase_C_Repr
+{
+	[FieldOffset(0x0)] public UBtlDataBaseComponent_Repr Super; // Size: 0xC8
+	public UBP_BtlDataBase_C ToManaged(IUnrealFactory factory)
+	{
+		fixed (UBP_BtlDataBase_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
+	}
+}
+
+
+[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0x28)]
+public unsafe struct FFBtlResultSequence
+{
+	[FieldOffset(0x0)] public TSoftObjectPtr<nint /* ULevelSequence_Repr */> Sequencer; // Size: 0x28
+}
+
+public class UBPI_FLDSky_C : UInterface, ITypeRepr<UBPI_FLDSky_C_Repr>
+{
+	private static Dictionary<string, int>? FieldOffsets;
+	public UBPI_FLDSky_C(IUObject inner, bool genOffsets = true) : base(inner, false)
+	{
+		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
+	}
+
+	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
+
+	public new unsafe UBPI_FLDSky_C_Repr* Repr => (UBPI_FLDSky_C_Repr*)Inner.Ptr;
+
+	public unsafe void GetDirectionalLightMoon( ref ULightComponent? LightComponent)
+	{
+		nint LightComponent_Ptr = LightComponent?.Inner.Ptr ?? nint.Zero;
+		_ = Inner.ProcessEvent("GetDirectionalLightMoon", [
+			new ObjectParam(new(&LightComponent_Ptr))
+		], out _);
+		LightComponent = LightComponent_Ptr != nint.Zero ? new(Inner.GetFactory().CreateUObject(LightComponent_Ptr)) : null;
+	}
+
+	public unsafe void FLDSkyReset()
+	{
+		_ = Inner.ProcessEvent("FLDSkyReset", [], out _);
+	}
+
+	public unsafe void GetExposureCompensation( ref float Exposure)
+	{
+		_ = Inner.ProcessEvent("GetExposureCompensation", [
+			new FloatParam(new((float*)Unsafe.AsPointer(ref Exposure)))
+		], out _);
+	}
+
+	public unsafe void SetExposureCompensation( float Exposure)
+	{
+		_ = Inner.ProcessEvent("SetExposureCompensation", [
+			new FloatParam(new(&Exposure))
+		], out _);
+	}
+
+}
+
+[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0x28)]
+public unsafe struct UBPI_FLDSky_C_Repr
+{
+	[FieldOffset(0x0)] public UInterface_Repr Super; // Size: 0x28
+	public UBPI_FLDSky_C ToManaged(IUnrealFactory factory)
+	{
+		fixed (UBPI_FLDSky_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
+	}
+}
+
+
+[StructLayout(LayoutKind.Explicit, Pack = 1, Size = 0x1)]
+public unsafe struct FFBtlCamCalcAddParam
+{
+	[FieldOffset(0x0)] public bool ExceptPersonaCylinder; // Size: 0x1
+}
+
+[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0xF0)]
+public unsafe struct FFBtlAlloutFinishTexture
+{
+	[FieldOffset(0x0)] public TSoftObjectPtr<nint /* UTexture_Repr */> TextureNormal; // Size: 0x28
+	[FieldOffset(0x28)] public TSoftObjectPtr<nint /* UTexture_Repr */> TextureNormalMask; // Size: 0x28
+	[FieldOffset(0x50)] public TSoftObjectPtr<nint /* UTexture_Repr */> TextureSpecialOutfit; // Size: 0x28
+	[FieldOffset(0x78)] public TSoftObjectPtr<nint /* UTexture_Repr */> TextureSpecialOutfitMask; // Size: 0x28
+	[FieldOffset(0xA0)] public TSoftObjectPtr<nint /* UTexture_Repr */> TextureText; // Size: 0x28
+	[FieldOffset(0xC8)] public TSoftObjectPtr<nint /* UObject_Repr */> TextPlg; // Size: 0x28
+}
+
+[StructLayout(LayoutKind.Explicit, Pack = 4, Size = 0x18)]
+public unsafe struct FFBtlCommandCamera
+{
+	[FieldOffset(0x0)] public float CameraHeight; // Size: 0x4
+	[FieldOffset(0x4)] public float CameraRoll; // Size: 0x4
+	[FieldOffset(0x8)] public float CameraYaw; // Size: 0x4
+	[FieldOffset(0xC)] public float CranePitch; // Size: 0x4
+	[FieldOffset(0x10)] public float CraneYaw; // Size: 0x4
+	[FieldOffset(0x14)] public float CraneLength; // Size: 0x4
+}
+
+public class UBPI_BtlGuiContactor_C : UInterface, ITypeRepr<UBPI_BtlGuiContactor_C_Repr>
+{
+	private static Dictionary<string, int>? FieldOffsets;
+	public UBPI_BtlGuiContactor_C(IUObject inner, bool genOffsets = true) : base(inner, false)
+	{
+		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
+	}
+
+	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
+
+	public new unsafe UBPI_BtlGuiContactor_C_Repr* Repr => (UBPI_BtlGuiContactor_C_Repr*)Inner.Ptr;
+
+	public unsafe void FinishAlloutActor()
+	{
+		_ = Inner.ProcessEvent("FinishAlloutActor", [], out _);
+	}
+
+}
+
+[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0x28)]
+public unsafe struct UBPI_BtlGuiContactor_C_Repr
+{
+	[FieldOffset(0x0)] public UInterface_Repr Super; // Size: 0x28
+	public UBPI_BtlGuiContactor_C ToManaged(IUnrealFactory factory)
+	{
+		fixed (UBPI_BtlGuiContactor_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
+	}
+}
+
+
+public class ABP_BtlCalc_C : ABtlCalcBase, ITypeRepr<ABP_BtlCalc_C_Repr>
+{
+	private static Dictionary<string, int>? FieldOffsets;
+	public ABP_BtlCalc_C(IUObject inner, bool genOffsets = true) : base(inner, false)
+	{
+		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
+	}
+
+	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
+
+	public new unsafe ABP_BtlCalc_C_Repr* Repr => (ABP_BtlCalc_C_Repr*)Inner.Ptr;
+
+	public unsafe USceneComponent? DefaultSceneRoot
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("DefaultSceneRoot")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("DefaultSceneRoot")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("DefaultSceneRoot")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe UDataTable? DifficultyParam
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("DifficultyParam")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("DifficultyParam")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("DifficultyParam")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe UDataTable? LevelDamageRatio
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("LevelDamageRatio")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("LevelDamageRatio")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("LevelDamageRatio")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe UDataTable? LevelDamageRatioBoss
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("LevelDamageRatioBoss")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("LevelDamageRatioBoss")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("LevelDamageRatioBoss")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe UDataTable? LevelExpRatio
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("LevelExpRatio")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("LevelExpRatio")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("LevelExpRatio")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe UDataTable? FullMoonSkillPower
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("FullMoonSkillPower")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("FullMoonSkillPower")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("FullMoonSkillPower")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe UDataTable? NewMoonSkillPower
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("NewMoonSkillPower")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("NewMoonSkillPower")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("NewMoonSkillPower")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe float CalcMagicDamage()
+	{
+		_ = Inner.ProcessEvent("CalcMagicDamage", [], out var Return);
+		return ((FloatParam?)Return)!.Value;
+	}
+
+	public unsafe float CalcPhysicalDamage()
+	{
+		_ = Inner.ProcessEvent("CalcPhysicalDamage", [], out var Return);
+		return ((FloatParam?)Return)!.Value;
+	}
+
+	public unsafe float CalcAccuracyRate()
+	{
+		_ = Inner.ProcessEvent("CalcAccuracyRate", [], out var Return);
+		return ((FloatParam?)Return)!.Value;
+	}
+
+	public unsafe float CalcCriticalHitRate()
+	{
+		_ = Inner.ProcessEvent("CalcCriticalHitRate", [], out var Return);
+		return ((FloatParam?)Return)!.Value;
+	}
+
+	public unsafe float CalcDownRate()
+	{
+		_ = Inner.ProcessEvent("CalcDownRate", [], out var Return);
+		return ((FloatParam?)Return)!.Value;
+	}
+
+	public unsafe float CalcRushDamage()
+	{
+		_ = Inner.ProcessEvent("CalcRushDamage", [], out var Return);
+		return ((FloatParam?)Return)!.Value;
+	}
+
+	public unsafe float CalcAllOutAttackDamage()
+	{
+		_ = Inner.ProcessEvent("CalcAllOutAttackDamage", [], out var Return);
+		return ((FloatParam?)Return)!.Value;
+	}
+
+	public unsafe float CalcBadStatusHitRate()
+	{
+		_ = Inner.ProcessEvent("CalcBadStatusHitRate", [], out var Return);
+		return ((FloatParam?)Return)!.Value;
+	}
+
+	public unsafe float CalcBadStatusRecoveryRate()
+	{
+		_ = Inner.ProcessEvent("CalcBadStatusRecoveryRate", [], out var Return);
+		return ((FloatParam?)Return)!.Value;
+	}
+
+	public unsafe float CalcEscapeRate()
+	{
+		_ = Inner.ProcessEvent("CalcEscapeRate", [], out var Return);
+		return ((FloatParam?)Return)!.Value;
+	}
+
+	public unsafe float CalcHealRecovery()
+	{
+		_ = Inner.ProcessEvent("CalcHealRecovery", [], out var Return);
+		return ((FloatParam?)Return)!.Value;
+	}
+
+	public unsafe float GetDamageRateToEnemy()
+	{
+		_ = Inner.ProcessEvent("GetDamageRateToEnemy", [], out var Return);
+		return ((FloatParam?)Return)!.Value;
+	}
+
+	public unsafe float GetDamageRateToPlayer()
+	{
+		_ = Inner.ProcessEvent("GetDamageRateToPlayer", [], out var Return);
+		return ((FloatParam?)Return)!.Value;
+	}
+
+	public unsafe int GetDownAgilityForEnemy()
+	{
+		_ = Inner.ProcessEvent("GetDownAgilityForEnemy", [], out var Return);
+		return ((IntParam?)Return)!.Value;
+	}
+
+	public unsafe float GetEnemyCriticalDamageRate()
+	{
+		_ = Inner.ProcessEvent("GetEnemyCriticalDamageRate", [], out var Return);
+		return ((FloatParam?)Return)!.Value;
+	}
+
+	public unsafe float GetEnemyWeakDamageRate()
+	{
+		_ = Inner.ProcessEvent("GetEnemyWeakDamageRate", [], out var Return);
+		return ((FloatParam?)Return)!.Value;
+	}
+
+	public unsafe float GetExpRate()
+	{
+		_ = Inner.ProcessEvent("GetExpRate", [], out var Return);
+		return ((FloatParam?)Return)!.Value;
+	}
+
+	public unsafe float GetMoneyRate()
+	{
+		_ = Inner.ProcessEvent("GetMoneyRate", [], out var Return);
+		return ((FloatParam?)Return)!.Value;
+	}
+
+	public unsafe float GetPlayerCriticalDamageRate()
+	{
+		_ = Inner.ProcessEvent("GetPlayerCriticalDamageRate", [], out var Return);
+		return ((FloatParam?)Return)!.Value;
+	}
+
+	public unsafe float GetPlayerWeakDamageRate()
+	{
+		_ = Inner.ProcessEvent("GetPlayerWeakDamageRate", [], out var Return);
+		return ((FloatParam?)Return)!.Value;
+	}
+
+	public unsafe void GetDifficultyParam( ref FFBtlCalcParam Param, FFBtlCalcParam Work, FFBtlCalcParam CallFunc_GetDataTableRowFromName_OutRow, bool CallFunc_GetDataTableRowFromName_ReturnValue, FFBtlCalcParam CallFunc_GetDataTableRowFromName_OutRow_1, bool CallFunc_GetDataTableRowFromName_ReturnValue_1, FFBtlCalcParam CallFunc_GetDataTableRowFromName_OutRow_2, bool CallFunc_GetDataTableRowFromName_ReturnValue_2, FFBtlCalcParam CallFunc_GetDataTableRowFromName_OutRow_3, bool CallFunc_GetDataTableRowFromName_ReturnValue_3, FFBtlCalcParam CallFunc_GetDataTableRowFromName_OutRow_4, bool CallFunc_GetDataTableRowFromName_ReturnValue_4, EBtlGameDifficulty CallFunc_GetDifficulty_ReturnValue, bool CallFunc_IsValid_ReturnValue, bool K2Node_SwitchEnum_CmpSuccess)
+	{
+		_ = Inner.ProcessEvent("GetDifficultyParam", [
+			new StructParam(new((FFBtlCalcParam*)Unsafe.AsPointer(ref Param)), 40),
+			new StructParam(new(&Work), 40),
+			new StructParam(new(&CallFunc_GetDataTableRowFromName_OutRow), 40),
+			new BoolParam(new(&CallFunc_GetDataTableRowFromName_ReturnValue), 255),
+			new StructParam(new(&CallFunc_GetDataTableRowFromName_OutRow_1), 40),
+			new BoolParam(new(&CallFunc_GetDataTableRowFromName_ReturnValue_1), 255),
+			new StructParam(new(&CallFunc_GetDataTableRowFromName_OutRow_2), 40),
+			new BoolParam(new(&CallFunc_GetDataTableRowFromName_ReturnValue_2), 255),
+			new StructParam(new(&CallFunc_GetDataTableRowFromName_OutRow_3), 40),
+			new BoolParam(new(&CallFunc_GetDataTableRowFromName_ReturnValue_3), 255),
+			new StructParam(new(&CallFunc_GetDataTableRowFromName_OutRow_4), 40),
+			new BoolParam(new(&CallFunc_GetDataTableRowFromName_ReturnValue_4), 255),
+			new EnumParam(new(&CallFunc_GetDifficulty_ReturnValue), 1),
+			new BoolParam(new(&CallFunc_IsValid_ReturnValue), 255),
+			new BoolParam(new(&K2Node_SwitchEnum_CmpSuccess), 255)
+		], out _);
+	}
+
+	public unsafe float CalcExpPersonaLevelUp( float Level, float DefaultLevel)
+	{
+		_ = Inner.ProcessEvent("CalcExpPersonaLevelUp", [
+			new FloatParam(new(&Level)),
+			new FloatParam(new(&DefaultLevel))
+		], out var Return);
+		return ((FloatParam?)Return)!.Value;
+	}
+
+	public unsafe void Accuracy_Player( ref float Rate, float N, float A, float CallFunc_GetParam_ReturnValue, byte CallFunc_MakeLiteralByte_ReturnValue, int CallFunc_Conv_ByteToInt_ReturnValue, float CallFunc_GetParam_ReturnValue_1, float CallFunc_Multiply_FloatFloat_ReturnValue, float CallFunc_Add_FloatFloat_ReturnValue, byte CallFunc_MakeLiteralByte_ReturnValue_1, int CallFunc_Conv_ByteToInt_ReturnValue_1, float CallFunc_GetParam_ReturnValue_2, float CallFunc_Add_FloatFloat_ReturnValue_1, float CallFunc_Divide_FloatFloat_ReturnValue)
+	{
+		_ = Inner.ProcessEvent("Accuracy Player", [
+			new FloatParam(new((float*)Unsafe.AsPointer(ref Rate))),
+			new FloatParam(new(&N)),
+			new FloatParam(new(&A)),
+			new FloatParam(new(&CallFunc_GetParam_ReturnValue)),
+			new ByteParam(new((byte*)(&CallFunc_MakeLiteralByte_ReturnValue))),
+			new IntParam(new(&CallFunc_Conv_ByteToInt_ReturnValue)),
+			new FloatParam(new(&CallFunc_GetParam_ReturnValue_1)),
+			new FloatParam(new(&CallFunc_Multiply_FloatFloat_ReturnValue)),
+			new FloatParam(new(&CallFunc_Add_FloatFloat_ReturnValue)),
+			new ByteParam(new((byte*)(&CallFunc_MakeLiteralByte_ReturnValue_1))),
+			new IntParam(new(&CallFunc_Conv_ByteToInt_ReturnValue_1)),
+			new FloatParam(new(&CallFunc_GetParam_ReturnValue_2)),
+			new FloatParam(new(&CallFunc_Add_FloatFloat_ReturnValue_1)),
+			new FloatParam(new(&CallFunc_Divide_FloatFloat_ReturnValue))
+		], out _);
+	}
+
+	public unsafe void Accuracy_Enemy( ref float Rate, float N, float B, float A, float CallFunc_GetParam_ReturnValue, float CallFunc_Multiply_FloatFloat_ReturnValue, bool CallFunc_Greater_FloatFloat_ReturnValue, float CallFunc_GetParam_ReturnValue_1, float CallFunc_Multiply_FloatFloat_ReturnValue_1, float CallFunc_GetParam_ReturnValue_2, float CallFunc_GetParam_ReturnValue_3, byte CallFunc_MakeLiteralByte_ReturnValue, float CallFunc_Divide_FloatFloat_ReturnValue, float CallFunc_Add_FloatFloat_ReturnValue, int CallFunc_Conv_ByteToInt_ReturnValue, byte CallFunc_MakeLiteralByte_ReturnValue_1, float CallFunc_GetParam_ReturnValue_4, float CallFunc_Add_FloatFloat_ReturnValue_1, int CallFunc_Conv_ByteToInt_ReturnValue_1, float CallFunc_GetParam_ReturnValue_5, float CallFunc_Add_FloatFloat_ReturnValue_2, float CallFunc_Divide_FloatFloat_ReturnValue_1, byte CallFunc_MakeLiteralByte_ReturnValue_2, int CallFunc_Conv_ByteToInt_ReturnValue_2, float CallFunc_GetParam_ReturnValue_6, float CallFunc_Add_FloatFloat_ReturnValue_3, float CallFunc_Divide_FloatFloat_ReturnValue_2)
+	{
+		_ = Inner.ProcessEvent("Accuracy Enemy", [
+			new FloatParam(new((float*)Unsafe.AsPointer(ref Rate))),
+			new FloatParam(new(&N)),
+			new FloatParam(new(&B)),
+			new FloatParam(new(&A)),
+			new FloatParam(new(&CallFunc_GetParam_ReturnValue)),
+			new FloatParam(new(&CallFunc_Multiply_FloatFloat_ReturnValue)),
+			new BoolParam(new(&CallFunc_Greater_FloatFloat_ReturnValue), 255),
+			new FloatParam(new(&CallFunc_GetParam_ReturnValue_1)),
+			new FloatParam(new(&CallFunc_Multiply_FloatFloat_ReturnValue_1)),
+			new FloatParam(new(&CallFunc_GetParam_ReturnValue_2)),
+			new FloatParam(new(&CallFunc_GetParam_ReturnValue_3)),
+			new ByteParam(new((byte*)(&CallFunc_MakeLiteralByte_ReturnValue))),
+			new FloatParam(new(&CallFunc_Divide_FloatFloat_ReturnValue)),
+			new FloatParam(new(&CallFunc_Add_FloatFloat_ReturnValue)),
+			new IntParam(new(&CallFunc_Conv_ByteToInt_ReturnValue)),
+			new ByteParam(new((byte*)(&CallFunc_MakeLiteralByte_ReturnValue_1))),
+			new FloatParam(new(&CallFunc_GetParam_ReturnValue_4)),
+			new FloatParam(new(&CallFunc_Add_FloatFloat_ReturnValue_1)),
+			new IntParam(new(&CallFunc_Conv_ByteToInt_ReturnValue_1)),
+			new FloatParam(new(&CallFunc_GetParam_ReturnValue_5)),
+			new FloatParam(new(&CallFunc_Add_FloatFloat_ReturnValue_2)),
+			new FloatParam(new(&CallFunc_Divide_FloatFloat_ReturnValue_1)),
+			new ByteParam(new((byte*)(&CallFunc_MakeLiteralByte_ReturnValue_2))),
+			new IntParam(new(&CallFunc_Conv_ByteToInt_ReturnValue_2)),
+			new FloatParam(new(&CallFunc_GetParam_ReturnValue_6)),
+			new FloatParam(new(&CallFunc_Add_FloatFloat_ReturnValue_3)),
+			new FloatParam(new(&CallFunc_Divide_FloatFloat_ReturnValue_2))
+		], out _);
+	}
+
+	public unsafe int GetAttackSupportRatio( bool isPlayer, int Point)
+	{
+		_ = Inner.ProcessEvent("GetAttackSupportRatio", [
+			new BoolParam(new(&isPlayer), 255),
+			new IntParam(new(&Point))
+		], out var Return);
+		return ((IntParam?)Return)!.Value;
+	}
+
+	public unsafe int GetDefenseSupportRatio( bool isPlayer, int Point)
+	{
+		_ = Inner.ProcessEvent("GetDefenseSupportRatio", [
+			new BoolParam(new(&isPlayer), 255),
+			new IntParam(new(&Point))
+		], out var Return);
+		return ((IntParam?)Return)!.Value;
+	}
+
+	public unsafe int GetSpeedSupportRatio( bool isPlayer, int Point)
+	{
+		_ = Inner.ProcessEvent("GetSpeedSupportRatio", [
+			new BoolParam(new(&isPlayer), 255),
+			new IntParam(new(&Point))
+		], out var Return);
+		return ((IntParam?)Return)!.Value;
+	}
+
+	public unsafe int GetMagicBonusRecovery( int MagicAttacker)
+	{
+		_ = Inner.ProcessEvent("GetMagicBonusRecovery", [
+			new IntParam(new(&MagicAttacker))
+		], out var Return);
+		return ((IntParam?)Return)!.Value;
+	}
+
+	public unsafe int GetMagicBonusDamage( int MagicAttacker)
+	{
+		_ = Inner.ProcessEvent("GetMagicBonusDamage", [
+			new IntParam(new(&MagicAttacker))
+		], out var Return);
+		return ((IntParam?)Return)!.Value;
+	}
+
+	public unsafe float GetLevelAccuracyRatio( int LevelAttacker, int LevelTarget)
+	{
+		_ = Inner.ProcessEvent("GetLevelAccuracyRatio", [
+			new IntParam(new(&LevelAttacker)),
+			new IntParam(new(&LevelTarget))
+		], out var Return);
+		return ((FloatParam?)Return)!.Value;
+	}
+
+	public unsafe float GetLevelDamageBossRatio( int LevelAttacker, int LevelTarget)
+	{
+		_ = Inner.ProcessEvent("GetLevelDamageBossRatio", [
+			new IntParam(new(&LevelAttacker)),
+			new IntParam(new(&LevelTarget))
+		], out var Return);
+		return ((FloatParam?)Return)!.Value;
+	}
+
+	public unsafe float GetLevelDamageRatio( int LevelAttacker, int LevelTarget)
+	{
+		_ = Inner.ProcessEvent("GetLevelDamageRatio", [
+			new IntParam(new(&LevelAttacker)),
+			new IntParam(new(&LevelTarget))
+		], out var Return);
+		return ((FloatParam?)Return)!.Value;
+	}
+
+	public unsafe float GetLevelExpRatio( int LevelDifference)
+	{
+		_ = Inner.ProcessEvent("GetLevelExpRatio", [
+			new IntParam(new(&LevelDifference))
+		], out var Return);
+		return ((FloatParam?)Return)!.Value;
+	}
+
+	public unsafe int GetShuffleTimeOccurPercent()
+	{
+		_ = Inner.ProcessEvent("GetShuffleTimeOccurPercent", [], out var Return);
+		return ((IntParam?)Return)!.Value;
+	}
+
+	public unsafe float AttackRatioByANGER()
+	{
+		_ = Inner.ProcessEvent("AttackRatioByANGER", [], out var Return);
+		return ((FloatParam?)Return)!.Value;
+	}
+
+	public unsafe float DamageRatioByANGER()
+	{
+		_ = Inner.ProcessEvent("DamageRatioByANGER", [], out var Return);
+		return ((FloatParam?)Return)!.Value;
+	}
+
+	public unsafe float DamageRatioByOVERHEAT()
+	{
+		_ = Inner.ProcessEvent("DamageRatioByOVERHEAT", [], out var Return);
+		return ((FloatParam?)Return)!.Value;
+	}
+
+	public unsafe float DamageRatioByUPSET()
+	{
+		_ = Inner.ProcessEvent("DamageRatioByUPSET", [], out var Return);
+		return ((FloatParam?)Return)!.Value;
+	}
+
+	public unsafe float RecoveryRatioFromANGER()
+	{
+		_ = Inner.ProcessEvent("RecoveryRatioFromANGER", [], out var Return);
+		return ((FloatParam?)Return)!.Value;
+	}
+
+	public unsafe float RecoveryRatioFromCHARM()
+	{
+		_ = Inner.ProcessEvent("RecoveryRatioFromCHARM", [], out var Return);
+		return ((FloatParam?)Return)!.Value;
+	}
+
+	public unsafe float RecoveryRatioFromFEAR()
+	{
+		_ = Inner.ProcessEvent("RecoveryRatioFromFEAR", [], out var Return);
+		return ((FloatParam?)Return)!.Value;
+	}
+
+	public unsafe float RecoveryRatioFromPANIC()
+	{
+		_ = Inner.ProcessEvent("RecoveryRatioFromPANIC", [], out var Return);
+		return ((FloatParam?)Return)!.Value;
+	}
+
+	public unsafe float RecoveryRatioFromUPSET()
+	{
+		_ = Inner.ProcessEvent("RecoveryRatioFromUPSET", [], out var Return);
+		return ((FloatParam?)Return)!.Value;
+	}
+
+	public unsafe float AttackRatioByUPSET()
+	{
+		_ = Inner.ProcessEvent("AttackRatioByUPSET", [], out var Return);
+		return ((FloatParam?)Return)!.Value;
+	}
+
+	public unsafe float GetShuffleTimeMajorPercent( int EncountNumFromLastMajor)
+	{
+		_ = Inner.ProcessEvent("GetShuffleTimeMajorPercent", [
+			new IntParam(new(&EncountNumFromLastMajor))
+		], out var Return);
+		return ((FloatParam?)Return)!.Value;
+	}
+
+	public unsafe float GetAllOutAttackSwoonRate()
+	{
+		_ = Inner.ProcessEvent("GetAllOutAttackSwoonRate", [], out var Return);
+		return ((FloatParam?)Return)!.Value;
+	}
+
+	public unsafe float CalcTheurgiaSkillDamage()
+	{
+		_ = Inner.ProcessEvent("CalcTheurgiaSkillDamage", [], out var Return);
+		return ((FloatParam?)Return)!.Value;
+	}
+
+	public unsafe float GetFullmoonSkillPowerRatio( int MoonAge)
+	{
+		_ = Inner.ProcessEvent("GetFullmoonSkillPowerRatio", [
+			new IntParam(new(&MoonAge))
+		], out var Return);
+		return ((FloatParam?)Return)!.Value;
+	}
+
+	public unsafe float GetNewmoonSkillPowerRatio( int MoonAge)
+	{
+		_ = Inner.ProcessEvent("GetNewmoonSkillPowerRatio", [
+			new IntParam(new(&MoonAge))
+		], out var Return);
+		return ((FloatParam?)Return)!.Value;
+	}
+
+	public unsafe float GetSaleMerchMoneyRate()
+	{
+		_ = Inner.ProcessEvent("GetSaleMerchMoneyRate", [], out var Return);
+		return ((FloatParam?)Return)!.Value;
+	}
+
+	public unsafe float AttackRatioByOVERLIMIT()
+	{
+		_ = Inner.ProcessEvent("AttackRatioByOVERLIMIT", [], out var Return);
+		return ((FloatParam?)Return)!.Value;
+	}
+
+	public unsafe float DamageRatioByOVERLIMIT()
+	{
+		_ = Inner.ProcessEvent("DamageRatioByOVERLIMIT", [], out var Return);
+		return ((FloatParam?)Return)!.Value;
+	}
+
+	public unsafe void GetBadStatusRateFromEnemy( ref float BadStatus_Hit_Rate, FFBtlCalcParam CallFunc_GetDifficultyParam_Param)
+	{
+		_ = Inner.ProcessEvent("GetBadStatusRateFromEnemy", [
+			new FloatParam(new((float*)Unsafe.AsPointer(ref BadStatus_Hit_Rate))),
+			new StructParam(new(&CallFunc_GetDifficultyParam_Param), 40)
+		], out _);
+	}
+
+	public unsafe void GetBadStatusRateFromPlayer( ref float BadStatus_Hit_Rate, FFBtlCalcParam CallFunc_GetDifficultyParam_Param)
+	{
+		_ = Inner.ProcessEvent("GetBadStatusRateFromPlayer", [
+			new FloatParam(new((float*)Unsafe.AsPointer(ref BadStatus_Hit_Rate))),
+			new StructParam(new(&CallFunc_GetDifficultyParam_Param), 40)
+		], out _);
+	}
+
+}
+
+[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0x4C8)]
+public unsafe struct ABP_BtlCalc_C_Repr
+{
+	[FieldOffset(0x0)] public ABtlCalcBase_Repr Super; // Size: 0x490
+	[FieldOffset(0x490)] public USceneComponent_Repr* DefaultSceneRoot; // Size: 0x8
+	[FieldOffset(0x498)] public UDataTable_Repr* DifficultyParam; // Size: 0x8
+	[FieldOffset(0x4A0)] public UDataTable_Repr* LevelDamageRatio; // Size: 0x8
+	[FieldOffset(0x4A8)] public UDataTable_Repr* LevelDamageRatioBoss; // Size: 0x8
+	[FieldOffset(0x4B0)] public UDataTable_Repr* LevelExpRatio; // Size: 0x8
+	[FieldOffset(0x4B8)] public UDataTable_Repr* FullMoonSkillPower; // Size: 0x8
+	[FieldOffset(0x4C0)] public UDataTable_Repr* NewMoonSkillPower; // Size: 0x8
+
+	public ABP_BtlCalc_C ToManaged(IUnrealFactory factory)
+	{
+		fixed (ABP_BtlCalc_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
+	}
+}
+
+
+public class UBP_BtlCalcParamAstrea_C : UBtlCalcParamAstrea, ITypeRepr<UBP_BtlCalcParamAstrea_C_Repr>
+{
+	private static Dictionary<string, int>? FieldOffsets;
+	public UBP_BtlCalcParamAstrea_C(IUObject inner, bool genOffsets = true) : base(inner, false)
+	{
+		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
+	}
+
+	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
+
+	public new unsafe UBP_BtlCalcParamAstrea_C_Repr* Repr => (UBP_BtlCalcParamAstrea_C_Repr*)Inner.Ptr;
+
+}
+
+[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0x88)]
+public unsafe struct UBP_BtlCalcParamAstrea_C_Repr
+{
+	[FieldOffset(0x0)] public UBtlCalcParamAstrea_Repr Super; // Size: 0x88
+	public UBP_BtlCalcParamAstrea_C ToManaged(IUnrealFactory factory)
+	{
+		fixed (UBP_BtlCalcParamAstrea_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
+	}
+}
+
+
+[StructLayout(LayoutKind.Explicit, Pack = 4, Size = 0x28)]
+public unsafe struct FFBtlCalcParam
+{
+	[FieldOffset(0x0)] public float DamageRateToEnemy; // Size: 0x4
+	[FieldOffset(0x4)] public float DamageRateToPlayer; // Size: 0x4
+	[FieldOffset(0x8)] public float ExpRate; // Size: 0x4
+	[FieldOffset(0xC)] public float DamageRateToEnemyWeak; // Size: 0x4
+	[FieldOffset(0x10)] public float DamageRateToPlayerWeak; // Size: 0x4
+	[FieldOffset(0x14)] public float DamageRateToEnemyCritical; // Size: 0x4
+	[FieldOffset(0x18)] public float DamageRateToPlayerCritical; // Size: 0x4
+	[FieldOffset(0x1C)] public float MoneyRateToMaterials; // Size: 0x4
+	[FieldOffset(0x20)] public float BadStatusHitRateFromEnemy; // Size: 0x4
+	[FieldOffset(0x24)] public float BadStatusHitRateFromPlayer; // Size: 0x4
+}
 
 public class UABP_Pp0001_C : UAnimInstance, ITypeRepr<UABP_Pp0001_C_Repr>
 {
@@ -314847,6 +316493,46 @@ public unsafe struct UABP_Pp0001_C_Repr
 }
 
 
+public class ABP_UI_Handwriting_Whisper_00_C : AActor, ITypeRepr<ABP_UI_Handwriting_Whisper_00_C_Repr>
+{
+	private static Dictionary<string, int>? FieldOffsets;
+	public ABP_UI_Handwriting_Whisper_00_C(IUObject inner, bool genOffsets = true) : base(inner, false)
+	{
+		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
+	}
+
+	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
+
+	public new unsafe ABP_UI_Handwriting_Whisper_00_C_Repr* Repr => (ABP_UI_Handwriting_Whisper_00_C_Repr*)Inner.Ptr;
+
+	public unsafe UNiagaraComponent? Niagara
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("Niagara")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("Niagara")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("Niagara")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe USceneComponent? DefaultSceneRoot
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("DefaultSceneRoot")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("DefaultSceneRoot")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("DefaultSceneRoot")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+}
+
+[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0x230)]
+public unsafe struct ABP_UI_Handwriting_Whisper_00_C_Repr
+{
+	[FieldOffset(0x0)] public AActor_Repr Super; // Size: 0x220
+	[FieldOffset(0x220)] public UNiagaraComponent_Repr* Niagara; // Size: 0x8
+	[FieldOffset(0x228)] public USceneComponent_Repr* DefaultSceneRoot; // Size: 0x8
+
+	public ABP_UI_Handwriting_Whisper_00_C ToManaged(IUnrealFactory factory)
+	{
+		fixed (ABP_UI_Handwriting_Whisper_00_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
+	}
+}
+
+
 public class ABP_UI_Handwriting_Whisper_Read_00_C : AActor, ITypeRepr<ABP_UI_Handwriting_Whisper_Read_00_C_Repr>
 {
 	private static Dictionary<string, int>? FieldOffsets;
@@ -314883,71 +316569,6 @@ public unsafe struct ABP_UI_Handwriting_Whisper_Read_00_C_Repr
 	public ABP_UI_Handwriting_Whisper_Read_00_C ToManaged(IUnrealFactory factory)
 	{
 		fixed (ABP_UI_Handwriting_Whisper_Read_00_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
-	}
-}
-
-
-public class ABP_FldCameraShake_C : AFldMiscCameraShake, ITypeRepr<ABP_FldCameraShake_C_Repr>
-{
-	private static Dictionary<string, int>? FieldOffsets;
-	public ABP_FldCameraShake_C(IUObject inner, bool genOffsets = true) : base(inner, false)
-	{
-		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
-	}
-
-	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
-
-	public new unsafe ABP_FldCameraShake_C_Repr* Repr => (ABP_FldCameraShake_C_Repr*)Inner.Ptr;
-
-	public unsafe UPostProcessComponent? PostProcess
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("PostProcess")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("PostProcess")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("PostProcess")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe USceneComponent? DefaultSceneRoot
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("DefaultSceneRoot")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("DefaultSceneRoot")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("DefaultSceneRoot")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-}
-
-[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0x2A8)]
-public unsafe struct ABP_FldCameraShake_C_Repr
-{
-	[FieldOffset(0x0)] public AFldMiscCameraShake_Repr Super; // Size: 0x298
-	[FieldOffset(0x298)] public UPostProcessComponent_Repr* PostProcess; // Size: 0x8
-	[FieldOffset(0x2A0)] public USceneComponent_Repr* DefaultSceneRoot; // Size: 0x8
-
-	public ABP_FldCameraShake_C ToManaged(IUnrealFactory factory)
-	{
-		fixed (ABP_FldCameraShake_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
-	}
-}
-
-
-public class ABP_Pp0001_010_C : AAppPropsCore, ITypeRepr<ABP_Pp0001_010_C_Repr>
-{
-	private static Dictionary<string, int>? FieldOffsets;
-	public ABP_Pp0001_010_C(IUObject inner, bool genOffsets = true) : base(inner, false)
-	{
-		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
-	}
-
-	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
-
-	public new unsafe ABP_Pp0001_010_C_Repr* Repr => (ABP_Pp0001_010_C_Repr*)Inner.Ptr;
-
-}
-
-[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0x2A0)]
-public unsafe struct ABP_Pp0001_010_C_Repr
-{
-	[FieldOffset(0x0)] public AAppPropsCore_Repr Super; // Size: 0x2A0
-	public ABP_Pp0001_010_C ToManaged(IUnrealFactory factory)
-	{
-		fixed (ABP_Pp0001_010_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
 	}
 }
 
@@ -315064,6 +316685,71 @@ public unsafe struct ABP_UI_Handwriting_Groan_00_C_Repr
 	public ABP_UI_Handwriting_Groan_00_C ToManaged(IUnrealFactory factory)
 	{
 		fixed (ABP_UI_Handwriting_Groan_00_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
+	}
+}
+
+
+public class ABP_FldCameraShake_C : AFldMiscCameraShake, ITypeRepr<ABP_FldCameraShake_C_Repr>
+{
+	private static Dictionary<string, int>? FieldOffsets;
+	public ABP_FldCameraShake_C(IUObject inner, bool genOffsets = true) : base(inner, false)
+	{
+		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
+	}
+
+	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
+
+	public new unsafe ABP_FldCameraShake_C_Repr* Repr => (ABP_FldCameraShake_C_Repr*)Inner.Ptr;
+
+	public unsafe UPostProcessComponent? PostProcess
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("PostProcess")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("PostProcess")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("PostProcess")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe USceneComponent? DefaultSceneRoot
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("DefaultSceneRoot")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("DefaultSceneRoot")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("DefaultSceneRoot")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+}
+
+[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0x2A8)]
+public unsafe struct ABP_FldCameraShake_C_Repr
+{
+	[FieldOffset(0x0)] public AFldMiscCameraShake_Repr Super; // Size: 0x298
+	[FieldOffset(0x298)] public UPostProcessComponent_Repr* PostProcess; // Size: 0x8
+	[FieldOffset(0x2A0)] public USceneComponent_Repr* DefaultSceneRoot; // Size: 0x8
+
+	public ABP_FldCameraShake_C ToManaged(IUnrealFactory factory)
+	{
+		fixed (ABP_FldCameraShake_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
+	}
+}
+
+
+public class ABP_Pp0001_010_C : AAppPropsCore, ITypeRepr<ABP_Pp0001_010_C_Repr>
+{
+	private static Dictionary<string, int>? FieldOffsets;
+	public ABP_Pp0001_010_C(IUObject inner, bool genOffsets = true) : base(inner, false)
+	{
+		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
+	}
+
+	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
+
+	public new unsafe ABP_Pp0001_010_C_Repr* Repr => (ABP_Pp0001_010_C_Repr*)Inner.Ptr;
+
+}
+
+[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0x2A0)]
+public unsafe struct ABP_Pp0001_010_C_Repr
+{
+	[FieldOffset(0x0)] public AAppPropsCore_Repr Super; // Size: 0x2A0
+	public ABP_Pp0001_010_C ToManaged(IUnrealFactory factory)
+	{
+		fixed (ABP_Pp0001_010_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
 	}
 }
 
@@ -315513,6 +317199,31 @@ public unsafe struct ABP_Pp2001_TarotCardBase_C_Repr
 }
 
 
+public class ABP_Pp2001_010_C : ABP_Pp2001_TarotCardBase_C, ITypeRepr<ABP_Pp2001_010_C_Repr>
+{
+	private static Dictionary<string, int>? FieldOffsets;
+	public ABP_Pp2001_010_C(IUObject inner, bool genOffsets = true) : base(inner, false)
+	{
+		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
+	}
+
+	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
+
+	public new unsafe ABP_Pp2001_010_C_Repr* Repr => (ABP_Pp2001_010_C_Repr*)Inner.Ptr;
+
+}
+
+[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0x318)]
+public unsafe struct ABP_Pp2001_010_C_Repr
+{
+	[FieldOffset(0x0)] public ABP_Pp2001_TarotCardBase_C_Repr Super; // Size: 0x318
+	public ABP_Pp2001_010_C ToManaged(IUnrealFactory factory)
+	{
+		fixed (ABP_Pp2001_010_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
+	}
+}
+
+
 public class ABP_Pp2001_030_C : ABP_Pp2001_TarotCardBase_C, ITypeRepr<ABP_Pp2001_030_C_Repr>
 {
 	private static Dictionary<string, int>? FieldOffsets;
@@ -315559,31 +317270,6 @@ public unsafe struct ABP_Pp2001_020_C_Repr
 	public ABP_Pp2001_020_C ToManaged(IUnrealFactory factory)
 	{
 		fixed (ABP_Pp2001_020_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
-	}
-}
-
-
-public class ABP_Pp2001_010_C : ABP_Pp2001_TarotCardBase_C, ITypeRepr<ABP_Pp2001_010_C_Repr>
-{
-	private static Dictionary<string, int>? FieldOffsets;
-	public ABP_Pp2001_010_C(IUObject inner, bool genOffsets = true) : base(inner, false)
-	{
-		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
-	}
-
-	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
-
-	public new unsafe ABP_Pp2001_010_C_Repr* Repr => (ABP_Pp2001_010_C_Repr*)Inner.Ptr;
-
-}
-
-[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0x318)]
-public unsafe struct ABP_Pp2001_010_C_Repr
-{
-	[FieldOffset(0x0)] public ABP_Pp2001_TarotCardBase_C_Repr Super; // Size: 0x318
-	public ABP_Pp2001_010_C ToManaged(IUnrealFactory factory)
-	{
-		fixed (ABP_Pp2001_010_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
 	}
 }
 
@@ -319132,6 +320818,57 @@ public unsafe struct UABP_PC0051_C_Repr
 }
 
 
+public class ABP_TutorialDraw_C : AUITutorialDraw, ITypeRepr<ABP_TutorialDraw_C_Repr>
+{
+	private static Dictionary<string, int>? FieldOffsets;
+	public ABP_TutorialDraw_C(IUObject inner, bool genOffsets = true) : base(inner, false)
+	{
+		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
+	}
+
+	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
+
+	public new unsafe ABP_TutorialDraw_C_Repr* Repr => (ABP_TutorialDraw_C_Repr*)Inner.Ptr;
+
+	public unsafe FPointerToUberGraphFrame* UberGraphFrame
+	{
+		get => (FPointerToUberGraphFrame*)(Inner.Ptr + GetFieldOffset("UberGraphFrame"));
+	}
+
+	public unsafe USceneComponent? DefaultSceneRoot
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("DefaultSceneRoot")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("DefaultSceneRoot")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("DefaultSceneRoot")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe void ReceiveTick( float DeltaSeconds)
+	{
+		_ = Inner.ProcessEvent("ReceiveTick", [
+			new FloatParam(new(&DeltaSeconds))
+		], out _);
+	}
+
+	public unsafe void ReceiveBeginPlay()
+	{
+		_ = Inner.ProcessEvent("ReceiveBeginPlay", [], out _);
+	}
+
+}
+
+[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0x5B8)]
+public unsafe struct ABP_TutorialDraw_C_Repr
+{
+	[FieldOffset(0x0)] public AUITutorialDraw_Repr Super; // Size: 0x5A8
+	[FieldOffset(0x5A8)] public FPointerToUberGraphFrame UberGraphFrame; // Size: 0x8
+	[FieldOffset(0x5B0)] public USceneComponent_Repr* DefaultSceneRoot; // Size: 0x8
+
+	public ABP_TutorialDraw_C ToManaged(IUnrealFactory factory)
+	{
+		fixed (ABP_TutorialDraw_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
+	}
+}
+
+
 public class ABP_CampCharaModel_C : ACharacter, ITypeRepr<ABP_CampCharaModel_C_Repr>
 {
 	private static Dictionary<string, int>? FieldOffsets;
@@ -319195,34 +320932,33 @@ public unsafe struct ABP_CampCharaModel_C_Repr
 }
 
 
-public class ABP_TutorialDraw_C : AUITutorialDraw, ITypeRepr<ABP_TutorialDraw_C_Repr>
+[StructLayout(LayoutKind.Explicit, Pack = 4, Size = 0x4)]
+public unsafe struct FFBtlCalcRatio
+{
+	[FieldOffset(0x0)] public float Ratio; // Size: 0x4
+}
+
+public class ABP_F001_Route_C : AFldAnimObj, ITypeRepr<ABP_F001_Route_C_Repr>
 {
 	private static Dictionary<string, int>? FieldOffsets;
-	public ABP_TutorialDraw_C(IUObject inner, bool genOffsets = true) : base(inner, false)
+	public ABP_F001_Route_C(IUObject inner, bool genOffsets = true) : base(inner, false)
 	{
 		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
 	}
 
 	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
 
-	public new unsafe ABP_TutorialDraw_C_Repr* Repr => (ABP_TutorialDraw_C_Repr*)Inner.Ptr;
+	public new unsafe ABP_F001_Route_C_Repr* Repr => (ABP_F001_Route_C_Repr*)Inner.Ptr;
 
 	public unsafe FPointerToUberGraphFrame* UberGraphFrame
 	{
 		get => (FPointerToUberGraphFrame*)(Inner.Ptr + GetFieldOffset("UberGraphFrame"));
 	}
 
-	public unsafe USceneComponent? DefaultSceneRoot
+	public unsafe USkeletalMeshComponent? SK_F001_SymbolRoute
 	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("DefaultSceneRoot")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("DefaultSceneRoot")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("DefaultSceneRoot")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe void ReceiveTick( float DeltaSeconds)
-	{
-		_ = Inner.ProcessEvent("ReceiveTick", [
-			new FloatParam(new(&DeltaSeconds))
-		], out _);
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("SK_F001_SymbolRoute")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SK_F001_SymbolRoute")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("SK_F001_SymbolRoute")) = value?.Inner.Ptr ?? nint.Zero;
 	}
 
 	public unsafe void ReceiveBeginPlay()
@@ -319232,16 +320968,490 @@ public class ABP_TutorialDraw_C : AUITutorialDraw, ITypeRepr<ABP_TutorialDraw_C_
 
 }
 
-[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0x5B8)]
-public unsafe struct ABP_TutorialDraw_C_Repr
+[StructLayout(LayoutKind.Explicit, Pack = 16, Size = 0x320)]
+public unsafe struct ABP_F001_Route_C_Repr
 {
-	[FieldOffset(0x0)] public AUITutorialDraw_Repr Super; // Size: 0x5A8
-	[FieldOffset(0x5A8)] public FPointerToUberGraphFrame UberGraphFrame; // Size: 0x8
-	[FieldOffset(0x5B0)] public USceneComponent_Repr* DefaultSceneRoot; // Size: 0x8
+	[FieldOffset(0x0)] public AFldAnimObj_Repr Super; // Size: 0x310
+	[FieldOffset(0x310)] public FPointerToUberGraphFrame UberGraphFrame; // Size: 0x8
+	[FieldOffset(0x318)] public USkeletalMeshComponent_Repr* SK_F001_SymbolRoute; // Size: 0x8
 
-	public ABP_TutorialDraw_C ToManaged(IUnrealFactory factory)
+	public ABP_F001_Route_C ToManaged(IUnrealFactory factory)
 	{
-		fixed (ABP_TutorialDraw_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
+		fixed (ABP_F001_Route_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
+	}
+}
+
+
+public class ABP_F001_SymbolMall_C : AFldAnimObj, ITypeRepr<ABP_F001_SymbolMall_C_Repr>
+{
+	private static Dictionary<string, int>? FieldOffsets;
+	public ABP_F001_SymbolMall_C(IUObject inner, bool genOffsets = true) : base(inner, false)
+	{
+		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
+	}
+
+	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
+
+	public new unsafe ABP_F001_SymbolMall_C_Repr* Repr => (ABP_F001_SymbolMall_C_Repr*)Inner.Ptr;
+
+	public unsafe FPointerToUberGraphFrame* UberGraphFrame
+	{
+		get => (FPointerToUberGraphFrame*)(Inner.Ptr + GetFieldOffset("UberGraphFrame"));
+	}
+
+	public unsafe USpotLightComponent? SpotLight_B11
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_B11")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_B11")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_B11")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe USpotLightComponent? SpotLight_B01
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_B01")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_B01")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_B01")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe USpotLightComponent? SpotLight_A11
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_A11")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_A11")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_A11")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe USpotLightComponent? SpotLight_A01
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_A01")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_A01")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_A01")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe UUITownMapSymbolComponent? UITownMapSymbol
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("UITownMapSymbol")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("UITownMapSymbol")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("UITownMapSymbol")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe USkeletalMeshComponent? SK_F001_Symbol
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("SK_F001_Symbol")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SK_F001_Symbol")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("SK_F001_Symbol")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe void ReceiveBeginPlay()
+	{
+		_ = Inner.ProcessEvent("ReceiveBeginPlay", [], out _);
+	}
+
+}
+
+[StructLayout(LayoutKind.Explicit, Pack = 16, Size = 0x348)]
+public unsafe struct ABP_F001_SymbolMall_C_Repr
+{
+	[FieldOffset(0x0)] public AFldAnimObj_Repr Super; // Size: 0x310
+	[FieldOffset(0x310)] public FPointerToUberGraphFrame UberGraphFrame; // Size: 0x8
+	[FieldOffset(0x318)] public USpotLightComponent_Repr* SpotLight_B11; // Size: 0x8
+	[FieldOffset(0x320)] public USpotLightComponent_Repr* SpotLight_B01; // Size: 0x8
+	[FieldOffset(0x328)] public USpotLightComponent_Repr* SpotLight_A11; // Size: 0x8
+	[FieldOffset(0x330)] public USpotLightComponent_Repr* SpotLight_A01; // Size: 0x8
+	[FieldOffset(0x338)] public UUITownMapSymbolComponent_Repr* UITownMapSymbol; // Size: 0x8
+	[FieldOffset(0x340)] public USkeletalMeshComponent_Repr* SK_F001_Symbol; // Size: 0x8
+
+	public ABP_F001_SymbolMall_C ToManaged(IUnrealFactory factory)
+	{
+		fixed (ABP_F001_SymbolMall_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
+	}
+}
+
+
+public class ABP_F001_SymbolPortIsland_C : AFldAnimObj, ITypeRepr<ABP_F001_SymbolPortIsland_C_Repr>
+{
+	private static Dictionary<string, int>? FieldOffsets;
+	public ABP_F001_SymbolPortIsland_C(IUObject inner, bool genOffsets = true) : base(inner, false)
+	{
+		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
+	}
+
+	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
+
+	public new unsafe ABP_F001_SymbolPortIsland_C_Repr* Repr => (ABP_F001_SymbolPortIsland_C_Repr*)Inner.Ptr;
+
+	public unsafe FPointerToUberGraphFrame* UberGraphFrame
+	{
+		get => (FPointerToUberGraphFrame*)(Inner.Ptr + GetFieldOffset("UberGraphFrame"));
+	}
+
+	public unsafe USpotLightComponent? SpotLight_B11
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_B11")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_B11")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_B11")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe USpotLightComponent? SpotLight_B01
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_B01")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_B01")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_B01")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe USpotLightComponent? SpotLight_A11
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_A11")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_A11")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_A11")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe USpotLightComponent? SpotLight_A01
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_A01")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_A01")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_A01")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe UUITownMapSymbolComponent? UITownMapSymbol
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("UITownMapSymbol")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("UITownMapSymbol")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("UITownMapSymbol")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe USkeletalMeshComponent? SK_F001_Symbol
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("SK_F001_Symbol")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SK_F001_Symbol")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("SK_F001_Symbol")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe void ReceiveBeginPlay()
+	{
+		_ = Inner.ProcessEvent("ReceiveBeginPlay", [], out _);
+	}
+
+}
+
+[StructLayout(LayoutKind.Explicit, Pack = 16, Size = 0x348)]
+public unsafe struct ABP_F001_SymbolPortIsland_C_Repr
+{
+	[FieldOffset(0x0)] public AFldAnimObj_Repr Super; // Size: 0x310
+	[FieldOffset(0x310)] public FPointerToUberGraphFrame UberGraphFrame; // Size: 0x8
+	[FieldOffset(0x318)] public USpotLightComponent_Repr* SpotLight_B11; // Size: 0x8
+	[FieldOffset(0x320)] public USpotLightComponent_Repr* SpotLight_B01; // Size: 0x8
+	[FieldOffset(0x328)] public USpotLightComponent_Repr* SpotLight_A11; // Size: 0x8
+	[FieldOffset(0x330)] public USpotLightComponent_Repr* SpotLight_A01; // Size: 0x8
+	[FieldOffset(0x338)] public UUITownMapSymbolComponent_Repr* UITownMapSymbol; // Size: 0x8
+	[FieldOffset(0x340)] public USkeletalMeshComponent_Repr* SK_F001_Symbol; // Size: 0x8
+
+	public ABP_F001_SymbolPortIsland_C ToManaged(IUnrealFactory factory)
+	{
+		fixed (ABP_F001_SymbolPortIsland_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
+	}
+}
+
+
+public class ABP_F001_SymbolDomitory_C : AFldAnimObj, ITypeRepr<ABP_F001_SymbolDomitory_C_Repr>
+{
+	private static Dictionary<string, int>? FieldOffsets;
+	public ABP_F001_SymbolDomitory_C(IUObject inner, bool genOffsets = true) : base(inner, false)
+	{
+		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
+	}
+
+	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
+
+	public new unsafe ABP_F001_SymbolDomitory_C_Repr* Repr => (ABP_F001_SymbolDomitory_C_Repr*)Inner.Ptr;
+
+	public unsafe FPointerToUberGraphFrame* UberGraphFrame
+	{
+		get => (FPointerToUberGraphFrame*)(Inner.Ptr + GetFieldOffset("UberGraphFrame"));
+	}
+
+	public unsafe USpotLightComponent? SpotLight_B11
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_B11")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_B11")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_B11")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe USpotLightComponent? SpotLight_B01
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_B01")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_B01")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_B01")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe USpotLightComponent? SpotLight_A11
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_A11")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_A11")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_A11")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe USpotLightComponent? SpotLight_A01
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_A01")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_A01")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_A01")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe UUITownMapSymbolComponent? UITownMapSymbol
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("UITownMapSymbol")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("UITownMapSymbol")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("UITownMapSymbol")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe USkeletalMeshComponent? SK_F001_Symbol
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("SK_F001_Symbol")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SK_F001_Symbol")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("SK_F001_Symbol")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe void ReceiveBeginPlay()
+	{
+		_ = Inner.ProcessEvent("ReceiveBeginPlay", [], out _);
+	}
+
+}
+
+[StructLayout(LayoutKind.Explicit, Pack = 16, Size = 0x348)]
+public unsafe struct ABP_F001_SymbolDomitory_C_Repr
+{
+	[FieldOffset(0x0)] public AFldAnimObj_Repr Super; // Size: 0x310
+	[FieldOffset(0x310)] public FPointerToUberGraphFrame UberGraphFrame; // Size: 0x8
+	[FieldOffset(0x318)] public USpotLightComponent_Repr* SpotLight_B11; // Size: 0x8
+	[FieldOffset(0x320)] public USpotLightComponent_Repr* SpotLight_B01; // Size: 0x8
+	[FieldOffset(0x328)] public USpotLightComponent_Repr* SpotLight_A11; // Size: 0x8
+	[FieldOffset(0x330)] public USpotLightComponent_Repr* SpotLight_A01; // Size: 0x8
+	[FieldOffset(0x338)] public UUITownMapSymbolComponent_Repr* UITownMapSymbol; // Size: 0x8
+	[FieldOffset(0x340)] public USkeletalMeshComponent_Repr* SK_F001_Symbol; // Size: 0x8
+
+	public ABP_F001_SymbolDomitory_C ToManaged(IUnrealFactory factory)
+	{
+		fixed (ABP_F001_SymbolDomitory_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
+	}
+}
+
+
+public class ABP_F001_SymbolIwatodai_C : AFldAnimObj, ITypeRepr<ABP_F001_SymbolIwatodai_C_Repr>
+{
+	private static Dictionary<string, int>? FieldOffsets;
+	public ABP_F001_SymbolIwatodai_C(IUObject inner, bool genOffsets = true) : base(inner, false)
+	{
+		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
+	}
+
+	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
+
+	public new unsafe ABP_F001_SymbolIwatodai_C_Repr* Repr => (ABP_F001_SymbolIwatodai_C_Repr*)Inner.Ptr;
+
+	public unsafe FPointerToUberGraphFrame* UberGraphFrame
+	{
+		get => (FPointerToUberGraphFrame*)(Inner.Ptr + GetFieldOffset("UberGraphFrame"));
+	}
+
+	public unsafe USpotLightComponent? SpotLight_B11
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_B11")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_B11")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_B11")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe USpotLightComponent? SpotLight_B01
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_B01")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_B01")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_B01")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe USpotLightComponent? SpotLight_A11
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_A11")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_A11")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_A11")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe USpotLightComponent? SpotLight_A01
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_A01")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_A01")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_A01")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe UUITownMapSymbolComponent? UITownMapSymbol
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("UITownMapSymbol")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("UITownMapSymbol")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("UITownMapSymbol")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe USkeletalMeshComponent? SK_F001_Symbol
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("SK_F001_Symbol")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SK_F001_Symbol")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("SK_F001_Symbol")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe void ReceiveBeginPlay()
+	{
+		_ = Inner.ProcessEvent("ReceiveBeginPlay", [], out _);
+	}
+
+}
+
+[StructLayout(LayoutKind.Explicit, Pack = 16, Size = 0x348)]
+public unsafe struct ABP_F001_SymbolIwatodai_C_Repr
+{
+	[FieldOffset(0x0)] public AFldAnimObj_Repr Super; // Size: 0x310
+	[FieldOffset(0x310)] public FPointerToUberGraphFrame UberGraphFrame; // Size: 0x8
+	[FieldOffset(0x318)] public USpotLightComponent_Repr* SpotLight_B11; // Size: 0x8
+	[FieldOffset(0x320)] public USpotLightComponent_Repr* SpotLight_B01; // Size: 0x8
+	[FieldOffset(0x328)] public USpotLightComponent_Repr* SpotLight_A11; // Size: 0x8
+	[FieldOffset(0x330)] public USpotLightComponent_Repr* SpotLight_A01; // Size: 0x8
+	[FieldOffset(0x338)] public UUITownMapSymbolComponent_Repr* UITownMapSymbol; // Size: 0x8
+	[FieldOffset(0x340)] public USkeletalMeshComponent_Repr* SK_F001_Symbol; // Size: 0x8
+
+	public ABP_F001_SymbolIwatodai_C ToManaged(IUnrealFactory factory)
+	{
+		fixed (ABP_F001_SymbolIwatodai_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
+	}
+}
+
+
+public class ABP_F001_SymbolSchool_C : AFldAnimObj, ITypeRepr<ABP_F001_SymbolSchool_C_Repr>
+{
+	private static Dictionary<string, int>? FieldOffsets;
+	public ABP_F001_SymbolSchool_C(IUObject inner, bool genOffsets = true) : base(inner, false)
+	{
+		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
+	}
+
+	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
+
+	public new unsafe ABP_F001_SymbolSchool_C_Repr* Repr => (ABP_F001_SymbolSchool_C_Repr*)Inner.Ptr;
+
+	public unsafe FPointerToUberGraphFrame* UberGraphFrame
+	{
+		get => (FPointerToUberGraphFrame*)(Inner.Ptr + GetFieldOffset("UberGraphFrame"));
+	}
+
+	public unsafe USpotLightComponent? SpotLight_B11
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_B11")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_B11")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_B11")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe USpotLightComponent? SpotLight_B01
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_B01")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_B01")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_B01")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe USpotLightComponent? SpotLight_A11
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_A11")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_A11")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_A11")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe USpotLightComponent? SpotLight_A01
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_A01")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_A01")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_A01")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe UUITownMapSymbolComponent? UITownMapSymbol
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("UITownMapSymbol")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("UITownMapSymbol")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("UITownMapSymbol")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe USkeletalMeshComponent? SK_F001_Symbol
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("SK_F001_Symbol")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SK_F001_Symbol")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("SK_F001_Symbol")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe void ReceiveBeginPlay()
+	{
+		_ = Inner.ProcessEvent("ReceiveBeginPlay", [], out _);
+	}
+
+}
+
+[StructLayout(LayoutKind.Explicit, Pack = 16, Size = 0x348)]
+public unsafe struct ABP_F001_SymbolSchool_C_Repr
+{
+	[FieldOffset(0x0)] public AFldAnimObj_Repr Super; // Size: 0x310
+	[FieldOffset(0x310)] public FPointerToUberGraphFrame UberGraphFrame; // Size: 0x8
+	[FieldOffset(0x318)] public USpotLightComponent_Repr* SpotLight_B11; // Size: 0x8
+	[FieldOffset(0x320)] public USpotLightComponent_Repr* SpotLight_B01; // Size: 0x8
+	[FieldOffset(0x328)] public USpotLightComponent_Repr* SpotLight_A11; // Size: 0x8
+	[FieldOffset(0x330)] public USpotLightComponent_Repr* SpotLight_A01; // Size: 0x8
+	[FieldOffset(0x338)] public UUITownMapSymbolComponent_Repr* UITownMapSymbol; // Size: 0x8
+	[FieldOffset(0x340)] public USkeletalMeshComponent_Repr* SK_F001_Symbol; // Size: 0x8
+
+	public ABP_F001_SymbolSchool_C ToManaged(IUnrealFactory factory)
+	{
+		fixed (ABP_F001_SymbolSchool_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
+	}
+}
+
+
+public class ABP_F001_SymbolShrine_C : AFldAnimObj, ITypeRepr<ABP_F001_SymbolShrine_C_Repr>
+{
+	private static Dictionary<string, int>? FieldOffsets;
+	public ABP_F001_SymbolShrine_C(IUObject inner, bool genOffsets = true) : base(inner, false)
+	{
+		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
+	}
+
+	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
+
+	public new unsafe ABP_F001_SymbolShrine_C_Repr* Repr => (ABP_F001_SymbolShrine_C_Repr*)Inner.Ptr;
+
+	public unsafe FPointerToUberGraphFrame* UberGraphFrame
+	{
+		get => (FPointerToUberGraphFrame*)(Inner.Ptr + GetFieldOffset("UberGraphFrame"));
+	}
+
+	public unsafe USpotLightComponent? SpotLight_B11
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_B11")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_B11")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_B11")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe USpotLightComponent? SpotLight_B01
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_B01")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_B01")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_B01")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe USpotLightComponent? SpotLight_A11
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_A11")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_A11")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_A11")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe USpotLightComponent? SpotLight_A01
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_A01")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_A01")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("SpotLight_A01")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe UUITownMapSymbolComponent? UITownMapSymbol
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("UITownMapSymbol")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("UITownMapSymbol")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("UITownMapSymbol")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe USkeletalMeshComponent? SK_F001_Symbol
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("SK_F001_Symbol")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SK_F001_Symbol")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("SK_F001_Symbol")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe void ReceiveBeginPlay()
+	{
+		_ = Inner.ProcessEvent("ReceiveBeginPlay", [], out _);
+	}
+
+}
+
+[StructLayout(LayoutKind.Explicit, Pack = 16, Size = 0x348)]
+public unsafe struct ABP_F001_SymbolShrine_C_Repr
+{
+	[FieldOffset(0x0)] public AFldAnimObj_Repr Super; // Size: 0x310
+	[FieldOffset(0x310)] public FPointerToUberGraphFrame UberGraphFrame; // Size: 0x8
+	[FieldOffset(0x318)] public USpotLightComponent_Repr* SpotLight_B11; // Size: 0x8
+	[FieldOffset(0x320)] public USpotLightComponent_Repr* SpotLight_B01; // Size: 0x8
+	[FieldOffset(0x328)] public USpotLightComponent_Repr* SpotLight_A11; // Size: 0x8
+	[FieldOffset(0x330)] public USpotLightComponent_Repr* SpotLight_A01; // Size: 0x8
+	[FieldOffset(0x338)] public UUITownMapSymbolComponent_Repr* UITownMapSymbol; // Size: 0x8
+	[FieldOffset(0x340)] public USkeletalMeshComponent_Repr* SK_F001_Symbol; // Size: 0x8
+
+	public ABP_F001_SymbolShrine_C ToManaged(IUnrealFactory factory)
+	{
+		fixed (ABP_F001_SymbolShrine_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
 	}
 }
 
@@ -319482,2232 +321692,6 @@ public unsafe struct ALV_F001_001_001_BG_C_Repr
 	}
 }
 
-
-[StructLayout(LayoutKind.Explicit, Pack = 4, Size = 0x4)]
-public unsafe struct FFBtlCalcRatio
-{
-	[FieldOffset(0x0)] public float Ratio; // Size: 0x4
-}
-
-[StructLayout(LayoutKind.Explicit, Pack = 4, Size = 0x28)]
-public unsafe struct FFBtlCalcParam
-{
-	[FieldOffset(0x0)] public float DamageRateToEnemy; // Size: 0x4
-	[FieldOffset(0x4)] public float DamageRateToPlayer; // Size: 0x4
-	[FieldOffset(0x8)] public float ExpRate; // Size: 0x4
-	[FieldOffset(0xC)] public float DamageRateToEnemyWeak; // Size: 0x4
-	[FieldOffset(0x10)] public float DamageRateToPlayerWeak; // Size: 0x4
-	[FieldOffset(0x14)] public float DamageRateToEnemyCritical; // Size: 0x4
-	[FieldOffset(0x18)] public float DamageRateToPlayerCritical; // Size: 0x4
-	[FieldOffset(0x1C)] public float MoneyRateToMaterials; // Size: 0x4
-	[FieldOffset(0x20)] public float BadStatusHitRateFromEnemy; // Size: 0x4
-	[FieldOffset(0x24)] public float BadStatusHitRateFromPlayer; // Size: 0x4
-}
-
-public class UBP_BtlCalcParamAstrea_C : UBtlCalcParamAstrea, ITypeRepr<UBP_BtlCalcParamAstrea_C_Repr>
-{
-	private static Dictionary<string, int>? FieldOffsets;
-	public UBP_BtlCalcParamAstrea_C(IUObject inner, bool genOffsets = true) : base(inner, false)
-	{
-		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
-	}
-
-	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
-
-	public new unsafe UBP_BtlCalcParamAstrea_C_Repr* Repr => (UBP_BtlCalcParamAstrea_C_Repr*)Inner.Ptr;
-
-}
-
-[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0x88)]
-public unsafe struct UBP_BtlCalcParamAstrea_C_Repr
-{
-	[FieldOffset(0x0)] public UBtlCalcParamAstrea_Repr Super; // Size: 0x88
-	public UBP_BtlCalcParamAstrea_C ToManaged(IUnrealFactory factory)
-	{
-		fixed (UBP_BtlCalcParamAstrea_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
-	}
-}
-
-
-public class ABP_BtlCalc_C : ABtlCalcBase, ITypeRepr<ABP_BtlCalc_C_Repr>
-{
-	private static Dictionary<string, int>? FieldOffsets;
-	public ABP_BtlCalc_C(IUObject inner, bool genOffsets = true) : base(inner, false)
-	{
-		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
-	}
-
-	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
-
-	public new unsafe ABP_BtlCalc_C_Repr* Repr => (ABP_BtlCalc_C_Repr*)Inner.Ptr;
-
-	public unsafe USceneComponent? DefaultSceneRoot
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("DefaultSceneRoot")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("DefaultSceneRoot")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("DefaultSceneRoot")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe UDataTable? DifficultyParam
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("DifficultyParam")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("DifficultyParam")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("DifficultyParam")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe UDataTable? LevelDamageRatio
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("LevelDamageRatio")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("LevelDamageRatio")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("LevelDamageRatio")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe UDataTable? LevelDamageRatioBoss
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("LevelDamageRatioBoss")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("LevelDamageRatioBoss")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("LevelDamageRatioBoss")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe UDataTable? LevelExpRatio
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("LevelExpRatio")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("LevelExpRatio")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("LevelExpRatio")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe UDataTable? FullMoonSkillPower
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("FullMoonSkillPower")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("FullMoonSkillPower")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("FullMoonSkillPower")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe UDataTable? NewMoonSkillPower
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("NewMoonSkillPower")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("NewMoonSkillPower")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("NewMoonSkillPower")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe float CalcMagicDamage()
-	{
-		_ = Inner.ProcessEvent("CalcMagicDamage", [], out var Return);
-		return ((FloatParam?)Return)!.Value;
-	}
-
-	public unsafe float CalcPhysicalDamage()
-	{
-		_ = Inner.ProcessEvent("CalcPhysicalDamage", [], out var Return);
-		return ((FloatParam?)Return)!.Value;
-	}
-
-	public unsafe float CalcAccuracyRate()
-	{
-		_ = Inner.ProcessEvent("CalcAccuracyRate", [], out var Return);
-		return ((FloatParam?)Return)!.Value;
-	}
-
-	public unsafe float CalcCriticalHitRate()
-	{
-		_ = Inner.ProcessEvent("CalcCriticalHitRate", [], out var Return);
-		return ((FloatParam?)Return)!.Value;
-	}
-
-	public unsafe float CalcDownRate()
-	{
-		_ = Inner.ProcessEvent("CalcDownRate", [], out var Return);
-		return ((FloatParam?)Return)!.Value;
-	}
-
-	public unsafe float CalcRushDamage()
-	{
-		_ = Inner.ProcessEvent("CalcRushDamage", [], out var Return);
-		return ((FloatParam?)Return)!.Value;
-	}
-
-	public unsafe float CalcAllOutAttackDamage()
-	{
-		_ = Inner.ProcessEvent("CalcAllOutAttackDamage", [], out var Return);
-		return ((FloatParam?)Return)!.Value;
-	}
-
-	public unsafe float CalcBadStatusHitRate()
-	{
-		_ = Inner.ProcessEvent("CalcBadStatusHitRate", [], out var Return);
-		return ((FloatParam?)Return)!.Value;
-	}
-
-	public unsafe float CalcBadStatusRecoveryRate()
-	{
-		_ = Inner.ProcessEvent("CalcBadStatusRecoveryRate", [], out var Return);
-		return ((FloatParam?)Return)!.Value;
-	}
-
-	public unsafe float CalcEscapeRate()
-	{
-		_ = Inner.ProcessEvent("CalcEscapeRate", [], out var Return);
-		return ((FloatParam?)Return)!.Value;
-	}
-
-	public unsafe float CalcHealRecovery()
-	{
-		_ = Inner.ProcessEvent("CalcHealRecovery", [], out var Return);
-		return ((FloatParam?)Return)!.Value;
-	}
-
-	public unsafe float GetDamageRateToEnemy()
-	{
-		_ = Inner.ProcessEvent("GetDamageRateToEnemy", [], out var Return);
-		return ((FloatParam?)Return)!.Value;
-	}
-
-	public unsafe float GetDamageRateToPlayer()
-	{
-		_ = Inner.ProcessEvent("GetDamageRateToPlayer", [], out var Return);
-		return ((FloatParam?)Return)!.Value;
-	}
-
-	public unsafe int GetDownAgilityForEnemy()
-	{
-		_ = Inner.ProcessEvent("GetDownAgilityForEnemy", [], out var Return);
-		return ((IntParam?)Return)!.Value;
-	}
-
-	public unsafe float GetEnemyCriticalDamageRate()
-	{
-		_ = Inner.ProcessEvent("GetEnemyCriticalDamageRate", [], out var Return);
-		return ((FloatParam?)Return)!.Value;
-	}
-
-	public unsafe float GetEnemyWeakDamageRate()
-	{
-		_ = Inner.ProcessEvent("GetEnemyWeakDamageRate", [], out var Return);
-		return ((FloatParam?)Return)!.Value;
-	}
-
-	public unsafe float GetExpRate()
-	{
-		_ = Inner.ProcessEvent("GetExpRate", [], out var Return);
-		return ((FloatParam?)Return)!.Value;
-	}
-
-	public unsafe float GetMoneyRate()
-	{
-		_ = Inner.ProcessEvent("GetMoneyRate", [], out var Return);
-		return ((FloatParam?)Return)!.Value;
-	}
-
-	public unsafe float GetPlayerCriticalDamageRate()
-	{
-		_ = Inner.ProcessEvent("GetPlayerCriticalDamageRate", [], out var Return);
-		return ((FloatParam?)Return)!.Value;
-	}
-
-	public unsafe float GetPlayerWeakDamageRate()
-	{
-		_ = Inner.ProcessEvent("GetPlayerWeakDamageRate", [], out var Return);
-		return ((FloatParam?)Return)!.Value;
-	}
-
-	public unsafe void GetDifficultyParam( ref FFBtlCalcParam Param, FFBtlCalcParam Work, FFBtlCalcParam CallFunc_GetDataTableRowFromName_OutRow, bool CallFunc_GetDataTableRowFromName_ReturnValue, FFBtlCalcParam CallFunc_GetDataTableRowFromName_OutRow_1, bool CallFunc_GetDataTableRowFromName_ReturnValue_1, FFBtlCalcParam CallFunc_GetDataTableRowFromName_OutRow_2, bool CallFunc_GetDataTableRowFromName_ReturnValue_2, FFBtlCalcParam CallFunc_GetDataTableRowFromName_OutRow_3, bool CallFunc_GetDataTableRowFromName_ReturnValue_3, FFBtlCalcParam CallFunc_GetDataTableRowFromName_OutRow_4, bool CallFunc_GetDataTableRowFromName_ReturnValue_4, EBtlGameDifficulty CallFunc_GetDifficulty_ReturnValue, bool CallFunc_IsValid_ReturnValue, bool K2Node_SwitchEnum_CmpSuccess)
-	{
-		_ = Inner.ProcessEvent("GetDifficultyParam", [
-			new StructParam(new((FFBtlCalcParam*)Unsafe.AsPointer(ref Param)), 40),
-			new StructParam(new(&Work), 40),
-			new StructParam(new(&CallFunc_GetDataTableRowFromName_OutRow), 40),
-			new BoolParam(new(&CallFunc_GetDataTableRowFromName_ReturnValue), 255),
-			new StructParam(new(&CallFunc_GetDataTableRowFromName_OutRow_1), 40),
-			new BoolParam(new(&CallFunc_GetDataTableRowFromName_ReturnValue_1), 255),
-			new StructParam(new(&CallFunc_GetDataTableRowFromName_OutRow_2), 40),
-			new BoolParam(new(&CallFunc_GetDataTableRowFromName_ReturnValue_2), 255),
-			new StructParam(new(&CallFunc_GetDataTableRowFromName_OutRow_3), 40),
-			new BoolParam(new(&CallFunc_GetDataTableRowFromName_ReturnValue_3), 255),
-			new StructParam(new(&CallFunc_GetDataTableRowFromName_OutRow_4), 40),
-			new BoolParam(new(&CallFunc_GetDataTableRowFromName_ReturnValue_4), 255),
-			new EnumParam(new(&CallFunc_GetDifficulty_ReturnValue), 1),
-			new BoolParam(new(&CallFunc_IsValid_ReturnValue), 255),
-			new BoolParam(new(&K2Node_SwitchEnum_CmpSuccess), 255)
-		], out _);
-	}
-
-	public unsafe float CalcExpPersonaLevelUp( float Level, float DefaultLevel)
-	{
-		_ = Inner.ProcessEvent("CalcExpPersonaLevelUp", [
-			new FloatParam(new(&Level)),
-			new FloatParam(new(&DefaultLevel))
-		], out var Return);
-		return ((FloatParam?)Return)!.Value;
-	}
-
-	public unsafe void Accuracy_Player( ref float Rate, float N, float A, float CallFunc_GetParam_ReturnValue, byte CallFunc_MakeLiteralByte_ReturnValue, int CallFunc_Conv_ByteToInt_ReturnValue, float CallFunc_GetParam_ReturnValue_1, float CallFunc_Multiply_FloatFloat_ReturnValue, float CallFunc_Add_FloatFloat_ReturnValue, byte CallFunc_MakeLiteralByte_ReturnValue_1, int CallFunc_Conv_ByteToInt_ReturnValue_1, float CallFunc_GetParam_ReturnValue_2, float CallFunc_Add_FloatFloat_ReturnValue_1, float CallFunc_Divide_FloatFloat_ReturnValue)
-	{
-		_ = Inner.ProcessEvent("Accuracy Player", [
-			new FloatParam(new((float*)Unsafe.AsPointer(ref Rate))),
-			new FloatParam(new(&N)),
-			new FloatParam(new(&A)),
-			new FloatParam(new(&CallFunc_GetParam_ReturnValue)),
-			new ByteParam(new((byte*)(&CallFunc_MakeLiteralByte_ReturnValue))),
-			new IntParam(new(&CallFunc_Conv_ByteToInt_ReturnValue)),
-			new FloatParam(new(&CallFunc_GetParam_ReturnValue_1)),
-			new FloatParam(new(&CallFunc_Multiply_FloatFloat_ReturnValue)),
-			new FloatParam(new(&CallFunc_Add_FloatFloat_ReturnValue)),
-			new ByteParam(new((byte*)(&CallFunc_MakeLiteralByte_ReturnValue_1))),
-			new IntParam(new(&CallFunc_Conv_ByteToInt_ReturnValue_1)),
-			new FloatParam(new(&CallFunc_GetParam_ReturnValue_2)),
-			new FloatParam(new(&CallFunc_Add_FloatFloat_ReturnValue_1)),
-			new FloatParam(new(&CallFunc_Divide_FloatFloat_ReturnValue))
-		], out _);
-	}
-
-	public unsafe void Accuracy_Enemy( ref float Rate, float N, float B, float A, float CallFunc_GetParam_ReturnValue, float CallFunc_Multiply_FloatFloat_ReturnValue, bool CallFunc_Greater_FloatFloat_ReturnValue, float CallFunc_GetParam_ReturnValue_1, float CallFunc_Multiply_FloatFloat_ReturnValue_1, float CallFunc_GetParam_ReturnValue_2, float CallFunc_GetParam_ReturnValue_3, byte CallFunc_MakeLiteralByte_ReturnValue, float CallFunc_Divide_FloatFloat_ReturnValue, float CallFunc_Add_FloatFloat_ReturnValue, int CallFunc_Conv_ByteToInt_ReturnValue, byte CallFunc_MakeLiteralByte_ReturnValue_1, float CallFunc_GetParam_ReturnValue_4, float CallFunc_Add_FloatFloat_ReturnValue_1, int CallFunc_Conv_ByteToInt_ReturnValue_1, float CallFunc_GetParam_ReturnValue_5, float CallFunc_Add_FloatFloat_ReturnValue_2, float CallFunc_Divide_FloatFloat_ReturnValue_1, byte CallFunc_MakeLiteralByte_ReturnValue_2, int CallFunc_Conv_ByteToInt_ReturnValue_2, float CallFunc_GetParam_ReturnValue_6, float CallFunc_Add_FloatFloat_ReturnValue_3, float CallFunc_Divide_FloatFloat_ReturnValue_2)
-	{
-		_ = Inner.ProcessEvent("Accuracy Enemy", [
-			new FloatParam(new((float*)Unsafe.AsPointer(ref Rate))),
-			new FloatParam(new(&N)),
-			new FloatParam(new(&B)),
-			new FloatParam(new(&A)),
-			new FloatParam(new(&CallFunc_GetParam_ReturnValue)),
-			new FloatParam(new(&CallFunc_Multiply_FloatFloat_ReturnValue)),
-			new BoolParam(new(&CallFunc_Greater_FloatFloat_ReturnValue), 255),
-			new FloatParam(new(&CallFunc_GetParam_ReturnValue_1)),
-			new FloatParam(new(&CallFunc_Multiply_FloatFloat_ReturnValue_1)),
-			new FloatParam(new(&CallFunc_GetParam_ReturnValue_2)),
-			new FloatParam(new(&CallFunc_GetParam_ReturnValue_3)),
-			new ByteParam(new((byte*)(&CallFunc_MakeLiteralByte_ReturnValue))),
-			new FloatParam(new(&CallFunc_Divide_FloatFloat_ReturnValue)),
-			new FloatParam(new(&CallFunc_Add_FloatFloat_ReturnValue)),
-			new IntParam(new(&CallFunc_Conv_ByteToInt_ReturnValue)),
-			new ByteParam(new((byte*)(&CallFunc_MakeLiteralByte_ReturnValue_1))),
-			new FloatParam(new(&CallFunc_GetParam_ReturnValue_4)),
-			new FloatParam(new(&CallFunc_Add_FloatFloat_ReturnValue_1)),
-			new IntParam(new(&CallFunc_Conv_ByteToInt_ReturnValue_1)),
-			new FloatParam(new(&CallFunc_GetParam_ReturnValue_5)),
-			new FloatParam(new(&CallFunc_Add_FloatFloat_ReturnValue_2)),
-			new FloatParam(new(&CallFunc_Divide_FloatFloat_ReturnValue_1)),
-			new ByteParam(new((byte*)(&CallFunc_MakeLiteralByte_ReturnValue_2))),
-			new IntParam(new(&CallFunc_Conv_ByteToInt_ReturnValue_2)),
-			new FloatParam(new(&CallFunc_GetParam_ReturnValue_6)),
-			new FloatParam(new(&CallFunc_Add_FloatFloat_ReturnValue_3)),
-			new FloatParam(new(&CallFunc_Divide_FloatFloat_ReturnValue_2))
-		], out _);
-	}
-
-	public unsafe int GetAttackSupportRatio( bool isPlayer, int Point)
-	{
-		_ = Inner.ProcessEvent("GetAttackSupportRatio", [
-			new BoolParam(new(&isPlayer), 255),
-			new IntParam(new(&Point))
-		], out var Return);
-		return ((IntParam?)Return)!.Value;
-	}
-
-	public unsafe int GetDefenseSupportRatio( bool isPlayer, int Point)
-	{
-		_ = Inner.ProcessEvent("GetDefenseSupportRatio", [
-			new BoolParam(new(&isPlayer), 255),
-			new IntParam(new(&Point))
-		], out var Return);
-		return ((IntParam?)Return)!.Value;
-	}
-
-	public unsafe int GetSpeedSupportRatio( bool isPlayer, int Point)
-	{
-		_ = Inner.ProcessEvent("GetSpeedSupportRatio", [
-			new BoolParam(new(&isPlayer), 255),
-			new IntParam(new(&Point))
-		], out var Return);
-		return ((IntParam?)Return)!.Value;
-	}
-
-	public unsafe int GetMagicBonusRecovery( int MagicAttacker)
-	{
-		_ = Inner.ProcessEvent("GetMagicBonusRecovery", [
-			new IntParam(new(&MagicAttacker))
-		], out var Return);
-		return ((IntParam?)Return)!.Value;
-	}
-
-	public unsafe int GetMagicBonusDamage( int MagicAttacker)
-	{
-		_ = Inner.ProcessEvent("GetMagicBonusDamage", [
-			new IntParam(new(&MagicAttacker))
-		], out var Return);
-		return ((IntParam?)Return)!.Value;
-	}
-
-	public unsafe float GetLevelAccuracyRatio( int LevelAttacker, int LevelTarget)
-	{
-		_ = Inner.ProcessEvent("GetLevelAccuracyRatio", [
-			new IntParam(new(&LevelAttacker)),
-			new IntParam(new(&LevelTarget))
-		], out var Return);
-		return ((FloatParam?)Return)!.Value;
-	}
-
-	public unsafe float GetLevelDamageBossRatio( int LevelAttacker, int LevelTarget)
-	{
-		_ = Inner.ProcessEvent("GetLevelDamageBossRatio", [
-			new IntParam(new(&LevelAttacker)),
-			new IntParam(new(&LevelTarget))
-		], out var Return);
-		return ((FloatParam?)Return)!.Value;
-	}
-
-	public unsafe float GetLevelDamageRatio( int LevelAttacker, int LevelTarget)
-	{
-		_ = Inner.ProcessEvent("GetLevelDamageRatio", [
-			new IntParam(new(&LevelAttacker)),
-			new IntParam(new(&LevelTarget))
-		], out var Return);
-		return ((FloatParam?)Return)!.Value;
-	}
-
-	public unsafe float GetLevelExpRatio( int LevelDifference)
-	{
-		_ = Inner.ProcessEvent("GetLevelExpRatio", [
-			new IntParam(new(&LevelDifference))
-		], out var Return);
-		return ((FloatParam?)Return)!.Value;
-	}
-
-	public unsafe int GetShuffleTimeOccurPercent()
-	{
-		_ = Inner.ProcessEvent("GetShuffleTimeOccurPercent", [], out var Return);
-		return ((IntParam?)Return)!.Value;
-	}
-
-	public unsafe float AttackRatioByANGER()
-	{
-		_ = Inner.ProcessEvent("AttackRatioByANGER", [], out var Return);
-		return ((FloatParam?)Return)!.Value;
-	}
-
-	public unsafe float DamageRatioByANGER()
-	{
-		_ = Inner.ProcessEvent("DamageRatioByANGER", [], out var Return);
-		return ((FloatParam?)Return)!.Value;
-	}
-
-	public unsafe float DamageRatioByOVERHEAT()
-	{
-		_ = Inner.ProcessEvent("DamageRatioByOVERHEAT", [], out var Return);
-		return ((FloatParam?)Return)!.Value;
-	}
-
-	public unsafe float DamageRatioByUPSET()
-	{
-		_ = Inner.ProcessEvent("DamageRatioByUPSET", [], out var Return);
-		return ((FloatParam?)Return)!.Value;
-	}
-
-	public unsafe float RecoveryRatioFromANGER()
-	{
-		_ = Inner.ProcessEvent("RecoveryRatioFromANGER", [], out var Return);
-		return ((FloatParam?)Return)!.Value;
-	}
-
-	public unsafe float RecoveryRatioFromCHARM()
-	{
-		_ = Inner.ProcessEvent("RecoveryRatioFromCHARM", [], out var Return);
-		return ((FloatParam?)Return)!.Value;
-	}
-
-	public unsafe float RecoveryRatioFromFEAR()
-	{
-		_ = Inner.ProcessEvent("RecoveryRatioFromFEAR", [], out var Return);
-		return ((FloatParam?)Return)!.Value;
-	}
-
-	public unsafe float RecoveryRatioFromPANIC()
-	{
-		_ = Inner.ProcessEvent("RecoveryRatioFromPANIC", [], out var Return);
-		return ((FloatParam?)Return)!.Value;
-	}
-
-	public unsafe float RecoveryRatioFromUPSET()
-	{
-		_ = Inner.ProcessEvent("RecoveryRatioFromUPSET", [], out var Return);
-		return ((FloatParam?)Return)!.Value;
-	}
-
-	public unsafe float AttackRatioByUPSET()
-	{
-		_ = Inner.ProcessEvent("AttackRatioByUPSET", [], out var Return);
-		return ((FloatParam?)Return)!.Value;
-	}
-
-	public unsafe float GetShuffleTimeMajorPercent( int EncountNumFromLastMajor)
-	{
-		_ = Inner.ProcessEvent("GetShuffleTimeMajorPercent", [
-			new IntParam(new(&EncountNumFromLastMajor))
-		], out var Return);
-		return ((FloatParam?)Return)!.Value;
-	}
-
-	public unsafe float GetAllOutAttackSwoonRate()
-	{
-		_ = Inner.ProcessEvent("GetAllOutAttackSwoonRate", [], out var Return);
-		return ((FloatParam?)Return)!.Value;
-	}
-
-	public unsafe float CalcTheurgiaSkillDamage()
-	{
-		_ = Inner.ProcessEvent("CalcTheurgiaSkillDamage", [], out var Return);
-		return ((FloatParam?)Return)!.Value;
-	}
-
-	public unsafe float GetFullmoonSkillPowerRatio( int MoonAge)
-	{
-		_ = Inner.ProcessEvent("GetFullmoonSkillPowerRatio", [
-			new IntParam(new(&MoonAge))
-		], out var Return);
-		return ((FloatParam?)Return)!.Value;
-	}
-
-	public unsafe float GetNewmoonSkillPowerRatio( int MoonAge)
-	{
-		_ = Inner.ProcessEvent("GetNewmoonSkillPowerRatio", [
-			new IntParam(new(&MoonAge))
-		], out var Return);
-		return ((FloatParam?)Return)!.Value;
-	}
-
-	public unsafe float GetSaleMerchMoneyRate()
-	{
-		_ = Inner.ProcessEvent("GetSaleMerchMoneyRate", [], out var Return);
-		return ((FloatParam?)Return)!.Value;
-	}
-
-	public unsafe float AttackRatioByOVERLIMIT()
-	{
-		_ = Inner.ProcessEvent("AttackRatioByOVERLIMIT", [], out var Return);
-		return ((FloatParam?)Return)!.Value;
-	}
-
-	public unsafe float DamageRatioByOVERLIMIT()
-	{
-		_ = Inner.ProcessEvent("DamageRatioByOVERLIMIT", [], out var Return);
-		return ((FloatParam?)Return)!.Value;
-	}
-
-	public unsafe void GetBadStatusRateFromEnemy( ref float BadStatus_Hit_Rate, FFBtlCalcParam CallFunc_GetDifficultyParam_Param)
-	{
-		_ = Inner.ProcessEvent("GetBadStatusRateFromEnemy", [
-			new FloatParam(new((float*)Unsafe.AsPointer(ref BadStatus_Hit_Rate))),
-			new StructParam(new(&CallFunc_GetDifficultyParam_Param), 40)
-		], out _);
-	}
-
-	public unsafe void GetBadStatusRateFromPlayer( ref float BadStatus_Hit_Rate, FFBtlCalcParam CallFunc_GetDifficultyParam_Param)
-	{
-		_ = Inner.ProcessEvent("GetBadStatusRateFromPlayer", [
-			new FloatParam(new((float*)Unsafe.AsPointer(ref BadStatus_Hit_Rate))),
-			new StructParam(new(&CallFunc_GetDifficultyParam_Param), 40)
-		], out _);
-	}
-
-}
-
-[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0x4C8)]
-public unsafe struct ABP_BtlCalc_C_Repr
-{
-	[FieldOffset(0x0)] public ABtlCalcBase_Repr Super; // Size: 0x490
-	[FieldOffset(0x490)] public USceneComponent_Repr* DefaultSceneRoot; // Size: 0x8
-	[FieldOffset(0x498)] public UDataTable_Repr* DifficultyParam; // Size: 0x8
-	[FieldOffset(0x4A0)] public UDataTable_Repr* LevelDamageRatio; // Size: 0x8
-	[FieldOffset(0x4A8)] public UDataTable_Repr* LevelDamageRatioBoss; // Size: 0x8
-	[FieldOffset(0x4B0)] public UDataTable_Repr* LevelExpRatio; // Size: 0x8
-	[FieldOffset(0x4B8)] public UDataTable_Repr* FullMoonSkillPower; // Size: 0x8
-	[FieldOffset(0x4C0)] public UDataTable_Repr* NewMoonSkillPower; // Size: 0x8
-
-	public ABP_BtlCalc_C ToManaged(IUnrealFactory factory)
-	{
-		fixed (ABP_BtlCalc_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
-	}
-}
-
-
-[StructLayout(LayoutKind.Explicit, Pack = 4, Size = 0x18)]
-public unsafe struct FFBtlCommandCamera
-{
-	[FieldOffset(0x0)] public float CameraHeight; // Size: 0x4
-	[FieldOffset(0x4)] public float CameraRoll; // Size: 0x4
-	[FieldOffset(0x8)] public float CameraYaw; // Size: 0x4
-	[FieldOffset(0xC)] public float CranePitch; // Size: 0x4
-	[FieldOffset(0x10)] public float CraneYaw; // Size: 0x4
-	[FieldOffset(0x14)] public float CraneLength; // Size: 0x4
-}
-
-public class UBPI_BtlGuiContactor_C : UInterface, ITypeRepr<UBPI_BtlGuiContactor_C_Repr>
-{
-	private static Dictionary<string, int>? FieldOffsets;
-	public UBPI_BtlGuiContactor_C(IUObject inner, bool genOffsets = true) : base(inner, false)
-	{
-		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
-	}
-
-	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
-
-	public new unsafe UBPI_BtlGuiContactor_C_Repr* Repr => (UBPI_BtlGuiContactor_C_Repr*)Inner.Ptr;
-
-	public unsafe void FinishAlloutActor()
-	{
-		_ = Inner.ProcessEvent("FinishAlloutActor", [], out _);
-	}
-
-}
-
-[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0x28)]
-public unsafe struct UBPI_BtlGuiContactor_C_Repr
-{
-	[FieldOffset(0x0)] public UInterface_Repr Super; // Size: 0x28
-	public UBPI_BtlGuiContactor_C ToManaged(IUnrealFactory factory)
-	{
-		fixed (UBPI_BtlGuiContactor_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
-	}
-}
-
-
-[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0xF0)]
-public unsafe struct FFBtlAlloutFinishTexture
-{
-	[FieldOffset(0x0)] public TSoftObjectPtr<nint /* UTexture_Repr */> TextureNormal; // Size: 0x28
-	[FieldOffset(0x28)] public TSoftObjectPtr<nint /* UTexture_Repr */> TextureNormalMask; // Size: 0x28
-	[FieldOffset(0x50)] public TSoftObjectPtr<nint /* UTexture_Repr */> TextureSpecialOutfit; // Size: 0x28
-	[FieldOffset(0x78)] public TSoftObjectPtr<nint /* UTexture_Repr */> TextureSpecialOutfitMask; // Size: 0x28
-	[FieldOffset(0xA0)] public TSoftObjectPtr<nint /* UTexture_Repr */> TextureText; // Size: 0x28
-	[FieldOffset(0xC8)] public TSoftObjectPtr<nint /* UObject_Repr */> TextPlg; // Size: 0x28
-}
-
-[StructLayout(LayoutKind.Explicit, Pack = 1, Size = 0x1)]
-public unsafe struct FFBtlCamCalcAddParam
-{
-	[FieldOffset(0x0)] public bool ExceptPersonaCylinder; // Size: 0x1
-}
-
-public class UBPI_FLDSky_C : UInterface, ITypeRepr<UBPI_FLDSky_C_Repr>
-{
-	private static Dictionary<string, int>? FieldOffsets;
-	public UBPI_FLDSky_C(IUObject inner, bool genOffsets = true) : base(inner, false)
-	{
-		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
-	}
-
-	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
-
-	public new unsafe UBPI_FLDSky_C_Repr* Repr => (UBPI_FLDSky_C_Repr*)Inner.Ptr;
-
-	public unsafe void GetDirectionalLightMoon( ref ULightComponent? LightComponent)
-	{
-		nint LightComponent_Ptr = LightComponent?.Inner.Ptr ?? nint.Zero;
-		_ = Inner.ProcessEvent("GetDirectionalLightMoon", [
-			new ObjectParam(new(&LightComponent_Ptr))
-		], out _);
-		LightComponent = LightComponent_Ptr != nint.Zero ? new(Inner.GetFactory().CreateUObject(LightComponent_Ptr)) : null;
-	}
-
-	public unsafe void FLDSkyReset()
-	{
-		_ = Inner.ProcessEvent("FLDSkyReset", [], out _);
-	}
-
-	public unsafe void GetExposureCompensation( ref float Exposure)
-	{
-		_ = Inner.ProcessEvent("GetExposureCompensation", [
-			new FloatParam(new((float*)Unsafe.AsPointer(ref Exposure)))
-		], out _);
-	}
-
-	public unsafe void SetExposureCompensation( float Exposure)
-	{
-		_ = Inner.ProcessEvent("SetExposureCompensation", [
-			new FloatParam(new(&Exposure))
-		], out _);
-	}
-
-}
-
-[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0x28)]
-public unsafe struct UBPI_FLDSky_C_Repr
-{
-	[FieldOffset(0x0)] public UInterface_Repr Super; // Size: 0x28
-	public UBPI_FLDSky_C ToManaged(IUnrealFactory factory)
-	{
-		fixed (UBPI_FLDSky_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
-	}
-}
-
-
-[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0x28)]
-public unsafe struct FFBtlResultSequence
-{
-	[FieldOffset(0x0)] public TSoftObjectPtr<nint /* ULevelSequence_Repr */> Sequencer; // Size: 0x28
-}
-
-public class UBP_BtlDataBase_C : UBtlDataBaseComponent, ITypeRepr<UBP_BtlDataBase_C_Repr>
-{
-	private static Dictionary<string, int>? FieldOffsets;
-	public UBP_BtlDataBase_C(IUObject inner, bool genOffsets = true) : base(inner, false)
-	{
-		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
-	}
-
-	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
-
-	public new unsafe UBP_BtlDataBase_C_Repr* Repr => (UBP_BtlDataBase_C_Repr*)Inner.Ptr;
-
-}
-
-[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0xC8)]
-public unsafe struct UBP_BtlDataBase_C_Repr
-{
-	[FieldOffset(0x0)] public UBtlDataBaseComponent_Repr Super; // Size: 0xC8
-	public UBP_BtlDataBase_C ToManaged(IUnrealFactory factory)
-	{
-		fixed (UBP_BtlDataBase_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
-	}
-}
-
-
-public class ABP_BtlCutinMannequin_C : AAppActor, ITypeRepr<ABP_BtlCutinMannequin_C_Repr>
-{
-	private static Dictionary<string, int>? FieldOffsets;
-	public ABP_BtlCutinMannequin_C(IUObject inner, bool genOffsets = true) : base(inner, false)
-	{
-		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
-	}
-
-	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
-
-	public new unsafe ABP_BtlCutinMannequin_C_Repr* Repr => (ABP_BtlCutinMannequin_C_Repr*)Inner.Ptr;
-
-	public unsafe UStaticMeshComponent? Mesh
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("Mesh")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("Mesh")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("Mesh")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe USceneComponent? DefaultSceneRoot
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("DefaultSceneRoot")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("DefaultSceneRoot")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("DefaultSceneRoot")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-}
-
-[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0x288)]
-public unsafe struct ABP_BtlCutinMannequin_C_Repr
-{
-	[FieldOffset(0x0)] public AAppActor_Repr Super; // Size: 0x278
-	[FieldOffset(0x278)] public UStaticMeshComponent_Repr* Mesh; // Size: 0x8
-	[FieldOffset(0x280)] public USceneComponent_Repr* DefaultSceneRoot; // Size: 0x8
-
-	public ABP_BtlCutinMannequin_C ToManaged(IUnrealFactory factory)
-	{
-		fixed (ABP_BtlCutinMannequin_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
-	}
-}
-
-
-[StructLayout(LayoutKind.Explicit, Pack = 16, Size = 0x70)]
-public unsafe struct FFBtlSkillRequest
-{
-	[FieldOffset(0x0)] public UNiagaraSystem_Repr* VFX; // Size: 0x8
-	[FieldOffset(0x8)] public float WaitTime; // Size: 0x4
-	[FieldOffset(0x10)] public FTransform Transform; // Size: 0x30
-	[FieldOffset(0x40)] public bool AlreadyRequested; // Size: 0x1
-	[FieldOffset(0x48)] public UNiagaraComponent_Repr* VFXObjectReference; // Size: 0x8
-	[FieldOffset(0x50)] public USoundAtomCue_Repr* SkillSE; // Size: 0x8
-	[FieldOffset(0x58)] public float SoundVolumeRatio; // Size: 0x4
-	[FieldOffset(0x60)] public UAtomComponent_Repr* SKillSEObjectReference; // Size: 0x8
-	[FieldOffset(0x68)] public bool UseSECameraRangeParam; // Size: 0x1
-	[FieldOffset(0x6C)] public float SECameraRangeMax; // Size: 0x4
-}
-
-public class UBP_BtlCoreComponent_C : UBtlCoreComponent, ITypeRepr<UBP_BtlCoreComponent_C_Repr>
-{
-	private static Dictionary<string, int>? FieldOffsets;
-	public UBP_BtlCoreComponent_C(IUObject inner, bool genOffsets = true) : base(inner, false)
-	{
-		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
-	}
-
-	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
-
-	public new unsafe UBP_BtlCoreComponent_C_Repr* Repr => (UBP_BtlCoreComponent_C_Repr*)Inner.Ptr;
-
-}
-
-[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0x570)]
-public unsafe struct UBP_BtlCoreComponent_C_Repr
-{
-	[FieldOffset(0x0)] public UBtlCoreComponent_Repr Super; // Size: 0x570
-	public UBP_BtlCoreComponent_C ToManaged(IUnrealFactory factory)
-	{
-		fixed (UBP_BtlCoreComponent_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
-	}
-}
-
-
-[StructLayout(LayoutKind.Explicit, Pack = 4, Size = 0xC)]
-public unsafe struct FFBtlSkillControl
-{
-	[FieldOffset(0x0)] public bool IsPlay; // Size: 0x1
-	[FieldOffset(0x4)] public int VFXIndex; // Size: 0x4
-	[FieldOffset(0x8)] public bool UseCamera; // Size: 0x1
-}
-
-[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0x28)]
-public unsafe struct FFBtlGuiResourcesItem
-{
-	[FieldOffset(0x0)] public TSoftObjectPtr<nint /* UObject_Repr */> _object; // Size: 0x28
-}
-
-[StructLayout(LayoutKind.Explicit, Pack = 4, Size = 0x8)]
-public unsafe struct FFBtlGuiAnimationParam
-{
-	[FieldOffset(0x0)] public FVector2D Power; // Size: 0x8
-}
-
-public class UABP_Pp0901_C : UAnimInstance, ITypeRepr<UABP_Pp0901_C_Repr>
-{
-	private static Dictionary<string, int>? FieldOffsets;
-	public UABP_Pp0901_C(IUObject inner, bool genOffsets = true) : base(inner, false)
-	{
-		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
-	}
-
-	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
-
-	public new unsafe UABP_Pp0901_C_Repr* Repr => (UABP_Pp0901_C_Repr*)Inner.Ptr;
-
-	public unsafe FPointerToUberGraphFrame* UberGraphFrame
-	{
-		get => (FPointerToUberGraphFrame*)(Inner.Ptr + GetFieldOffset("UberGraphFrame"));
-	}
-
-	public unsafe FAnimNode_Root* AnimGraphNode_Root
-	{
-		get => (FAnimNode_Root*)(Inner.Ptr + GetFieldOffset("AnimGraphNode_Root"));
-	}
-
-	public unsafe FAnimNode_Slot* AnimGraphNode_Slot
-	{
-		get => (FAnimNode_Slot*)(Inner.Ptr + GetFieldOffset("AnimGraphNode_Slot"));
-	}
-
-	public unsafe void AnimGraph( ref FPoseLink AnimGraph)
-	{
-		_ = Inner.ProcessEvent("AnimGraph", [
-			new StructParam(new((FPoseLink*)Unsafe.AsPointer(ref AnimGraph)), 16)
-		], out _);
-	}
-
-}
-
-[StructLayout(LayoutKind.Explicit, Pack = 16, Size = 0x340)]
-public unsafe struct UABP_Pp0901_C_Repr
-{
-	[FieldOffset(0x0)] public UAnimInstance_Repr Super; // Size: 0x2C0
-	[FieldOffset(0x2C0)] public FPointerToUberGraphFrame UberGraphFrame; // Size: 0x8
-	[FieldOffset(0x2C8)] public FAnimNode_Root AnimGraphNode_Root; // Size: 0x30
-	[FieldOffset(0x2F8)] public FAnimNode_Slot AnimGraphNode_Slot; // Size: 0x48
-
-	public UABP_Pp0901_C ToManaged(IUnrealFactory factory)
-	{
-		fixed (UABP_Pp0901_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
-	}
-}
-
-
-[StructLayout(LayoutKind.Explicit, Pack = 4, Size = 0x30)]
-public unsafe struct FFBtlCommandCameraEncount
-{
-	[FieldOffset(0x0)] public FFBtlCommandCamera Human; // Size: 0x18
-	[FieldOffset(0x18)] public FFBtlCommandCamera KOROMALU; // Size: 0x18
-}
-
-[StructLayout(LayoutKind.Explicit, Pack = 4, Size = 0x10)]
-public unsafe struct FFBtlTheurgiaLocOffset
-{
-	[FieldOffset(0x0)] public FVector Location; // Size: 0xC
-	[FieldOffset(0xC)] public float Scale; // Size: 0x4
-}
-
-[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0xA0)]
-public unsafe struct FFBtlTheurgiaSeq
-{
-	[FieldOffset(0x0)] public TSoftObjectPtr<nint /* ULevelSequence_Repr */> Sequence; // Size: 0x28
-	[FieldOffset(0x28)] public TSoftObjectPtr<nint /* ULevelSequence_Repr */> SequenceEvolved; // Size: 0x28
-	[FieldOffset(0x50)] public TSoftObjectPtr<nint /* ULevelSequence_Repr */> SequenceSound; // Size: 0x28
-	[FieldOffset(0x78)] public FVector PersonaScaleA; // Size: 0xC
-	[FieldOffset(0x84)] public FVector PersonaScaleB; // Size: 0xC
-	[FieldOffset(0x90)] public EBtlPersonaSceneAnimationType PersonaLoopAnimType; // Size: 0x1
-	[FieldOffset(0x91)] public bool NeedCommonSkillSceneFromTheurgia; // Size: 0x1
-	[FieldOffset(0x94)] public int TheurgiaVoiceIndex; // Size: 0x4
-	[FieldOffset(0x98)] public bool DisableLOD; // Size: 0x1
-}
-
-public class ABP_BtlEventAttachPoint_C : AAppActor, ITypeRepr<ABP_BtlEventAttachPoint_C_Repr>
-{
-	private static Dictionary<string, int>? FieldOffsets;
-	public ABP_BtlEventAttachPoint_C(IUObject inner, bool genOffsets = true) : base(inner, false)
-	{
-		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
-	}
-
-	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
-
-	public new unsafe ABP_BtlEventAttachPoint_C_Repr* Repr => (ABP_BtlEventAttachPoint_C_Repr*)Inner.Ptr;
-
-	public unsafe USceneComponent? DefaultSceneRoot
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("DefaultSceneRoot")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("DefaultSceneRoot")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("DefaultSceneRoot")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-}
-
-[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0x280)]
-public unsafe struct ABP_BtlEventAttachPoint_C_Repr
-{
-	[FieldOffset(0x0)] public AAppActor_Repr Super; // Size: 0x278
-	[FieldOffset(0x278)] public USceneComponent_Repr* DefaultSceneRoot; // Size: 0x8
-
-	public ABP_BtlEventAttachPoint_C ToManaged(IUnrealFactory factory)
-	{
-		fixed (ABP_BtlEventAttachPoint_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
-	}
-}
-
-
-public class ABP_BtlEffectUtensil_C : AAppActor, ITypeRepr<ABP_BtlEffectUtensil_C_Repr>
-{
-	private static Dictionary<string, int>? FieldOffsets;
-	public ABP_BtlEffectUtensil_C(IUObject inner, bool genOffsets = true) : base(inner, false)
-	{
-		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
-	}
-
-	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
-
-	public new unsafe ABP_BtlEffectUtensil_C_Repr* Repr => (ABP_BtlEffectUtensil_C_Repr*)Inner.Ptr;
-
-	public unsafe FPointerToUberGraphFrame* UberGraphFrame
-	{
-		get => (FPointerToUberGraphFrame*)(Inner.Ptr + GetFieldOffset("UberGraphFrame"));
-	}
-
-	public unsafe USceneComponent? DefaultSceneRoot
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("DefaultSceneRoot")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("DefaultSceneRoot")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("DefaultSceneRoot")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe bool IsPlaying
-	{
-		get => *(bool*)(Inner.Ptr + GetFieldOffset("IsPlaying"));
-		set => *(bool*)(Inner.Ptr + GetFieldOffset("IsPlaying")) = value;
-	}
-
-	public unsafe UNiagaraComponent? VFX
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("VFX")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("VFX")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("VFX")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe UBtlCoreComponent? BtlCore
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("BtlCore")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("BtlCore")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("BtlCore")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe void ReceiveDestroyed()
-	{
-		_ = Inner.ProcessEvent("ReceiveDestroyed", [], out _);
-	}
-
-	public unsafe void ReceiveTick( float DeltaSeconds)
-	{
-		_ = Inner.ProcessEvent("ReceiveTick", [
-			new FloatParam(new(&DeltaSeconds))
-		], out _);
-	}
-
-	public unsafe void SetEffect( UNiagaraComponent? Niagara, UBtlCoreComponent? BtlCore)
-	{
-		nint Niagara_Ptr = Niagara?.Inner.Ptr ?? nint.Zero;
-		nint BtlCore_Ptr = BtlCore?.Inner.Ptr ?? nint.Zero;
-		_ = Inner.ProcessEvent("SetEffect", [
-			new ObjectParam(new(&Niagara_Ptr)),
-			new ObjectParam(new(&BtlCore_Ptr))
-		], out _);
-	}
-
-}
-
-[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0x2A0)]
-public unsafe struct ABP_BtlEffectUtensil_C_Repr
-{
-	[FieldOffset(0x0)] public AAppActor_Repr Super; // Size: 0x278
-	[FieldOffset(0x278)] public FPointerToUberGraphFrame UberGraphFrame; // Size: 0x8
-	[FieldOffset(0x280)] public USceneComponent_Repr* DefaultSceneRoot; // Size: 0x8
-	[FieldOffset(0x288)] public bool IsPlaying; // Size: 0x1
-	[FieldOffset(0x290)] public UNiagaraComponent_Repr* VFX; // Size: 0x8
-	[FieldOffset(0x298)] public UBtlCoreComponent_Repr* BtlCore; // Size: 0x8
-
-	public ABP_BtlEffectUtensil_C ToManaged(IUnrealFactory factory)
-	{
-		fixed (ABP_BtlEffectUtensil_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
-	}
-}
-
-
-[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0x50)]
-public unsafe struct FFBtlAlloutSequencer
-{
-	[FieldOffset(0x0)] public TSoftObjectPtr<nint /* ULevelSequence_Repr */> AlloutA; // Size: 0x28
-	[FieldOffset(0x28)] public TSoftObjectPtr<nint /* ULevelSequence_Repr */> AlloutB; // Size: 0x28
-}
-
-public class UBPI_BtlCharacterContactor_C : UInterface, ITypeRepr<UBPI_BtlCharacterContactor_C_Repr>
-{
-	private static Dictionary<string, int>? FieldOffsets;
-	public UBPI_BtlCharacterContactor_C(IUObject inner, bool genOffsets = true) : base(inner, false)
-	{
-		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
-	}
-
-	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
-
-	public new unsafe UBPI_BtlCharacterContactor_C_Repr* Repr => (UBPI_BtlCharacterContactor_C_Repr*)Inner.Ptr;
-
-	public unsafe void CheckNyxCoreMode( ref bool NyxCoreMode)
-	{
-		_ = Inner.ProcessEvent("CheckNyxCoreMode", [
-			new BoolParam(new((bool*)Unsafe.AsPointer(ref NyxCoreMode)), 255)
-		], out _);
-	}
-
-	public unsafe void EncountHeroRunStop()
-	{
-		_ = Inner.ProcessEvent("EncountHeroRunStop", [], out _);
-	}
-
-	public unsafe void EncountHeroRunStart( float StartAnimationTime)
-	{
-		_ = Inner.ProcessEvent("EncountHeroRunStart", [
-			new FloatParam(new(&StartAnimationTime))
-		], out _);
-	}
-
-	public unsafe void EncountHeroGetShowActor( ref TArray<Ptr<AActor_Repr>> ShowActors)
-	{
-		_ = Inner.ProcessEvent("EncountHeroGetShowActor", [
-			new ArrayParam(new((TArray<int>*)Unsafe.AsPointer(ref ShowActors)))
-		], out _);
-	}
-
-	public unsafe void CheckSkeletalMeshValid( ref bool IsValid)
-	{
-		_ = Inner.ProcessEvent("CheckSkeletalMeshValid", [
-			new BoolParam(new((bool*)Unsafe.AsPointer(ref IsValid)), 255)
-		], out _);
-	}
-
-}
-
-[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0x28)]
-public unsafe struct UBPI_BtlCharacterContactor_C_Repr
-{
-	[FieldOffset(0x0)] public UInterface_Repr Super; // Size: 0x28
-	public UBPI_BtlCharacterContactor_C ToManaged(IUnrealFactory factory)
-	{
-		fixed (UBPI_BtlCharacterContactor_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
-	}
-}
-
-
-public class ABP_ShadowBase_C : AShadowBaseCore, ITypeRepr<ABP_ShadowBase_C_Repr>
-{
-	private static Dictionary<string, int>? FieldOffsets;
-	public ABP_ShadowBase_C(IUObject inner, bool genOffsets = true) : base(inner, false)
-	{
-		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
-	}
-
-	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
-
-	public new unsafe ABP_ShadowBase_C_Repr* Repr => (ABP_ShadowBase_C_Repr*)Inner.Ptr;
-
-	public unsafe FPointerToUberGraphFrame* UberGraphFrame
-	{
-		get => (FPointerToUberGraphFrame*)(Inner.Ptr + GetFieldOffset("UberGraphFrame"));
-	}
-
-	public unsafe float StartPosition_VG
-	{
-		get => *(float*)(Inner.Ptr + GetFieldOffset("StartPosition_VG"));
-		set => *(float*)(Inner.Ptr + GetFieldOffset("StartPosition_VG")) = value;
-	}
-
-	public unsafe float EndPosition_VG
-	{
-		get => *(float*)(Inner.Ptr + GetFieldOffset("EndPosition_VG"));
-		set => *(float*)(Inner.Ptr + GetFieldOffset("EndPosition_VG")) = value;
-	}
-
-	public unsafe TArray<Ptr<UMaterialInstanceDynamic_Repr>>* DynamicMIs
-	{
-		get => (TArray<Ptr<UMaterialInstanceDynamic_Repr>>*)(Inner.Ptr + GetFieldOffset("DynamicMIs"));
-	}
-
-	public unsafe float BoundsScale
-	{
-		get => *(float*)(Inner.Ptr + GetFieldOffset("BoundsScale"));
-		set => *(float*)(Inner.Ptr + GetFieldOffset("BoundsScale")) = value;
-	}
-
-	public unsafe bool bAllPointLightsMode
-	{
-		get => *(bool*)(Inner.Ptr + GetFieldOffset("bAllPointLightsMode"));
-		set => *(bool*)(Inner.Ptr + GetFieldOffset("bAllPointLightsMode")) = value;
-	}
-
-	public unsafe TArray<Ptr<ABP_CharaPointLight_C_Repr>>* AllPointLights
-	{
-		get => (TArray<Ptr<ABP_CharaPointLight_C_Repr>>*)(Inner.Ptr + GetFieldOffset("AllPointLights"));
-	}
-
-	public unsafe TArray<Ptr<ABP_CharaPointLight_C_Repr>>* ClosestPointLights
-	{
-		get => (TArray<Ptr<ABP_CharaPointLight_C_Repr>>*)(Inner.Ptr + GetFieldOffset("ClosestPointLights"));
-	}
-
-	public unsafe float LastRenderTimeOnScreen
-	{
-		get => *(float*)(Inner.Ptr + GetFieldOffset("LastRenderTimeOnScreen"));
-		set => *(float*)(Inner.Ptr + GetFieldOffset("LastRenderTimeOnScreen")) = value;
-	}
-
-	public unsafe void Event_ResetAllPointLightsMode()
-	{
-		_ = Inner.ProcessEvent("Event_ResetAllPointLightsMode", [], out _);
-	}
-
-	public unsafe void Event_GetAllCharaPointLights()
-	{
-		_ = Inner.ProcessEvent("Event_GetAllCharaPointLights", [], out _);
-	}
-
-	public unsafe void ReceiveTick( float DeltaSeconds)
-	{
-		_ = Inner.ProcessEvent("ReceiveTick", [
-			new FloatParam(new(&DeltaSeconds))
-		], out _);
-	}
-
-	public unsafe void UserConstructionScript( int Temp_int_Loop_Counter_Variable, int CallFunc_Add_IntInt_ReturnValue, int Temp_int_Array_Index_Variable, int Temp_int_Array_Index_Variable_1, int Temp_int_Loop_Counter_Variable_1, UMaterialInstanceDynamic? CallFunc_Array_Get_Item, int CallFunc_Add_IntInt_ReturnValue_1, int CallFunc_Array_Length_ReturnValue, bool CallFunc_Less_IntInt_ReturnValue, FVector CallFunc_GetComponentBounds_Origin, FVector CallFunc_GetComponentBounds_BoxExtent, float CallFunc_GetComponentBounds_SphereRadius, float CallFunc_BreakVector_X, float CallFunc_BreakVector_Y, float CallFunc_BreakVector_Z, FVector CallFunc_GetSocketLocation_ReturnValue, FVector CallFunc_GetSocketLocation_ReturnValue_1, float CallFunc_BreakVector_X_1, float CallFunc_BreakVector_Y_1, float CallFunc_BreakVector_Z_1, float CallFunc_BreakVector_X_2, float CallFunc_BreakVector_Y_2, float CallFunc_BreakVector_Z_2, float CallFunc_Subtract_FloatFloat_ReturnValue, float CallFunc_Subtract_FloatFloat_ReturnValue_1, FVector CallFunc_K2_GetComponentScale_ReturnValue, float CallFunc_BreakVector_X_3, float CallFunc_BreakVector_Y_3, float CallFunc_BreakVector_Z_3, UMaterialInstanceDynamic? CallFunc_Array_Get_Item_1, int CallFunc_Array_Length_ReturnValue_1, bool CallFunc_Less_IntInt_ReturnValue_1)
-	{
-		nint CallFunc_Array_Get_Item_Ptr = CallFunc_Array_Get_Item?.Inner.Ptr ?? nint.Zero;
-		nint CallFunc_Array_Get_Item_1_Ptr = CallFunc_Array_Get_Item_1?.Inner.Ptr ?? nint.Zero;
-		_ = Inner.ProcessEvent("UserConstructionScript", [
-			new IntParam(new(&Temp_int_Loop_Counter_Variable)),
-			new IntParam(new(&CallFunc_Add_IntInt_ReturnValue)),
-			new IntParam(new(&Temp_int_Array_Index_Variable)),
-			new IntParam(new(&Temp_int_Array_Index_Variable_1)),
-			new IntParam(new(&Temp_int_Loop_Counter_Variable_1)),
-			new ObjectParam(new(&CallFunc_Array_Get_Item_Ptr)),
-			new IntParam(new(&CallFunc_Add_IntInt_ReturnValue_1)),
-			new IntParam(new(&CallFunc_Array_Length_ReturnValue)),
-			new BoolParam(new(&CallFunc_Less_IntInt_ReturnValue), 255),
-			new StructParam(new(&CallFunc_GetComponentBounds_Origin), 12),
-			new StructParam(new(&CallFunc_GetComponentBounds_BoxExtent), 12),
-			new FloatParam(new(&CallFunc_GetComponentBounds_SphereRadius)),
-			new FloatParam(new(&CallFunc_BreakVector_X)),
-			new FloatParam(new(&CallFunc_BreakVector_Y)),
-			new FloatParam(new(&CallFunc_BreakVector_Z)),
-			new StructParam(new(&CallFunc_GetSocketLocation_ReturnValue), 12),
-			new StructParam(new(&CallFunc_GetSocketLocation_ReturnValue_1), 12),
-			new FloatParam(new(&CallFunc_BreakVector_X_1)),
-			new FloatParam(new(&CallFunc_BreakVector_Y_1)),
-			new FloatParam(new(&CallFunc_BreakVector_Z_1)),
-			new FloatParam(new(&CallFunc_BreakVector_X_2)),
-			new FloatParam(new(&CallFunc_BreakVector_Y_2)),
-			new FloatParam(new(&CallFunc_BreakVector_Z_2)),
-			new FloatParam(new(&CallFunc_Subtract_FloatFloat_ReturnValue)),
-			new FloatParam(new(&CallFunc_Subtract_FloatFloat_ReturnValue_1)),
-			new StructParam(new(&CallFunc_K2_GetComponentScale_ReturnValue), 12),
-			new FloatParam(new(&CallFunc_BreakVector_X_3)),
-			new FloatParam(new(&CallFunc_BreakVector_Y_3)),
-			new FloatParam(new(&CallFunc_BreakVector_Z_3)),
-			new ObjectParam(new(&CallFunc_Array_Get_Item_1_Ptr)),
-			new IntParam(new(&CallFunc_Array_Length_ReturnValue_1)),
-			new BoolParam(new(&CallFunc_Less_IntInt_ReturnValue_1), 255)
-		], out _);
-	}
-
-	public unsafe void CreateDMI( UMeshComponent? MeshComponent, TArray<Ptr<UMaterialInterface_Repr>> Materials, TArray<Ptr<UMaterialInterface_Repr>> CallFunc_GetMaterials_ReturnValue, int Temp_int_Variable, int CallFunc_Array_LastIndex_ReturnValue, UMaterialInterface? CallFunc_Array_Get_Item, bool CallFunc_LessEqual_IntInt_ReturnValue, FString CallFunc_GetDisplayName_ReturnValue, FString CallFunc_Concat_StrStr_ReturnValue, FName CallFunc_Conv_StringToName_ReturnValue, int CallFunc_Add_IntInt_ReturnValue, UMaterialInstanceDynamic? CallFunc_CreateDynamicMaterialInstance_ReturnValue)
-	{
-		nint MeshComponent_Ptr = MeshComponent?.Inner.Ptr ?? nint.Zero;
-		nint CallFunc_Array_Get_Item_Ptr = CallFunc_Array_Get_Item?.Inner.Ptr ?? nint.Zero;
-		nint CallFunc_CreateDynamicMaterialInstance_ReturnValue_Ptr = CallFunc_CreateDynamicMaterialInstance_ReturnValue?.Inner.Ptr ?? nint.Zero;
-		_ = Inner.ProcessEvent("CreateDMI", [
-			new ObjectParam(new(&MeshComponent_Ptr)),
-			new ArrayParam(new((TArray<int>*)(&Materials))),
-			new ArrayParam(new((TArray<int>*)(&CallFunc_GetMaterials_ReturnValue))),
-			new IntParam(new(&Temp_int_Variable)),
-			new IntParam(new(&CallFunc_Array_LastIndex_ReturnValue)),
-			new ObjectParam(new(&CallFunc_Array_Get_Item_Ptr)),
-			new BoolParam(new(&CallFunc_LessEqual_IntInt_ReturnValue), 255),
-			new StringParam(new(&CallFunc_GetDisplayName_ReturnValue)),
-			new StringParam(new(&CallFunc_Concat_StrStr_ReturnValue)),
-			new NameParam(new(&CallFunc_Conv_StringToName_ReturnValue)),
-			new IntParam(new(&CallFunc_Add_IntInt_ReturnValue)),
-			new ObjectParam(new(&CallFunc_CreateDynamicMaterialInstance_ReturnValue_Ptr))
-		], out _);
-	}
-
-	public unsafe void SetPointLightParameter( UMaterialInstanceDynamic? MIDObjectReference, int Temp_int_Array_Index_Variable, int CallFunc_Array_Length_ReturnValue, ABP_CharaPointLight_C? CallFunc_Array_Get_Item, FString CallFunc_Conv_IntToString_ReturnValue, FString CallFunc_Concat_StrStr_ReturnValue, FName CallFunc_Conv_StringToName_ReturnValue, bool CallFunc_IsValid_ReturnValue, FVector CallFunc_K2_GetComponentLocation_ReturnValue, FLinearColor CallFunc_Conv_VectorToLinearColor_ReturnValue, FString CallFunc_Conv_IntToString_ReturnValue_1, FString CallFunc_Conv_IntToString_ReturnValue_2, FString CallFunc_Concat_StrStr_ReturnValue_1, FString CallFunc_Concat_StrStr_ReturnValue_2, FName CallFunc_Conv_StringToName_ReturnValue_1, FName CallFunc_Conv_StringToName_ReturnValue_2, FString CallFunc_Conv_IntToString_ReturnValue_3, FString CallFunc_Conv_IntToString_ReturnValue_4, FString CallFunc_Concat_StrStr_ReturnValue_3, FString CallFunc_Concat_StrStr_ReturnValue_4, FName CallFunc_Conv_StringToName_ReturnValue_3, FName CallFunc_Conv_StringToName_ReturnValue_4, FString CallFunc_Conv_IntToString_ReturnValue_5, FString CallFunc_Conv_IntToString_ReturnValue_6, FString CallFunc_Concat_StrStr_ReturnValue_5, FString CallFunc_Concat_StrStr_ReturnValue_6, FName CallFunc_Conv_StringToName_ReturnValue_5, FName CallFunc_Conv_StringToName_ReturnValue_6, int Temp_int_Loop_Counter_Variable, bool CallFunc_Less_IntInt_ReturnValue, int CallFunc_Add_IntInt_ReturnValue)
-	{
-		nint MIDObjectReference_Ptr = MIDObjectReference?.Inner.Ptr ?? nint.Zero;
-		nint CallFunc_Array_Get_Item_Ptr = CallFunc_Array_Get_Item?.Inner.Ptr ?? nint.Zero;
-		_ = Inner.ProcessEvent("SetPointLightParameter", [
-			new ObjectParam(new(&MIDObjectReference_Ptr)),
-			new IntParam(new(&Temp_int_Array_Index_Variable)),
-			new IntParam(new(&CallFunc_Array_Length_ReturnValue)),
-			new ObjectParam(new(&CallFunc_Array_Get_Item_Ptr)),
-			new StringParam(new(&CallFunc_Conv_IntToString_ReturnValue)),
-			new StringParam(new(&CallFunc_Concat_StrStr_ReturnValue)),
-			new NameParam(new(&CallFunc_Conv_StringToName_ReturnValue)),
-			new BoolParam(new(&CallFunc_IsValid_ReturnValue), 255),
-			new StructParam(new(&CallFunc_K2_GetComponentLocation_ReturnValue), 12),
-			new StructParam(new(&CallFunc_Conv_VectorToLinearColor_ReturnValue), 16),
-			new StringParam(new(&CallFunc_Conv_IntToString_ReturnValue_1)),
-			new StringParam(new(&CallFunc_Conv_IntToString_ReturnValue_2)),
-			new StringParam(new(&CallFunc_Concat_StrStr_ReturnValue_1)),
-			new StringParam(new(&CallFunc_Concat_StrStr_ReturnValue_2)),
-			new NameParam(new(&CallFunc_Conv_StringToName_ReturnValue_1)),
-			new NameParam(new(&CallFunc_Conv_StringToName_ReturnValue_2)),
-			new StringParam(new(&CallFunc_Conv_IntToString_ReturnValue_3)),
-			new StringParam(new(&CallFunc_Conv_IntToString_ReturnValue_4)),
-			new StringParam(new(&CallFunc_Concat_StrStr_ReturnValue_3)),
-			new StringParam(new(&CallFunc_Concat_StrStr_ReturnValue_4)),
-			new NameParam(new(&CallFunc_Conv_StringToName_ReturnValue_3)),
-			new NameParam(new(&CallFunc_Conv_StringToName_ReturnValue_4)),
-			new StringParam(new(&CallFunc_Conv_IntToString_ReturnValue_5)),
-			new StringParam(new(&CallFunc_Conv_IntToString_ReturnValue_6)),
-			new StringParam(new(&CallFunc_Concat_StrStr_ReturnValue_5)),
-			new StringParam(new(&CallFunc_Concat_StrStr_ReturnValue_6)),
-			new NameParam(new(&CallFunc_Conv_StringToName_ReturnValue_5)),
-			new NameParam(new(&CallFunc_Conv_StringToName_ReturnValue_6)),
-			new IntParam(new(&Temp_int_Loop_Counter_Variable)),
-			new BoolParam(new(&CallFunc_Less_IntInt_ReturnValue), 255),
-			new IntParam(new(&CallFunc_Add_IntInt_ReturnValue))
-		], out _);
-	}
-
-	public unsafe void SetDMIParameter_Tick( bool bGradDistanceEqual, int Temp_int_Loop_Counter_Variable, int CallFunc_Add_IntInt_ReturnValue, int Temp_int_Array_Index_Variable, int Temp_int_Array_Index_Variable_1, int Temp_int_Loop_Counter_Variable_1, int CallFunc_Add_IntInt_ReturnValue_1, int Temp_int_Array_Index_Variable_2, int Temp_int_Loop_Counter_Variable_2, int CallFunc_Add_IntInt_ReturnValue_2, int CallFunc_Array_Length_ReturnValue, bool CallFunc_NotEqual_IntInt_ReturnValue, FVector CallFunc_GetComponentBounds_Origin, FVector CallFunc_GetComponentBounds_BoxExtent, float CallFunc_GetComponentBounds_SphereRadius, FVector CallFunc_GetSocketLocation_ReturnValue, float CallFunc_BreakVector_X, float CallFunc_BreakVector_Y, float CallFunc_BreakVector_Z, float CallFunc_BreakVector_X_1, float CallFunc_BreakVector_Y_1, float CallFunc_BreakVector_Z_1, FVector CallFunc_GetSocketLocation_ReturnValue_1, float CallFunc_Subtract_FloatFloat_ReturnValue, float CallFunc_BreakVector_X_2, float CallFunc_BreakVector_Y_2, float CallFunc_BreakVector_Z_2, float CallFunc_Subtract_FloatFloat_ReturnValue_1, UMaterialInstanceDynamic? CallFunc_Array_Get_Item, UMaterialInstanceDynamic? CallFunc_Array_Get_Item_1, bool CallFunc_IsValid_ReturnValue, UMaterialInstanceDynamic? CallFunc_Array_Get_Item_2, bool CallFunc_IsValid_ReturnValue_1, int CallFunc_Array_Length_ReturnValue_1, bool CallFunc_Less_IntInt_ReturnValue, int CallFunc_Array_Length_ReturnValue_2, bool CallFunc_Less_IntInt_ReturnValue_1, int CallFunc_Array_Length_ReturnValue_3, bool CallFunc_Less_IntInt_ReturnValue_2, bool CallFunc_NearlyEqual_FloatFloat_ReturnValue, bool CallFunc_NearlyEqual_FloatFloat_ReturnValue_1)
-	{
-		nint CallFunc_Array_Get_Item_Ptr = CallFunc_Array_Get_Item?.Inner.Ptr ?? nint.Zero;
-		nint CallFunc_Array_Get_Item_1_Ptr = CallFunc_Array_Get_Item_1?.Inner.Ptr ?? nint.Zero;
-		nint CallFunc_Array_Get_Item_2_Ptr = CallFunc_Array_Get_Item_2?.Inner.Ptr ?? nint.Zero;
-		_ = Inner.ProcessEvent("SetDMIParameter_Tick", [
-			new BoolParam(new(&bGradDistanceEqual), 255),
-			new IntParam(new(&Temp_int_Loop_Counter_Variable)),
-			new IntParam(new(&CallFunc_Add_IntInt_ReturnValue)),
-			new IntParam(new(&Temp_int_Array_Index_Variable)),
-			new IntParam(new(&Temp_int_Array_Index_Variable_1)),
-			new IntParam(new(&Temp_int_Loop_Counter_Variable_1)),
-			new IntParam(new(&CallFunc_Add_IntInt_ReturnValue_1)),
-			new IntParam(new(&Temp_int_Array_Index_Variable_2)),
-			new IntParam(new(&Temp_int_Loop_Counter_Variable_2)),
-			new IntParam(new(&CallFunc_Add_IntInt_ReturnValue_2)),
-			new IntParam(new(&CallFunc_Array_Length_ReturnValue)),
-			new BoolParam(new(&CallFunc_NotEqual_IntInt_ReturnValue), 255),
-			new StructParam(new(&CallFunc_GetComponentBounds_Origin), 12),
-			new StructParam(new(&CallFunc_GetComponentBounds_BoxExtent), 12),
-			new FloatParam(new(&CallFunc_GetComponentBounds_SphereRadius)),
-			new StructParam(new(&CallFunc_GetSocketLocation_ReturnValue), 12),
-			new FloatParam(new(&CallFunc_BreakVector_X)),
-			new FloatParam(new(&CallFunc_BreakVector_Y)),
-			new FloatParam(new(&CallFunc_BreakVector_Z)),
-			new FloatParam(new(&CallFunc_BreakVector_X_1)),
-			new FloatParam(new(&CallFunc_BreakVector_Y_1)),
-			new FloatParam(new(&CallFunc_BreakVector_Z_1)),
-			new StructParam(new(&CallFunc_GetSocketLocation_ReturnValue_1), 12),
-			new FloatParam(new(&CallFunc_Subtract_FloatFloat_ReturnValue)),
-			new FloatParam(new(&CallFunc_BreakVector_X_2)),
-			new FloatParam(new(&CallFunc_BreakVector_Y_2)),
-			new FloatParam(new(&CallFunc_BreakVector_Z_2)),
-			new FloatParam(new(&CallFunc_Subtract_FloatFloat_ReturnValue_1)),
-			new ObjectParam(new(&CallFunc_Array_Get_Item_Ptr)),
-			new ObjectParam(new(&CallFunc_Array_Get_Item_1_Ptr)),
-			new BoolParam(new(&CallFunc_IsValid_ReturnValue), 255),
-			new ObjectParam(new(&CallFunc_Array_Get_Item_2_Ptr)),
-			new BoolParam(new(&CallFunc_IsValid_ReturnValue_1), 255),
-			new IntParam(new(&CallFunc_Array_Length_ReturnValue_1)),
-			new BoolParam(new(&CallFunc_Less_IntInt_ReturnValue), 255),
-			new IntParam(new(&CallFunc_Array_Length_ReturnValue_2)),
-			new BoolParam(new(&CallFunc_Less_IntInt_ReturnValue_1), 255),
-			new IntParam(new(&CallFunc_Array_Length_ReturnValue_3)),
-			new BoolParam(new(&CallFunc_Less_IntInt_ReturnValue_2), 255),
-			new BoolParam(new(&CallFunc_NearlyEqual_FloatFloat_ReturnValue), 255),
-			new BoolParam(new(&CallFunc_NearlyEqual_FloatFloat_ReturnValue_1), 255)
-		], out _);
-	}
-
-	public unsafe void SetScalarParameterValueEx( UMaterialInstanceDynamic? Material, FName ParameterName, float ParameterValue, float requestValue, float CallFunc_K2_GetScalarParameterValue_ReturnValue, bool CallFunc_NearlyEqual_FloatFloat_ReturnValue)
-	{
-		nint Material_Ptr = Material?.Inner.Ptr ?? nint.Zero;
-		_ = Inner.ProcessEvent("SetScalarParameterValueEx", [
-			new ObjectParam(new(&Material_Ptr)),
-			new NameParam(new(&ParameterName)),
-			new FloatParam(new(&ParameterValue)),
-			new FloatParam(new(&requestValue)),
-			new FloatParam(new(&CallFunc_K2_GetScalarParameterValue_ReturnValue)),
-			new BoolParam(new(&CallFunc_NearlyEqual_FloatFloat_ReturnValue), 255)
-		], out _);
-	}
-
-	public unsafe void Get_All_Chara_Point_Lights( TArray<Ptr<ABP_CharaPointLight_C_Repr>> CallFunc_GetAllActorsOfClass_OutActors)
-	{
-		_ = Inner.ProcessEvent("Get All Chara Point Lights", [
-			new ArrayParam(new((TArray<int>*)(&CallFunc_GetAllActorsOfClass_OutActors)))
-		], out _);
-	}
-
-	public unsafe void ResetAllPointLightsMode( int Temp_int_Loop_Counter_Variable, int CallFunc_Add_IntInt_ReturnValue, int Temp_int_Array_Index_Variable, int Temp_int_Variable, FString CallFunc_Conv_IntToString_ReturnValue, UMaterialInstanceDynamic? CallFunc_Array_Get_Item, FString CallFunc_Concat_StrStr_ReturnValue, int CallFunc_Array_Length_ReturnValue, FName CallFunc_Conv_StringToName_ReturnValue, bool CallFunc_Less_IntInt_ReturnValue, bool CallFunc_LessEqual_IntInt_ReturnValue, int CallFunc_Add_IntInt_ReturnValue_1)
-	{
-		nint CallFunc_Array_Get_Item_Ptr = CallFunc_Array_Get_Item?.Inner.Ptr ?? nint.Zero;
-		_ = Inner.ProcessEvent("ResetAllPointLightsMode", [
-			new IntParam(new(&Temp_int_Loop_Counter_Variable)),
-			new IntParam(new(&CallFunc_Add_IntInt_ReturnValue)),
-			new IntParam(new(&Temp_int_Array_Index_Variable)),
-			new IntParam(new(&Temp_int_Variable)),
-			new StringParam(new(&CallFunc_Conv_IntToString_ReturnValue)),
-			new ObjectParam(new(&CallFunc_Array_Get_Item_Ptr)),
-			new StringParam(new(&CallFunc_Concat_StrStr_ReturnValue)),
-			new IntParam(new(&CallFunc_Array_Length_ReturnValue)),
-			new NameParam(new(&CallFunc_Conv_StringToName_ReturnValue)),
-			new BoolParam(new(&CallFunc_Less_IntInt_ReturnValue), 255),
-			new BoolParam(new(&CallFunc_LessEqual_IntInt_ReturnValue), 255),
-			new IntParam(new(&CallFunc_Add_IntInt_ReturnValue_1))
-		], out _);
-	}
-
-	public unsafe void GetClosestPointLights( ref TArray<Ptr<ABP_CharaPointLight_C_Repr>> PointLights, int NumOfLights, FVector CenterJntLoc, int MaxNumOfPointLights, TArray<float> LightDistance, float Distance, int CallFunc_Subtract_IntInt_ReturnValue, int CallFunc_Array_Length_ReturnValue, int Temp_int_Variable, int CallFunc_Add_IntInt_ReturnValue, bool CallFunc_LessEqual_IntInt_ReturnValue, int Temp_int_Loop_Counter_Variable, int Temp_int_Array_Index_Variable, bool CallFunc_Less_IntInt_ReturnValue, ABP_CharaPointLight_C? CallFunc_Array_Get_Item, bool CallFunc_IsValid_ReturnValue, FVector CallFunc_K2_GetActorLocation_ReturnValue, float CallFunc_Vector_Distance_ReturnValue, bool CallFunc_EqualEqual_IntInt_ReturnValue, int CallFunc_Add_IntInt_ReturnValue_1, FVector CallFunc_GetSocketLocation_ReturnValue, bool Temp_bool_Variable, bool CallFunc_GreaterEqual_IntInt_ReturnValue, bool CallFunc_Not_PreBool_ReturnValue, bool CallFunc_BooleanAND_ReturnValue, bool CallFunc_Less_FloatFloat_ReturnValue, TArray<float> K2Node_MakeArray_Array)
-	{
-		nint CallFunc_Array_Get_Item_Ptr = CallFunc_Array_Get_Item?.Inner.Ptr ?? nint.Zero;
-		_ = Inner.ProcessEvent("GetClosestPointLights", [
-			new ArrayParam(new((TArray<int>*)Unsafe.AsPointer(ref PointLights))),
-			new IntParam(new(&NumOfLights)),
-			new StructParam(new(&CenterJntLoc), 12),
-			new IntParam(new(&MaxNumOfPointLights)),
-			new ArrayParam(new((TArray<int>*)(&LightDistance))),
-			new FloatParam(new(&Distance)),
-			new IntParam(new(&CallFunc_Subtract_IntInt_ReturnValue)),
-			new IntParam(new(&CallFunc_Array_Length_ReturnValue)),
-			new IntParam(new(&Temp_int_Variable)),
-			new IntParam(new(&CallFunc_Add_IntInt_ReturnValue)),
-			new BoolParam(new(&CallFunc_LessEqual_IntInt_ReturnValue), 255),
-			new IntParam(new(&Temp_int_Loop_Counter_Variable)),
-			new IntParam(new(&Temp_int_Array_Index_Variable)),
-			new BoolParam(new(&CallFunc_Less_IntInt_ReturnValue), 255),
-			new ObjectParam(new(&CallFunc_Array_Get_Item_Ptr)),
-			new BoolParam(new(&CallFunc_IsValid_ReturnValue), 255),
-			new StructParam(new(&CallFunc_K2_GetActorLocation_ReturnValue), 12),
-			new FloatParam(new(&CallFunc_Vector_Distance_ReturnValue)),
-			new BoolParam(new(&CallFunc_EqualEqual_IntInt_ReturnValue), 255),
-			new IntParam(new(&CallFunc_Add_IntInt_ReturnValue_1)),
-			new StructParam(new(&CallFunc_GetSocketLocation_ReturnValue), 12),
-			new BoolParam(new(&Temp_bool_Variable), 255),
-			new BoolParam(new(&CallFunc_GreaterEqual_IntInt_ReturnValue), 255),
-			new BoolParam(new(&CallFunc_Not_PreBool_ReturnValue), 255),
-			new BoolParam(new(&CallFunc_BooleanAND_ReturnValue), 255),
-			new BoolParam(new(&CallFunc_Less_FloatFloat_ReturnValue), 255),
-			new ArrayParam(new((TArray<int>*)(&K2Node_MakeArray_Array)))
-		], out _);
-	}
-
-}
-
-[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0x2D4)]
-public unsafe struct ABP_ShadowBase_C_Repr
-{
-	[FieldOffset(0x0)] public AShadowBaseCore_Repr Super; // Size: 0x288
-	[FieldOffset(0x288)] public FPointerToUberGraphFrame UberGraphFrame; // Size: 0x8
-	[FieldOffset(0x290)] public float StartPosition_VG; // Size: 0x4
-	[FieldOffset(0x294)] public float EndPosition_VG; // Size: 0x4
-	[FieldOffset(0x298)] public TArray<nint /* Ptr<UMaterialInstanceDynamic_Repr> */> DynamicMIs; // Size: 0x10
-	[FieldOffset(0x2A8)] public float BoundsScale; // Size: 0x4
-	[FieldOffset(0x2AC)] public bool bAllPointLightsMode; // Size: 0x1
-	[FieldOffset(0x2B0)] public TArray<nint /* Ptr<ABP_CharaPointLight_C_Repr> */> AllPointLights; // Size: 0x10
-	[FieldOffset(0x2C0)] public TArray<nint /* Ptr<ABP_CharaPointLight_C_Repr> */> ClosestPointLights; // Size: 0x10
-	[FieldOffset(0x2D0)] public float LastRenderTimeOnScreen; // Size: 0x4
-
-	public ABP_ShadowBase_C ToManaged(IUnrealFactory factory)
-	{
-		fixed (ABP_ShadowBase_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
-	}
-}
-
-
-public class ABP_BtlHitEffectEX_C : AAppActor, ITypeRepr<ABP_BtlHitEffectEX_C_Repr>
-{
-	private static Dictionary<string, int>? FieldOffsets;
-	public ABP_BtlHitEffectEX_C(IUObject inner, bool genOffsets = true) : base(inner, false)
-	{
-		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
-	}
-
-	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
-
-	public new unsafe ABP_BtlHitEffectEX_C_Repr* Repr => (ABP_BtlHitEffectEX_C_Repr*)Inner.Ptr;
-
-	public unsafe FPointerToUberGraphFrame* UberGraphFrame
-	{
-		get => (FPointerToUberGraphFrame*)(Inner.Ptr + GetFieldOffset("UberGraphFrame"));
-	}
-
-	public unsafe USceneComponent? DefaultSceneRoot
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("DefaultSceneRoot")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("DefaultSceneRoot")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("DefaultSceneRoot")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe TSoftObjectPtr<UNiagaraSystem_Repr>* EffectToPlay
-	{
-		get => (TSoftObjectPtr<UNiagaraSystem_Repr>*)(Inner.Ptr + GetFieldOffset("EffectToPlay"));
-	}
-
-	public unsafe int SENo
-	{
-		get => *(int*)(Inner.Ptr + GetFieldOffset("SENo"));
-		set => *(int*)(Inner.Ptr + GetFieldOffset("SENo")) = value;
-	}
-
-	public unsafe FVector* EffectLocation
-	{
-		get => (FVector*)(Inner.Ptr + GetFieldOffset("EffectLocation"));
-	}
-
-	public unsafe FRotator* EffectRotation
-	{
-		get => (FRotator*)(Inner.Ptr + GetFieldOffset("EffectRotation"));
-	}
-
-	public unsafe UNiagaraComponent? VFX
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("VFX")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("VFX")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("VFX")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe UNiagaraSystem? As_Niagara_System
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("As Niagara System")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("As Niagara System")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("As Niagara System")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe bool IsPlaying
-	{
-		get => *(bool*)(Inner.Ptr + GetFieldOffset("IsPlaying"));
-		set => *(bool*)(Inner.Ptr + GetFieldOffset("IsPlaying")) = value;
-	}
-
-	public unsafe void ReceiveTick( float DeltaSeconds)
-	{
-		_ = Inner.ProcessEvent("ReceiveTick", [
-			new FloatParam(new(&DeltaSeconds))
-		], out _);
-	}
-
-	public unsafe void ReceiveBeginPlay()
-	{
-		_ = Inner.ProcessEvent("ReceiveBeginPlay", [], out _);
-	}
-
-	public unsafe void OnLoaded_CB5170E841E1DBFFA867F0BDA86E9CE7( UObject? Loaded)
-	{
-		nint Loaded_Ptr = Loaded?.Inner.Ptr ?? nint.Zero;
-		_ = Inner.ProcessEvent("OnLoaded_CB5170E841E1DBFFA867F0BDA86E9CE7", [
-			new ObjectParam(new(&Loaded_Ptr))
-		], out _);
-	}
-
-}
-
-[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0x2E1)]
-public unsafe struct ABP_BtlHitEffectEX_C_Repr
-{
-	[FieldOffset(0x0)] public AAppActor_Repr Super; // Size: 0x278
-	[FieldOffset(0x278)] public FPointerToUberGraphFrame UberGraphFrame; // Size: 0x8
-	[FieldOffset(0x280)] public USceneComponent_Repr* DefaultSceneRoot; // Size: 0x8
-	[FieldOffset(0x288)] public TSoftObjectPtr<nint /* UNiagaraSystem_Repr */> EffectToPlay; // Size: 0x28
-	[FieldOffset(0x2B0)] public int SENo; // Size: 0x4
-	[FieldOffset(0x2B4)] public FVector EffectLocation; // Size: 0xC
-	[FieldOffset(0x2C0)] public FRotator EffectRotation; // Size: 0xC
-	[FieldOffset(0x2D0)] public UNiagaraComponent_Repr* VFX; // Size: 0x8
-	[FieldOffset(0x2D8)] public UNiagaraSystem_Repr* As_Niagara_System; // Size: 0x8
-	[FieldOffset(0x2E0)] public bool IsPlaying; // Size: 0x1
-
-	public ABP_BtlHitEffectEX_C ToManaged(IUnrealFactory factory)
-	{
-		fixed (ABP_BtlHitEffectEX_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
-	}
-}
-
-
-public class ABP_BtlSpawnedActorParent_C : AAppActor, ITypeRepr<ABP_BtlSpawnedActorParent_C_Repr>
-{
-	private static Dictionary<string, int>? FieldOffsets;
-	public ABP_BtlSpawnedActorParent_C(IUObject inner, bool genOffsets = true) : base(inner, false)
-	{
-		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
-	}
-
-	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
-
-	public new unsafe ABP_BtlSpawnedActorParent_C_Repr* Repr => (ABP_BtlSpawnedActorParent_C_Repr*)Inner.Ptr;
-
-	public unsafe USceneComponent? DefaultSceneRoot
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("DefaultSceneRoot")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("DefaultSceneRoot")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("DefaultSceneRoot")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-}
-
-[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0x280)]
-public unsafe struct ABP_BtlSpawnedActorParent_C_Repr
-{
-	[FieldOffset(0x0)] public AAppActor_Repr Super; // Size: 0x278
-	[FieldOffset(0x278)] public USceneComponent_Repr* DefaultSceneRoot; // Size: 0x8
-
-	public ABP_BtlSpawnedActorParent_C ToManaged(IUnrealFactory factory)
-	{
-		fixed (ABP_BtlSpawnedActorParent_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
-	}
-}
-
-
-public class UBP_BtlResidentDataComp_C : UBtlResidentDataBase, ITypeRepr<UBP_BtlResidentDataComp_C_Repr>
-{
-	private static Dictionary<string, int>? FieldOffsets;
-	public UBP_BtlResidentDataComp_C(IUObject inner, bool genOffsets = true) : base(inner, false)
-	{
-		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
-	}
-
-	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
-
-	public new unsafe UBP_BtlResidentDataComp_C_Repr* Repr => (UBP_BtlResidentDataComp_C_Repr*)Inner.Ptr;
-
-	public unsafe FPointerToUberGraphFrame* UberGraphFrame
-	{
-		get => (FPointerToUberGraphFrame*)(Inner.Ptr + GetFieldOffset("UberGraphFrame"));
-	}
-
-	public unsafe TArray<Ptr<TSoftObjectPtr<UNiagaraSystem_Repr>>>* StatusEffectList
-	{
-		get => (TArray<Ptr<TSoftObjectPtr<UNiagaraSystem_Repr>>>*)(Inner.Ptr + GetFieldOffset("StatusEffectList"));
-	}
-
-	public unsafe void LoadAsync()
-	{
-		_ = Inner.ProcessEvent("LoadAsync", [], out _);
-	}
-
-	public unsafe void OnLoaded_8537D89D49349AFF693E8B9442142DF0( UObject? Loaded)
-	{
-		nint Loaded_Ptr = Loaded?.Inner.Ptr ?? nint.Zero;
-		_ = Inner.ProcessEvent("OnLoaded_8537D89D49349AFF693E8B9442142DF0", [
-			new ObjectParam(new(&Loaded_Ptr))
-		], out _);
-	}
-
-	public unsafe void OnLoaded_8537D89D49349AFF693E8B9491BD2D61( UObject? Loaded)
-	{
-		nint Loaded_Ptr = Loaded?.Inner.Ptr ?? nint.Zero;
-		_ = Inner.ProcessEvent("OnLoaded_8537D89D49349AFF693E8B9491BD2D61", [
-			new ObjectParam(new(&Loaded_Ptr))
-		], out _);
-	}
-
-	public unsafe void OnLoaded_8537D89D49349AFF693E8B94ECB4AD37( UObject? Loaded)
-	{
-		nint Loaded_Ptr = Loaded?.Inner.Ptr ?? nint.Zero;
-		_ = Inner.ProcessEvent("OnLoaded_8537D89D49349AFF693E8B94ECB4AD37", [
-			new ObjectParam(new(&Loaded_Ptr))
-		], out _);
-	}
-
-	public unsafe void OnLoaded_8537D89D49349AFF693E8B94E0CFAA77( UObject? Loaded)
-	{
-		nint Loaded_Ptr = Loaded?.Inner.Ptr ?? nint.Zero;
-		_ = Inner.ProcessEvent("OnLoaded_8537D89D49349AFF693E8B94E0CFAA77", [
-			new ObjectParam(new(&Loaded_Ptr))
-		], out _);
-	}
-
-	public unsafe void OnLoaded_8537D89D49349AFF693E8B943C8EF7D3( UObject? Loaded)
-	{
-		nint Loaded_Ptr = Loaded?.Inner.Ptr ?? nint.Zero;
-		_ = Inner.ProcessEvent("OnLoaded_8537D89D49349AFF693E8B943C8EF7D3", [
-			new ObjectParam(new(&Loaded_Ptr))
-		], out _);
-	}
-
-	public unsafe void OnLoaded_8537D89D49349AFF693E8B941C796B3E( UObject? Loaded)
-	{
-		nint Loaded_Ptr = Loaded?.Inner.Ptr ?? nint.Zero;
-		_ = Inner.ProcessEvent("OnLoaded_8537D89D49349AFF693E8B941C796B3E", [
-			new ObjectParam(new(&Loaded_Ptr))
-		], out _);
-	}
-
-	public unsafe void OnLoaded_8537D89D49349AFF693E8B94343FC687( UObject? Loaded)
-	{
-		nint Loaded_Ptr = Loaded?.Inner.Ptr ?? nint.Zero;
-		_ = Inner.ProcessEvent("OnLoaded_8537D89D49349AFF693E8B94343FC687", [
-			new ObjectParam(new(&Loaded_Ptr))
-		], out _);
-	}
-
-	public unsafe void OnLoaded_8537D89D49349AFF693E8B94393B7AFD( UObject? Loaded)
-	{
-		nint Loaded_Ptr = Loaded?.Inner.Ptr ?? nint.Zero;
-		_ = Inner.ProcessEvent("OnLoaded_8537D89D49349AFF693E8B94393B7AFD", [
-			new ObjectParam(new(&Loaded_Ptr))
-		], out _);
-	}
-
-	public unsafe void OnLoaded_8537D89D49349AFF693E8B9451E033A8( UObject? Loaded)
-	{
-		nint Loaded_Ptr = Loaded?.Inner.Ptr ?? nint.Zero;
-		_ = Inner.ProcessEvent("OnLoaded_8537D89D49349AFF693E8B9451E033A8", [
-			new ObjectParam(new(&Loaded_Ptr))
-		], out _);
-	}
-
-	public unsafe void OnLoaded_8537D89D49349AFF693E8B94F82B107D( UObject? Loaded)
-	{
-		nint Loaded_Ptr = Loaded?.Inner.Ptr ?? nint.Zero;
-		_ = Inner.ProcessEvent("OnLoaded_8537D89D49349AFF693E8B94F82B107D", [
-			new ObjectParam(new(&Loaded_Ptr))
-		], out _);
-	}
-
-	public unsafe void OnLoaded_8537D89D49349AFF693E8B94846FB045( UObject? Loaded)
-	{
-		nint Loaded_Ptr = Loaded?.Inner.Ptr ?? nint.Zero;
-		_ = Inner.ProcessEvent("OnLoaded_8537D89D49349AFF693E8B94846FB045", [
-			new ObjectParam(new(&Loaded_Ptr))
-		], out _);
-	}
-
-	public unsafe void OnLoaded_8537D89D49349AFF693E8B94547F5CA5( UObject? Loaded)
-	{
-		nint Loaded_Ptr = Loaded?.Inner.Ptr ?? nint.Zero;
-		_ = Inner.ProcessEvent("OnLoaded_8537D89D49349AFF693E8B94547F5CA5", [
-			new ObjectParam(new(&Loaded_Ptr))
-		], out _);
-	}
-
-	public unsafe void OnLoaded_8537D89D49349AFF693E8B9422923015( UObject? Loaded)
-	{
-		nint Loaded_Ptr = Loaded?.Inner.Ptr ?? nint.Zero;
-		_ = Inner.ProcessEvent("OnLoaded_8537D89D49349AFF693E8B9422923015", [
-			new ObjectParam(new(&Loaded_Ptr))
-		], out _);
-	}
-
-	public unsafe void GetSummonFX( ref UNiagaraSystem? SummonFX)
-	{
-		nint SummonFX_Ptr = SummonFX?.Inner.Ptr ?? nint.Zero;
-		_ = Inner.ProcessEvent("GetSummonFX", [
-			new ObjectParam(new(&SummonFX_Ptr))
-		], out _);
-		SummonFX = SummonFX_Ptr != nint.Zero ? new(Inner.GetFactory().CreateUObject(SummonFX_Ptr)) : null;
-	}
-
-	public unsafe void GetStatusEffect( EBtlBadStatusIcon Index, ref TSoftObjectPtr<UNiagaraSystem_Repr> SoftObj, EBtlBadStatusIcon Temp_byte_Variable, int Temp_int_Variable, int Temp_int_Variable_1, int Temp_int_Variable_2, int Temp_int_Variable_3, int Temp_int_Variable_4, int Temp_int_Variable_5, int Temp_int_Variable_6, int Temp_int_Variable_7, int Temp_int_Variable_8, int Temp_int_Variable_9, int Temp_int_Variable_10, int Temp_int_Variable_11, int Temp_int_Variable_12, int Temp_int_Variable_13, int Temp_int_Variable_14, int K2Node_Select_Default, bool CallFunc_GreaterEqual_IntInt_ReturnValue, TSoftObjectPtr<UNiagaraSystem_Repr> CallFunc_Array_Get_Item)
-	{
-		_ = Inner.ProcessEvent("GetStatusEffect", [
-			new EnumParam(new(&Index), 1),
-			new SoftObjectParam(new((TSoftObjectPtr<int>*)Unsafe.AsPointer(ref SoftObj))),
-			new EnumParam(new(&Temp_byte_Variable), 1),
-			new IntParam(new(&Temp_int_Variable)),
-			new IntParam(new(&Temp_int_Variable_1)),
-			new IntParam(new(&Temp_int_Variable_2)),
-			new IntParam(new(&Temp_int_Variable_3)),
-			new IntParam(new(&Temp_int_Variable_4)),
-			new IntParam(new(&Temp_int_Variable_5)),
-			new IntParam(new(&Temp_int_Variable_6)),
-			new IntParam(new(&Temp_int_Variable_7)),
-			new IntParam(new(&Temp_int_Variable_8)),
-			new IntParam(new(&Temp_int_Variable_9)),
-			new IntParam(new(&Temp_int_Variable_10)),
-			new IntParam(new(&Temp_int_Variable_11)),
-			new IntParam(new(&Temp_int_Variable_12)),
-			new IntParam(new(&Temp_int_Variable_13)),
-			new IntParam(new(&Temp_int_Variable_14)),
-			new IntParam(new(&K2Node_Select_Default)),
-			new BoolParam(new(&CallFunc_GreaterEqual_IntInt_ReturnValue), 255),
-			new SoftObjectParam(new((TSoftObjectPtr<int>*)(&CallFunc_Array_Get_Item)))
-		], out _);
-	}
-
-}
-
-[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0x158)]
-public unsafe struct UBP_BtlResidentDataComp_C_Repr
-{
-	[FieldOffset(0x0)] public UBtlResidentDataBase_Repr Super; // Size: 0x140
-	[FieldOffset(0x140)] public FPointerToUberGraphFrame UberGraphFrame; // Size: 0x8
-	[FieldOffset(0x148)] public TArray<nint /* Ptr<TSoftObjectPtr<nint__*_UNiagaraSystem_Repr_*_>> */> StatusEffectList; // Size: 0x10
-
-	public UBP_BtlResidentDataComp_C ToManaged(IUnrealFactory factory)
-	{
-		fixed (UBP_BtlResidentDataComp_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
-	}
-}
-
-
-public class UPlayAtomCue_C : UAnimNotify, ITypeRepr<UPlayAtomCue_C_Repr>
-{
-	private static Dictionary<string, int>? FieldOffsets;
-	public UPlayAtomCue_C(IUObject inner, bool genOffsets = true) : base(inner, false)
-	{
-		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
-	}
-
-	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
-
-	public new unsafe UPlayAtomCue_C_Repr* Repr => (UPlayAtomCue_C_Repr*)Inner.Ptr;
-
-	public unsafe USoundAtomCue? Sound
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("Sound")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("Sound")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("Sound")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe FName Bone
-	{
-		get => *(FName*)(Inner.Ptr + GetFieldOffset("Bone"));
-		set => *(FName*)(Inner.Ptr + GetFieldOffset("Bone")) = value;
-	}
-
-	public unsafe bool follow
-	{
-		get => *(bool*)(Inner.Ptr + GetFieldOffset("follow"));
-		set => *(bool*)(Inner.Ptr + GetFieldOffset("follow")) = value;
-	}
-
-	public unsafe float VolumeMultiplier
-	{
-		get => *(float*)(Inner.Ptr + GetFieldOffset("VolumeMultiplier"));
-		set => *(float*)(Inner.Ptr + GetFieldOffset("VolumeMultiplier")) = value;
-	}
-
-	public unsafe float PitchMultiplier
-	{
-		get => *(float*)(Inner.Ptr + GetFieldOffset("PitchMultiplier"));
-		set => *(float*)(Inner.Ptr + GetFieldOffset("PitchMultiplier")) = value;
-	}
-
-	public unsafe bool Received_Notify( USkeletalMeshComponent? MeshComp, UAnimSequenceBase? Animation)
-	{
-		nint MeshComp_Ptr = MeshComp?.Inner.Ptr ?? nint.Zero;
-		nint Animation_Ptr = Animation?.Inner.Ptr ?? nint.Zero;
-		_ = Inner.ProcessEvent("Received_Notify", [
-			new ObjectParam(new(&MeshComp_Ptr)),
-			new ObjectParam(new(&Animation_Ptr))
-		], out var Return);
-		return ((BoolParam?)Return)!.Value;
-	}
-
-	public unsafe FString GetNotifyName()
-	{
-		_ = Inner.ProcessEvent("GetNotifyName", [], out var Return);
-		return ((StringParam?)Return)!.Value;
-	}
-
-}
-
-[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0x54)]
-public unsafe struct UPlayAtomCue_C_Repr
-{
-	[FieldOffset(0x0)] public UAnimNotify_Repr Super; // Size: 0x38
-	[FieldOffset(0x38)] public USoundAtomCue_Repr* Sound; // Size: 0x8
-	[FieldOffset(0x40)] public FName Bone; // Size: 0x8
-	[FieldOffset(0x48)] public bool follow; // Size: 0x1
-	[FieldOffset(0x4C)] public float VolumeMultiplier; // Size: 0x4
-	[FieldOffset(0x50)] public float PitchMultiplier; // Size: 0x4
-
-	public UPlayAtomCue_C ToManaged(IUnrealFactory factory)
-	{
-		fixed (UPlayAtomCue_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
-	}
-}
-
-
-[StructLayout(LayoutKind.Explicit, Pack = 4, Size = 0xC)]
-public unsafe struct FFBtlVector3
-{
-	[FieldOffset(0x0)] public float X; // Size: 0x4
-	[FieldOffset(0x4)] public float Y; // Size: 0x4
-	[FieldOffset(0x8)] public float Z; // Size: 0x4
-}
-
-public class UBP_BtlCharacterTidy_C : UAppActorComponent, ITypeRepr<UBP_BtlCharacterTidy_C_Repr>
-{
-	private static Dictionary<string, int>? FieldOffsets;
-	public UBP_BtlCharacterTidy_C(IUObject inner, bool genOffsets = true) : base(inner, false)
-	{
-		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
-	}
-
-	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
-
-	public new unsafe UBP_BtlCharacterTidy_C_Repr* Repr => (UBP_BtlCharacterTidy_C_Repr*)Inner.Ptr;
-
-	public unsafe FPointerToUberGraphFrame* UberGraphFrame
-	{
-		get => (FPointerToUberGraphFrame*)(Inner.Ptr + GetFieldOffset("UberGraphFrame"));
-	}
-
-	public unsafe UCurveVector? CRV_CharaTargetShake
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("CRV_CharaTargetShake")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("CRV_CharaTargetShake")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("CRV_CharaTargetShake")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe bool IsShake
-	{
-		get => *(bool*)(Inner.Ptr + GetFieldOffset("IsShake"));
-		set => *(bool*)(Inner.Ptr + GetFieldOffset("IsShake")) = value;
-	}
-
-	public unsafe float ShakeTime
-	{
-		get => *(float*)(Inner.Ptr + GetFieldOffset("ShakeTime"));
-		set => *(float*)(Inner.Ptr + GetFieldOffset("ShakeTime")) = value;
-	}
-
-	public unsafe void ReceiveTick( float DeltaSeconds)
-	{
-		_ = Inner.ProcessEvent("ReceiveTick", [
-			new FloatParam(new(&DeltaSeconds))
-		], out _);
-	}
-
-	public unsafe void StartTargetShake()
-	{
-		_ = Inner.ProcessEvent("StartTargetShake", [], out _);
-	}
-
-	public unsafe void GetTargetShakePos( ref FVector Positon, FVector Pos, FVector CallFunc_GetVectorValue_ReturnValue)
-	{
-		_ = Inner.ProcessEvent("GetTargetShakePos", [
-			new StructParam(new((FVector*)Unsafe.AsPointer(ref Positon)), 12),
-			new StructParam(new(&Pos), 12),
-			new StructParam(new(&CallFunc_GetVectorValue_ReturnValue), 12)
-		], out _);
-	}
-
-}
-
-[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0xE0)]
-public unsafe struct UBP_BtlCharacterTidy_C_Repr
-{
-	[FieldOffset(0x0)] public UAppActorComponent_Repr Super; // Size: 0xC8
-	[FieldOffset(0xC8)] public FPointerToUberGraphFrame UberGraphFrame; // Size: 0x8
-	[FieldOffset(0xD0)] public UCurveVector_Repr* CRV_CharaTargetShake; // Size: 0x8
-	[FieldOffset(0xD8)] public bool IsShake; // Size: 0x1
-	[FieldOffset(0xDC)] public float ShakeTime; // Size: 0x4
-
-	public UBP_BtlCharacterTidy_C ToManaged(IUnrealFactory factory)
-	{
-		fixed (UBP_BtlCharacterTidy_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
-	}
-}
-
-
-public class ABP_PersonaBase_C : APersonaBaseCore, ITypeRepr<ABP_PersonaBase_C_Repr>
-{
-	private static Dictionary<string, int>? FieldOffsets;
-	public ABP_PersonaBase_C(IUObject inner, bool genOffsets = true) : base(inner, false)
-	{
-		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
-	}
-
-	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
-
-	public new unsafe ABP_PersonaBase_C_Repr* Repr => (ABP_PersonaBase_C_Repr*)Inner.Ptr;
-
-	public unsafe FPointerToUberGraphFrame* UberGraphFrame
-	{
-		get => (FPointerToUberGraphFrame*)(Inner.Ptr + GetFieldOffset("UberGraphFrame"));
-	}
-
-	public unsafe TArray<Ptr<ABP_CharaPointLight_C_Repr>>* OverlapPointLights
-	{
-		get => (TArray<Ptr<ABP_CharaPointLight_C_Repr>>*)(Inner.Ptr + GetFieldOffset("OverlapPointLights"));
-	}
-
-	public unsafe int NumberOfPointLights
-	{
-		get => *(int*)(Inner.Ptr + GetFieldOffset("NumberOfPointLights"));
-		set => *(int*)(Inner.Ptr + GetFieldOffset("NumberOfPointLights")) = value;
-	}
-
-	public unsafe TArray<Ptr<AActor_Repr>>* ClosestPointLight
-	{
-		get => (TArray<Ptr<AActor_Repr>>*)(Inner.Ptr + GetFieldOffset("ClosestPointLight"));
-	}
-
-	public unsafe TArray<Ptr<UMaterialInstanceDynamic_Repr>>* DynamicMIs
-	{
-		get => (TArray<Ptr<UMaterialInstanceDynamic_Repr>>*)(Inner.Ptr + GetFieldOffset("DynamicMIs"));
-	}
-
-	public unsafe float BoundsScale
-	{
-		get => *(float*)(Inner.Ptr + GetFieldOffset("BoundsScale"));
-		set => *(float*)(Inner.Ptr + GetFieldOffset("BoundsScale")) = value;
-	}
-
-	public unsafe float NiagaraDesiredAge
-	{
-		get => *(float*)(Inner.Ptr + GetFieldOffset("NiagaraDesiredAge"));
-		set => *(float*)(Inner.Ptr + GetFieldOffset("NiagaraDesiredAge")) = value;
-	}
-
-	public unsafe bool bNiagaraOffscreen
-	{
-		get => *(bool*)(Inner.Ptr + GetFieldOffset("bNiagaraOffscreen"));
-		set => *(bool*)(Inner.Ptr + GetFieldOffset("bNiagaraOffscreen")) = value;
-	}
-
-	public unsafe TArray<Ptr<UNiagaraComponent_Repr>>* NiagaraComponents
-	{
-		get => (TArray<Ptr<UNiagaraComponent_Repr>>*)(Inner.Ptr + GetFieldOffset("NiagaraComponents"));
-	}
-
-	public unsafe float LastRenderTimeOnScreen
-	{
-		get => *(float*)(Inner.Ptr + GetFieldOffset("LastRenderTimeOnScreen"));
-		set => *(float*)(Inner.Ptr + GetFieldOffset("LastRenderTimeOnScreen")) = value;
-	}
-
-	public unsafe FVector* StartPositionVec_VG
-	{
-		get => (FVector*)(Inner.Ptr + GetFieldOffset("StartPositionVec_VG"));
-	}
-
-	public unsafe FVector* EndPositionVec_VG
-	{
-		get => (FVector*)(Inner.Ptr + GetFieldOffset("EndPositionVec_VG"));
-	}
-
-	public unsafe void ReceiveActorEndOverlap( AActor? OtherActor)
-	{
-		nint OtherActor_Ptr = OtherActor?.Inner.Ptr ?? nint.Zero;
-		_ = Inner.ProcessEvent("ReceiveActorEndOverlap", [
-			new ObjectParam(new(&OtherActor_Ptr))
-		], out _);
-	}
-
-	public unsafe void ReceiveActorBeginOverlap( AActor? OtherActor)
-	{
-		nint OtherActor_Ptr = OtherActor?.Inner.Ptr ?? nint.Zero;
-		_ = Inner.ProcessEvent("ReceiveActorBeginOverlap", [
-			new ObjectParam(new(&OtherActor_Ptr))
-		], out _);
-	}
-
-	public unsafe void ReceiveTick( float DeltaSeconds)
-	{
-		_ = Inner.ProcessEvent("ReceiveTick", [
-			new FloatParam(new(&DeltaSeconds))
-		], out _);
-	}
-
-	public unsafe void UserConstructionScript( int Temp_int_Array_Index_Variable, FVector CallFunc_GetSocketLocation_ReturnValue, FLinearColor CallFunc_Conv_VectorToLinearColor_ReturnValue, FLinearColor CallFunc_Conv_VectorToLinearColor_ReturnValue_1, FVector CallFunc_GetSocketLocation_ReturnValue_1, int Temp_int_Loop_Counter_Variable, int CallFunc_Add_IntInt_ReturnValue, UMaterialInstanceDynamic? CallFunc_Array_Get_Item, bool CallFunc_IsValid_ReturnValue, int CallFunc_Array_Length_ReturnValue, bool CallFunc_Less_IntInt_ReturnValue)
-	{
-		nint CallFunc_Array_Get_Item_Ptr = CallFunc_Array_Get_Item?.Inner.Ptr ?? nint.Zero;
-		_ = Inner.ProcessEvent("UserConstructionScript", [
-			new IntParam(new(&Temp_int_Array_Index_Variable)),
-			new StructParam(new(&CallFunc_GetSocketLocation_ReturnValue), 12),
-			new StructParam(new(&CallFunc_Conv_VectorToLinearColor_ReturnValue), 16),
-			new StructParam(new(&CallFunc_Conv_VectorToLinearColor_ReturnValue_1), 16),
-			new StructParam(new(&CallFunc_GetSocketLocation_ReturnValue_1), 12),
-			new IntParam(new(&Temp_int_Loop_Counter_Variable)),
-			new IntParam(new(&CallFunc_Add_IntInt_ReturnValue)),
-			new ObjectParam(new(&CallFunc_Array_Get_Item_Ptr)),
-			new BoolParam(new(&CallFunc_IsValid_ReturnValue), 255),
-			new IntParam(new(&CallFunc_Array_Length_ReturnValue)),
-			new BoolParam(new(&CallFunc_Less_IntInt_ReturnValue), 255)
-		], out _);
-	}
-
-	public unsafe void CreateDMI( UMeshComponent? MeshComponent, TArray<Ptr<UMaterialInterface_Repr>> Materials, TArray<Ptr<UMaterialInterface_Repr>> CallFunc_GetMaterials_ReturnValue, int Temp_int_Variable, int CallFunc_Array_LastIndex_ReturnValue, UMaterialInterface? CallFunc_Array_Get_Item, bool CallFunc_LessEqual_IntInt_ReturnValue, FString CallFunc_GetDisplayName_ReturnValue, FString CallFunc_Concat_StrStr_ReturnValue, FName CallFunc_Conv_StringToName_ReturnValue, int CallFunc_Add_IntInt_ReturnValue, UMaterialInstanceDynamic? CallFunc_CreateDynamicMaterialInstance_ReturnValue)
-	{
-		nint MeshComponent_Ptr = MeshComponent?.Inner.Ptr ?? nint.Zero;
-		nint CallFunc_Array_Get_Item_Ptr = CallFunc_Array_Get_Item?.Inner.Ptr ?? nint.Zero;
-		nint CallFunc_CreateDynamicMaterialInstance_ReturnValue_Ptr = CallFunc_CreateDynamicMaterialInstance_ReturnValue?.Inner.Ptr ?? nint.Zero;
-		_ = Inner.ProcessEvent("CreateDMI", [
-			new ObjectParam(new(&MeshComponent_Ptr)),
-			new ArrayParam(new((TArray<int>*)(&Materials))),
-			new ArrayParam(new((TArray<int>*)(&CallFunc_GetMaterials_ReturnValue))),
-			new IntParam(new(&Temp_int_Variable)),
-			new IntParam(new(&CallFunc_Array_LastIndex_ReturnValue)),
-			new ObjectParam(new(&CallFunc_Array_Get_Item_Ptr)),
-			new BoolParam(new(&CallFunc_LessEqual_IntInt_ReturnValue), 255),
-			new StringParam(new(&CallFunc_GetDisplayName_ReturnValue)),
-			new StringParam(new(&CallFunc_Concat_StrStr_ReturnValue)),
-			new NameParam(new(&CallFunc_Conv_StringToName_ReturnValue)),
-			new IntParam(new(&CallFunc_Add_IntInt_ReturnValue)),
-			new ObjectParam(new(&CallFunc_CreateDynamicMaterialInstance_ReturnValue_Ptr))
-		], out _);
-	}
-
-	public unsafe void SetPointLightParameter( UMaterialInstanceDynamic? MIDObjectReference, int Temp_int_Loop_Counter_Variable, int CallFunc_Array_Length_ReturnValue, int CallFunc_Add_IntInt_ReturnValue, bool CallFunc_Less_IntInt_ReturnValue, int Temp_int_Array_Index_Variable, AActor? CallFunc_Array_Get_Item, FString CallFunc_Conv_IntToString_ReturnValue, ABP_CharaPointLight_C? K2Node_DynamicCast_AsBP_Chara_Point_Light, bool K2Node_DynamicCast_bSuccess, FString CallFunc_Concat_StrStr_ReturnValue, FName CallFunc_Conv_StringToName_ReturnValue, FString CallFunc_Conv_IntToString_ReturnValue_1, FVector CallFunc_K2_GetComponentLocation_ReturnValue, FString CallFunc_Concat_StrStr_ReturnValue_1, FLinearColor CallFunc_Conv_VectorToLinearColor_ReturnValue, FName CallFunc_Conv_StringToName_ReturnValue_1, FString CallFunc_Conv_IntToString_ReturnValue_2, FString CallFunc_Concat_StrStr_ReturnValue_2, FString CallFunc_Conv_IntToString_ReturnValue_3, FName CallFunc_Conv_StringToName_ReturnValue_2, FString CallFunc_Concat_StrStr_ReturnValue_3, FName CallFunc_Conv_StringToName_ReturnValue_3, FString CallFunc_Conv_IntToString_ReturnValue_4, FString CallFunc_Concat_StrStr_ReturnValue_4, FString CallFunc_Conv_IntToString_ReturnValue_5, FName CallFunc_Conv_StringToName_ReturnValue_4, FString CallFunc_Concat_StrStr_ReturnValue_5, FName CallFunc_Conv_StringToName_ReturnValue_5, FString CallFunc_Conv_IntToString_ReturnValue_6, FString CallFunc_Concat_StrStr_ReturnValue_6, FName CallFunc_Conv_StringToName_ReturnValue_6)
-	{
-		nint MIDObjectReference_Ptr = MIDObjectReference?.Inner.Ptr ?? nint.Zero;
-		nint CallFunc_Array_Get_Item_Ptr = CallFunc_Array_Get_Item?.Inner.Ptr ?? nint.Zero;
-		nint K2Node_DynamicCast_AsBP_Chara_Point_Light_Ptr = K2Node_DynamicCast_AsBP_Chara_Point_Light?.Inner.Ptr ?? nint.Zero;
-		_ = Inner.ProcessEvent("SetPointLightParameter", [
-			new ObjectParam(new(&MIDObjectReference_Ptr)),
-			new IntParam(new(&Temp_int_Loop_Counter_Variable)),
-			new IntParam(new(&CallFunc_Array_Length_ReturnValue)),
-			new IntParam(new(&CallFunc_Add_IntInt_ReturnValue)),
-			new BoolParam(new(&CallFunc_Less_IntInt_ReturnValue), 255),
-			new IntParam(new(&Temp_int_Array_Index_Variable)),
-			new ObjectParam(new(&CallFunc_Array_Get_Item_Ptr)),
-			new StringParam(new(&CallFunc_Conv_IntToString_ReturnValue)),
-			new ObjectParam(new(&K2Node_DynamicCast_AsBP_Chara_Point_Light_Ptr)),
-			new BoolParam(new(&K2Node_DynamicCast_bSuccess), 255),
-			new StringParam(new(&CallFunc_Concat_StrStr_ReturnValue)),
-			new NameParam(new(&CallFunc_Conv_StringToName_ReturnValue)),
-			new StringParam(new(&CallFunc_Conv_IntToString_ReturnValue_1)),
-			new StructParam(new(&CallFunc_K2_GetComponentLocation_ReturnValue), 12),
-			new StringParam(new(&CallFunc_Concat_StrStr_ReturnValue_1)),
-			new StructParam(new(&CallFunc_Conv_VectorToLinearColor_ReturnValue), 16),
-			new NameParam(new(&CallFunc_Conv_StringToName_ReturnValue_1)),
-			new StringParam(new(&CallFunc_Conv_IntToString_ReturnValue_2)),
-			new StringParam(new(&CallFunc_Concat_StrStr_ReturnValue_2)),
-			new StringParam(new(&CallFunc_Conv_IntToString_ReturnValue_3)),
-			new NameParam(new(&CallFunc_Conv_StringToName_ReturnValue_2)),
-			new StringParam(new(&CallFunc_Concat_StrStr_ReturnValue_3)),
-			new NameParam(new(&CallFunc_Conv_StringToName_ReturnValue_3)),
-			new StringParam(new(&CallFunc_Conv_IntToString_ReturnValue_4)),
-			new StringParam(new(&CallFunc_Concat_StrStr_ReturnValue_4)),
-			new StringParam(new(&CallFunc_Conv_IntToString_ReturnValue_5)),
-			new NameParam(new(&CallFunc_Conv_StringToName_ReturnValue_4)),
-			new StringParam(new(&CallFunc_Concat_StrStr_ReturnValue_5)),
-			new NameParam(new(&CallFunc_Conv_StringToName_ReturnValue_5)),
-			new StringParam(new(&CallFunc_Conv_IntToString_ReturnValue_6)),
-			new StringParam(new(&CallFunc_Concat_StrStr_ReturnValue_6)),
-			new NameParam(new(&CallFunc_Conv_StringToName_ReturnValue_6))
-		], out _);
-	}
-
-	public unsafe void SetDMIParameter_Tick( int Temp_int_Loop_Counter_Variable, int CallFunc_Add_IntInt_ReturnValue, int Temp_int_Array_Index_Variable, float CallFunc_BreakVector_X, float CallFunc_BreakVector_Y, float CallFunc_BreakVector_Z, int Temp_int_Loop_Counter_Variable_1, int CallFunc_Add_IntInt_ReturnValue_1, FLinearColor CallFunc_Conv_VectorToLinearColor_ReturnValue, FLinearColor CallFunc_Conv_VectorToLinearColor_ReturnValue_1, float CallFunc_BreakVector_X_1, float CallFunc_BreakVector_Y_1, float CallFunc_BreakVector_Z_1, int Temp_int_Array_Index_Variable_1, FVector CallFunc_GetSocketLocation_ReturnValue, FVector CallFunc_GetSocketLocation_ReturnValue_1, float CallFunc_BreakVector_X_2, float CallFunc_BreakVector_Y_2, float CallFunc_BreakVector_Z_2, float CallFunc_BreakVector_X_3, float CallFunc_BreakVector_Y_3, float CallFunc_BreakVector_Z_3, bool CallFunc_NearlyEqual_FloatFloat_ReturnValue, bool CallFunc_NearlyEqual_FloatFloat_ReturnValue_1, UMaterialInstanceDynamic? CallFunc_Array_Get_Item, UMaterialInstanceDynamic? CallFunc_Array_Get_Item_1, bool CallFunc_IsValid_ReturnValue, bool CallFunc_IsValid_ReturnValue_1, int CallFunc_Array_Length_ReturnValue, int CallFunc_Array_Length_ReturnValue_1, bool CallFunc_Less_IntInt_ReturnValue, bool CallFunc_Less_IntInt_ReturnValue_1)
-	{
-		nint CallFunc_Array_Get_Item_Ptr = CallFunc_Array_Get_Item?.Inner.Ptr ?? nint.Zero;
-		nint CallFunc_Array_Get_Item_1_Ptr = CallFunc_Array_Get_Item_1?.Inner.Ptr ?? nint.Zero;
-		_ = Inner.ProcessEvent("SetDMIParameter_Tick", [
-			new IntParam(new(&Temp_int_Loop_Counter_Variable)),
-			new IntParam(new(&CallFunc_Add_IntInt_ReturnValue)),
-			new IntParam(new(&Temp_int_Array_Index_Variable)),
-			new FloatParam(new(&CallFunc_BreakVector_X)),
-			new FloatParam(new(&CallFunc_BreakVector_Y)),
-			new FloatParam(new(&CallFunc_BreakVector_Z)),
-			new IntParam(new(&Temp_int_Loop_Counter_Variable_1)),
-			new IntParam(new(&CallFunc_Add_IntInt_ReturnValue_1)),
-			new StructParam(new(&CallFunc_Conv_VectorToLinearColor_ReturnValue), 16),
-			new StructParam(new(&CallFunc_Conv_VectorToLinearColor_ReturnValue_1), 16),
-			new FloatParam(new(&CallFunc_BreakVector_X_1)),
-			new FloatParam(new(&CallFunc_BreakVector_Y_1)),
-			new FloatParam(new(&CallFunc_BreakVector_Z_1)),
-			new IntParam(new(&Temp_int_Array_Index_Variable_1)),
-			new StructParam(new(&CallFunc_GetSocketLocation_ReturnValue), 12),
-			new StructParam(new(&CallFunc_GetSocketLocation_ReturnValue_1), 12),
-			new FloatParam(new(&CallFunc_BreakVector_X_2)),
-			new FloatParam(new(&CallFunc_BreakVector_Y_2)),
-			new FloatParam(new(&CallFunc_BreakVector_Z_2)),
-			new FloatParam(new(&CallFunc_BreakVector_X_3)),
-			new FloatParam(new(&CallFunc_BreakVector_Y_3)),
-			new FloatParam(new(&CallFunc_BreakVector_Z_3)),
-			new BoolParam(new(&CallFunc_NearlyEqual_FloatFloat_ReturnValue), 255),
-			new BoolParam(new(&CallFunc_NearlyEqual_FloatFloat_ReturnValue_1), 255),
-			new ObjectParam(new(&CallFunc_Array_Get_Item_Ptr)),
-			new ObjectParam(new(&CallFunc_Array_Get_Item_1_Ptr)),
-			new BoolParam(new(&CallFunc_IsValid_ReturnValue), 255),
-			new BoolParam(new(&CallFunc_IsValid_ReturnValue_1), 255),
-			new IntParam(new(&CallFunc_Array_Length_ReturnValue)),
-			new IntParam(new(&CallFunc_Array_Length_ReturnValue_1)),
-			new BoolParam(new(&CallFunc_Less_IntInt_ReturnValue), 255),
-			new BoolParam(new(&CallFunc_Less_IntInt_ReturnValue_1), 255)
-		], out _);
-	}
-
-	public unsafe void SetScalarParameterValueEx( UMaterialInstanceDynamic? Material, FName ParameterName, float ParameterValue, float requestValue, float CallFunc_K2_GetScalarParameterValue_ReturnValue, bool CallFunc_NearlyEqual_FloatFloat_ReturnValue)
-	{
-		nint Material_Ptr = Material?.Inner.Ptr ?? nint.Zero;
-		_ = Inner.ProcessEvent("SetScalarParameterValueEx", [
-			new ObjectParam(new(&Material_Ptr)),
-			new NameParam(new(&ParameterName)),
-			new FloatParam(new(&ParameterValue)),
-			new FloatParam(new(&requestValue)),
-			new FloatParam(new(&CallFunc_K2_GetScalarParameterValue_ReturnValue)),
-			new BoolParam(new(&CallFunc_NearlyEqual_FloatFloat_ReturnValue), 255)
-		], out _);
-	}
-
-	public unsafe void GetClosestPointLights( int MaxNumOfPointLights, TArray<float> LightDistance, float Distance, int Temp_int_Loop_Counter_Variable, int CallFunc_Add_IntInt_ReturnValue, int Temp_int_Array_Index_Variable, bool CallFunc_EqualEqual_IntInt_ReturnValue, int CallFunc_Subtract_IntInt_ReturnValue, int Temp_int_Variable, bool CallFunc_Less_FloatFloat_ReturnValue, int CallFunc_Add_IntInt_ReturnValue_1, bool CallFunc_LessEqual_IntInt_ReturnValue, TArray<float> K2Node_MakeArray_Array, bool CallFunc_GreaterEqual_IntInt_ReturnValue, bool Temp_bool_Variable, bool CallFunc_Not_PreBool_ReturnValue, AActor? CallFunc_Array_Get_Item, int CallFunc_Array_Length_ReturnValue, bool CallFunc_Less_IntInt_ReturnValue, bool CallFunc_BooleanAND_ReturnValue, float CallFunc_GetDistanceTo_ReturnValue)
-	{
-		nint CallFunc_Array_Get_Item_Ptr = CallFunc_Array_Get_Item?.Inner.Ptr ?? nint.Zero;
-		_ = Inner.ProcessEvent("GetClosestPointLights", [
-			new IntParam(new(&MaxNumOfPointLights)),
-			new ArrayParam(new((TArray<int>*)(&LightDistance))),
-			new FloatParam(new(&Distance)),
-			new IntParam(new(&Temp_int_Loop_Counter_Variable)),
-			new IntParam(new(&CallFunc_Add_IntInt_ReturnValue)),
-			new IntParam(new(&Temp_int_Array_Index_Variable)),
-			new BoolParam(new(&CallFunc_EqualEqual_IntInt_ReturnValue), 255),
-			new IntParam(new(&CallFunc_Subtract_IntInt_ReturnValue)),
-			new IntParam(new(&Temp_int_Variable)),
-			new BoolParam(new(&CallFunc_Less_FloatFloat_ReturnValue), 255),
-			new IntParam(new(&CallFunc_Add_IntInt_ReturnValue_1)),
-			new BoolParam(new(&CallFunc_LessEqual_IntInt_ReturnValue), 255),
-			new ArrayParam(new((TArray<int>*)(&K2Node_MakeArray_Array))),
-			new BoolParam(new(&CallFunc_GreaterEqual_IntInt_ReturnValue), 255),
-			new BoolParam(new(&Temp_bool_Variable), 255),
-			new BoolParam(new(&CallFunc_Not_PreBool_ReturnValue), 255),
-			new ObjectParam(new(&CallFunc_Array_Get_Item_Ptr)),
-			new IntParam(new(&CallFunc_Array_Length_ReturnValue)),
-			new BoolParam(new(&CallFunc_Less_IntInt_ReturnValue), 255),
-			new BoolParam(new(&CallFunc_BooleanAND_ReturnValue), 255),
-			new FloatParam(new(&CallFunc_GetDistanceTo_ReturnValue))
-		], out _);
-	}
-
-	public unsafe void Set_Niagara_Offscreen_Mode( int Temp_int_Array_Index_Variable, int Temp_int_Loop_Counter_Variable, int CallFunc_Add_IntInt_ReturnValue, int CallFunc_Array_Length_ReturnValue, bool CallFunc_Greater_IntInt_ReturnValue, int CallFunc_Array_Length_ReturnValue_1, TArray<Ptr<USceneComponent_Repr>> CallFunc_GetChildrenComponents_Children, int CallFunc_Array_Length_ReturnValue_2, USceneComponent? CallFunc_Array_Get_Item, bool CallFunc_Less_IntInt_ReturnValue, UNiagaraComponent? K2Node_DynamicCast_AsNiagara_Particle_System, bool K2Node_DynamicCast_bSuccess)
-	{
-		nint CallFunc_Array_Get_Item_Ptr = CallFunc_Array_Get_Item?.Inner.Ptr ?? nint.Zero;
-		nint K2Node_DynamicCast_AsNiagara_Particle_System_Ptr = K2Node_DynamicCast_AsNiagara_Particle_System?.Inner.Ptr ?? nint.Zero;
-		_ = Inner.ProcessEvent("Set Niagara Offscreen Mode", [
-			new IntParam(new(&Temp_int_Array_Index_Variable)),
-			new IntParam(new(&Temp_int_Loop_Counter_Variable)),
-			new IntParam(new(&CallFunc_Add_IntInt_ReturnValue)),
-			new IntParam(new(&CallFunc_Array_Length_ReturnValue)),
-			new BoolParam(new(&CallFunc_Greater_IntInt_ReturnValue), 255),
-			new IntParam(new(&CallFunc_Array_Length_ReturnValue_1)),
-			new ArrayParam(new((TArray<int>*)(&CallFunc_GetChildrenComponents_Children))),
-			new IntParam(new(&CallFunc_Array_Length_ReturnValue_2)),
-			new ObjectParam(new(&CallFunc_Array_Get_Item_Ptr)),
-			new BoolParam(new(&CallFunc_Less_IntInt_ReturnValue), 255),
-			new ObjectParam(new(&K2Node_DynamicCast_AsNiagara_Particle_System_Ptr)),
-			new BoolParam(new(&K2Node_DynamicCast_bSuccess), 255)
-		], out _);
-	}
-
-	public unsafe void SetNiagaraOffscreenTick( float DeltaSeconds, int Temp_int_Array_Index_Variable, int Temp_int_Loop_Counter_Variable, int CallFunc_Add_IntInt_ReturnValue, UNiagaraComponent? CallFunc_Array_Get_Item, int CallFunc_Array_Length_ReturnValue, bool CallFunc_Less_IntInt_ReturnValue, float CallFunc_Add_FloatFloat_ReturnValue)
-	{
-		nint CallFunc_Array_Get_Item_Ptr = CallFunc_Array_Get_Item?.Inner.Ptr ?? nint.Zero;
-		_ = Inner.ProcessEvent("SetNiagaraOffscreenTick", [
-			new FloatParam(new(&DeltaSeconds)),
-			new IntParam(new(&Temp_int_Array_Index_Variable)),
-			new IntParam(new(&Temp_int_Loop_Counter_Variable)),
-			new IntParam(new(&CallFunc_Add_IntInt_ReturnValue)),
-			new ObjectParam(new(&CallFunc_Array_Get_Item_Ptr)),
-			new IntParam(new(&CallFunc_Array_Length_ReturnValue)),
-			new BoolParam(new(&CallFunc_Less_IntInt_ReturnValue), 255),
-			new FloatParam(new(&CallFunc_Add_FloatFloat_ReturnValue))
-		], out _);
-	}
-
-}
-
-[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0x304)]
-public unsafe struct ABP_PersonaBase_C_Repr
-{
-	[FieldOffset(0x0)] public APersonaBaseCore_Repr Super; // Size: 0x288
-	[FieldOffset(0x288)] public FPointerToUberGraphFrame UberGraphFrame; // Size: 0x8
-	[FieldOffset(0x290)] public TArray<nint /* Ptr<ABP_CharaPointLight_C_Repr> */> OverlapPointLights; // Size: 0x10
-	[FieldOffset(0x2A0)] public int NumberOfPointLights; // Size: 0x4
-	[FieldOffset(0x2A8)] public TArray<nint /* Ptr<AActor_Repr> */> ClosestPointLight; // Size: 0x10
-	[FieldOffset(0x2B8)] public TArray<nint /* Ptr<UMaterialInstanceDynamic_Repr> */> DynamicMIs; // Size: 0x10
-	[FieldOffset(0x2C8)] public float BoundsScale; // Size: 0x4
-	[FieldOffset(0x2CC)] public float NiagaraDesiredAge; // Size: 0x4
-	[FieldOffset(0x2D0)] public bool bNiagaraOffscreen; // Size: 0x1
-	[FieldOffset(0x2D8)] public TArray<nint /* Ptr<UNiagaraComponent_Repr> */> NiagaraComponents; // Size: 0x10
-	[FieldOffset(0x2E8)] public float LastRenderTimeOnScreen; // Size: 0x4
-	[FieldOffset(0x2EC)] public FVector StartPositionVec_VG; // Size: 0xC
-	[FieldOffset(0x2F8)] public FVector EndPositionVec_VG; // Size: 0xC
-
-	public ABP_PersonaBase_C ToManaged(IUnrealFactory factory)
-	{
-		fixed (ABP_PersonaBase_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
-	}
-}
-
-
-public class UWBP_BtlCatinUI_00_C : UUserWidget, ITypeRepr<UWBP_BtlCatinUI_00_C_Repr>
-{
-	private static Dictionary<string, int>? FieldOffsets;
-	public UWBP_BtlCatinUI_00_C(IUObject inner, bool genOffsets = true) : base(inner, false)
-	{
-		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
-	}
-
-	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
-
-	public new unsafe UWBP_BtlCatinUI_00_C_Repr* Repr => (UWBP_BtlCatinUI_00_C_Repr*)Inner.Ptr;
-
-	public unsafe FPointerToUberGraphFrame* UberGraphFrame
-	{
-		get => (FPointerToUberGraphFrame*)(Inner.Ptr + GetFieldOffset("UberGraphFrame"));
-	}
-
-	public unsafe UWidgetAnimation? StartAnimation
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("StartAnimation")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("StartAnimation")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("StartAnimation")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe UImage? Image_335
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("Image_335")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("Image_335")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("Image_335")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe void Construct()
-	{
-		_ = Inner.ProcessEvent("Construct", [], out _);
-	}
-
-}
-
-[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0x278)]
-public unsafe struct UWBP_BtlCatinUI_00_C_Repr
-{
-	[FieldOffset(0x0)] public UUserWidget_Repr Super; // Size: 0x260
-	[FieldOffset(0x260)] public FPointerToUberGraphFrame UberGraphFrame; // Size: 0x8
-	[FieldOffset(0x268)] public UWidgetAnimation_Repr* StartAnimation; // Size: 0x8
-	[FieldOffset(0x270)] public UImage_Repr* Image_335; // Size: 0x8
-
-	public UWBP_BtlCatinUI_00_C ToManaged(IUnrealFactory factory)
-	{
-		fixed (UWBP_BtlCatinUI_00_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
-	}
-}
-
-
-[StructLayout(LayoutKind.Explicit, Pack = 4, Size = 0xC)]
-public unsafe struct FFBtlAttackSEParam
-{
-	[FieldOffset(0x0)] public int SENoAttack; // Size: 0x4
-	[FieldOffset(0x4)] public int SENoAttackLong; // Size: 0x4
-	[FieldOffset(0x8)] public int SENoAttackCritical; // Size: 0x4
-}
 
 public class ABP_BtlSimpleTextureDraw_C : AAppActor, ITypeRepr<ABP_BtlSimpleTextureDraw_C_Repr>
 {
@@ -322049,6 +322033,239 @@ public unsafe struct UBP_BtlActionManager_C_Repr
 	public UBP_BtlActionManager_C ToManaged(IUnrealFactory factory)
 	{
 		fixed (UBP_BtlActionManager_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
+	}
+}
+
+
+public class ABP_BtlEncountAssistant_C : AAppActor, ITypeRepr<ABP_BtlEncountAssistant_C_Repr>
+{
+	private static Dictionary<string, int>? FieldOffsets;
+	public ABP_BtlEncountAssistant_C(IUObject inner, bool genOffsets = true) : base(inner, false)
+	{
+		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
+	}
+
+	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
+
+	public new unsafe ABP_BtlEncountAssistant_C_Repr* Repr => (ABP_BtlEncountAssistant_C_Repr*)Inner.Ptr;
+
+	public unsafe FPointerToUberGraphFrame* UberGraphFrame
+	{
+		get => (FPointerToUberGraphFrame*)(Inner.Ptr + GetFieldOffset("UberGraphFrame"));
+	}
+
+	public unsafe USceneComponent? DefaultSceneRoot
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("DefaultSceneRoot")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("DefaultSceneRoot")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("DefaultSceneRoot")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe UBtlCoreComponent? BtlCore
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("BtlCore")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("BtlCore")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("BtlCore")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe ALevelSequenceActor? Level_Sequence_Actor
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("Level Sequence Actor")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("Level Sequence Actor")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("Level Sequence Actor")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe ULevelSequence? Level_Sequence_2
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("Level Sequence")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("Level Sequence")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("Level Sequence")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe EVisibilityBasedAnimTickOption Visibility_Based_Anim_Tick_Option
+	{
+		get => *(EVisibilityBasedAnimTickOption*)(Inner.Ptr + GetFieldOffset("Visibility Based Anim Tick Option"));
+		set => *(EVisibilityBasedAnimTickOption*)(Inner.Ptr + GetFieldOffset("Visibility Based Anim Tick Option")) = value;
+	}
+
+	public unsafe FMulticastScriptDelegate* OnSequenceEnd
+	{
+		get => (FMulticastScriptDelegate*)(Inner.Ptr + GetFieldOffset("OnSequenceEnd"));
+	}
+
+	public unsafe FMulticastScriptDelegate* OnSequenceEvent1
+	{
+		get => (FMulticastScriptDelegate*)(Inner.Ptr + GetFieldOffset("OnSequenceEvent1"));
+	}
+
+	public unsafe FMovieSceneObjectBindingID* Binding
+	{
+		get => (FMovieSceneObjectBindingID*)(Inner.Ptr + GetFieldOffset("Binding"));
+	}
+
+	public unsafe bool isWaitForEnd
+	{
+		get => *(bool*)(Inner.Ptr + GetFieldOffset("isWaitForEnd"));
+		set => *(bool*)(Inner.Ptr + GetFieldOffset("isWaitForEnd")) = value;
+	}
+
+	public unsafe bool isEndSequence
+	{
+		get => *(bool*)(Inner.Ptr + GetFieldOffset("isEndSequence"));
+		set => *(bool*)(Inner.Ptr + GetFieldOffset("isEndSequence")) = value;
+	}
+
+	public unsafe bool isReadyToEndFromWaitMode
+	{
+		get => *(bool*)(Inner.Ptr + GetFieldOffset("isReadyToEndFromWaitMode"));
+		set => *(bool*)(Inner.Ptr + GetFieldOffset("isReadyToEndFromWaitMode")) = value;
+	}
+
+	public unsafe AActor? SavingCurrentCamera
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("SavingCurrentCamera")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SavingCurrentCamera")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("SavingCurrentCamera")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe FMulticastScriptDelegate* OnSequenceEvent2
+	{
+		get => (FMulticastScriptDelegate*)(Inner.Ptr + GetFieldOffset("OnSequenceEvent2"));
+	}
+
+	public unsafe void OnSequenceEnd__DelegateSignature()
+	{
+		_ = Inner.ProcessEvent("OnSequenceEnd__DelegateSignature", [], out _);
+	}
+
+	public unsafe void OnSequenceEvent1__DelegateSignature()
+	{
+		_ = Inner.ProcessEvent("OnSequenceEvent1__DelegateSignature", [], out _);
+	}
+
+	public unsafe void OnSequenceEvent2__DelegateSignature()
+	{
+		_ = Inner.ProcessEvent("OnSequenceEvent2__DelegateSignature", [], out _);
+	}
+
+	public unsafe void SequenceDestroy()
+	{
+		_ = Inner.ProcessEvent("SequenceDestroy", [], out _);
+	}
+
+	public unsafe void ActorDestroyed()
+	{
+		_ = Inner.ProcessEvent("ActorDestroyed", [], out _);
+	}
+
+	public unsafe void RequestSequenceEvent2()
+	{
+		_ = Inner.ProcessEvent("RequestSequenceEvent2", [], out _);
+	}
+
+	public unsafe void Has_Finished_Enemy_Spawn()
+	{
+		_ = Inner.ProcessEvent("Has Finished Enemy Spawn", [], out _);
+	}
+
+	public unsafe void PlaySE( int CueId)
+	{
+		_ = Inner.ProcessEvent("PlaySE", [
+			new IntParam(new(&CueId))
+		], out _);
+	}
+
+	public unsafe void StartChanceSequence( UBtlCoreComponent? BtlCore)
+	{
+		nint BtlCore_Ptr = BtlCore?.Inner.Ptr ?? nint.Zero;
+		_ = Inner.ProcessEvent("StartChanceSequence", [
+			new ObjectParam(new(&BtlCore_Ptr))
+		], out _);
+	}
+
+	public unsafe void StartFirstSequence( UBtlCoreComponent? BtlCore)
+	{
+		nint BtlCore_Ptr = BtlCore?.Inner.Ptr ?? nint.Zero;
+		_ = Inner.ProcessEvent("StartFirstSequence", [
+			new ObjectParam(new(&BtlCore_Ptr))
+		], out _);
+	}
+
+	public unsafe void RequestSequenceEvent1()
+	{
+		_ = Inner.ProcessEvent("RequestSequenceEvent1", [], out _);
+	}
+
+	public unsafe void StartSequence( UBtlCoreComponent? BtlCore)
+	{
+		nint BtlCore_Ptr = BtlCore?.Inner.Ptr ?? nint.Zero;
+		_ = Inner.ProcessEvent("StartSequence", [
+			new ObjectParam(new(&BtlCore_Ptr))
+		], out _);
+	}
+
+	public unsafe void RequestSummonEnemy()
+	{
+		_ = Inner.ProcessEvent("RequestSummonEnemy", [], out _);
+	}
+
+	public unsafe void HeroRunStop()
+	{
+		_ = Inner.ProcessEvent("HeroRunStop", [], out _);
+	}
+
+	public unsafe void EndSequence()
+	{
+		_ = Inner.ProcessEvent("EndSequence", [], out _);
+	}
+
+	public unsafe void CollectWhenBattleCamera( int Temp_int_Array_Index_Variable, int Temp_int_Loop_Counter_Variable, int CallFunc_Add_IntInt_ReturnValue, APlayerController? CallFunc_GetPlayerController_ReturnValue, AActor? CallFunc_GetViewTarget_ReturnValue, FName CallFunc_Array_Get_Item, int CallFunc_Array_Length_ReturnValue, bool CallFunc_EqualEqual_NameName_ReturnValue, bool CallFunc_Less_IntInt_ReturnValue, bool CallFunc_EqualEqual_NameName_ReturnValue_1, bool CallFunc_BooleanOR_ReturnValue)
+	{
+		nint CallFunc_GetPlayerController_ReturnValue_Ptr = CallFunc_GetPlayerController_ReturnValue?.Inner.Ptr ?? nint.Zero;
+		nint CallFunc_GetViewTarget_ReturnValue_Ptr = CallFunc_GetViewTarget_ReturnValue?.Inner.Ptr ?? nint.Zero;
+		_ = Inner.ProcessEvent("CollectWhenBattleCamera", [
+			new IntParam(new(&Temp_int_Array_Index_Variable)),
+			new IntParam(new(&Temp_int_Loop_Counter_Variable)),
+			new IntParam(new(&CallFunc_Add_IntInt_ReturnValue)),
+			new ObjectParam(new(&CallFunc_GetPlayerController_ReturnValue_Ptr)),
+			new ObjectParam(new(&CallFunc_GetViewTarget_ReturnValue_Ptr)),
+			new NameParam(new(&CallFunc_Array_Get_Item)),
+			new IntParam(new(&CallFunc_Array_Length_ReturnValue)),
+			new BoolParam(new(&CallFunc_EqualEqual_NameName_ReturnValue), 255),
+			new BoolParam(new(&CallFunc_Less_IntInt_ReturnValue), 255),
+			new BoolParam(new(&CallFunc_EqualEqual_NameName_ReturnValue_1), 255),
+			new BoolParam(new(&CallFunc_BooleanOR_ReturnValue), 255)
+		], out _);
+	}
+
+	public unsafe void ReflectBattleCamera( APlayerController? CallFunc_GetPlayerController_ReturnValue, bool CallFunc_IsValid_ReturnValue)
+	{
+		nint CallFunc_GetPlayerController_ReturnValue_Ptr = CallFunc_GetPlayerController_ReturnValue?.Inner.Ptr ?? nint.Zero;
+		_ = Inner.ProcessEvent("ReflectBattleCamera", [
+			new ObjectParam(new(&CallFunc_GetPlayerController_ReturnValue_Ptr)),
+			new BoolParam(new(&CallFunc_IsValid_ReturnValue), 255)
+		], out _);
+	}
+
+}
+
+[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0x300)]
+public unsafe struct ABP_BtlEncountAssistant_C_Repr
+{
+	[FieldOffset(0x0)] public AAppActor_Repr Super; // Size: 0x278
+	[FieldOffset(0x278)] public FPointerToUberGraphFrame UberGraphFrame; // Size: 0x8
+	[FieldOffset(0x280)] public USceneComponent_Repr* DefaultSceneRoot; // Size: 0x8
+	[FieldOffset(0x288)] public UBtlCoreComponent_Repr* BtlCore; // Size: 0x8
+	[FieldOffset(0x290)] public ALevelSequenceActor_Repr* Level_Sequence_Actor; // Size: 0x8
+	[FieldOffset(0x298)] public ULevelSequence_Repr* Level_Sequence_2; // Size: 0x8
+	[FieldOffset(0x2A0)] public EVisibilityBasedAnimTickOption Visibility_Based_Anim_Tick_Option; // Size: 0x1
+	[FieldOffset(0x2A8)] public FMulticastScriptDelegate OnSequenceEnd; // Size: 0x10
+	[FieldOffset(0x2B8)] public FMulticastScriptDelegate OnSequenceEvent1; // Size: 0x10
+	[FieldOffset(0x2C8)] public FMovieSceneObjectBindingID Binding; // Size: 0x18
+	[FieldOffset(0x2E0)] public bool isWaitForEnd; // Size: 0x1
+	[FieldOffset(0x2E1)] public bool isEndSequence; // Size: 0x1
+	[FieldOffset(0x2E2)] public bool isReadyToEndFromWaitMode; // Size: 0x1
+	[FieldOffset(0x2E8)] public AActor_Repr* SavingCurrentCamera; // Size: 0x8
+	[FieldOffset(0x2F0)] public FMulticastScriptDelegate OnSequenceEvent2; // Size: 0x10
+
+	public ABP_BtlEncountAssistant_C ToManaged(IUnrealFactory factory)
+	{
+		fixed (ABP_BtlEncountAssistant_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
 	}
 }
 
@@ -322423,239 +322640,6 @@ public unsafe struct USequenceDirector_C_Repr
 	public USequenceDirector_C ToManaged(IUnrealFactory factory)
 	{
 		fixed (USequenceDirector_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
-	}
-}
-
-
-public class ABP_BtlEncountAssistant_C : AAppActor, ITypeRepr<ABP_BtlEncountAssistant_C_Repr>
-{
-	private static Dictionary<string, int>? FieldOffsets;
-	public ABP_BtlEncountAssistant_C(IUObject inner, bool genOffsets = true) : base(inner, false)
-	{
-		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
-	}
-
-	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
-
-	public new unsafe ABP_BtlEncountAssistant_C_Repr* Repr => (ABP_BtlEncountAssistant_C_Repr*)Inner.Ptr;
-
-	public unsafe FPointerToUberGraphFrame* UberGraphFrame
-	{
-		get => (FPointerToUberGraphFrame*)(Inner.Ptr + GetFieldOffset("UberGraphFrame"));
-	}
-
-	public unsafe USceneComponent? DefaultSceneRoot
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("DefaultSceneRoot")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("DefaultSceneRoot")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("DefaultSceneRoot")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe UBtlCoreComponent? BtlCore
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("BtlCore")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("BtlCore")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("BtlCore")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe ALevelSequenceActor? Level_Sequence_Actor
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("Level Sequence Actor")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("Level Sequence Actor")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("Level Sequence Actor")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe ULevelSequence? Level_Sequence_2
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("Level Sequence")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("Level Sequence")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("Level Sequence")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe EVisibilityBasedAnimTickOption Visibility_Based_Anim_Tick_Option
-	{
-		get => *(EVisibilityBasedAnimTickOption*)(Inner.Ptr + GetFieldOffset("Visibility Based Anim Tick Option"));
-		set => *(EVisibilityBasedAnimTickOption*)(Inner.Ptr + GetFieldOffset("Visibility Based Anim Tick Option")) = value;
-	}
-
-	public unsafe FMulticastScriptDelegate* OnSequenceEnd
-	{
-		get => (FMulticastScriptDelegate*)(Inner.Ptr + GetFieldOffset("OnSequenceEnd"));
-	}
-
-	public unsafe FMulticastScriptDelegate* OnSequenceEvent1
-	{
-		get => (FMulticastScriptDelegate*)(Inner.Ptr + GetFieldOffset("OnSequenceEvent1"));
-	}
-
-	public unsafe FMovieSceneObjectBindingID* Binding
-	{
-		get => (FMovieSceneObjectBindingID*)(Inner.Ptr + GetFieldOffset("Binding"));
-	}
-
-	public unsafe bool isWaitForEnd
-	{
-		get => *(bool*)(Inner.Ptr + GetFieldOffset("isWaitForEnd"));
-		set => *(bool*)(Inner.Ptr + GetFieldOffset("isWaitForEnd")) = value;
-	}
-
-	public unsafe bool isEndSequence
-	{
-		get => *(bool*)(Inner.Ptr + GetFieldOffset("isEndSequence"));
-		set => *(bool*)(Inner.Ptr + GetFieldOffset("isEndSequence")) = value;
-	}
-
-	public unsafe bool isReadyToEndFromWaitMode
-	{
-		get => *(bool*)(Inner.Ptr + GetFieldOffset("isReadyToEndFromWaitMode"));
-		set => *(bool*)(Inner.Ptr + GetFieldOffset("isReadyToEndFromWaitMode")) = value;
-	}
-
-	public unsafe AActor? SavingCurrentCamera
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("SavingCurrentCamera")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SavingCurrentCamera")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("SavingCurrentCamera")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe FMulticastScriptDelegate* OnSequenceEvent2
-	{
-		get => (FMulticastScriptDelegate*)(Inner.Ptr + GetFieldOffset("OnSequenceEvent2"));
-	}
-
-	public unsafe void OnSequenceEnd__DelegateSignature()
-	{
-		_ = Inner.ProcessEvent("OnSequenceEnd__DelegateSignature", [], out _);
-	}
-
-	public unsafe void OnSequenceEvent1__DelegateSignature()
-	{
-		_ = Inner.ProcessEvent("OnSequenceEvent1__DelegateSignature", [], out _);
-	}
-
-	public unsafe void OnSequenceEvent2__DelegateSignature()
-	{
-		_ = Inner.ProcessEvent("OnSequenceEvent2__DelegateSignature", [], out _);
-	}
-
-	public unsafe void SequenceDestroy()
-	{
-		_ = Inner.ProcessEvent("SequenceDestroy", [], out _);
-	}
-
-	public unsafe void ActorDestroyed()
-	{
-		_ = Inner.ProcessEvent("ActorDestroyed", [], out _);
-	}
-
-	public unsafe void RequestSequenceEvent2()
-	{
-		_ = Inner.ProcessEvent("RequestSequenceEvent2", [], out _);
-	}
-
-	public unsafe void Has_Finished_Enemy_Spawn()
-	{
-		_ = Inner.ProcessEvent("Has Finished Enemy Spawn", [], out _);
-	}
-
-	public unsafe void PlaySE( int CueId)
-	{
-		_ = Inner.ProcessEvent("PlaySE", [
-			new IntParam(new(&CueId))
-		], out _);
-	}
-
-	public unsafe void StartChanceSequence( UBtlCoreComponent? BtlCore)
-	{
-		nint BtlCore_Ptr = BtlCore?.Inner.Ptr ?? nint.Zero;
-		_ = Inner.ProcessEvent("StartChanceSequence", [
-			new ObjectParam(new(&BtlCore_Ptr))
-		], out _);
-	}
-
-	public unsafe void StartFirstSequence( UBtlCoreComponent? BtlCore)
-	{
-		nint BtlCore_Ptr = BtlCore?.Inner.Ptr ?? nint.Zero;
-		_ = Inner.ProcessEvent("StartFirstSequence", [
-			new ObjectParam(new(&BtlCore_Ptr))
-		], out _);
-	}
-
-	public unsafe void RequestSequenceEvent1()
-	{
-		_ = Inner.ProcessEvent("RequestSequenceEvent1", [], out _);
-	}
-
-	public unsafe void StartSequence( UBtlCoreComponent? BtlCore)
-	{
-		nint BtlCore_Ptr = BtlCore?.Inner.Ptr ?? nint.Zero;
-		_ = Inner.ProcessEvent("StartSequence", [
-			new ObjectParam(new(&BtlCore_Ptr))
-		], out _);
-	}
-
-	public unsafe void RequestSummonEnemy()
-	{
-		_ = Inner.ProcessEvent("RequestSummonEnemy", [], out _);
-	}
-
-	public unsafe void HeroRunStop()
-	{
-		_ = Inner.ProcessEvent("HeroRunStop", [], out _);
-	}
-
-	public unsafe void EndSequence()
-	{
-		_ = Inner.ProcessEvent("EndSequence", [], out _);
-	}
-
-	public unsafe void CollectWhenBattleCamera( int Temp_int_Array_Index_Variable, int Temp_int_Loop_Counter_Variable, int CallFunc_Add_IntInt_ReturnValue, APlayerController? CallFunc_GetPlayerController_ReturnValue, AActor? CallFunc_GetViewTarget_ReturnValue, FName CallFunc_Array_Get_Item, int CallFunc_Array_Length_ReturnValue, bool CallFunc_EqualEqual_NameName_ReturnValue, bool CallFunc_Less_IntInt_ReturnValue, bool CallFunc_EqualEqual_NameName_ReturnValue_1, bool CallFunc_BooleanOR_ReturnValue)
-	{
-		nint CallFunc_GetPlayerController_ReturnValue_Ptr = CallFunc_GetPlayerController_ReturnValue?.Inner.Ptr ?? nint.Zero;
-		nint CallFunc_GetViewTarget_ReturnValue_Ptr = CallFunc_GetViewTarget_ReturnValue?.Inner.Ptr ?? nint.Zero;
-		_ = Inner.ProcessEvent("CollectWhenBattleCamera", [
-			new IntParam(new(&Temp_int_Array_Index_Variable)),
-			new IntParam(new(&Temp_int_Loop_Counter_Variable)),
-			new IntParam(new(&CallFunc_Add_IntInt_ReturnValue)),
-			new ObjectParam(new(&CallFunc_GetPlayerController_ReturnValue_Ptr)),
-			new ObjectParam(new(&CallFunc_GetViewTarget_ReturnValue_Ptr)),
-			new NameParam(new(&CallFunc_Array_Get_Item)),
-			new IntParam(new(&CallFunc_Array_Length_ReturnValue)),
-			new BoolParam(new(&CallFunc_EqualEqual_NameName_ReturnValue), 255),
-			new BoolParam(new(&CallFunc_Less_IntInt_ReturnValue), 255),
-			new BoolParam(new(&CallFunc_EqualEqual_NameName_ReturnValue_1), 255),
-			new BoolParam(new(&CallFunc_BooleanOR_ReturnValue), 255)
-		], out _);
-	}
-
-	public unsafe void ReflectBattleCamera( APlayerController? CallFunc_GetPlayerController_ReturnValue, bool CallFunc_IsValid_ReturnValue)
-	{
-		nint CallFunc_GetPlayerController_ReturnValue_Ptr = CallFunc_GetPlayerController_ReturnValue?.Inner.Ptr ?? nint.Zero;
-		_ = Inner.ProcessEvent("ReflectBattleCamera", [
-			new ObjectParam(new(&CallFunc_GetPlayerController_ReturnValue_Ptr)),
-			new BoolParam(new(&CallFunc_IsValid_ReturnValue), 255)
-		], out _);
-	}
-
-}
-
-[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0x300)]
-public unsafe struct ABP_BtlEncountAssistant_C_Repr
-{
-	[FieldOffset(0x0)] public AAppActor_Repr Super; // Size: 0x278
-	[FieldOffset(0x278)] public FPointerToUberGraphFrame UberGraphFrame; // Size: 0x8
-	[FieldOffset(0x280)] public USceneComponent_Repr* DefaultSceneRoot; // Size: 0x8
-	[FieldOffset(0x288)] public UBtlCoreComponent_Repr* BtlCore; // Size: 0x8
-	[FieldOffset(0x290)] public ALevelSequenceActor_Repr* Level_Sequence_Actor; // Size: 0x8
-	[FieldOffset(0x298)] public ULevelSequence_Repr* Level_Sequence_2; // Size: 0x8
-	[FieldOffset(0x2A0)] public EVisibilityBasedAnimTickOption Visibility_Based_Anim_Tick_Option; // Size: 0x1
-	[FieldOffset(0x2A8)] public FMulticastScriptDelegate OnSequenceEnd; // Size: 0x10
-	[FieldOffset(0x2B8)] public FMulticastScriptDelegate OnSequenceEvent1; // Size: 0x10
-	[FieldOffset(0x2C8)] public FMovieSceneObjectBindingID Binding; // Size: 0x18
-	[FieldOffset(0x2E0)] public bool isWaitForEnd; // Size: 0x1
-	[FieldOffset(0x2E1)] public bool isEndSequence; // Size: 0x1
-	[FieldOffset(0x2E2)] public bool isReadyToEndFromWaitMode; // Size: 0x1
-	[FieldOffset(0x2E8)] public AActor_Repr* SavingCurrentCamera; // Size: 0x8
-	[FieldOffset(0x2F0)] public FMulticastScriptDelegate OnSequenceEvent2; // Size: 0x10
-
-	public ABP_BtlEncountAssistant_C ToManaged(IUnrealFactory factory)
-	{
-		fixed (ABP_BtlEncountAssistant_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
 	}
 }
 
@@ -323566,6 +323550,57 @@ public unsafe struct FFBtlTopUIParam
 	[FieldOffset(0x34)] public float KoromaruCommandScale; // Size: 0x4
 	[FieldOffset(0x38)] public FVector2D KoromaruOracleOffset; // Size: 0x8
 }
+
+public class UWBP_BtlCatinUI_00_C : UUserWidget, ITypeRepr<UWBP_BtlCatinUI_00_C_Repr>
+{
+	private static Dictionary<string, int>? FieldOffsets;
+	public UWBP_BtlCatinUI_00_C(IUObject inner, bool genOffsets = true) : base(inner, false)
+	{
+		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
+	}
+
+	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
+
+	public new unsafe UWBP_BtlCatinUI_00_C_Repr* Repr => (UWBP_BtlCatinUI_00_C_Repr*)Inner.Ptr;
+
+	public unsafe FPointerToUberGraphFrame* UberGraphFrame
+	{
+		get => (FPointerToUberGraphFrame*)(Inner.Ptr + GetFieldOffset("UberGraphFrame"));
+	}
+
+	public unsafe UWidgetAnimation? StartAnimation
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("StartAnimation")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("StartAnimation")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("StartAnimation")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe UImage? Image_335
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("Image_335")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("Image_335")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("Image_335")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe void Construct()
+	{
+		_ = Inner.ProcessEvent("Construct", [], out _);
+	}
+
+}
+
+[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0x278)]
+public unsafe struct UWBP_BtlCatinUI_00_C_Repr
+{
+	[FieldOffset(0x0)] public UUserWidget_Repr Super; // Size: 0x260
+	[FieldOffset(0x260)] public FPointerToUberGraphFrame UberGraphFrame; // Size: 0x8
+	[FieldOffset(0x268)] public UWidgetAnimation_Repr* StartAnimation; // Size: 0x8
+	[FieldOffset(0x270)] public UImage_Repr* Image_335; // Size: 0x8
+
+	public UWBP_BtlCatinUI_00_C ToManaged(IUnrealFactory factory)
+	{
+		fixed (UWBP_BtlCatinUI_00_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
+	}
+}
+
 
 [StructLayout(LayoutKind.Explicit, Pack = 4, Size = 0x8)]
 public unsafe struct FFBtlAttackSEExParam
@@ -327083,11 +327118,11 @@ public class ABP_BtlCharacterBase_C : ABtlActor, ITypeRepr<ABP_BtlCharacterBase_
 		_ = Inner.ProcessEvent("HaltCameraAnimation", [], out _);
 	}
 
-	public unsafe void RotateCharacter( ABP_BtlCharacterBase_C? LookAtCharacter, bool CallFunc_CheckEnableRotation_ReturnValue, FRotator CallFunc_BtlFindLookAtRotationFlat_ReturnValue, bool CallFunc_K2_SetActorRotation_ReturnValue)
+	public unsafe void RotateCharacter( ABP_BtlCharacterBase_C? LookatCharacter, bool CallFunc_CheckEnableRotation_ReturnValue, FRotator CallFunc_BtlFindLookAtRotationFlat_ReturnValue, bool CallFunc_K2_SetActorRotation_ReturnValue)
 	{
-		nint LookAtCharacter_Ptr = LookAtCharacter?.Inner.Ptr ?? nint.Zero;
+		nint LookatCharacter_Ptr = LookatCharacter?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("RotateCharacter", [
-			new ObjectParam(new(&LookAtCharacter_Ptr)),
+			new ObjectParam(new(&LookatCharacter_Ptr)),
 			new BoolParam(new(&CallFunc_CheckEnableRotation_ReturnValue), 255),
 			new StructParam(new(&CallFunc_BtlFindLookAtRotationFlat_ReturnValue), 12),
 			new BoolParam(new(&CallFunc_K2_SetActorRotation_ReturnValue), 255)
@@ -327942,12 +327977,12 @@ public class ABP_BtlCharacterBase_C : ABtlActor, ITypeRepr<ABP_BtlCharacterBase_
 		], out _);
 	}
 
-	public unsafe void Coordinate_Backstep_From_Attack( FVector Result, FVector vec, float LenDistanceFromGoal, float LenTargetToAttacker, FVector NVecTargetToAttacker, FBtlCharacterVisual Visual, FVector LocAttacker, FVector LocTarget, ABtlActor? TargetChara, float CallFunc_VSize_ReturnValue, FVector CallFunc_Normal_ReturnValue, bool CallFunc_Less_FloatFloat_ReturnValue, FVector CallFunc_Multiply_VectorFloat_ReturnValue, FVector CallFunc_Add_VectorVector_ReturnValue, FRotator CallFunc_K2_GetActorRotation_ReturnValue, float CallFunc_BreakRotator_Roll, float CallFunc_BreakRotator_Pitch, float CallFunc_BreakRotator_Yaw, float CallFunc_Add_FloatFloat_ReturnValue, FVector CallFunc_Subtract_VectorVector_ReturnValue, FRotator CallFunc_MakeRotator_ReturnValue, FVector CallFunc_K2_GetActorLocation_ReturnValue, FVector CallFunc_Subtract_VectorVector_ReturnValue_1, float CallFunc_VSizeSquared_ReturnValue, bool CallFunc_Greater_FloatFloat_ReturnValue, FVector CallFunc_GreaterGreater_VectorRotator_ReturnValue, FVector CallFunc_Add_VectorVector_ReturnValue_1)
+	public unsafe void Coordinate_Backstep_From_Attack( FVector Result, FVector Vec, float LenDistanceFromGoal, float LenTargetToAttacker, FVector NVecTargetToAttacker, FBtlCharacterVisual Visual, FVector LocAttacker, FVector LocTarget, ABtlActor? TargetChara, float CallFunc_VSize_ReturnValue, FVector CallFunc_Normal_ReturnValue, bool CallFunc_Less_FloatFloat_ReturnValue, FVector CallFunc_Multiply_VectorFloat_ReturnValue, FVector CallFunc_Add_VectorVector_ReturnValue, FRotator CallFunc_K2_GetActorRotation_ReturnValue, float CallFunc_BreakRotator_Roll, float CallFunc_BreakRotator_Pitch, float CallFunc_BreakRotator_Yaw, float CallFunc_Add_FloatFloat_ReturnValue, FVector CallFunc_Subtract_VectorVector_ReturnValue, FRotator CallFunc_MakeRotator_ReturnValue, FVector CallFunc_K2_GetActorLocation_ReturnValue, FVector CallFunc_Subtract_VectorVector_ReturnValue_1, float CallFunc_VSizeSquared_ReturnValue, bool CallFunc_Greater_FloatFloat_ReturnValue, FVector CallFunc_GreaterGreater_VectorRotator_ReturnValue, FVector CallFunc_Add_VectorVector_ReturnValue_1)
 	{
 		nint TargetChara_Ptr = TargetChara?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("Coordinate Backstep From Attack", [
 			new StructParam(new(&Result), 12),
-			new StructParam(new(&vec), 12),
+			new StructParam(new(&Vec), 12),
 			new FloatParam(new(&LenDistanceFromGoal)),
 			new FloatParam(new(&LenTargetToAttacker)),
 			new StructParam(new(&NVecTargetToAttacker), 12),
@@ -329194,14 +329229,14 @@ public class UBPFL_Battle_C : UBlueprintFunctionLibrary, ITypeRepr<UBPFL_Battle_
 		], out _);
 	}
 
-	public unsafe FRotator BtlFindLookAtRotationFlat( ABP_BtlCharacterBase_C? Character, ABP_BtlCharacterBase_C? LookAtCharacter, UObject? __WorldContext)
+	public unsafe FRotator BtlFindLookAtRotationFlat( ABP_BtlCharacterBase_C? Character, ABP_BtlCharacterBase_C? LookatCharacter, UObject? __WorldContext)
 	{
 		nint Character_Ptr = Character?.Inner.Ptr ?? nint.Zero;
-		nint LookAtCharacter_Ptr = LookAtCharacter?.Inner.Ptr ?? nint.Zero;
+		nint LookatCharacter_Ptr = LookatCharacter?.Inner.Ptr ?? nint.Zero;
 		nint __WorldContext_Ptr = __WorldContext?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("BtlFindLookAtRotationFlat", [
 			new ObjectParam(new(&Character_Ptr)),
-			new ObjectParam(new(&LookAtCharacter_Ptr)),
+			new ObjectParam(new(&LookatCharacter_Ptr)),
 			new ObjectParam(new(&__WorldContext_Ptr))
 		], out var Return);
 		FRotator ReturnValue;
@@ -329248,7 +329283,7 @@ public class UBPFL_Battle_C : UBlueprintFunctionLibrary, ITypeRepr<UBPFL_Battle_
 		], out _);
 	}
 
-	public unsafe void VectorAnim( FVector vec0, FVector vec1, float Alpha, UObject? __WorldContext, ref FVector vec, FVector Work, FVector CallFunc_Subtract_VectorVector_ReturnValue, FVector CallFunc_Multiply_VectorFloat_ReturnValue, FVector CallFunc_Add_VectorVector_ReturnValue)
+	public unsafe void VectorAnim( FVector vec0, FVector vec1, float Alpha, UObject? __WorldContext, ref FVector Vec, FVector Work, FVector CallFunc_Subtract_VectorVector_ReturnValue, FVector CallFunc_Multiply_VectorFloat_ReturnValue, FVector CallFunc_Add_VectorVector_ReturnValue)
 	{
 		nint __WorldContext_Ptr = __WorldContext?.Inner.Ptr ?? nint.Zero;
 		_ = Inner.ProcessEvent("VectorAnim", [
@@ -329256,7 +329291,7 @@ public class UBPFL_Battle_C : UBlueprintFunctionLibrary, ITypeRepr<UBPFL_Battle_
 			new StructParam(new(&vec1), 12),
 			new FloatParam(new(&Alpha)),
 			new ObjectParam(new(&__WorldContext_Ptr)),
-			new StructParam(new((FVector*)Unsafe.AsPointer(ref vec)), 12),
+			new StructParam(new((FVector*)Unsafe.AsPointer(ref Vec)), 12),
 			new StructParam(new(&Work), 12),
 			new StructParam(new(&CallFunc_Subtract_VectorVector_ReturnValue), 12),
 			new StructParam(new(&CallFunc_Multiply_VectorFloat_ReturnValue), 12),
@@ -334367,7 +334402,7 @@ public class ABP_BtlPhaseBase_C : ABtlPhase, ITypeRepr<ABP_BtlPhaseBase_C_Repr>
 		return ((ObjectParam?)Return)!.Value != nint.Zero ? new(Inner.GetFactory().CreateUObject(((ObjectParam?)Return)!.Value)) : null;
 	}
 
-	public unsafe void SpawnPhase( AActor? Class, AActor? CallFunc_GetSubLevelActor_ReturnValue, FTransform CallFunc_GetInitialTransform_trans, AActor? CallFunc_BeginDeferredActorSpawnFromClass_ReturnValue, AActor? CallFunc_FinishSpawningActor_ReturnValue)
+	public unsafe void SpawnPhase( UClass? Class, AActor? CallFunc_GetSubLevelActor_ReturnValue, FTransform CallFunc_GetInitialTransform_trans, AActor? CallFunc_BeginDeferredActorSpawnFromClass_ReturnValue, AActor? CallFunc_FinishSpawningActor_ReturnValue)
 	{
 		nint Class_Ptr = Class?.Inner.Ptr ?? nint.Zero;
 		nint CallFunc_GetSubLevelActor_ReturnValue_Ptr = CallFunc_GetSubLevelActor_ReturnValue?.Inner.Ptr ?? nint.Zero;
@@ -341290,10 +341325,10 @@ public class ABP_BtlEventAssistant_C : AAppActor, ITypeRepr<ABP_BtlEventAssistan
 		Camera = Camera_Ptr != nint.Zero ? new(Inner.GetFactory().CreateUObject(Camera_Ptr)) : null;
 	}
 
-	public unsafe void LookAtCharacter( ABP_BtlCharacterBase_C? Character)
+	public unsafe void LookatCharacter( ABP_BtlCharacterBase_C? Character)
 	{
 		nint Character_Ptr = Character?.Inner.Ptr ?? nint.Zero;
-		_ = Inner.ProcessEvent("LookAtCharacter", [
+		_ = Inner.ProcessEvent("LookatCharacter", [
 			new ObjectParam(new(&Character_Ptr))
 		], out _);
 	}
@@ -342112,7 +342147,7 @@ public class ABP_BtlGuiBaseActor_C : AAppActor, ITypeRepr<ABP_BtlGuiBaseActor_C_
 		], out _);
 	}
 
-	public unsafe void AttachChild( AActor? Child, FName Name, ref ABP_BtlGuiBaseActor_C? Object, ref bool Sucsess, bool CallFunc_NotEqual_NameName_ReturnValue, FString CallFunc_GetClassDisplayName_ReturnValue, FString CallFunc_MakeLiteralString_ReturnValue, FString CallFunc_MakeLiteralString_ReturnValue_1, FString CallFunc_Concat_StrStr_ReturnValue, bool Temp_bool_Variable, FTransform CallFunc_GetInitialTransform_trans, AActor? CallFunc_BeginDeferredActorSpawnFromClass_ReturnValue, AActor? CallFunc_FinishSpawningActor_ReturnValue, ABP_BtlGuiBaseActor_C? K2Node_DynamicCast_AsBP_Btl_Gui_Base_Actor, bool K2Node_DynamicCast_bSuccess, int CallFunc_Array_Add_ReturnValue, int CallFunc_Array_Add_ReturnValue_1, FString CallFunc_GetObjectName_ReturnValue, FName CallFunc_Conv_StringToName_ReturnValue, FName K2Node_Select_Default, FString CallFunc_Conv_NameToString_ReturnValue, FString CallFunc_Concat_StrStr_ReturnValue_1)
+	public unsafe void AttachChild( UClass? Child, FName Name, ref ABP_BtlGuiBaseActor_C? Object, ref bool Sucsess, bool CallFunc_NotEqual_NameName_ReturnValue, FString CallFunc_GetClassDisplayName_ReturnValue, FString CallFunc_MakeLiteralString_ReturnValue, FString CallFunc_MakeLiteralString_ReturnValue_1, FString CallFunc_Concat_StrStr_ReturnValue, bool Temp_bool_Variable, FTransform CallFunc_GetInitialTransform_trans, AActor? CallFunc_BeginDeferredActorSpawnFromClass_ReturnValue, AActor? CallFunc_FinishSpawningActor_ReturnValue, ABP_BtlGuiBaseActor_C? K2Node_DynamicCast_AsBP_Btl_Gui_Base_Actor, bool K2Node_DynamicCast_bSuccess, int CallFunc_Array_Add_ReturnValue, int CallFunc_Array_Add_ReturnValue_1, FString CallFunc_GetObjectName_ReturnValue, FName CallFunc_Conv_StringToName_ReturnValue, FName K2Node_Select_Default, FString CallFunc_Conv_NameToString_ReturnValue, FString CallFunc_Concat_StrStr_ReturnValue_1)
 	{
 		nint Child_Ptr = Child?.Inner.Ptr ?? nint.Zero;
 		nint Object_Ptr = Object?.Inner.Ptr ?? nint.Zero;
@@ -344360,6 +344395,828 @@ public unsafe struct ABP_BtlTargetSelect_C_Repr
 }
 
 
+public class ABP_BtlPromiseCommon_C : ABP_BtlGuiBaseActor_C, ITypeRepr<ABP_BtlPromiseCommon_C_Repr>
+{
+	private static Dictionary<string, int>? FieldOffsets;
+	public ABP_BtlPromiseCommon_C(IUObject inner, bool genOffsets = true) : base(inner, false)
+	{
+		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
+	}
+
+	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
+
+	public new unsafe ABP_BtlPromiseCommon_C_Repr* Repr => (ABP_BtlPromiseCommon_C_Repr*)Inner.Ptr;
+
+	public unsafe FPointerToUberGraphFrame* UberGraphFrame
+	{
+		get => (FPointerToUberGraphFrame*)(Inner.Ptr + GetFieldOffset("UberGraphFrame"));
+	}
+
+	public unsafe UBtlDataBaseComponent? BtlDataBase
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("BtlDataBase")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("BtlDataBase")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("BtlDataBase")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe UBtlGuiPromiseComponent? BtlGuiPromise
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("BtlGuiPromise")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("BtlGuiPromise")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("BtlGuiPromise")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe UBtlGuiResources? BtlGuiResources
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("BtlGuiResources")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("BtlGuiResources")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("BtlGuiResources")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe UBtlGuiDrawComponent? BtlGuiDraw
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("BtlGuiDraw")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("BtlGuiDraw")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("BtlGuiDraw")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe float InAnime7Move
+	{
+		get => *(float*)(Inner.Ptr + GetFieldOffset("InAnime_7__Move_DecoE_D333EF394107C49F9849A7A0790C13C5"));
+		set => *(float*)(Inner.Ptr + GetFieldOffset("InAnime_7__Move_DecoE_D333EF394107C49F9849A7A0790C13C5")) = value;
+	}
+
+	public unsafe float InAnime6Move
+	{
+		get => *(float*)(Inner.Ptr + GetFieldOffset("InAnime_6__Move_DecoD_D333EF394107C49F9849A7A0790C13C5"));
+		set => *(float*)(Inner.Ptr + GetFieldOffset("InAnime_6__Move_DecoD_D333EF394107C49F9849A7A0790C13C5")) = value;
+	}
+
+	public unsafe float InAnime5Move
+	{
+		get => *(float*)(Inner.Ptr + GetFieldOffset("InAnime_5__Move_DecoC_D333EF394107C49F9849A7A0790C13C5"));
+		set => *(float*)(Inner.Ptr + GetFieldOffset("InAnime_5__Move_DecoC_D333EF394107C49F9849A7A0790C13C5")) = value;
+	}
+
+	public unsafe float InAnime4Move
+	{
+		get => *(float*)(Inner.Ptr + GetFieldOffset("InAnime_4__Move_DecoB_D333EF394107C49F9849A7A0790C13C5"));
+		set => *(float*)(Inner.Ptr + GetFieldOffset("InAnime_4__Move_DecoB_D333EF394107C49F9849A7A0790C13C5")) = value;
+	}
+
+	public unsafe float InAnime3Move
+	{
+		get => *(float*)(Inner.Ptr + GetFieldOffset("InAnime_3__Move_DecoA_D333EF394107C49F9849A7A0790C13C5"));
+		set => *(float*)(Inner.Ptr + GetFieldOffset("InAnime_3__Move_DecoA_D333EF394107C49F9849A7A0790C13C5")) = value;
+	}
+
+	public unsafe float InAnime2
+	{
+		get => *(float*)(Inner.Ptr + GetFieldOffset("InAnime_2__IcomsMove_D333EF394107C49F9849A7A0790C13C5"));
+		set => *(float*)(Inner.Ptr + GetFieldOffset("InAnime_2__IcomsMove_D333EF394107C49F9849A7A0790C13C5")) = value;
+	}
+
+	public unsafe float InAnime1
+	{
+		get => *(float*)(Inner.Ptr + GetFieldOffset("InAnime_1__FrameMove_D333EF394107C49F9849A7A0790C13C5"));
+		set => *(float*)(Inner.Ptr + GetFieldOffset("InAnime_1__FrameMove_D333EF394107C49F9849A7A0790C13C5")) = value;
+	}
+
+	public unsafe ETimelineDirection InAnime_8
+	{
+		get => *(ETimelineDirection*)(Inner.Ptr + GetFieldOffset("InAnime__Direction_D333EF394107C49F9849A7A0790C13C5"));
+		set => *(ETimelineDirection*)(Inner.Ptr + GetFieldOffset("InAnime__Direction_D333EF394107C49F9849A7A0790C13C5")) = value;
+	}
+
+	public unsafe UTimelineComponent? InAnime_9
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("InAnime")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("InAnime")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("InAnime")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe float OutAnime3CancelIcon
+	{
+		get => *(float*)(Inner.Ptr + GetFieldOffset("OutAnime_3__Cancel_Icon_Scale_F1AF48B645A7B2D06DFF999B026E4BC1"));
+		set => *(float*)(Inner.Ptr + GetFieldOffset("OutAnime_3__Cancel_Icon_Scale_F1AF48B645A7B2D06DFF999B026E4BC1")) = value;
+	}
+
+	public unsafe float OutAnime2Icons
+	{
+		get => *(float*)(Inner.Ptr + GetFieldOffset("OutAnime_2__Icons_Move_F1AF48B645A7B2D06DFF999B026E4BC1"));
+		set => *(float*)(Inner.Ptr + GetFieldOffset("OutAnime_2__Icons_Move_F1AF48B645A7B2D06DFF999B026E4BC1")) = value;
+	}
+
+	public unsafe float OutAnime1
+	{
+		get => *(float*)(Inner.Ptr + GetFieldOffset("OutAnime_1_FrameMove_F1AF48B645A7B2D06DFF999B026E4BC1"));
+		set => *(float*)(Inner.Ptr + GetFieldOffset("OutAnime_1_FrameMove_F1AF48B645A7B2D06DFF999B026E4BC1")) = value;
+	}
+
+	public unsafe ETimelineDirection OutAnime_4
+	{
+		get => *(ETimelineDirection*)(Inner.Ptr + GetFieldOffset("OutAnime__Direction_F1AF48B645A7B2D06DFF999B026E4BC1"));
+		set => *(ETimelineDirection*)(Inner.Ptr + GetFieldOffset("OutAnime__Direction_F1AF48B645A7B2D06DFF999B026E4BC1")) = value;
+	}
+
+	public unsafe UTimelineComponent? outAnime
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("outAnime")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("outAnime")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("outAnime")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe float OutAnimeDecide1DecideIcon
+	{
+		get => *(float*)(Inner.Ptr + GetFieldOffset("OutAnimeDecide_1_Decide_Icon_Scale_79DD18AB4766FF1CEC498BA2DD854C49"));
+		set => *(float*)(Inner.Ptr + GetFieldOffset("OutAnimeDecide_1_Decide_Icon_Scale_79DD18AB4766FF1CEC498BA2DD854C49")) = value;
+	}
+
+	public unsafe ETimelineDirection OutAnimeDecide_2
+	{
+		get => *(ETimelineDirection*)(Inner.Ptr + GetFieldOffset("OutAnimeDecide__Direction_79DD18AB4766FF1CEC498BA2DD854C49"));
+		set => *(ETimelineDirection*)(Inner.Ptr + GetFieldOffset("OutAnimeDecide__Direction_79DD18AB4766FF1CEC498BA2DD854C49")) = value;
+	}
+
+	public unsafe UTimelineComponent? OutAnimeDecide_3
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("OutAnimeDecide")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("OutAnimeDecide")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("OutAnimeDecide")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe byte PromiseTpye
+	{
+		get => *(byte*)(Inner.Ptr + GetFieldOffset("PromiseTpye"));
+		set => *(byte*)(Inner.Ptr + GetFieldOffset("PromiseTpye")) = value;
+	}
+
+	public unsafe FVector2D* PosBaseA
+	{
+		get => (FVector2D*)(Inner.Ptr + GetFieldOffset("PosBaseA"));
+	}
+
+	public unsafe TArray<FBtlGuiVertex>* vertex
+	{
+		get => (TArray<FBtlGuiVertex>*)(Inner.Ptr + GetFieldOffset("vertex"));
+	}
+
+	public unsafe FVector2D* TextPos
+	{
+		get => (FVector2D*)(Inner.Ptr + GetFieldOffset("TextPos"));
+	}
+
+	public unsafe UBtlGuiDrawObjectPlg? TextPLG
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("TextPLG")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("TextPLG")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("TextPLG")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe float InAnimeTextRation
+	{
+		get => *(float*)(Inner.Ptr + GetFieldOffset("InAnimeTextRation"));
+		set => *(float*)(Inner.Ptr + GetFieldOffset("InAnimeTextRation")) = value;
+	}
+
+	public unsafe UBtlGuiDrawObjectPrimitive? RectBackOld
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("RectBackOld")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("RectBackOld")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("RectBackOld")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe UBtlGuiDrawObjectPrimitive? RectBlack
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("RectBlack")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("RectBlack")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("RectBlack")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe float InAnimeIconMove
+	{
+		get => *(float*)(Inner.Ptr + GetFieldOffset("InAnimeIconMove"));
+		set => *(float*)(Inner.Ptr + GetFieldOffset("InAnimeIconMove")) = value;
+	}
+
+	public unsafe FVector2D* CircleIconDif
+	{
+		get => (FVector2D*)(Inner.Ptr + GetFieldOffset("CircleIconDif"));
+	}
+
+	public unsafe FVector2D* CrosslIconDif
+	{
+		get => (FVector2D*)(Inner.Ptr + GetFieldOffset("CrosslIconDif"));
+	}
+
+	public unsafe FVector2D* CancelTextOffset
+	{
+		get => (FVector2D*)(Inner.Ptr + GetFieldOffset("CancelTextOffset"));
+	}
+
+	public unsafe FVector2D* OkTextOffset
+	{
+		get => (FVector2D*)(Inner.Ptr + GetFieldOffset("OkTextOffset"));
+	}
+
+	public unsafe UBtlGuiDrawObjectSprite? SpriteCircleIcon
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("SpriteCircleIcon")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SpriteCircleIcon")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("SpriteCircleIcon")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe UBtlGuiDrawObjectSprite? SpriteCrossIcon
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("SpriteCrossIcon")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SpriteCrossIcon")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("SpriteCrossIcon")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe UBtlGuiDrawObjectSprite? SpriteOKText
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("SpriteOKText")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SpriteOKText")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("SpriteOKText")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe UBtlGuiDrawObjectSprite? SpriteCancelText
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("SpriteCancelText")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SpriteCancelText")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("SpriteCancelText")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe float CancelIconScaleValue
+	{
+		get => *(float*)(Inner.Ptr + GetFieldOffset("CancelIconScaleValue"));
+		set => *(float*)(Inner.Ptr + GetFieldOffset("CancelIconScaleValue")) = value;
+	}
+
+	public unsafe FVector2D* IconGroupPosDif
+	{
+		get => (FVector2D*)(Inner.Ptr + GetFieldOffset("IconGroupPosDif"));
+	}
+
+	public unsafe bool isStartAnimation
+	{
+		get => *(bool*)(Inner.Ptr + GetFieldOffset("isStartAnimation"));
+		set => *(bool*)(Inner.Ptr + GetFieldOffset("isStartAnimation")) = value;
+	}
+
+	public unsafe bool isFastInput
+	{
+		get => *(bool*)(Inner.Ptr + GetFieldOffset("isFastInput"));
+		set => *(bool*)(Inner.Ptr + GetFieldOffset("isFastInput")) = value;
+	}
+
+	public unsafe bool isUnableCancel
+	{
+		get => *(bool*)(Inner.Ptr + GetFieldOffset("isUnableCancel"));
+		set => *(bool*)(Inner.Ptr + GetFieldOffset("isUnableCancel")) = value;
+	}
+
+	public unsafe FColor* ColorCancelIcon
+	{
+		get => (FColor*)(Inner.Ptr + GetFieldOffset("ColorCancelIcon"));
+	}
+
+	public unsafe FColor* ColorCancelText
+	{
+		get => (FColor*)(Inner.Ptr + GetFieldOffset("ColorCancelText"));
+	}
+
+	public unsafe UBtlGuiDrawObjectSprite? SprAlloutMsg1
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("SprAlloutMsg1")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SprAlloutMsg1")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("SprAlloutMsg1")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe UBtlGuiDrawObjectSprite? SprAlloutMsg2
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("SprAlloutMsg2")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SprAlloutMsg2")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("SprAlloutMsg2")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe UBtlGuiDrawObjectPrimitive? PrimiDecoA
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("PrimiDecoA")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("PrimiDecoA")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("PrimiDecoA")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe UBtlGuiDrawObjectPrimitive? PrimiDecoB
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("PrimiDecoB")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("PrimiDecoB")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("PrimiDecoB")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe UBtlGuiDrawObjectPrimitive? PtimiDecoC
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("PtimiDecoC")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("PtimiDecoC")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("PtimiDecoC")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe UBtlGuiDrawObjectPrimitive? PrimiDecoD
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("PrimiDecoD")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("PrimiDecoD")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("PrimiDecoD")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe UBtlGuiDrawObjectPrimitive? PrimiDecoE
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("PrimiDecoE")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("PrimiDecoE")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("PrimiDecoE")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe UBtlGuiDrawObjectPlg? TextMaskPLG
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("TextMaskPLG")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("TextMaskPLG")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("TextMaskPLG")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe UBtlGuiDrawObjectPrimitive? RectBack2
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("RectBack2")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("RectBack2")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("RectBack2")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe float ScaleBaseCrossButton
+	{
+		get => *(float*)(Inner.Ptr + GetFieldOffset("ScaleBaseCrossButton"));
+		set => *(float*)(Inner.Ptr + GetFieldOffset("ScaleBaseCrossButton")) = value;
+	}
+
+	public unsafe float ScaleBaseText
+	{
+		get => *(float*)(Inner.Ptr + GetFieldOffset("ScaleBaseText"));
+		set => *(float*)(Inner.Ptr + GetFieldOffset("ScaleBaseText")) = value;
+	}
+
+	public unsafe float ParamScaleRationCancel
+	{
+		get => *(float*)(Inner.Ptr + GetFieldOffset("ParamScaleRationCancel"));
+		set => *(float*)(Inner.Ptr + GetFieldOffset("ParamScaleRationCancel")) = value;
+	}
+
+	public unsafe float ScaleBaseCircleButton
+	{
+		get => *(float*)(Inner.Ptr + GetFieldOffset("ScaleBaseCircleButton"));
+		set => *(float*)(Inner.Ptr + GetFieldOffset("ScaleBaseCircleButton")) = value;
+	}
+
+	public unsafe FVector2D* MoveVec
+	{
+		get => (FVector2D*)(Inner.Ptr + GetFieldOffset("MoveVec"));
+	}
+
+	public unsafe float DecideIconScaleValue
+	{
+		get => *(float*)(Inner.Ptr + GetFieldOffset("DecideIconScaleValue"));
+		set => *(float*)(Inner.Ptr + GetFieldOffset("DecideIconScaleValue")) = value;
+	}
+
+	public unsafe float AlphaPlate
+	{
+		get => *(float*)(Inner.Ptr + GetFieldOffset("AlphaPlate"));
+		set => *(float*)(Inner.Ptr + GetFieldOffset("AlphaPlate")) = value;
+	}
+
+	public unsafe float AnimeMoveRationDecoA
+	{
+		get => *(float*)(Inner.Ptr + GetFieldOffset("AnimeMoveRationDecoA"));
+		set => *(float*)(Inner.Ptr + GetFieldOffset("AnimeMoveRationDecoA")) = value;
+	}
+
+	public unsafe float AnimeMoveRationDecoB
+	{
+		get => *(float*)(Inner.Ptr + GetFieldOffset("AnimeMoveRationDecoB"));
+		set => *(float*)(Inner.Ptr + GetFieldOffset("AnimeMoveRationDecoB")) = value;
+	}
+
+	public unsafe float AnimeMoveRationDecoC
+	{
+		get => *(float*)(Inner.Ptr + GetFieldOffset("AnimeMoveRationDecoC"));
+		set => *(float*)(Inner.Ptr + GetFieldOffset("AnimeMoveRationDecoC")) = value;
+	}
+
+	public unsafe float AnimeMoveRationDecoD
+	{
+		get => *(float*)(Inner.Ptr + GetFieldOffset("AnimeMoveRationDecoD"));
+		set => *(float*)(Inner.Ptr + GetFieldOffset("AnimeMoveRationDecoD")) = value;
+	}
+
+	public unsafe float AnimeMoveRationDecoE
+	{
+		get => *(float*)(Inner.Ptr + GetFieldOffset("AnimeMoveRationDecoE"));
+		set => *(float*)(Inner.Ptr + GetFieldOffset("AnimeMoveRationDecoE")) = value;
+	}
+
+	public unsafe bool isCanKeyInput
+	{
+		get => *(bool*)(Inner.Ptr + GetFieldOffset("isCanKeyInput"));
+		set => *(bool*)(Inner.Ptr + GetFieldOffset("isCanKeyInput")) = value;
+	}
+
+	public unsafe float SprCancelHeight
+	{
+		get => *(float*)(Inner.Ptr + GetFieldOffset("SprCancelHeight"));
+		set => *(float*)(Inner.Ptr + GetFieldOffset("SprCancelHeight")) = value;
+	}
+
+	public unsafe float SprOkHeight
+	{
+		get => *(float*)(Inner.Ptr + GetFieldOffset("SprOkHeight"));
+		set => *(float*)(Inner.Ptr + GetFieldOffset("SprOkHeight")) = value;
+	}
+
+	public unsafe void GuiActorEncountStart()
+	{
+		_ = Inner.ProcessEvent("GuiActorEncountStart", [], out _);
+	}
+
+	public unsafe void DebugOutAnime()
+	{
+		_ = Inner.ProcessEvent("DebugOutAnime", [], out _);
+	}
+
+	public unsafe void DebugInAnime()
+	{
+		_ = Inner.ProcessEvent("DebugInAnime", [], out _);
+	}
+
+	public unsafe void GuiActorUpdate( float DeltaTime)
+	{
+		_ = Inner.ProcessEvent("GuiActorUpdate", [
+			new FloatParam(new(&DeltaTime))
+		], out _);
+	}
+
+	public unsafe void GuiActorUnbindAction()
+	{
+		_ = Inner.ProcessEvent("GuiActorUnbindAction", [], out _);
+	}
+
+	public unsafe void GuiActorBindAction()
+	{
+		_ = Inner.ProcessEvent("GuiActorBindAction", [], out _);
+	}
+
+	public unsafe void GuiActorStateInit( bool flag, int Param)
+	{
+		_ = Inner.ProcessEvent("GuiActorStateInit", [
+			new BoolParam(new(&flag), 255),
+			new IntParam(new(&Param))
+		], out _);
+	}
+
+	public unsafe void CallCANCEL()
+	{
+		_ = Inner.ProcessEvent("CallCANCEL", [], out _);
+	}
+
+	public unsafe void CallOK()
+	{
+		_ = Inner.ProcessEvent("CallOK", [], out _);
+	}
+
+	public unsafe void ChangeStatePromice()
+	{
+		_ = Inner.ProcessEvent("ChangeStatePromice", [], out _);
+	}
+
+	public unsafe void GuiActorBeginPlay()
+	{
+		_ = Inner.ProcessEvent("GuiActorBeginPlay", [], out _);
+	}
+
+	public unsafe void Start_OutAnime_Decide()
+	{
+		_ = Inner.ProcessEvent("Start OutAnime Decide", [], out _);
+	}
+
+	public unsafe void Start_OutAnime()
+	{
+		_ = Inner.ProcessEvent("Start OutAnime", [], out _);
+	}
+
+	public unsafe void Start_In_Anime()
+	{
+		_ = Inner.ProcessEvent("Start In Anime", [], out _);
+	}
+
+	public unsafe void OutAnimeDecide__UpdateFunc()
+	{
+		_ = Inner.ProcessEvent("OutAnimeDecide__UpdateFunc", [], out _);
+	}
+
+	public unsafe void OutAnimeDecide__FinishedFunc()
+	{
+		_ = Inner.ProcessEvent("OutAnimeDecide__FinishedFunc", [], out _);
+	}
+
+	public unsafe void OutAnime__UpdateFunc()
+	{
+		_ = Inner.ProcessEvent("OutAnime__UpdateFunc", [], out _);
+	}
+
+	public unsafe void OutAnime__FinishedFunc()
+	{
+		_ = Inner.ProcessEvent("OutAnime__FinishedFunc", [], out _);
+	}
+
+	public unsafe void InAnime__8__KeyStart__EventFunc()
+	{
+		_ = Inner.ProcessEvent("InAnime__8. KeyStart__EventFunc", [], out _);
+	}
+
+	public unsafe void InAnime__UpdateFunc()
+	{
+		_ = Inner.ProcessEvent("InAnime__UpdateFunc", [], out _);
+	}
+
+	public unsafe void InAnime__FinishedFunc()
+	{
+		_ = Inner.ProcessEvent("InAnime__FinishedFunc", [], out _);
+	}
+
+	public unsafe void UnbindAllAction()
+	{
+		_ = Inner.ProcessEvent("UnbindAllAction", [], out _);
+	}
+
+	public unsafe void CreateRectPrimitive( FVector2D Size, FColor Color, ref TArray<FBtlGuiVertex> NewParam, float CallFunc_BreakVector2D_X, float CallFunc_BreakVector2D_Y, float CallFunc_Divide_FloatFloat_ReturnValue, float CallFunc_Divide_FloatFloat_ReturnValue_1, float CallFunc_Multiply_IntFloat_ReturnValue, FVector2D CallFunc_MakeVector2D_ReturnValue, FVector2D CallFunc_MakeVector2D_ReturnValue_1, FBtlGuiVertex K2Node_MakeStruct_BtlGuiVertex, FBtlGuiVertex K2Node_MakeStruct_BtlGuiVertex_1, float CallFunc_Multiply_IntFloat_ReturnValue_1, FVector2D CallFunc_MakeVector2D_ReturnValue_2, FVector2D CallFunc_MakeVector2D_ReturnValue_3, FBtlGuiVertex K2Node_MakeStruct_BtlGuiVertex_2, FBtlGuiVertex K2Node_MakeStruct_BtlGuiVertex_3, TArray<FBtlGuiVertex> K2Node_MakeArray_Array)
+	{
+		_ = Inner.ProcessEvent("CreateRectPrimitive", [
+			new StructParam(new(&Size), 8),
+			new StructParam(new(&Color), 4),
+			new ArrayParam(new((TArray<int>*)Unsafe.AsPointer(ref NewParam))),
+			new FloatParam(new(&CallFunc_BreakVector2D_X)),
+			new FloatParam(new(&CallFunc_BreakVector2D_Y)),
+			new FloatParam(new(&CallFunc_Divide_FloatFloat_ReturnValue)),
+			new FloatParam(new(&CallFunc_Divide_FloatFloat_ReturnValue_1)),
+			new FloatParam(new(&CallFunc_Multiply_IntFloat_ReturnValue)),
+			new StructParam(new(&CallFunc_MakeVector2D_ReturnValue), 8),
+			new StructParam(new(&CallFunc_MakeVector2D_ReturnValue_1), 8),
+			new StructParam(new(&K2Node_MakeStruct_BtlGuiVertex), 20),
+			new StructParam(new(&K2Node_MakeStruct_BtlGuiVertex_1), 20),
+			new FloatParam(new(&CallFunc_Multiply_IntFloat_ReturnValue_1)),
+			new StructParam(new(&CallFunc_MakeVector2D_ReturnValue_2), 8),
+			new StructParam(new(&CallFunc_MakeVector2D_ReturnValue_3), 8),
+			new StructParam(new(&K2Node_MakeStruct_BtlGuiVertex_2), 20),
+			new StructParam(new(&K2Node_MakeStruct_BtlGuiVertex_3), 20),
+			new ArrayParam(new((TArray<int>*)(&K2Node_MakeArray_Array)))
+		], out _);
+	}
+
+	public unsafe void UpdateAnimation( float CallFunc_Divide_FloatFloat_ReturnValue, float CallFunc_Divide_FloatFloat_ReturnValue_1, FVector2D CallFunc_MakeVector2D_ReturnValue, FVector2D CallFunc_MakeVector2D_ReturnValue_1, float CallFunc_Divide_FloatFloat_ReturnValue_2, FVector2D CallFunc_Lerp_Vector_2D_out, FVector2D CallFunc_MakeVector2D_ReturnValue_2, FVector2D CallFunc_Lerp_Vector_2D_out_1, FVector2D CallFunc_Lerp_Vector_2D_out_2, FVector2D CallFunc_Lerp_Vector_2D_out_3, FVector2D CallFunc_Lerp_Vector_2D_out_4, float CallFunc_Divide_FloatFloat_ReturnValue_3, FVector2D CallFunc_MakeVector2D_ReturnValue_3, float CallFunc_Lerp_ReturnValue, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_1, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_2, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_3, FVector2D CallFunc_Lerp_Vector_2D_out_5, float CallFunc_Multiply_FloatFloat_ReturnValue, FVector2D CallFunc_MakeVector2D_ReturnValue_4, float CallFunc_Multiply_FloatFloat_ReturnValue_1, FVector2D CallFunc_Multiply_Vector2DFloat_ReturnValue, float CallFunc_Multiply_FloatFloat_ReturnValue_2, FVector2D CallFunc_MakeVector2D_ReturnValue_5, FVector2D CallFunc_Multiply_Vector2DFloat_ReturnValue_1, FVector2D CallFunc_MakeVector2D_ReturnValue_6, bool CallFunc_GetInputDecideKeyCross_ReturnValue, FVector2D CallFunc_Multiply_Vector2DFloat_ReturnValue_2, FVector2D CallFunc_MakeVector2D_ReturnValue_7, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_4, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_5, FVector2D CallFunc_MakeVector2D_ReturnValue_8, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_6, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_7, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_8, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_9, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_10, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_11, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_12, FVector2D CallFunc_MakeVector2D_ReturnValue_9, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_13, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_14, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_15, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_16, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_17, FVector2D CallFunc_MakeVector2D_ReturnValue_10, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_18, float CallFunc_Multiply_FloatFloat_ReturnValue_3, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_19, float CallFunc_Multiply_FloatFloat_ReturnValue_4, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_20, FVector2D CallFunc_MakeVector2D_ReturnValue_11, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_21, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_22, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_23, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_24, FVector2D CallFunc_MakeVector2D_ReturnValue_12, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_25, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_26, FVector2D CallFunc_MakeVector2D_ReturnValue_13, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_27, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_28, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_29, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_30, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_31, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_32, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_33, FVector2D CallFunc_MakeVector2D_ReturnValue_14, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_34, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_35, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_36, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_37, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_38, FVector2D CallFunc_MakeVector2D_ReturnValue_15, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_39, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_40, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_41, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_42)
+	{
+		_ = Inner.ProcessEvent("UpdateAnimation", [
+			new FloatParam(new(&CallFunc_Divide_FloatFloat_ReturnValue)),
+			new FloatParam(new(&CallFunc_Divide_FloatFloat_ReturnValue_1)),
+			new StructParam(new(&CallFunc_MakeVector2D_ReturnValue), 8),
+			new StructParam(new(&CallFunc_MakeVector2D_ReturnValue_1), 8),
+			new FloatParam(new(&CallFunc_Divide_FloatFloat_ReturnValue_2)),
+			new StructParam(new(&CallFunc_Lerp_Vector_2D_out), 8),
+			new StructParam(new(&CallFunc_MakeVector2D_ReturnValue_2), 8),
+			new StructParam(new(&CallFunc_Lerp_Vector_2D_out_1), 8),
+			new StructParam(new(&CallFunc_Lerp_Vector_2D_out_2), 8),
+			new StructParam(new(&CallFunc_Lerp_Vector_2D_out_3), 8),
+			new StructParam(new(&CallFunc_Lerp_Vector_2D_out_4), 8),
+			new FloatParam(new(&CallFunc_Divide_FloatFloat_ReturnValue_3)),
+			new StructParam(new(&CallFunc_MakeVector2D_ReturnValue_3), 8),
+			new FloatParam(new(&CallFunc_Lerp_ReturnValue)),
+			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue), 8),
+			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_1), 8),
+			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_2), 8),
+			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_3), 8),
+			new StructParam(new(&CallFunc_Lerp_Vector_2D_out_5), 8),
+			new FloatParam(new(&CallFunc_Multiply_FloatFloat_ReturnValue)),
+			new StructParam(new(&CallFunc_MakeVector2D_ReturnValue_4), 8),
+			new FloatParam(new(&CallFunc_Multiply_FloatFloat_ReturnValue_1)),
+			new StructParam(new(&CallFunc_Multiply_Vector2DFloat_ReturnValue), 8),
+			new FloatParam(new(&CallFunc_Multiply_FloatFloat_ReturnValue_2)),
+			new StructParam(new(&CallFunc_MakeVector2D_ReturnValue_5), 8),
+			new StructParam(new(&CallFunc_Multiply_Vector2DFloat_ReturnValue_1), 8),
+			new StructParam(new(&CallFunc_MakeVector2D_ReturnValue_6), 8),
+			new BoolParam(new(&CallFunc_GetInputDecideKeyCross_ReturnValue), 255),
+			new StructParam(new(&CallFunc_Multiply_Vector2DFloat_ReturnValue_2), 8),
+			new StructParam(new(&CallFunc_MakeVector2D_ReturnValue_7), 8),
+			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_4), 8),
+			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_5), 8),
+			new StructParam(new(&CallFunc_MakeVector2D_ReturnValue_8), 8),
+			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_6), 8),
+			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_7), 8),
+			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_8), 8),
+			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_9), 8),
+			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_10), 8),
+			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_11), 8),
+			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_12), 8),
+			new StructParam(new(&CallFunc_MakeVector2D_ReturnValue_9), 8),
+			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_13), 8),
+			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_14), 8),
+			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_15), 8),
+			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_16), 8),
+			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_17), 8),
+			new StructParam(new(&CallFunc_MakeVector2D_ReturnValue_10), 8),
+			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_18), 8),
+			new FloatParam(new(&CallFunc_Multiply_FloatFloat_ReturnValue_3)),
+			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_19), 8),
+			new FloatParam(new(&CallFunc_Multiply_FloatFloat_ReturnValue_4)),
+			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_20), 8),
+			new StructParam(new(&CallFunc_MakeVector2D_ReturnValue_11), 8),
+			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_21), 8),
+			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_22), 8),
+			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_23), 8),
+			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_24), 8),
+			new StructParam(new(&CallFunc_MakeVector2D_ReturnValue_12), 8),
+			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_25), 8),
+			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_26), 8),
+			new StructParam(new(&CallFunc_MakeVector2D_ReturnValue_13), 8),
+			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_27), 8),
+			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_28), 8),
+			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_29), 8),
+			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_30), 8),
+			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_31), 8),
+			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_32), 8),
+			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_33), 8),
+			new StructParam(new(&CallFunc_MakeVector2D_ReturnValue_14), 8),
+			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_34), 8),
+			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_35), 8),
+			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_36), 8),
+			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_37), 8),
+			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_38), 8),
+			new StructParam(new(&CallFunc_MakeVector2D_ReturnValue_15), 8),
+			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_39), 8),
+			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_40), 8),
+			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_41), 8),
+			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_42), 8)
+		], out _);
+	}
+
+	public unsafe void ChangeColorButton( FColor ColorButtonCross, FColor ColorButtonCircle, bool Temp_bool_Variable, bool Temp_bool_Variable_1, bool Temp_bool_Variable_2, FColor CallFunc_GetPlatFormButtonColor_ReturnValue, FColor CallFunc_GetPlatFormButtonColor_ReturnValue_1, FColor K2Node_MakeStruct_Color, FColor K2Node_MakeStruct_Color_1, FColor K2Node_MakeStruct_Color_2, FColor K2Node_Select_Default, bool Temp_bool_Variable_3, FColor K2Node_Select_Default_1, FColor K2Node_MakeStruct_Color_3, FColor K2Node_MakeStruct_Color_4, FColor K2Node_MakeStruct_Color_5, FColor K2Node_Select_Default_2, FColor CallFunc_GetPlatFormButtonColor_ReturnValue_2, FColor K2Node_Select_Default_3, bool CallFunc_GetInputDecideKeyCross_ReturnValue)
+	{
+		_ = Inner.ProcessEvent("ChangeColorButton", [
+			new StructParam(new(&ColorButtonCross), 4),
+			new StructParam(new(&ColorButtonCircle), 4),
+			new BoolParam(new(&Temp_bool_Variable), 255),
+			new BoolParam(new(&Temp_bool_Variable_1), 255),
+			new BoolParam(new(&Temp_bool_Variable_2), 255),
+			new StructParam(new(&CallFunc_GetPlatFormButtonColor_ReturnValue), 4),
+			new StructParam(new(&CallFunc_GetPlatFormButtonColor_ReturnValue_1), 4),
+			new StructParam(new(&K2Node_MakeStruct_Color), 4),
+			new StructParam(new(&K2Node_MakeStruct_Color_1), 4),
+			new StructParam(new(&K2Node_MakeStruct_Color_2), 4),
+			new StructParam(new(&K2Node_Select_Default), 4),
+			new BoolParam(new(&Temp_bool_Variable_3), 255),
+			new StructParam(new(&K2Node_Select_Default_1), 4),
+			new StructParam(new(&K2Node_MakeStruct_Color_3), 4),
+			new StructParam(new(&K2Node_MakeStruct_Color_4), 4),
+			new StructParam(new(&K2Node_MakeStruct_Color_5), 4),
+			new StructParam(new(&K2Node_Select_Default_2), 4),
+			new StructParam(new(&CallFunc_GetPlatFormButtonColor_ReturnValue_2), 4),
+			new StructParam(new(&K2Node_Select_Default_3), 4),
+			new BoolParam(new(&CallFunc_GetInputDecideKeyCross_ReturnValue), 255)
+		], out _);
+	}
+
+	public unsafe void InitCancelAvaialble( FBtlEncountParam CallFunc_GetEncountParamForBP_ReturnValue, bool CallFunc_EqualEqual_IntInt_ReturnValue)
+	{
+		_ = Inner.ProcessEvent("InitCancelAvaialble", [
+			new StructParam(new(&CallFunc_GetEncountParamForBP_ReturnValue), 36),
+			new BoolParam(new(&CallFunc_EqualEqual_IntInt_ReturnValue), 255)
+		], out _);
+	}
+
+	public unsafe void ActionEnd()
+	{
+		_ = Inner.ProcessEvent("ActionEnd", [], out _);
+	}
+
+	public unsafe void Lerp_Vector_2D( FVector2D From, FVector2D To, float Value, ref FVector2D Out, float CallFunc_BreakVector2D_X, float CallFunc_BreakVector2D_Y, float CallFunc_BreakVector2D_X_1, float CallFunc_BreakVector2D_Y_1, float CallFunc_Lerp_ReturnValue, float CallFunc_Lerp_ReturnValue_1, FVector2D CallFunc_MakeVector2D_ReturnValue)
+	{
+		_ = Inner.ProcessEvent("Lerp Vector 2D", [
+			new StructParam(new(&From), 8),
+			new StructParam(new(&To), 8),
+			new FloatParam(new(&Value)),
+			new StructParam(new((FVector2D*)Unsafe.AsPointer(ref Out)), 8),
+			new FloatParam(new(&CallFunc_BreakVector2D_X)),
+			new FloatParam(new(&CallFunc_BreakVector2D_Y)),
+			new FloatParam(new(&CallFunc_BreakVector2D_X_1)),
+			new FloatParam(new(&CallFunc_BreakVector2D_Y_1)),
+			new FloatParam(new(&CallFunc_Lerp_ReturnValue)),
+			new FloatParam(new(&CallFunc_Lerp_ReturnValue_1)),
+			new StructParam(new(&CallFunc_MakeVector2D_ReturnValue), 8)
+		], out _);
+	}
+
+	public unsafe void EnableKeyInput()
+	{
+		_ = Inner.ProcessEvent("EnableKeyInput", [], out _);
+	}
+
+	public unsafe void ActionDecide()
+	{
+		_ = Inner.ProcessEvent("ActionDecide", [], out _);
+	}
+
+	public unsafe void RefrectLocalizeData( float CallFunc_Divide_FloatFloat_ReturnValue, bool CallFunc_IsLayoutDebugMenuOpen_ReturnValue, FVector2D CallFunc_MakeVector2D_ReturnValue, FVector2D CallFunc_MakeVector2D_ReturnValue_1, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_1, float CallFunc_Divide_FloatFloat_ReturnValue_1, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_2, FVector2D CallFunc_MakeVector2D_ReturnValue_2, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_3, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_4, FVector2D CallFunc_MakeVector2D_ReturnValue_3, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_5, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_6, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_7, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_8, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_9, FVector2D CallFunc_GetPromiseAdjustedPosition_ReturnValue, FVector2D CallFunc_GetPromiseAdjustedPosition_ReturnValue_1, FVector2D CallFunc_GetPromiseAdjustedPosition_ReturnValue_2, FVector2D CallFunc_GetPromiseAdjustedPosition_ReturnValue_3, bool CallFunc_GetInputDecideKeyCross_ReturnValue)
+	{
+		_ = Inner.ProcessEvent("RefrectLocalizeData", [
+			new FloatParam(new(&CallFunc_Divide_FloatFloat_ReturnValue)),
+			new BoolParam(new(&CallFunc_IsLayoutDebugMenuOpen_ReturnValue), 255),
+			new StructParam(new(&CallFunc_MakeVector2D_ReturnValue), 8),
+			new StructParam(new(&CallFunc_MakeVector2D_ReturnValue_1), 8),
+			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue), 8),
+			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_1), 8),
+			new FloatParam(new(&CallFunc_Divide_FloatFloat_ReturnValue_1)),
+			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_2), 8),
+			new StructParam(new(&CallFunc_MakeVector2D_ReturnValue_2), 8),
+			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_3), 8),
+			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_4), 8),
+			new StructParam(new(&CallFunc_MakeVector2D_ReturnValue_3), 8),
+			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_5), 8),
+			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_6), 8),
+			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_7), 8),
+			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_8), 8),
+			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_9), 8),
+			new StructParam(new(&CallFunc_GetPromiseAdjustedPosition_ReturnValue), 8),
+			new StructParam(new(&CallFunc_GetPromiseAdjustedPosition_ReturnValue_1), 8),
+			new StructParam(new(&CallFunc_GetPromiseAdjustedPosition_ReturnValue_2), 8),
+			new StructParam(new(&CallFunc_GetPromiseAdjustedPosition_ReturnValue_3), 8),
+			new BoolParam(new(&CallFunc_GetInputDecideKeyCross_ReturnValue), 255)
+		], out _);
+	}
+
+}
+
+[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0x4F8)]
+public unsafe struct ABP_BtlPromiseCommon_C_Repr
+{
+	[FieldOffset(0x0)] public ABP_BtlGuiBaseActor_C_Repr Super; // Size: 0x34D
+	[FieldOffset(0x350)] public FPointerToUberGraphFrame UberGraphFrame; // Size: 0x8
+	[FieldOffset(0x358)] public UBtlDataBaseComponent_Repr* BtlDataBase; // Size: 0x8
+	[FieldOffset(0x360)] public UBtlGuiPromiseComponent_Repr* BtlGuiPromise; // Size: 0x8
+	[FieldOffset(0x368)] public UBtlGuiResources_Repr* BtlGuiResources; // Size: 0x8
+	[FieldOffset(0x370)] public UBtlGuiDrawComponent_Repr* BtlGuiDraw; // Size: 0x8
+	[FieldOffset(0x378)] public float InAnime7Move; // Size: 0x4
+	[FieldOffset(0x37C)] public float InAnime6Move; // Size: 0x4
+	[FieldOffset(0x380)] public float InAnime5Move; // Size: 0x4
+	[FieldOffset(0x384)] public float InAnime4Move; // Size: 0x4
+	[FieldOffset(0x388)] public float InAnime3Move; // Size: 0x4
+	[FieldOffset(0x38C)] public float InAnime2; // Size: 0x4
+	[FieldOffset(0x390)] public float InAnime1; // Size: 0x4
+	[FieldOffset(0x394)] public ETimelineDirection InAnime_8; // Size: 0x1
+	[FieldOffset(0x398)] public UTimelineComponent_Repr* InAnime_9; // Size: 0x8
+	[FieldOffset(0x3A0)] public float OutAnime3CancelIcon; // Size: 0x4
+	[FieldOffset(0x3A4)] public float OutAnime2Icons; // Size: 0x4
+	[FieldOffset(0x3A8)] public float OutAnime1; // Size: 0x4
+	[FieldOffset(0x3AC)] public ETimelineDirection OutAnime_4; // Size: 0x1
+	[FieldOffset(0x3B0)] public UTimelineComponent_Repr* outAnime; // Size: 0x8
+	[FieldOffset(0x3B8)] public float OutAnimeDecide1DecideIcon; // Size: 0x4
+	[FieldOffset(0x3BC)] public ETimelineDirection OutAnimeDecide_2; // Size: 0x1
+	[FieldOffset(0x3C0)] public UTimelineComponent_Repr* OutAnimeDecide_3; // Size: 0x8
+	[FieldOffset(0x3C8)] public byte PromiseTpye; // Size: 0x1
+	[FieldOffset(0x3CC)] public FVector2D PosBaseA; // Size: 0x8
+	[FieldOffset(0x3D8)] public TArray<FBtlGuiVertex> vertex; // Size: 0x10
+	[FieldOffset(0x3E8)] public FVector2D TextPos; // Size: 0x8
+	[FieldOffset(0x3F0)] public UBtlGuiDrawObjectPlg_Repr* TextPLG; // Size: 0x8
+	[FieldOffset(0x3F8)] public float InAnimeTextRation; // Size: 0x4
+	[FieldOffset(0x400)] public UBtlGuiDrawObjectPrimitive_Repr* RectBackOld; // Size: 0x8
+	[FieldOffset(0x408)] public UBtlGuiDrawObjectPrimitive_Repr* RectBlack; // Size: 0x8
+	[FieldOffset(0x410)] public float InAnimeIconMove; // Size: 0x4
+	[FieldOffset(0x414)] public FVector2D CircleIconDif; // Size: 0x8
+	[FieldOffset(0x41C)] public FVector2D CrosslIconDif; // Size: 0x8
+	[FieldOffset(0x424)] public FVector2D CancelTextOffset; // Size: 0x8
+	[FieldOffset(0x42C)] public FVector2D OkTextOffset; // Size: 0x8
+	[FieldOffset(0x438)] public UBtlGuiDrawObjectSprite_Repr* SpriteCircleIcon; // Size: 0x8
+	[FieldOffset(0x440)] public UBtlGuiDrawObjectSprite_Repr* SpriteCrossIcon; // Size: 0x8
+	[FieldOffset(0x448)] public UBtlGuiDrawObjectSprite_Repr* SpriteOKText; // Size: 0x8
+	[FieldOffset(0x450)] public UBtlGuiDrawObjectSprite_Repr* SpriteCancelText; // Size: 0x8
+	[FieldOffset(0x458)] public float CancelIconScaleValue; // Size: 0x4
+	[FieldOffset(0x45C)] public FVector2D IconGroupPosDif; // Size: 0x8
+	[FieldOffset(0x464)] public bool isStartAnimation; // Size: 0x1
+	[FieldOffset(0x465)] public bool isFastInput; // Size: 0x1
+	[FieldOffset(0x466)] public bool isUnableCancel; // Size: 0x1
+	[FieldOffset(0x468)] public FColor ColorCancelIcon; // Size: 0x4
+	[FieldOffset(0x46C)] public FColor ColorCancelText; // Size: 0x4
+	[FieldOffset(0x470)] public UBtlGuiDrawObjectSprite_Repr* SprAlloutMsg1; // Size: 0x8
+	[FieldOffset(0x478)] public UBtlGuiDrawObjectSprite_Repr* SprAlloutMsg2; // Size: 0x8
+	[FieldOffset(0x480)] public UBtlGuiDrawObjectPrimitive_Repr* PrimiDecoA; // Size: 0x8
+	[FieldOffset(0x488)] public UBtlGuiDrawObjectPrimitive_Repr* PrimiDecoB; // Size: 0x8
+	[FieldOffset(0x490)] public UBtlGuiDrawObjectPrimitive_Repr* PtimiDecoC; // Size: 0x8
+	[FieldOffset(0x498)] public UBtlGuiDrawObjectPrimitive_Repr* PrimiDecoD; // Size: 0x8
+	[FieldOffset(0x4A0)] public UBtlGuiDrawObjectPrimitive_Repr* PrimiDecoE; // Size: 0x8
+	[FieldOffset(0x4A8)] public UBtlGuiDrawObjectPlg_Repr* TextMaskPLG; // Size: 0x8
+	[FieldOffset(0x4B0)] public UBtlGuiDrawObjectPrimitive_Repr* RectBack2; // Size: 0x8
+	[FieldOffset(0x4B8)] public float ScaleBaseCrossButton; // Size: 0x4
+	[FieldOffset(0x4BC)] public float ScaleBaseText; // Size: 0x4
+	[FieldOffset(0x4C0)] public float ParamScaleRationCancel; // Size: 0x4
+	[FieldOffset(0x4C4)] public float ScaleBaseCircleButton; // Size: 0x4
+	[FieldOffset(0x4C8)] public FVector2D MoveVec; // Size: 0x8
+	[FieldOffset(0x4D0)] public float DecideIconScaleValue; // Size: 0x4
+	[FieldOffset(0x4D4)] public float AlphaPlate; // Size: 0x4
+	[FieldOffset(0x4D8)] public float AnimeMoveRationDecoA; // Size: 0x4
+	[FieldOffset(0x4DC)] public float AnimeMoveRationDecoB; // Size: 0x4
+	[FieldOffset(0x4E0)] public float AnimeMoveRationDecoC; // Size: 0x4
+	[FieldOffset(0x4E4)] public float AnimeMoveRationDecoD; // Size: 0x4
+	[FieldOffset(0x4E8)] public float AnimeMoveRationDecoE; // Size: 0x4
+	[FieldOffset(0x4EC)] public bool isCanKeyInput; // Size: 0x1
+	[FieldOffset(0x4F0)] public float SprCancelHeight; // Size: 0x4
+	[FieldOffset(0x4F4)] public float SprOkHeight; // Size: 0x4
+
+	public ABP_BtlPromiseCommon_C ToManaged(IUnrealFactory factory)
+	{
+		fixed (ABP_BtlPromiseCommon_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
+	}
+}
+
+
 public class ABP_BtlTargetInfo_C : ABP_BtlGuiBaseActor_C, ITypeRepr<ABP_BtlTargetInfo_C_Repr>
 {
 	private static Dictionary<string, int>? FieldOffsets;
@@ -345640,1130 +346497,6 @@ public unsafe struct ABP_BtlTargetInfo_C_Repr
 }
 
 
-public class ABP_BtlPromiseCommon_C : ABP_BtlGuiBaseActor_C, ITypeRepr<ABP_BtlPromiseCommon_C_Repr>
-{
-	private static Dictionary<string, int>? FieldOffsets;
-	public ABP_BtlPromiseCommon_C(IUObject inner, bool genOffsets = true) : base(inner, false)
-	{
-		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
-	}
-
-	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
-
-	public new unsafe ABP_BtlPromiseCommon_C_Repr* Repr => (ABP_BtlPromiseCommon_C_Repr*)Inner.Ptr;
-
-	public unsafe FPointerToUberGraphFrame* UberGraphFrame
-	{
-		get => (FPointerToUberGraphFrame*)(Inner.Ptr + GetFieldOffset("UberGraphFrame"));
-	}
-
-	public unsafe UBtlDataBaseComponent? BtlDataBase
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("BtlDataBase")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("BtlDataBase")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("BtlDataBase")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe UBtlGuiPromiseComponent? BtlGuiPromise
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("BtlGuiPromise")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("BtlGuiPromise")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("BtlGuiPromise")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe UBtlGuiResources? BtlGuiResources
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("BtlGuiResources")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("BtlGuiResources")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("BtlGuiResources")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe UBtlGuiDrawComponent? BtlGuiDraw
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("BtlGuiDraw")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("BtlGuiDraw")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("BtlGuiDraw")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe float InAnime7Move
-	{
-		get => *(float*)(Inner.Ptr + GetFieldOffset("InAnime_7__Move_DecoE_D333EF394107C49F9849A7A0790C13C5"));
-		set => *(float*)(Inner.Ptr + GetFieldOffset("InAnime_7__Move_DecoE_D333EF394107C49F9849A7A0790C13C5")) = value;
-	}
-
-	public unsafe float InAnime6Move
-	{
-		get => *(float*)(Inner.Ptr + GetFieldOffset("InAnime_6__Move_DecoD_D333EF394107C49F9849A7A0790C13C5"));
-		set => *(float*)(Inner.Ptr + GetFieldOffset("InAnime_6__Move_DecoD_D333EF394107C49F9849A7A0790C13C5")) = value;
-	}
-
-	public unsafe float InAnime5Move
-	{
-		get => *(float*)(Inner.Ptr + GetFieldOffset("InAnime_5__Move_DecoC_D333EF394107C49F9849A7A0790C13C5"));
-		set => *(float*)(Inner.Ptr + GetFieldOffset("InAnime_5__Move_DecoC_D333EF394107C49F9849A7A0790C13C5")) = value;
-	}
-
-	public unsafe float InAnime4Move
-	{
-		get => *(float*)(Inner.Ptr + GetFieldOffset("InAnime_4__Move_DecoB_D333EF394107C49F9849A7A0790C13C5"));
-		set => *(float*)(Inner.Ptr + GetFieldOffset("InAnime_4__Move_DecoB_D333EF394107C49F9849A7A0790C13C5")) = value;
-	}
-
-	public unsafe float InAnime3Move
-	{
-		get => *(float*)(Inner.Ptr + GetFieldOffset("InAnime_3__Move_DecoA_D333EF394107C49F9849A7A0790C13C5"));
-		set => *(float*)(Inner.Ptr + GetFieldOffset("InAnime_3__Move_DecoA_D333EF394107C49F9849A7A0790C13C5")) = value;
-	}
-
-	public unsafe float InAnime2
-	{
-		get => *(float*)(Inner.Ptr + GetFieldOffset("InAnime_2__IcomsMove_D333EF394107C49F9849A7A0790C13C5"));
-		set => *(float*)(Inner.Ptr + GetFieldOffset("InAnime_2__IcomsMove_D333EF394107C49F9849A7A0790C13C5")) = value;
-	}
-
-	public unsafe float InAnime1
-	{
-		get => *(float*)(Inner.Ptr + GetFieldOffset("InAnime_1__FrameMove_D333EF394107C49F9849A7A0790C13C5"));
-		set => *(float*)(Inner.Ptr + GetFieldOffset("InAnime_1__FrameMove_D333EF394107C49F9849A7A0790C13C5")) = value;
-	}
-
-	public unsafe ETimelineDirection InAnime_8
-	{
-		get => *(ETimelineDirection*)(Inner.Ptr + GetFieldOffset("InAnime__Direction_D333EF394107C49F9849A7A0790C13C5"));
-		set => *(ETimelineDirection*)(Inner.Ptr + GetFieldOffset("InAnime__Direction_D333EF394107C49F9849A7A0790C13C5")) = value;
-	}
-
-	public unsafe UTimelineComponent? InAnime_9
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("InAnime")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("InAnime")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("InAnime")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe float OutAnime3CancelIcon
-	{
-		get => *(float*)(Inner.Ptr + GetFieldOffset("OutAnime_3__Cancel_Icon_Scale_F1AF48B645A7B2D06DFF999B026E4BC1"));
-		set => *(float*)(Inner.Ptr + GetFieldOffset("OutAnime_3__Cancel_Icon_Scale_F1AF48B645A7B2D06DFF999B026E4BC1")) = value;
-	}
-
-	public unsafe float OutAnime2Icons
-	{
-		get => *(float*)(Inner.Ptr + GetFieldOffset("OutAnime_2__Icons_Move_F1AF48B645A7B2D06DFF999B026E4BC1"));
-		set => *(float*)(Inner.Ptr + GetFieldOffset("OutAnime_2__Icons_Move_F1AF48B645A7B2D06DFF999B026E4BC1")) = value;
-	}
-
-	public unsafe float OutAnime1
-	{
-		get => *(float*)(Inner.Ptr + GetFieldOffset("OutAnime_1_FrameMove_F1AF48B645A7B2D06DFF999B026E4BC1"));
-		set => *(float*)(Inner.Ptr + GetFieldOffset("OutAnime_1_FrameMove_F1AF48B645A7B2D06DFF999B026E4BC1")) = value;
-	}
-
-	public unsafe ETimelineDirection OutAnime_4
-	{
-		get => *(ETimelineDirection*)(Inner.Ptr + GetFieldOffset("OutAnime__Direction_F1AF48B645A7B2D06DFF999B026E4BC1"));
-		set => *(ETimelineDirection*)(Inner.Ptr + GetFieldOffset("OutAnime__Direction_F1AF48B645A7B2D06DFF999B026E4BC1")) = value;
-	}
-
-	public unsafe UTimelineComponent? outAnime
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("outAnime")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("outAnime")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("outAnime")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe float OutAnimeDecide1DecideIcon
-	{
-		get => *(float*)(Inner.Ptr + GetFieldOffset("OutAnimeDecide_1_Decide_Icon_Scale_79DD18AB4766FF1CEC498BA2DD854C49"));
-		set => *(float*)(Inner.Ptr + GetFieldOffset("OutAnimeDecide_1_Decide_Icon_Scale_79DD18AB4766FF1CEC498BA2DD854C49")) = value;
-	}
-
-	public unsafe ETimelineDirection OutAnimeDecide_2
-	{
-		get => *(ETimelineDirection*)(Inner.Ptr + GetFieldOffset("OutAnimeDecide__Direction_79DD18AB4766FF1CEC498BA2DD854C49"));
-		set => *(ETimelineDirection*)(Inner.Ptr + GetFieldOffset("OutAnimeDecide__Direction_79DD18AB4766FF1CEC498BA2DD854C49")) = value;
-	}
-
-	public unsafe UTimelineComponent? OutAnimeDecide_3
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("OutAnimeDecide")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("OutAnimeDecide")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("OutAnimeDecide")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe byte PromiseTpye
-	{
-		get => *(byte*)(Inner.Ptr + GetFieldOffset("PromiseTpye"));
-		set => *(byte*)(Inner.Ptr + GetFieldOffset("PromiseTpye")) = value;
-	}
-
-	public unsafe FVector2D* PosBaseA
-	{
-		get => (FVector2D*)(Inner.Ptr + GetFieldOffset("PosBaseA"));
-	}
-
-	public unsafe TArray<FBtlGuiVertex>* vertex
-	{
-		get => (TArray<FBtlGuiVertex>*)(Inner.Ptr + GetFieldOffset("vertex"));
-	}
-
-	public unsafe FVector2D* TextPos
-	{
-		get => (FVector2D*)(Inner.Ptr + GetFieldOffset("TextPos"));
-	}
-
-	public unsafe UBtlGuiDrawObjectPlg? TextPLG
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("TextPLG")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("TextPLG")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("TextPLG")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe float InAnimeTextRation
-	{
-		get => *(float*)(Inner.Ptr + GetFieldOffset("InAnimeTextRation"));
-		set => *(float*)(Inner.Ptr + GetFieldOffset("InAnimeTextRation")) = value;
-	}
-
-	public unsafe UBtlGuiDrawObjectPrimitive? RectBackOld
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("RectBackOld")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("RectBackOld")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("RectBackOld")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe UBtlGuiDrawObjectPrimitive? RectBlack
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("RectBlack")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("RectBlack")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("RectBlack")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe float InAnimeIconMove
-	{
-		get => *(float*)(Inner.Ptr + GetFieldOffset("InAnimeIconMove"));
-		set => *(float*)(Inner.Ptr + GetFieldOffset("InAnimeIconMove")) = value;
-	}
-
-	public unsafe FVector2D* CircleIconDif
-	{
-		get => (FVector2D*)(Inner.Ptr + GetFieldOffset("CircleIconDif"));
-	}
-
-	public unsafe FVector2D* CrosslIconDif
-	{
-		get => (FVector2D*)(Inner.Ptr + GetFieldOffset("CrosslIconDif"));
-	}
-
-	public unsafe FVector2D* CancelTextOffset
-	{
-		get => (FVector2D*)(Inner.Ptr + GetFieldOffset("CancelTextOffset"));
-	}
-
-	public unsafe FVector2D* OkTextOffset
-	{
-		get => (FVector2D*)(Inner.Ptr + GetFieldOffset("OkTextOffset"));
-	}
-
-	public unsafe UBtlGuiDrawObjectSprite? SpriteCircleIcon
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("SpriteCircleIcon")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SpriteCircleIcon")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("SpriteCircleIcon")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe UBtlGuiDrawObjectSprite? SpriteCrossIcon
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("SpriteCrossIcon")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SpriteCrossIcon")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("SpriteCrossIcon")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe UBtlGuiDrawObjectSprite? SpriteOKText
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("SpriteOKText")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SpriteOKText")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("SpriteOKText")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe UBtlGuiDrawObjectSprite? SpriteCancelText
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("SpriteCancelText")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SpriteCancelText")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("SpriteCancelText")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe float CancelIconScaleValue
-	{
-		get => *(float*)(Inner.Ptr + GetFieldOffset("CancelIconScaleValue"));
-		set => *(float*)(Inner.Ptr + GetFieldOffset("CancelIconScaleValue")) = value;
-	}
-
-	public unsafe FVector2D* IconGroupPosDif
-	{
-		get => (FVector2D*)(Inner.Ptr + GetFieldOffset("IconGroupPosDif"));
-	}
-
-	public unsafe bool isStartAnimation
-	{
-		get => *(bool*)(Inner.Ptr + GetFieldOffset("isStartAnimation"));
-		set => *(bool*)(Inner.Ptr + GetFieldOffset("isStartAnimation")) = value;
-	}
-
-	public unsafe bool isFastInput
-	{
-		get => *(bool*)(Inner.Ptr + GetFieldOffset("isFastInput"));
-		set => *(bool*)(Inner.Ptr + GetFieldOffset("isFastInput")) = value;
-	}
-
-	public unsafe bool isUnableCancel
-	{
-		get => *(bool*)(Inner.Ptr + GetFieldOffset("isUnableCancel"));
-		set => *(bool*)(Inner.Ptr + GetFieldOffset("isUnableCancel")) = value;
-	}
-
-	public unsafe FColor* ColorCancelIcon
-	{
-		get => (FColor*)(Inner.Ptr + GetFieldOffset("ColorCancelIcon"));
-	}
-
-	public unsafe FColor* ColorCancelText
-	{
-		get => (FColor*)(Inner.Ptr + GetFieldOffset("ColorCancelText"));
-	}
-
-	public unsafe UBtlGuiDrawObjectSprite? SprAlloutMsg1
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("SprAlloutMsg1")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SprAlloutMsg1")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("SprAlloutMsg1")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe UBtlGuiDrawObjectSprite? SprAlloutMsg2
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("SprAlloutMsg2")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("SprAlloutMsg2")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("SprAlloutMsg2")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe UBtlGuiDrawObjectPrimitive? PrimiDecoA
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("PrimiDecoA")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("PrimiDecoA")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("PrimiDecoA")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe UBtlGuiDrawObjectPrimitive? PrimiDecoB
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("PrimiDecoB")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("PrimiDecoB")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("PrimiDecoB")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe UBtlGuiDrawObjectPrimitive? PtimiDecoC
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("PtimiDecoC")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("PtimiDecoC")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("PtimiDecoC")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe UBtlGuiDrawObjectPrimitive? PrimiDecoD
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("PrimiDecoD")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("PrimiDecoD")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("PrimiDecoD")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe UBtlGuiDrawObjectPrimitive? PrimiDecoE
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("PrimiDecoE")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("PrimiDecoE")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("PrimiDecoE")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe UBtlGuiDrawObjectPlg? TextMaskPLG
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("TextMaskPLG")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("TextMaskPLG")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("TextMaskPLG")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe UBtlGuiDrawObjectPrimitive? RectBack2
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("RectBack2")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("RectBack2")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("RectBack2")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe float ScaleBaseCrossButton
-	{
-		get => *(float*)(Inner.Ptr + GetFieldOffset("ScaleBaseCrossButton"));
-		set => *(float*)(Inner.Ptr + GetFieldOffset("ScaleBaseCrossButton")) = value;
-	}
-
-	public unsafe float ScaleBaseText
-	{
-		get => *(float*)(Inner.Ptr + GetFieldOffset("ScaleBaseText"));
-		set => *(float*)(Inner.Ptr + GetFieldOffset("ScaleBaseText")) = value;
-	}
-
-	public unsafe float ParamScaleRationCancel
-	{
-		get => *(float*)(Inner.Ptr + GetFieldOffset("ParamScaleRationCancel"));
-		set => *(float*)(Inner.Ptr + GetFieldOffset("ParamScaleRationCancel")) = value;
-	}
-
-	public unsafe float ScaleBaseCircleButton
-	{
-		get => *(float*)(Inner.Ptr + GetFieldOffset("ScaleBaseCircleButton"));
-		set => *(float*)(Inner.Ptr + GetFieldOffset("ScaleBaseCircleButton")) = value;
-	}
-
-	public unsafe FVector2D* MoveVec
-	{
-		get => (FVector2D*)(Inner.Ptr + GetFieldOffset("MoveVec"));
-	}
-
-	public unsafe float DecideIconScaleValue
-	{
-		get => *(float*)(Inner.Ptr + GetFieldOffset("DecideIconScaleValue"));
-		set => *(float*)(Inner.Ptr + GetFieldOffset("DecideIconScaleValue")) = value;
-	}
-
-	public unsafe float AlphaPlate
-	{
-		get => *(float*)(Inner.Ptr + GetFieldOffset("AlphaPlate"));
-		set => *(float*)(Inner.Ptr + GetFieldOffset("AlphaPlate")) = value;
-	}
-
-	public unsafe float AnimeMoveRationDecoA
-	{
-		get => *(float*)(Inner.Ptr + GetFieldOffset("AnimeMoveRationDecoA"));
-		set => *(float*)(Inner.Ptr + GetFieldOffset("AnimeMoveRationDecoA")) = value;
-	}
-
-	public unsafe float AnimeMoveRationDecoB
-	{
-		get => *(float*)(Inner.Ptr + GetFieldOffset("AnimeMoveRationDecoB"));
-		set => *(float*)(Inner.Ptr + GetFieldOffset("AnimeMoveRationDecoB")) = value;
-	}
-
-	public unsafe float AnimeMoveRationDecoC
-	{
-		get => *(float*)(Inner.Ptr + GetFieldOffset("AnimeMoveRationDecoC"));
-		set => *(float*)(Inner.Ptr + GetFieldOffset("AnimeMoveRationDecoC")) = value;
-	}
-
-	public unsafe float AnimeMoveRationDecoD
-	{
-		get => *(float*)(Inner.Ptr + GetFieldOffset("AnimeMoveRationDecoD"));
-		set => *(float*)(Inner.Ptr + GetFieldOffset("AnimeMoveRationDecoD")) = value;
-	}
-
-	public unsafe float AnimeMoveRationDecoE
-	{
-		get => *(float*)(Inner.Ptr + GetFieldOffset("AnimeMoveRationDecoE"));
-		set => *(float*)(Inner.Ptr + GetFieldOffset("AnimeMoveRationDecoE")) = value;
-	}
-
-	public unsafe bool isCanKeyInput
-	{
-		get => *(bool*)(Inner.Ptr + GetFieldOffset("isCanKeyInput"));
-		set => *(bool*)(Inner.Ptr + GetFieldOffset("isCanKeyInput")) = value;
-	}
-
-	public unsafe float SprCancelHeight
-	{
-		get => *(float*)(Inner.Ptr + GetFieldOffset("SprCancelHeight"));
-		set => *(float*)(Inner.Ptr + GetFieldOffset("SprCancelHeight")) = value;
-	}
-
-	public unsafe float SprOkHeight
-	{
-		get => *(float*)(Inner.Ptr + GetFieldOffset("SprOkHeight"));
-		set => *(float*)(Inner.Ptr + GetFieldOffset("SprOkHeight")) = value;
-	}
-
-	public unsafe void GuiActorEncountStart()
-	{
-		_ = Inner.ProcessEvent("GuiActorEncountStart", [], out _);
-	}
-
-	public unsafe void DebugOutAnime()
-	{
-		_ = Inner.ProcessEvent("DebugOutAnime", [], out _);
-	}
-
-	public unsafe void DebugInAnime()
-	{
-		_ = Inner.ProcessEvent("DebugInAnime", [], out _);
-	}
-
-	public unsafe void GuiActorUpdate( float DeltaTime)
-	{
-		_ = Inner.ProcessEvent("GuiActorUpdate", [
-			new FloatParam(new(&DeltaTime))
-		], out _);
-	}
-
-	public unsafe void GuiActorUnbindAction()
-	{
-		_ = Inner.ProcessEvent("GuiActorUnbindAction", [], out _);
-	}
-
-	public unsafe void GuiActorBindAction()
-	{
-		_ = Inner.ProcessEvent("GuiActorBindAction", [], out _);
-	}
-
-	public unsafe void GuiActorStateInit( bool flag, int Param)
-	{
-		_ = Inner.ProcessEvent("GuiActorStateInit", [
-			new BoolParam(new(&flag), 255),
-			new IntParam(new(&Param))
-		], out _);
-	}
-
-	public unsafe void CallCANCEL()
-	{
-		_ = Inner.ProcessEvent("CallCANCEL", [], out _);
-	}
-
-	public unsafe void CallOK()
-	{
-		_ = Inner.ProcessEvent("CallOK", [], out _);
-	}
-
-	public unsafe void ChangeStatePromice()
-	{
-		_ = Inner.ProcessEvent("ChangeStatePromice", [], out _);
-	}
-
-	public unsafe void GuiActorBeginPlay()
-	{
-		_ = Inner.ProcessEvent("GuiActorBeginPlay", [], out _);
-	}
-
-	public unsafe void Start_OutAnime_Decide()
-	{
-		_ = Inner.ProcessEvent("Start OutAnime Decide", [], out _);
-	}
-
-	public unsafe void Start_OutAnime()
-	{
-		_ = Inner.ProcessEvent("Start OutAnime", [], out _);
-	}
-
-	public unsafe void Start_In_Anime()
-	{
-		_ = Inner.ProcessEvent("Start In Anime", [], out _);
-	}
-
-	public unsafe void OutAnimeDecide__UpdateFunc()
-	{
-		_ = Inner.ProcessEvent("OutAnimeDecide__UpdateFunc", [], out _);
-	}
-
-	public unsafe void OutAnimeDecide__FinishedFunc()
-	{
-		_ = Inner.ProcessEvent("OutAnimeDecide__FinishedFunc", [], out _);
-	}
-
-	public unsafe void OutAnime__UpdateFunc()
-	{
-		_ = Inner.ProcessEvent("OutAnime__UpdateFunc", [], out _);
-	}
-
-	public unsafe void OutAnime__FinishedFunc()
-	{
-		_ = Inner.ProcessEvent("OutAnime__FinishedFunc", [], out _);
-	}
-
-	public unsafe void InAnime__8__KeyStart__EventFunc()
-	{
-		_ = Inner.ProcessEvent("InAnime__8. KeyStart__EventFunc", [], out _);
-	}
-
-	public unsafe void InAnime__UpdateFunc()
-	{
-		_ = Inner.ProcessEvent("InAnime__UpdateFunc", [], out _);
-	}
-
-	public unsafe void InAnime__FinishedFunc()
-	{
-		_ = Inner.ProcessEvent("InAnime__FinishedFunc", [], out _);
-	}
-
-	public unsafe void UnbindAllAction()
-	{
-		_ = Inner.ProcessEvent("UnbindAllAction", [], out _);
-	}
-
-	public unsafe void CreateRectPrimitive( FVector2D Size, FColor Color, ref TArray<FBtlGuiVertex> NewParam, float CallFunc_BreakVector2D_X, float CallFunc_BreakVector2D_Y, float CallFunc_Divide_FloatFloat_ReturnValue, float CallFunc_Divide_FloatFloat_ReturnValue_1, float CallFunc_Multiply_IntFloat_ReturnValue, FVector2D CallFunc_MakeVector2D_ReturnValue, FVector2D CallFunc_MakeVector2D_ReturnValue_1, FBtlGuiVertex K2Node_MakeStruct_BtlGuiVertex, FBtlGuiVertex K2Node_MakeStruct_BtlGuiVertex_1, float CallFunc_Multiply_IntFloat_ReturnValue_1, FVector2D CallFunc_MakeVector2D_ReturnValue_2, FVector2D CallFunc_MakeVector2D_ReturnValue_3, FBtlGuiVertex K2Node_MakeStruct_BtlGuiVertex_2, FBtlGuiVertex K2Node_MakeStruct_BtlGuiVertex_3, TArray<FBtlGuiVertex> K2Node_MakeArray_Array)
-	{
-		_ = Inner.ProcessEvent("CreateRectPrimitive", [
-			new StructParam(new(&Size), 8),
-			new StructParam(new(&Color), 4),
-			new ArrayParam(new((TArray<int>*)Unsafe.AsPointer(ref NewParam))),
-			new FloatParam(new(&CallFunc_BreakVector2D_X)),
-			new FloatParam(new(&CallFunc_BreakVector2D_Y)),
-			new FloatParam(new(&CallFunc_Divide_FloatFloat_ReturnValue)),
-			new FloatParam(new(&CallFunc_Divide_FloatFloat_ReturnValue_1)),
-			new FloatParam(new(&CallFunc_Multiply_IntFloat_ReturnValue)),
-			new StructParam(new(&CallFunc_MakeVector2D_ReturnValue), 8),
-			new StructParam(new(&CallFunc_MakeVector2D_ReturnValue_1), 8),
-			new StructParam(new(&K2Node_MakeStruct_BtlGuiVertex), 20),
-			new StructParam(new(&K2Node_MakeStruct_BtlGuiVertex_1), 20),
-			new FloatParam(new(&CallFunc_Multiply_IntFloat_ReturnValue_1)),
-			new StructParam(new(&CallFunc_MakeVector2D_ReturnValue_2), 8),
-			new StructParam(new(&CallFunc_MakeVector2D_ReturnValue_3), 8),
-			new StructParam(new(&K2Node_MakeStruct_BtlGuiVertex_2), 20),
-			new StructParam(new(&K2Node_MakeStruct_BtlGuiVertex_3), 20),
-			new ArrayParam(new((TArray<int>*)(&K2Node_MakeArray_Array)))
-		], out _);
-	}
-
-	public unsafe void UpdateAnimation( float CallFunc_Divide_FloatFloat_ReturnValue, float CallFunc_Divide_FloatFloat_ReturnValue_1, FVector2D CallFunc_MakeVector2D_ReturnValue, FVector2D CallFunc_MakeVector2D_ReturnValue_1, float CallFunc_Divide_FloatFloat_ReturnValue_2, FVector2D CallFunc_Lerp_Vector_2D_out, FVector2D CallFunc_MakeVector2D_ReturnValue_2, FVector2D CallFunc_Lerp_Vector_2D_out_1, FVector2D CallFunc_Lerp_Vector_2D_out_2, FVector2D CallFunc_Lerp_Vector_2D_out_3, FVector2D CallFunc_Lerp_Vector_2D_out_4, float CallFunc_Divide_FloatFloat_ReturnValue_3, FVector2D CallFunc_MakeVector2D_ReturnValue_3, float CallFunc_Lerp_ReturnValue, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_1, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_2, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_3, FVector2D CallFunc_Lerp_Vector_2D_out_5, float CallFunc_Multiply_FloatFloat_ReturnValue, FVector2D CallFunc_MakeVector2D_ReturnValue_4, float CallFunc_Multiply_FloatFloat_ReturnValue_1, FVector2D CallFunc_Multiply_Vector2DFloat_ReturnValue, float CallFunc_Multiply_FloatFloat_ReturnValue_2, FVector2D CallFunc_MakeVector2D_ReturnValue_5, FVector2D CallFunc_Multiply_Vector2DFloat_ReturnValue_1, FVector2D CallFunc_MakeVector2D_ReturnValue_6, bool CallFunc_GetInputDecideKeyCross_ReturnValue, FVector2D CallFunc_Multiply_Vector2DFloat_ReturnValue_2, FVector2D CallFunc_MakeVector2D_ReturnValue_7, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_4, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_5, FVector2D CallFunc_MakeVector2D_ReturnValue_8, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_6, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_7, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_8, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_9, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_10, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_11, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_12, FVector2D CallFunc_MakeVector2D_ReturnValue_9, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_13, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_14, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_15, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_16, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_17, FVector2D CallFunc_MakeVector2D_ReturnValue_10, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_18, float CallFunc_Multiply_FloatFloat_ReturnValue_3, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_19, float CallFunc_Multiply_FloatFloat_ReturnValue_4, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_20, FVector2D CallFunc_MakeVector2D_ReturnValue_11, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_21, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_22, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_23, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_24, FVector2D CallFunc_MakeVector2D_ReturnValue_12, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_25, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_26, FVector2D CallFunc_MakeVector2D_ReturnValue_13, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_27, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_28, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_29, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_30, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_31, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_32, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_33, FVector2D CallFunc_MakeVector2D_ReturnValue_14, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_34, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_35, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_36, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_37, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_38, FVector2D CallFunc_MakeVector2D_ReturnValue_15, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_39, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_40, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_41, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_42)
-	{
-		_ = Inner.ProcessEvent("UpdateAnimation", [
-			new FloatParam(new(&CallFunc_Divide_FloatFloat_ReturnValue)),
-			new FloatParam(new(&CallFunc_Divide_FloatFloat_ReturnValue_1)),
-			new StructParam(new(&CallFunc_MakeVector2D_ReturnValue), 8),
-			new StructParam(new(&CallFunc_MakeVector2D_ReturnValue_1), 8),
-			new FloatParam(new(&CallFunc_Divide_FloatFloat_ReturnValue_2)),
-			new StructParam(new(&CallFunc_Lerp_Vector_2D_out), 8),
-			new StructParam(new(&CallFunc_MakeVector2D_ReturnValue_2), 8),
-			new StructParam(new(&CallFunc_Lerp_Vector_2D_out_1), 8),
-			new StructParam(new(&CallFunc_Lerp_Vector_2D_out_2), 8),
-			new StructParam(new(&CallFunc_Lerp_Vector_2D_out_3), 8),
-			new StructParam(new(&CallFunc_Lerp_Vector_2D_out_4), 8),
-			new FloatParam(new(&CallFunc_Divide_FloatFloat_ReturnValue_3)),
-			new StructParam(new(&CallFunc_MakeVector2D_ReturnValue_3), 8),
-			new FloatParam(new(&CallFunc_Lerp_ReturnValue)),
-			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue), 8),
-			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_1), 8),
-			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_2), 8),
-			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_3), 8),
-			new StructParam(new(&CallFunc_Lerp_Vector_2D_out_5), 8),
-			new FloatParam(new(&CallFunc_Multiply_FloatFloat_ReturnValue)),
-			new StructParam(new(&CallFunc_MakeVector2D_ReturnValue_4), 8),
-			new FloatParam(new(&CallFunc_Multiply_FloatFloat_ReturnValue_1)),
-			new StructParam(new(&CallFunc_Multiply_Vector2DFloat_ReturnValue), 8),
-			new FloatParam(new(&CallFunc_Multiply_FloatFloat_ReturnValue_2)),
-			new StructParam(new(&CallFunc_MakeVector2D_ReturnValue_5), 8),
-			new StructParam(new(&CallFunc_Multiply_Vector2DFloat_ReturnValue_1), 8),
-			new StructParam(new(&CallFunc_MakeVector2D_ReturnValue_6), 8),
-			new BoolParam(new(&CallFunc_GetInputDecideKeyCross_ReturnValue), 255),
-			new StructParam(new(&CallFunc_Multiply_Vector2DFloat_ReturnValue_2), 8),
-			new StructParam(new(&CallFunc_MakeVector2D_ReturnValue_7), 8),
-			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_4), 8),
-			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_5), 8),
-			new StructParam(new(&CallFunc_MakeVector2D_ReturnValue_8), 8),
-			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_6), 8),
-			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_7), 8),
-			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_8), 8),
-			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_9), 8),
-			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_10), 8),
-			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_11), 8),
-			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_12), 8),
-			new StructParam(new(&CallFunc_MakeVector2D_ReturnValue_9), 8),
-			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_13), 8),
-			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_14), 8),
-			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_15), 8),
-			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_16), 8),
-			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_17), 8),
-			new StructParam(new(&CallFunc_MakeVector2D_ReturnValue_10), 8),
-			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_18), 8),
-			new FloatParam(new(&CallFunc_Multiply_FloatFloat_ReturnValue_3)),
-			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_19), 8),
-			new FloatParam(new(&CallFunc_Multiply_FloatFloat_ReturnValue_4)),
-			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_20), 8),
-			new StructParam(new(&CallFunc_MakeVector2D_ReturnValue_11), 8),
-			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_21), 8),
-			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_22), 8),
-			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_23), 8),
-			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_24), 8),
-			new StructParam(new(&CallFunc_MakeVector2D_ReturnValue_12), 8),
-			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_25), 8),
-			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_26), 8),
-			new StructParam(new(&CallFunc_MakeVector2D_ReturnValue_13), 8),
-			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_27), 8),
-			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_28), 8),
-			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_29), 8),
-			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_30), 8),
-			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_31), 8),
-			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_32), 8),
-			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_33), 8),
-			new StructParam(new(&CallFunc_MakeVector2D_ReturnValue_14), 8),
-			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_34), 8),
-			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_35), 8),
-			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_36), 8),
-			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_37), 8),
-			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_38), 8),
-			new StructParam(new(&CallFunc_MakeVector2D_ReturnValue_15), 8),
-			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_39), 8),
-			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_40), 8),
-			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_41), 8),
-			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_42), 8)
-		], out _);
-	}
-
-	public unsafe void ChangeColorButton( FColor ColorButtonCross, FColor ColorButtonCircle, bool Temp_bool_Variable, bool Temp_bool_Variable_1, bool Temp_bool_Variable_2, FColor CallFunc_GetPlatFormButtonColor_ReturnValue, FColor CallFunc_GetPlatFormButtonColor_ReturnValue_1, FColor K2Node_MakeStruct_Color, FColor K2Node_MakeStruct_Color_1, FColor K2Node_MakeStruct_Color_2, FColor K2Node_Select_Default, bool Temp_bool_Variable_3, FColor K2Node_Select_Default_1, FColor K2Node_MakeStruct_Color_3, FColor K2Node_MakeStruct_Color_4, FColor K2Node_MakeStruct_Color_5, FColor K2Node_Select_Default_2, FColor CallFunc_GetPlatFormButtonColor_ReturnValue_2, FColor K2Node_Select_Default_3, bool CallFunc_GetInputDecideKeyCross_ReturnValue)
-	{
-		_ = Inner.ProcessEvent("ChangeColorButton", [
-			new StructParam(new(&ColorButtonCross), 4),
-			new StructParam(new(&ColorButtonCircle), 4),
-			new BoolParam(new(&Temp_bool_Variable), 255),
-			new BoolParam(new(&Temp_bool_Variable_1), 255),
-			new BoolParam(new(&Temp_bool_Variable_2), 255),
-			new StructParam(new(&CallFunc_GetPlatFormButtonColor_ReturnValue), 4),
-			new StructParam(new(&CallFunc_GetPlatFormButtonColor_ReturnValue_1), 4),
-			new StructParam(new(&K2Node_MakeStruct_Color), 4),
-			new StructParam(new(&K2Node_MakeStruct_Color_1), 4),
-			new StructParam(new(&K2Node_MakeStruct_Color_2), 4),
-			new StructParam(new(&K2Node_Select_Default), 4),
-			new BoolParam(new(&Temp_bool_Variable_3), 255),
-			new StructParam(new(&K2Node_Select_Default_1), 4),
-			new StructParam(new(&K2Node_MakeStruct_Color_3), 4),
-			new StructParam(new(&K2Node_MakeStruct_Color_4), 4),
-			new StructParam(new(&K2Node_MakeStruct_Color_5), 4),
-			new StructParam(new(&K2Node_Select_Default_2), 4),
-			new StructParam(new(&CallFunc_GetPlatFormButtonColor_ReturnValue_2), 4),
-			new StructParam(new(&K2Node_Select_Default_3), 4),
-			new BoolParam(new(&CallFunc_GetInputDecideKeyCross_ReturnValue), 255)
-		], out _);
-	}
-
-	public unsafe void InitCancelAvaialble( FBtlEncountParam CallFunc_GetEncountParamForBP_ReturnValue, bool CallFunc_EqualEqual_IntInt_ReturnValue)
-	{
-		_ = Inner.ProcessEvent("InitCancelAvaialble", [
-			new StructParam(new(&CallFunc_GetEncountParamForBP_ReturnValue), 36),
-			new BoolParam(new(&CallFunc_EqualEqual_IntInt_ReturnValue), 255)
-		], out _);
-	}
-
-	public unsafe void ActionEnd()
-	{
-		_ = Inner.ProcessEvent("ActionEnd", [], out _);
-	}
-
-	public unsafe void Lerp_Vector_2D( FVector2D From, FVector2D To, float Value, ref FVector2D Out, float CallFunc_BreakVector2D_X, float CallFunc_BreakVector2D_Y, float CallFunc_BreakVector2D_X_1, float CallFunc_BreakVector2D_Y_1, float CallFunc_Lerp_ReturnValue, float CallFunc_Lerp_ReturnValue_1, FVector2D CallFunc_MakeVector2D_ReturnValue)
-	{
-		_ = Inner.ProcessEvent("Lerp Vector 2D", [
-			new StructParam(new(&From), 8),
-			new StructParam(new(&To), 8),
-			new FloatParam(new(&Value)),
-			new StructParam(new((FVector2D*)Unsafe.AsPointer(ref Out)), 8),
-			new FloatParam(new(&CallFunc_BreakVector2D_X)),
-			new FloatParam(new(&CallFunc_BreakVector2D_Y)),
-			new FloatParam(new(&CallFunc_BreakVector2D_X_1)),
-			new FloatParam(new(&CallFunc_BreakVector2D_Y_1)),
-			new FloatParam(new(&CallFunc_Lerp_ReturnValue)),
-			new FloatParam(new(&CallFunc_Lerp_ReturnValue_1)),
-			new StructParam(new(&CallFunc_MakeVector2D_ReturnValue), 8)
-		], out _);
-	}
-
-	public unsafe void EnableKeyInput()
-	{
-		_ = Inner.ProcessEvent("EnableKeyInput", [], out _);
-	}
-
-	public unsafe void ActionDecide()
-	{
-		_ = Inner.ProcessEvent("ActionDecide", [], out _);
-	}
-
-	public unsafe void RefrectLocalizeData( float CallFunc_Divide_FloatFloat_ReturnValue, bool CallFunc_IsLayoutDebugMenuOpen_ReturnValue, FVector2D CallFunc_MakeVector2D_ReturnValue, FVector2D CallFunc_MakeVector2D_ReturnValue_1, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_1, float CallFunc_Divide_FloatFloat_ReturnValue_1, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_2, FVector2D CallFunc_MakeVector2D_ReturnValue_2, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_3, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_4, FVector2D CallFunc_MakeVector2D_ReturnValue_3, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_5, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_6, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_7, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_8, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_9, FVector2D CallFunc_GetPromiseAdjustedPosition_ReturnValue, FVector2D CallFunc_GetPromiseAdjustedPosition_ReturnValue_1, FVector2D CallFunc_GetPromiseAdjustedPosition_ReturnValue_2, FVector2D CallFunc_GetPromiseAdjustedPosition_ReturnValue_3, bool CallFunc_GetInputDecideKeyCross_ReturnValue)
-	{
-		_ = Inner.ProcessEvent("RefrectLocalizeData", [
-			new FloatParam(new(&CallFunc_Divide_FloatFloat_ReturnValue)),
-			new BoolParam(new(&CallFunc_IsLayoutDebugMenuOpen_ReturnValue), 255),
-			new StructParam(new(&CallFunc_MakeVector2D_ReturnValue), 8),
-			new StructParam(new(&CallFunc_MakeVector2D_ReturnValue_1), 8),
-			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue), 8),
-			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_1), 8),
-			new FloatParam(new(&CallFunc_Divide_FloatFloat_ReturnValue_1)),
-			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_2), 8),
-			new StructParam(new(&CallFunc_MakeVector2D_ReturnValue_2), 8),
-			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_3), 8),
-			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_4), 8),
-			new StructParam(new(&CallFunc_MakeVector2D_ReturnValue_3), 8),
-			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_5), 8),
-			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_6), 8),
-			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_7), 8),
-			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_8), 8),
-			new StructParam(new(&CallFunc_Add_Vector2DVector2D_ReturnValue_9), 8),
-			new StructParam(new(&CallFunc_GetPromiseAdjustedPosition_ReturnValue), 8),
-			new StructParam(new(&CallFunc_GetPromiseAdjustedPosition_ReturnValue_1), 8),
-			new StructParam(new(&CallFunc_GetPromiseAdjustedPosition_ReturnValue_2), 8),
-			new StructParam(new(&CallFunc_GetPromiseAdjustedPosition_ReturnValue_3), 8),
-			new BoolParam(new(&CallFunc_GetInputDecideKeyCross_ReturnValue), 255)
-		], out _);
-	}
-
-}
-
-[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0x4F8)]
-public unsafe struct ABP_BtlPromiseCommon_C_Repr
-{
-	[FieldOffset(0x0)] public ABP_BtlGuiBaseActor_C_Repr Super; // Size: 0x34D
-	[FieldOffset(0x350)] public FPointerToUberGraphFrame UberGraphFrame; // Size: 0x8
-	[FieldOffset(0x358)] public UBtlDataBaseComponent_Repr* BtlDataBase; // Size: 0x8
-	[FieldOffset(0x360)] public UBtlGuiPromiseComponent_Repr* BtlGuiPromise; // Size: 0x8
-	[FieldOffset(0x368)] public UBtlGuiResources_Repr* BtlGuiResources; // Size: 0x8
-	[FieldOffset(0x370)] public UBtlGuiDrawComponent_Repr* BtlGuiDraw; // Size: 0x8
-	[FieldOffset(0x378)] public float InAnime7Move; // Size: 0x4
-	[FieldOffset(0x37C)] public float InAnime6Move; // Size: 0x4
-	[FieldOffset(0x380)] public float InAnime5Move; // Size: 0x4
-	[FieldOffset(0x384)] public float InAnime4Move; // Size: 0x4
-	[FieldOffset(0x388)] public float InAnime3Move; // Size: 0x4
-	[FieldOffset(0x38C)] public float InAnime2; // Size: 0x4
-	[FieldOffset(0x390)] public float InAnime1; // Size: 0x4
-	[FieldOffset(0x394)] public ETimelineDirection InAnime_8; // Size: 0x1
-	[FieldOffset(0x398)] public UTimelineComponent_Repr* InAnime_9; // Size: 0x8
-	[FieldOffset(0x3A0)] public float OutAnime3CancelIcon; // Size: 0x4
-	[FieldOffset(0x3A4)] public float OutAnime2Icons; // Size: 0x4
-	[FieldOffset(0x3A8)] public float OutAnime1; // Size: 0x4
-	[FieldOffset(0x3AC)] public ETimelineDirection OutAnime_4; // Size: 0x1
-	[FieldOffset(0x3B0)] public UTimelineComponent_Repr* outAnime; // Size: 0x8
-	[FieldOffset(0x3B8)] public float OutAnimeDecide1DecideIcon; // Size: 0x4
-	[FieldOffset(0x3BC)] public ETimelineDirection OutAnimeDecide_2; // Size: 0x1
-	[FieldOffset(0x3C0)] public UTimelineComponent_Repr* OutAnimeDecide_3; // Size: 0x8
-	[FieldOffset(0x3C8)] public byte PromiseTpye; // Size: 0x1
-	[FieldOffset(0x3CC)] public FVector2D PosBaseA; // Size: 0x8
-	[FieldOffset(0x3D8)] public TArray<FBtlGuiVertex> vertex; // Size: 0x10
-	[FieldOffset(0x3E8)] public FVector2D TextPos; // Size: 0x8
-	[FieldOffset(0x3F0)] public UBtlGuiDrawObjectPlg_Repr* TextPLG; // Size: 0x8
-	[FieldOffset(0x3F8)] public float InAnimeTextRation; // Size: 0x4
-	[FieldOffset(0x400)] public UBtlGuiDrawObjectPrimitive_Repr* RectBackOld; // Size: 0x8
-	[FieldOffset(0x408)] public UBtlGuiDrawObjectPrimitive_Repr* RectBlack; // Size: 0x8
-	[FieldOffset(0x410)] public float InAnimeIconMove; // Size: 0x4
-	[FieldOffset(0x414)] public FVector2D CircleIconDif; // Size: 0x8
-	[FieldOffset(0x41C)] public FVector2D CrosslIconDif; // Size: 0x8
-	[FieldOffset(0x424)] public FVector2D CancelTextOffset; // Size: 0x8
-	[FieldOffset(0x42C)] public FVector2D OkTextOffset; // Size: 0x8
-	[FieldOffset(0x438)] public UBtlGuiDrawObjectSprite_Repr* SpriteCircleIcon; // Size: 0x8
-	[FieldOffset(0x440)] public UBtlGuiDrawObjectSprite_Repr* SpriteCrossIcon; // Size: 0x8
-	[FieldOffset(0x448)] public UBtlGuiDrawObjectSprite_Repr* SpriteOKText; // Size: 0x8
-	[FieldOffset(0x450)] public UBtlGuiDrawObjectSprite_Repr* SpriteCancelText; // Size: 0x8
-	[FieldOffset(0x458)] public float CancelIconScaleValue; // Size: 0x4
-	[FieldOffset(0x45C)] public FVector2D IconGroupPosDif; // Size: 0x8
-	[FieldOffset(0x464)] public bool isStartAnimation; // Size: 0x1
-	[FieldOffset(0x465)] public bool isFastInput; // Size: 0x1
-	[FieldOffset(0x466)] public bool isUnableCancel; // Size: 0x1
-	[FieldOffset(0x468)] public FColor ColorCancelIcon; // Size: 0x4
-	[FieldOffset(0x46C)] public FColor ColorCancelText; // Size: 0x4
-	[FieldOffset(0x470)] public UBtlGuiDrawObjectSprite_Repr* SprAlloutMsg1; // Size: 0x8
-	[FieldOffset(0x478)] public UBtlGuiDrawObjectSprite_Repr* SprAlloutMsg2; // Size: 0x8
-	[FieldOffset(0x480)] public UBtlGuiDrawObjectPrimitive_Repr* PrimiDecoA; // Size: 0x8
-	[FieldOffset(0x488)] public UBtlGuiDrawObjectPrimitive_Repr* PrimiDecoB; // Size: 0x8
-	[FieldOffset(0x490)] public UBtlGuiDrawObjectPrimitive_Repr* PtimiDecoC; // Size: 0x8
-	[FieldOffset(0x498)] public UBtlGuiDrawObjectPrimitive_Repr* PrimiDecoD; // Size: 0x8
-	[FieldOffset(0x4A0)] public UBtlGuiDrawObjectPrimitive_Repr* PrimiDecoE; // Size: 0x8
-	[FieldOffset(0x4A8)] public UBtlGuiDrawObjectPlg_Repr* TextMaskPLG; // Size: 0x8
-	[FieldOffset(0x4B0)] public UBtlGuiDrawObjectPrimitive_Repr* RectBack2; // Size: 0x8
-	[FieldOffset(0x4B8)] public float ScaleBaseCrossButton; // Size: 0x4
-	[FieldOffset(0x4BC)] public float ScaleBaseText; // Size: 0x4
-	[FieldOffset(0x4C0)] public float ParamScaleRationCancel; // Size: 0x4
-	[FieldOffset(0x4C4)] public float ScaleBaseCircleButton; // Size: 0x4
-	[FieldOffset(0x4C8)] public FVector2D MoveVec; // Size: 0x8
-	[FieldOffset(0x4D0)] public float DecideIconScaleValue; // Size: 0x4
-	[FieldOffset(0x4D4)] public float AlphaPlate; // Size: 0x4
-	[FieldOffset(0x4D8)] public float AnimeMoveRationDecoA; // Size: 0x4
-	[FieldOffset(0x4DC)] public float AnimeMoveRationDecoB; // Size: 0x4
-	[FieldOffset(0x4E0)] public float AnimeMoveRationDecoC; // Size: 0x4
-	[FieldOffset(0x4E4)] public float AnimeMoveRationDecoD; // Size: 0x4
-	[FieldOffset(0x4E8)] public float AnimeMoveRationDecoE; // Size: 0x4
-	[FieldOffset(0x4EC)] public bool isCanKeyInput; // Size: 0x1
-	[FieldOffset(0x4F0)] public float SprCancelHeight; // Size: 0x4
-	[FieldOffset(0x4F4)] public float SprOkHeight; // Size: 0x4
-
-	public ABP_BtlPromiseCommon_C ToManaged(IUnrealFactory factory)
-	{
-		fixed (ABP_BtlPromiseCommon_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
-	}
-}
-
-
-public class ABP_BtlSkillNamePanel_C : ABP_BtlGuiBaseActor_C, ITypeRepr<ABP_BtlSkillNamePanel_C_Repr>
-{
-	private static Dictionary<string, int>? FieldOffsets;
-	public ABP_BtlSkillNamePanel_C(IUObject inner, bool genOffsets = true) : base(inner, false)
-	{
-		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
-	}
-
-	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
-
-	public new unsafe ABP_BtlSkillNamePanel_C_Repr* Repr => (ABP_BtlSkillNamePanel_C_Repr*)Inner.Ptr;
-
-	public unsafe FPointerToUberGraphFrame* UberGraphFrame
-	{
-		get => (FPointerToUberGraphFrame*)(Inner.Ptr + GetFieldOffset("UberGraphFrame"));
-	}
-
-	public unsafe UBtlGuiResources? BtlGuiResources
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("BtlGuiResources")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("BtlGuiResources")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("BtlGuiResources")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe UBtlDataBaseComponent? BtlDataBase
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("BtlDataBase")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("BtlDataBase")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("BtlDataBase")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe UBtlGuiDrawComponent? BtlGuiDraw
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("BtlGuiDraw")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("BtlGuiDraw")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("BtlGuiDraw")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe float FadeOutAnimTimeline
-	{
-		get => *(float*)(Inner.Ptr + GetFieldOffset("FadeOutAnimTimeline_alpha_88381D5F4852060E9A6C14AAAD572D33"));
-		set => *(float*)(Inner.Ptr + GetFieldOffset("FadeOutAnimTimeline_alpha_88381D5F4852060E9A6C14AAAD572D33")) = value;
-	}
-
-	public unsafe float FadeOutAnimTimeline_2
-	{
-		get => *(float*)(Inner.Ptr + GetFieldOffset("FadeOutAnimTimeline_pos_88381D5F4852060E9A6C14AAAD572D33"));
-		set => *(float*)(Inner.Ptr + GetFieldOffset("FadeOutAnimTimeline_pos_88381D5F4852060E9A6C14AAAD572D33")) = value;
-	}
-
-	public unsafe ETimelineDirection FadeOutAnimTimeline_3
-	{
-		get => *(ETimelineDirection*)(Inner.Ptr + GetFieldOffset("FadeOutAnimTimeline__Direction_88381D5F4852060E9A6C14AAAD572D33"));
-		set => *(ETimelineDirection*)(Inner.Ptr + GetFieldOffset("FadeOutAnimTimeline__Direction_88381D5F4852060E9A6C14AAAD572D33")) = value;
-	}
-
-	public unsafe UTimelineComponent? FadeOutAnimTimeline_4
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("FadeOutAnimTimeline")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("FadeOutAnimTimeline")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("FadeOutAnimTimeline")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe float FadeInAnimTimeline
-	{
-		get => *(float*)(Inner.Ptr + GetFieldOffset("FadeInAnimTimeline_angle_18891BC84691F4B9E25A09B381C9CA71"));
-		set => *(float*)(Inner.Ptr + GetFieldOffset("FadeInAnimTimeline_angle_18891BC84691F4B9E25A09B381C9CA71")) = value;
-	}
-
-	public unsafe float FadeInAnimTimeline_2
-	{
-		get => *(float*)(Inner.Ptr + GetFieldOffset("FadeInAnimTimeline_alpha_18891BC84691F4B9E25A09B381C9CA71"));
-		set => *(float*)(Inner.Ptr + GetFieldOffset("FadeInAnimTimeline_alpha_18891BC84691F4B9E25A09B381C9CA71")) = value;
-	}
-
-	public unsafe float FadeInAnimTimeline_3
-	{
-		get => *(float*)(Inner.Ptr + GetFieldOffset("FadeInAnimTimeline_Pos_18891BC84691F4B9E25A09B381C9CA71"));
-		set => *(float*)(Inner.Ptr + GetFieldOffset("FadeInAnimTimeline_Pos_18891BC84691F4B9E25A09B381C9CA71")) = value;
-	}
-
-	public unsafe ETimelineDirection FadeInAnimTimeline_4
-	{
-		get => *(ETimelineDirection*)(Inner.Ptr + GetFieldOffset("FadeInAnimTimeline__Direction_18891BC84691F4B9E25A09B381C9CA71"));
-		set => *(ETimelineDirection*)(Inner.Ptr + GetFieldOffset("FadeInAnimTimeline__Direction_18891BC84691F4B9E25A09B381C9CA71")) = value;
-	}
-
-	public unsafe UTimelineComponent? FadeInAnimTimeline_5
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("FadeInAnimTimeline")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("FadeInAnimTimeline")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("FadeInAnimTimeline")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe FString* Text
-	{
-		get => (FString*)(Inner.Ptr + GetFieldOffset("Text"));
-	}
-
-	public unsafe bool IsEnemy
-	{
-		get => *(bool*)(Inner.Ptr + GetFieldOffset("IsEnemy"));
-		set => *(bool*)(Inner.Ptr + GetFieldOffset("IsEnemy")) = value;
-	}
-
-	public unsafe FVector2D* CurrentPos
-	{
-		get => (FVector2D*)(Inner.Ptr + GetFieldOffset("CurrentPos"));
-	}
-
-	public unsafe float Time
-	{
-		get => *(float*)(Inner.Ptr + GetFieldOffset("Time"));
-		set => *(float*)(Inner.Ptr + GetFieldOffset("Time")) = value;
-	}
-
-	public unsafe bool IsStart
-	{
-		get => *(bool*)(Inner.Ptr + GetFieldOffset("IsStart"));
-		set => *(bool*)(Inner.Ptr + GetFieldOffset("IsStart")) = value;
-	}
-
-	public unsafe bool IsFadeInEnd
-	{
-		get => *(bool*)(Inner.Ptr + GetFieldOffset("IsFadeInEnd"));
-		set => *(bool*)(Inner.Ptr + GetFieldOffset("IsFadeInEnd")) = value;
-	}
-
-	public unsafe float AnimPos
-	{
-		get => *(float*)(Inner.Ptr + GetFieldOffset("AnimPos"));
-		set => *(float*)(Inner.Ptr + GetFieldOffset("AnimPos")) = value;
-	}
-
-	public unsafe float AnimAlpha
-	{
-		get => *(float*)(Inner.Ptr + GetFieldOffset("AnimAlpha"));
-		set => *(float*)(Inner.Ptr + GetFieldOffset("AnimAlpha")) = value;
-	}
-
-	public unsafe float AnimAngle
-	{
-		get => *(float*)(Inner.Ptr + GetFieldOffset("AnimAngle"));
-		set => *(float*)(Inner.Ptr + GetFieldOffset("AnimAngle")) = value;
-	}
-
-	public unsafe UBtlGuiDrawObjectPlg? plg1
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("plg1")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("plg1")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("plg1")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe float StartAngle
-	{
-		get => *(float*)(Inner.Ptr + GetFieldOffset("StartAngle"));
-		set => *(float*)(Inner.Ptr + GetFieldOffset("StartAngle")) = value;
-	}
-
-	public unsafe UBtlGuiDrawObjectRect? Rect1
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("Rect1")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("Rect1")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("Rect1")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe UBtlGuiDrawObjectText? Text1
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("Text1")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("Text1")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("Text1")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe int Skill_ID
-	{
-		get => *(int*)(Inner.Ptr + GetFieldOffset("Skill ID"));
-		set => *(int*)(Inner.Ptr + GetFieldOffset("Skill ID")) = value;
-	}
-
-	public unsafe int DebugSkillID
-	{
-		get => *(int*)(Inner.Ptr + GetFieldOffset("DebugSkillID"));
-		set => *(int*)(Inner.Ptr + GetFieldOffset("DebugSkillID")) = value;
-	}
-
-	public unsafe void GuiActorUpdate( float DeltaTime)
-	{
-		_ = Inner.ProcessEvent("GuiActorUpdate", [
-			new FloatParam(new(&DeltaTime))
-		], out _);
-	}
-
-	public unsafe void Start()
-	{
-		_ = Inner.ProcessEvent("Start", [], out _);
-	}
-
-	public unsafe void StartFadeOUT()
-	{
-		_ = Inner.ProcessEvent("StartFadeOUT", [], out _);
-	}
-
-	public unsafe void StartFadeIN()
-	{
-		_ = Inner.ProcessEvent("StartFadeIN", [], out _);
-	}
-
-	public unsafe void FadeOutAnimTimeline__UpdateFunc()
-	{
-		_ = Inner.ProcessEvent("FadeOutAnimTimeline__UpdateFunc", [], out _);
-	}
-
-	public unsafe void FadeOutAnimTimeline__FinishedFunc()
-	{
-		_ = Inner.ProcessEvent("FadeOutAnimTimeline__FinishedFunc", [], out _);
-	}
-
-	public unsafe void FadeInAnimTimeline__UpdateFunc()
-	{
-		_ = Inner.ProcessEvent("FadeInAnimTimeline__UpdateFunc", [], out _);
-	}
-
-	public unsafe void FadeInAnimTimeline__FinishedFunc()
-	{
-		_ = Inner.ProcessEvent("FadeInAnimTimeline__FinishedFunc", [], out _);
-	}
-
-	public unsafe void SetSkillID( int skillId, bool IsEnemy, float Time, bool CallFunc_GetSkillName_Sucsess, FText CallFunc_GetSkillName_ReturnValue, FString CallFunc_Conv_TextToString_ReturnValue)
-	{
-		_ = Inner.ProcessEvent("SetSkillID", [
-			new IntParam(new(&skillId)),
-			new BoolParam(new(&IsEnemy), 255),
-			new FloatParam(new(&Time)),
-			new BoolParam(new(&CallFunc_GetSkillName_Sucsess), 255),
-			new TextParam(new(&CallFunc_GetSkillName_ReturnValue), 24),
-			new StringParam(new(&CallFunc_Conv_TextToString_ReturnValue))
-		], out _);
-	}
-
-	public unsafe void SetCommonText( int Key, bool IsEnemy, float Time, FText CallFunc_GetBtlCommonText_ReturnValue, FString CallFunc_Conv_TextToString_ReturnValue)
-	{
-		_ = Inner.ProcessEvent("SetCommonText", [
-			new IntParam(new(&Key)),
-			new BoolParam(new(&IsEnemy), 255),
-			new FloatParam(new(&Time)),
-			new TextParam(new(&CallFunc_GetBtlCommonText_ReturnValue), 24),
-			new StringParam(new(&CallFunc_Conv_TextToString_ReturnValue))
-		], out _);
-	}
-
-	public unsafe void SetItemName( int ItemId, bool IsEnemy, float Time, FText CallFunc_GetItemName_ReturnValue, FString CallFunc_Conv_TextToString_ReturnValue)
-	{
-		_ = Inner.ProcessEvent("SetItemName", [
-			new IntParam(new(&ItemId)),
-			new BoolParam(new(&IsEnemy), 255),
-			new FloatParam(new(&Time)),
-			new TextParam(new(&CallFunc_GetItemName_ReturnValue), 24),
-			new StringParam(new(&CallFunc_Conv_TextToString_ReturnValue))
-		], out _);
-	}
-
-	public unsafe void Set_Debug_Param( int DebugSkillID)
-	{
-		_ = Inner.ProcessEvent("Set Debug Param", [
-			new IntParam(new(&DebugSkillID))
-		], out _);
-	}
-
-}
-
-[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0x3F8)]
-public unsafe struct ABP_BtlSkillNamePanel_C_Repr
-{
-	[FieldOffset(0x0)] public ABP_BtlGuiBaseActor_C_Repr Super; // Size: 0x34D
-	[FieldOffset(0x350)] public FPointerToUberGraphFrame UberGraphFrame; // Size: 0x8
-	[FieldOffset(0x358)] public UBtlGuiResources_Repr* BtlGuiResources; // Size: 0x8
-	[FieldOffset(0x360)] public UBtlDataBaseComponent_Repr* BtlDataBase; // Size: 0x8
-	[FieldOffset(0x368)] public UBtlGuiDrawComponent_Repr* BtlGuiDraw; // Size: 0x8
-	[FieldOffset(0x370)] public float FadeOutAnimTimeline; // Size: 0x4
-	[FieldOffset(0x374)] public float FadeOutAnimTimeline_2; // Size: 0x4
-	[FieldOffset(0x378)] public ETimelineDirection FadeOutAnimTimeline_3; // Size: 0x1
-	[FieldOffset(0x380)] public UTimelineComponent_Repr* FadeOutAnimTimeline_4; // Size: 0x8
-	[FieldOffset(0x388)] public float FadeInAnimTimeline; // Size: 0x4
-	[FieldOffset(0x38C)] public float FadeInAnimTimeline_2; // Size: 0x4
-	[FieldOffset(0x390)] public float FadeInAnimTimeline_3; // Size: 0x4
-	[FieldOffset(0x394)] public ETimelineDirection FadeInAnimTimeline_4; // Size: 0x1
-	[FieldOffset(0x398)] public UTimelineComponent_Repr* FadeInAnimTimeline_5; // Size: 0x8
-	[FieldOffset(0x3A0)] public FString Text; // Size: 0x10
-	[FieldOffset(0x3B0)] public bool IsEnemy; // Size: 0x1
-	[FieldOffset(0x3B4)] public FVector2D CurrentPos; // Size: 0x8
-	[FieldOffset(0x3BC)] public float Time; // Size: 0x4
-	[FieldOffset(0x3C0)] public bool IsStart; // Size: 0x1
-	[FieldOffset(0x3C1)] public bool IsFadeInEnd; // Size: 0x1
-	[FieldOffset(0x3C4)] public float AnimPos; // Size: 0x4
-	[FieldOffset(0x3C8)] public float AnimAlpha; // Size: 0x4
-	[FieldOffset(0x3CC)] public float AnimAngle; // Size: 0x4
-	[FieldOffset(0x3D0)] public UBtlGuiDrawObjectPlg_Repr* plg1; // Size: 0x8
-	[FieldOffset(0x3D8)] public float StartAngle; // Size: 0x4
-	[FieldOffset(0x3E0)] public UBtlGuiDrawObjectRect_Repr* Rect1; // Size: 0x8
-	[FieldOffset(0x3E8)] public UBtlGuiDrawObjectText_Repr* Text1; // Size: 0x8
-	[FieldOffset(0x3F0)] public int Skill_ID; // Size: 0x4
-	[FieldOffset(0x3F4)] public int DebugSkillID; // Size: 0x4
-
-	public ABP_BtlSkillNamePanel_C ToManaged(IUnrealFactory factory)
-	{
-		fixed (ABP_BtlSkillNamePanel_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
-	}
-}
-
-
 public class ABP_BtlItemList_C : ABP_BtlGuiBaseActor_C, ITypeRepr<ABP_BtlItemList_C_Repr>
 {
 	private static Dictionary<string, int>? FieldOffsets;
@@ -347688,7 +347421,7 @@ public class ABP_BtlItemList_C : ABP_BtlGuiBaseActor_C, ITypeRepr<ABP_BtlItemLis
 		], out _);
 	}
 
-	public unsafe void Update_Detail_Text( FString Text, float MoveX, FString SourceText, FString Text3, FString Text2, FString Text1, FVector CallFunc_GetItemSkillListTextCollision_ReturnValue, float CallFunc_BreakVector_X, float CallFunc_BreakVector_Y, float CallFunc_BreakVector_Z, FVector2D CallFunc_MakeVector2D_ReturnValue, byte CallFunc_Calc_Alpha_ReturnValue, FColor K2Node_MakeStruct_Color, byte CallFunc_Calc_Alpha_ReturnValue_1, FColor K2Node_MakeStruct_Color_1, byte CallFunc_Calc_Alpha_ReturnValue_2, byte CallFunc_Calc_Alpha_ReturnValue_3, FColor K2Node_MakeStruct_Color_2, FColor K2Node_MakeStruct_Color_3, FVector2D CallFunc_MakeVector2D_ReturnValue_1, FVector2D CallFunc_MakeVector2D_ReturnValue_2, float CallFunc_Conv_IntToFloat_ReturnValue, float CallFunc_Conv_IntToFloat_ReturnValue_1, float CallFunc_Divide_FloatFloat_ReturnValue, float CallFunc_Multiply_FloatFloat_ReturnValue, float CallFunc_Add_FloatFloat_ReturnValue, bool CallFunc_LessEqual_IntInt_ReturnValue, bool CallFunc_NotEqual_IntInt_ReturnValue, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_1, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_2, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_3, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_4, int CallFunc_Add_IntInt_ReturnValue, FBtlItemData CallFunc_Array_Get_Item, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_5, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_6, int CallFunc_Subtract_IntInt_ReturnValue, float CallFunc_Multiply_IntFloat_ReturnValue, float CallFunc_Add_FloatFloat_ReturnValue_1, FVector2D CallFunc_MakeVector2D_ReturnValue_3, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_7)
+	public unsafe void Update_Detail_Text( FString Text, float MoveX, FString SourceText, FString Text3, FString Text2, FString text1, FVector CallFunc_GetItemSkillListTextCollision_ReturnValue, float CallFunc_BreakVector_X, float CallFunc_BreakVector_Y, float CallFunc_BreakVector_Z, FVector2D CallFunc_MakeVector2D_ReturnValue, byte CallFunc_Calc_Alpha_ReturnValue, FColor K2Node_MakeStruct_Color, byte CallFunc_Calc_Alpha_ReturnValue_1, FColor K2Node_MakeStruct_Color_1, byte CallFunc_Calc_Alpha_ReturnValue_2, byte CallFunc_Calc_Alpha_ReturnValue_3, FColor K2Node_MakeStruct_Color_2, FColor K2Node_MakeStruct_Color_3, FVector2D CallFunc_MakeVector2D_ReturnValue_1, FVector2D CallFunc_MakeVector2D_ReturnValue_2, float CallFunc_Conv_IntToFloat_ReturnValue, float CallFunc_Conv_IntToFloat_ReturnValue_1, float CallFunc_Divide_FloatFloat_ReturnValue, float CallFunc_Multiply_FloatFloat_ReturnValue, float CallFunc_Add_FloatFloat_ReturnValue, bool CallFunc_LessEqual_IntInt_ReturnValue, bool CallFunc_NotEqual_IntInt_ReturnValue, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_1, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_2, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_3, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_4, int CallFunc_Add_IntInt_ReturnValue, FBtlItemData CallFunc_Array_Get_Item, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_5, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_6, int CallFunc_Subtract_IntInt_ReturnValue, float CallFunc_Multiply_IntFloat_ReturnValue, float CallFunc_Add_FloatFloat_ReturnValue_1, FVector2D CallFunc_MakeVector2D_ReturnValue_3, FVector2D CallFunc_Add_Vector2DVector2D_ReturnValue_7)
 	{
 		_ = Inner.ProcessEvent("Update Detail Text", [
 			new StringParam(new(&Text)),
@@ -347696,7 +347429,7 @@ public class ABP_BtlItemList_C : ABP_BtlGuiBaseActor_C, ITypeRepr<ABP_BtlItemLis
 			new StringParam(new(&SourceText)),
 			new StringParam(new(&Text3)),
 			new StringParam(new(&Text2)),
-			new StringParam(new(&Text1)),
+			new StringParam(new(&text1)),
 			new StructParam(new(&CallFunc_GetItemSkillListTextCollision_ReturnValue), 12),
 			new FloatParam(new(&CallFunc_BreakVector_X)),
 			new FloatParam(new(&CallFunc_BreakVector_Y)),
@@ -348101,6 +347834,308 @@ public unsafe struct ABP_BtlItemList_C_Repr
 	public ABP_BtlItemList_C ToManaged(IUnrealFactory factory)
 	{
 		fixed (ABP_BtlItemList_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
+	}
+}
+
+
+public class ABP_BtlSkillNamePanel_C : ABP_BtlGuiBaseActor_C, ITypeRepr<ABP_BtlSkillNamePanel_C_Repr>
+{
+	private static Dictionary<string, int>? FieldOffsets;
+	public ABP_BtlSkillNamePanel_C(IUObject inner, bool genOffsets = true) : base(inner, false)
+	{
+		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
+	}
+
+	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
+
+	public new unsafe ABP_BtlSkillNamePanel_C_Repr* Repr => (ABP_BtlSkillNamePanel_C_Repr*)Inner.Ptr;
+
+	public unsafe FPointerToUberGraphFrame* UberGraphFrame
+	{
+		get => (FPointerToUberGraphFrame*)(Inner.Ptr + GetFieldOffset("UberGraphFrame"));
+	}
+
+	public unsafe UBtlGuiResources? BtlGuiResources
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("BtlGuiResources")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("BtlGuiResources")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("BtlGuiResources")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe UBtlDataBaseComponent? BtlDataBase
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("BtlDataBase")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("BtlDataBase")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("BtlDataBase")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe UBtlGuiDrawComponent? BtlGuiDraw
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("BtlGuiDraw")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("BtlGuiDraw")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("BtlGuiDraw")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe float FadeOutAnimTimeline
+	{
+		get => *(float*)(Inner.Ptr + GetFieldOffset("FadeOutAnimTimeline_alpha_88381D5F4852060E9A6C14AAAD572D33"));
+		set => *(float*)(Inner.Ptr + GetFieldOffset("FadeOutAnimTimeline_alpha_88381D5F4852060E9A6C14AAAD572D33")) = value;
+	}
+
+	public unsafe float FadeOutAnimTimeline_2
+	{
+		get => *(float*)(Inner.Ptr + GetFieldOffset("FadeOutAnimTimeline_pos_88381D5F4852060E9A6C14AAAD572D33"));
+		set => *(float*)(Inner.Ptr + GetFieldOffset("FadeOutAnimTimeline_pos_88381D5F4852060E9A6C14AAAD572D33")) = value;
+	}
+
+	public unsafe ETimelineDirection FadeOutAnimTimeline_3
+	{
+		get => *(ETimelineDirection*)(Inner.Ptr + GetFieldOffset("FadeOutAnimTimeline__Direction_88381D5F4852060E9A6C14AAAD572D33"));
+		set => *(ETimelineDirection*)(Inner.Ptr + GetFieldOffset("FadeOutAnimTimeline__Direction_88381D5F4852060E9A6C14AAAD572D33")) = value;
+	}
+
+	public unsafe UTimelineComponent? FadeOutAnimTimeline_4
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("FadeOutAnimTimeline")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("FadeOutAnimTimeline")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("FadeOutAnimTimeline")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe float FadeInAnimTimeline
+	{
+		get => *(float*)(Inner.Ptr + GetFieldOffset("FadeInAnimTimeline_angle_18891BC84691F4B9E25A09B381C9CA71"));
+		set => *(float*)(Inner.Ptr + GetFieldOffset("FadeInAnimTimeline_angle_18891BC84691F4B9E25A09B381C9CA71")) = value;
+	}
+
+	public unsafe float FadeInAnimTimeline_2
+	{
+		get => *(float*)(Inner.Ptr + GetFieldOffset("FadeInAnimTimeline_alpha_18891BC84691F4B9E25A09B381C9CA71"));
+		set => *(float*)(Inner.Ptr + GetFieldOffset("FadeInAnimTimeline_alpha_18891BC84691F4B9E25A09B381C9CA71")) = value;
+	}
+
+	public unsafe float FadeInAnimTimeline_3
+	{
+		get => *(float*)(Inner.Ptr + GetFieldOffset("FadeInAnimTimeline_Pos_18891BC84691F4B9E25A09B381C9CA71"));
+		set => *(float*)(Inner.Ptr + GetFieldOffset("FadeInAnimTimeline_Pos_18891BC84691F4B9E25A09B381C9CA71")) = value;
+	}
+
+	public unsafe ETimelineDirection FadeInAnimTimeline_4
+	{
+		get => *(ETimelineDirection*)(Inner.Ptr + GetFieldOffset("FadeInAnimTimeline__Direction_18891BC84691F4B9E25A09B381C9CA71"));
+		set => *(ETimelineDirection*)(Inner.Ptr + GetFieldOffset("FadeInAnimTimeline__Direction_18891BC84691F4B9E25A09B381C9CA71")) = value;
+	}
+
+	public unsafe UTimelineComponent? FadeInAnimTimeline_5
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("FadeInAnimTimeline")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("FadeInAnimTimeline")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("FadeInAnimTimeline")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe FString* Text
+	{
+		get => (FString*)(Inner.Ptr + GetFieldOffset("Text"));
+	}
+
+	public unsafe bool IsEnemy
+	{
+		get => *(bool*)(Inner.Ptr + GetFieldOffset("IsEnemy"));
+		set => *(bool*)(Inner.Ptr + GetFieldOffset("IsEnemy")) = value;
+	}
+
+	public unsafe FVector2D* CurrentPos
+	{
+		get => (FVector2D*)(Inner.Ptr + GetFieldOffset("CurrentPos"));
+	}
+
+	public unsafe float Time
+	{
+		get => *(float*)(Inner.Ptr + GetFieldOffset("Time"));
+		set => *(float*)(Inner.Ptr + GetFieldOffset("Time")) = value;
+	}
+
+	public unsafe bool IsStart
+	{
+		get => *(bool*)(Inner.Ptr + GetFieldOffset("IsStart"));
+		set => *(bool*)(Inner.Ptr + GetFieldOffset("IsStart")) = value;
+	}
+
+	public unsafe bool IsFadeInEnd
+	{
+		get => *(bool*)(Inner.Ptr + GetFieldOffset("IsFadeInEnd"));
+		set => *(bool*)(Inner.Ptr + GetFieldOffset("IsFadeInEnd")) = value;
+	}
+
+	public unsafe float AnimPos
+	{
+		get => *(float*)(Inner.Ptr + GetFieldOffset("AnimPos"));
+		set => *(float*)(Inner.Ptr + GetFieldOffset("AnimPos")) = value;
+	}
+
+	public unsafe float AnimAlpha
+	{
+		get => *(float*)(Inner.Ptr + GetFieldOffset("AnimAlpha"));
+		set => *(float*)(Inner.Ptr + GetFieldOffset("AnimAlpha")) = value;
+	}
+
+	public unsafe float AnimAngle
+	{
+		get => *(float*)(Inner.Ptr + GetFieldOffset("AnimAngle"));
+		set => *(float*)(Inner.Ptr + GetFieldOffset("AnimAngle")) = value;
+	}
+
+	public unsafe UBtlGuiDrawObjectPlg? plg1
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("plg1")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("plg1")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("plg1")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe float StartAngle
+	{
+		get => *(float*)(Inner.Ptr + GetFieldOffset("StartAngle"));
+		set => *(float*)(Inner.Ptr + GetFieldOffset("StartAngle")) = value;
+	}
+
+	public unsafe UBtlGuiDrawObjectRect? Rect1
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("Rect1")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("Rect1")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("Rect1")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe UBtlGuiDrawObjectText? text1
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("text1")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("text1")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("text1")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe int Skill_ID
+	{
+		get => *(int*)(Inner.Ptr + GetFieldOffset("Skill ID"));
+		set => *(int*)(Inner.Ptr + GetFieldOffset("Skill ID")) = value;
+	}
+
+	public unsafe int DebugSkillID
+	{
+		get => *(int*)(Inner.Ptr + GetFieldOffset("DebugSkillID"));
+		set => *(int*)(Inner.Ptr + GetFieldOffset("DebugSkillID")) = value;
+	}
+
+	public unsafe void GuiActorUpdate( float DeltaTime)
+	{
+		_ = Inner.ProcessEvent("GuiActorUpdate", [
+			new FloatParam(new(&DeltaTime))
+		], out _);
+	}
+
+	public unsafe void Start()
+	{
+		_ = Inner.ProcessEvent("Start", [], out _);
+	}
+
+	public unsafe void StartFadeOUT()
+	{
+		_ = Inner.ProcessEvent("StartFadeOUT", [], out _);
+	}
+
+	public unsafe void StartFadeIN()
+	{
+		_ = Inner.ProcessEvent("StartFadeIN", [], out _);
+	}
+
+	public unsafe void FadeOutAnimTimeline__UpdateFunc()
+	{
+		_ = Inner.ProcessEvent("FadeOutAnimTimeline__UpdateFunc", [], out _);
+	}
+
+	public unsafe void FadeOutAnimTimeline__FinishedFunc()
+	{
+		_ = Inner.ProcessEvent("FadeOutAnimTimeline__FinishedFunc", [], out _);
+	}
+
+	public unsafe void FadeInAnimTimeline__UpdateFunc()
+	{
+		_ = Inner.ProcessEvent("FadeInAnimTimeline__UpdateFunc", [], out _);
+	}
+
+	public unsafe void FadeInAnimTimeline__FinishedFunc()
+	{
+		_ = Inner.ProcessEvent("FadeInAnimTimeline__FinishedFunc", [], out _);
+	}
+
+	public unsafe void SetSkillID( int skillId, bool IsEnemy, float Time, bool CallFunc_GetSkillName_Sucsess, FText CallFunc_GetSkillName_ReturnValue, FString CallFunc_Conv_TextToString_ReturnValue)
+	{
+		_ = Inner.ProcessEvent("SetSkillID", [
+			new IntParam(new(&skillId)),
+			new BoolParam(new(&IsEnemy), 255),
+			new FloatParam(new(&Time)),
+			new BoolParam(new(&CallFunc_GetSkillName_Sucsess), 255),
+			new TextParam(new(&CallFunc_GetSkillName_ReturnValue), 24),
+			new StringParam(new(&CallFunc_Conv_TextToString_ReturnValue))
+		], out _);
+	}
+
+	public unsafe void SetCommonText( int Key, bool IsEnemy, float Time, FText CallFunc_GetBtlCommonText_ReturnValue, FString CallFunc_Conv_TextToString_ReturnValue)
+	{
+		_ = Inner.ProcessEvent("SetCommonText", [
+			new IntParam(new(&Key)),
+			new BoolParam(new(&IsEnemy), 255),
+			new FloatParam(new(&Time)),
+			new TextParam(new(&CallFunc_GetBtlCommonText_ReturnValue), 24),
+			new StringParam(new(&CallFunc_Conv_TextToString_ReturnValue))
+		], out _);
+	}
+
+	public unsafe void SetItemName( int ItemId, bool IsEnemy, float Time, FText CallFunc_GetItemName_ReturnValue, FString CallFunc_Conv_TextToString_ReturnValue)
+	{
+		_ = Inner.ProcessEvent("SetItemName", [
+			new IntParam(new(&ItemId)),
+			new BoolParam(new(&IsEnemy), 255),
+			new FloatParam(new(&Time)),
+			new TextParam(new(&CallFunc_GetItemName_ReturnValue), 24),
+			new StringParam(new(&CallFunc_Conv_TextToString_ReturnValue))
+		], out _);
+	}
+
+	public unsafe void Set_Debug_Param( int DebugSkillID)
+	{
+		_ = Inner.ProcessEvent("Set Debug Param", [
+			new IntParam(new(&DebugSkillID))
+		], out _);
+	}
+
+}
+
+[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0x3F8)]
+public unsafe struct ABP_BtlSkillNamePanel_C_Repr
+{
+	[FieldOffset(0x0)] public ABP_BtlGuiBaseActor_C_Repr Super; // Size: 0x34D
+	[FieldOffset(0x350)] public FPointerToUberGraphFrame UberGraphFrame; // Size: 0x8
+	[FieldOffset(0x358)] public UBtlGuiResources_Repr* BtlGuiResources; // Size: 0x8
+	[FieldOffset(0x360)] public UBtlDataBaseComponent_Repr* BtlDataBase; // Size: 0x8
+	[FieldOffset(0x368)] public UBtlGuiDrawComponent_Repr* BtlGuiDraw; // Size: 0x8
+	[FieldOffset(0x370)] public float FadeOutAnimTimeline; // Size: 0x4
+	[FieldOffset(0x374)] public float FadeOutAnimTimeline_2; // Size: 0x4
+	[FieldOffset(0x378)] public ETimelineDirection FadeOutAnimTimeline_3; // Size: 0x1
+	[FieldOffset(0x380)] public UTimelineComponent_Repr* FadeOutAnimTimeline_4; // Size: 0x8
+	[FieldOffset(0x388)] public float FadeInAnimTimeline; // Size: 0x4
+	[FieldOffset(0x38C)] public float FadeInAnimTimeline_2; // Size: 0x4
+	[FieldOffset(0x390)] public float FadeInAnimTimeline_3; // Size: 0x4
+	[FieldOffset(0x394)] public ETimelineDirection FadeInAnimTimeline_4; // Size: 0x1
+	[FieldOffset(0x398)] public UTimelineComponent_Repr* FadeInAnimTimeline_5; // Size: 0x8
+	[FieldOffset(0x3A0)] public FString Text; // Size: 0x10
+	[FieldOffset(0x3B0)] public bool IsEnemy; // Size: 0x1
+	[FieldOffset(0x3B4)] public FVector2D CurrentPos; // Size: 0x8
+	[FieldOffset(0x3BC)] public float Time; // Size: 0x4
+	[FieldOffset(0x3C0)] public bool IsStart; // Size: 0x1
+	[FieldOffset(0x3C1)] public bool IsFadeInEnd; // Size: 0x1
+	[FieldOffset(0x3C4)] public float AnimPos; // Size: 0x4
+	[FieldOffset(0x3C8)] public float AnimAlpha; // Size: 0x4
+	[FieldOffset(0x3CC)] public float AnimAngle; // Size: 0x4
+	[FieldOffset(0x3D0)] public UBtlGuiDrawObjectPlg_Repr* plg1; // Size: 0x8
+	[FieldOffset(0x3D8)] public float StartAngle; // Size: 0x4
+	[FieldOffset(0x3E0)] public UBtlGuiDrawObjectRect_Repr* Rect1; // Size: 0x8
+	[FieldOffset(0x3E8)] public UBtlGuiDrawObjectText_Repr* text1; // Size: 0x8
+	[FieldOffset(0x3F0)] public int Skill_ID; // Size: 0x4
+	[FieldOffset(0x3F4)] public int DebugSkillID; // Size: 0x4
+
+	public ABP_BtlSkillNamePanel_C ToManaged(IUnrealFactory factory)
+	{
+		fixed (ABP_BtlSkillNamePanel_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
 	}
 }
 
@@ -349618,10 +349653,10 @@ public class ABP_BtlGuard_C : ABP_BtlGuiBaseActor_C, ITypeRepr<ABP_BtlGuard_C_Re
 		_ = Inner.ProcessEvent("UnbindAllAction", [], out _);
 	}
 
-	public unsafe void CalcTriangle1OffsetVec( ref FVector2D vec, FVector2D UnitDirectionVec, FVector2D CallFunc_MakeVector2D_ReturnValue, FVector2D CallFunc_GetGuardAdjustedPosition_ReturnValue, FVector2D CallFunc_MakeVector2D_ReturnValue_1, float CallFunc_BreakVector2D_X, float CallFunc_BreakVector2D_Y, FVector2D CallFunc_Subtract_Vector2DVector2D_ReturnValue, float CallFunc_Multiply_IntFloat_ReturnValue, float CallFunc_Multiply_IntFloat_ReturnValue_1, float CallFunc_Add_FloatFloat_ReturnValue, FVector2D CallFunc_Multiply_Vector2DFloat_ReturnValue, FVector2D CallFunc_Subtract_Vector2DVector2D_ReturnValue_1, FVector2D CallFunc_Multiply_Vector2DFloat_ReturnValue_1)
+	public unsafe void CalcTriangle1OffsetVec( ref FVector2D Vec, FVector2D UnitDirectionVec, FVector2D CallFunc_MakeVector2D_ReturnValue, FVector2D CallFunc_GetGuardAdjustedPosition_ReturnValue, FVector2D CallFunc_MakeVector2D_ReturnValue_1, float CallFunc_BreakVector2D_X, float CallFunc_BreakVector2D_Y, FVector2D CallFunc_Subtract_Vector2DVector2D_ReturnValue, float CallFunc_Multiply_IntFloat_ReturnValue, float CallFunc_Multiply_IntFloat_ReturnValue_1, float CallFunc_Add_FloatFloat_ReturnValue, FVector2D CallFunc_Multiply_Vector2DFloat_ReturnValue, FVector2D CallFunc_Subtract_Vector2DVector2D_ReturnValue_1, FVector2D CallFunc_Multiply_Vector2DFloat_ReturnValue_1)
 	{
 		_ = Inner.ProcessEvent("CalcTriangle1OffsetVec", [
-			new StructParam(new((FVector2D*)Unsafe.AsPointer(ref vec)), 8),
+			new StructParam(new((FVector2D*)Unsafe.AsPointer(ref Vec)), 8),
 			new StructParam(new(&UnitDirectionVec), 8),
 			new StructParam(new(&CallFunc_MakeVector2D_ReturnValue), 8),
 			new StructParam(new(&CallFunc_GetGuardAdjustedPosition_ReturnValue), 8),
@@ -349638,10 +349673,10 @@ public class ABP_BtlGuard_C : ABP_BtlGuiBaseActor_C, ITypeRepr<ABP_BtlGuard_C_Re
 		], out _);
 	}
 
-	public unsafe void CalcTriangle2OffsetVec( ref FVector2D vec, FVector2D UnitDirectionVec, FVector2D CallFunc_MakeVector2D_ReturnValue, FVector2D CallFunc_MakeVector2D_ReturnValue_1, FVector2D CallFunc_Subtract_Vector2DVector2D_ReturnValue, FVector2D CallFunc_GetGuardAdjustedPosition_ReturnValue, float CallFunc_BreakVector2D_X, float CallFunc_BreakVector2D_Y, float CallFunc_Multiply_IntFloat_ReturnValue, float CallFunc_Multiply_IntFloat_ReturnValue_1, float CallFunc_Add_FloatFloat_ReturnValue, FVector2D CallFunc_Multiply_Vector2DFloat_ReturnValue, FVector2D CallFunc_Subtract_Vector2DVector2D_ReturnValue_1, FVector2D CallFunc_Multiply_Vector2DFloat_ReturnValue_1)
+	public unsafe void CalcTriangle2OffsetVec( ref FVector2D Vec, FVector2D UnitDirectionVec, FVector2D CallFunc_MakeVector2D_ReturnValue, FVector2D CallFunc_MakeVector2D_ReturnValue_1, FVector2D CallFunc_Subtract_Vector2DVector2D_ReturnValue, FVector2D CallFunc_GetGuardAdjustedPosition_ReturnValue, float CallFunc_BreakVector2D_X, float CallFunc_BreakVector2D_Y, float CallFunc_Multiply_IntFloat_ReturnValue, float CallFunc_Multiply_IntFloat_ReturnValue_1, float CallFunc_Add_FloatFloat_ReturnValue, FVector2D CallFunc_Multiply_Vector2DFloat_ReturnValue, FVector2D CallFunc_Subtract_Vector2DVector2D_ReturnValue_1, FVector2D CallFunc_Multiply_Vector2DFloat_ReturnValue_1)
 	{
 		_ = Inner.ProcessEvent("CalcTriangle2OffsetVec", [
-			new StructParam(new((FVector2D*)Unsafe.AsPointer(ref vec)), 8),
+			new StructParam(new((FVector2D*)Unsafe.AsPointer(ref Vec)), 8),
 			new StructParam(new(&UnitDirectionVec), 8),
 			new StructParam(new(&CallFunc_MakeVector2D_ReturnValue), 8),
 			new StructParam(new(&CallFunc_MakeVector2D_ReturnValue_1), 8),
@@ -349702,157 +349737,6 @@ public unsafe struct ABP_BtlGuard_C_Repr
 	public ABP_BtlGuard_C ToManaged(IUnrealFactory factory)
 	{
 		fixed (ABP_BtlGuard_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
-	}
-}
-
-
-public class ABP_BtlGuiEncountAlert_C : ABP_BtlGuiBaseActor_C, ITypeRepr<ABP_BtlGuiEncountAlert_C_Repr>
-{
-	private static Dictionary<string, int>? FieldOffsets;
-	public ABP_BtlGuiEncountAlert_C(IUObject inner, bool genOffsets = true) : base(inner, false)
-	{
-		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
-	}
-
-	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
-
-	public new unsafe ABP_BtlGuiEncountAlert_C_Repr* Repr => (ABP_BtlGuiEncountAlert_C_Repr*)Inner.Ptr;
-
-	public unsafe FPointerToUberGraphFrame* UberGraphFrame
-	{
-		get => (FPointerToUberGraphFrame*)(Inner.Ptr + GetFieldOffset("UberGraphFrame"));
-	}
-
-	public unsafe UBtlGuiResources? BtlGuiResources
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("BtlGuiResources")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("BtlGuiResources")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("BtlGuiResources")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe UBtlGuiDrawComponent? BtlGuiDraw
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("BtlGuiDraw")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("BtlGuiDraw")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("BtlGuiDraw")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe FVector* EncountTimeline
-	{
-		get => (FVector*)(Inner.Ptr + GetFieldOffset("EncountTimeline_pos_2480F7FC401336A032F69CBD6AA3DC09"));
-	}
-
-	public unsafe float EncountTimeline_2
-	{
-		get => *(float*)(Inner.Ptr + GetFieldOffset("EncountTimeline_Alpha_2480F7FC401336A032F69CBD6AA3DC09"));
-		set => *(float*)(Inner.Ptr + GetFieldOffset("EncountTimeline_Alpha_2480F7FC401336A032F69CBD6AA3DC09")) = value;
-	}
-
-	public unsafe float EncountTimeline_3
-	{
-		get => *(float*)(Inner.Ptr + GetFieldOffset("EncountTimeline_Scale_2480F7FC401336A032F69CBD6AA3DC09"));
-		set => *(float*)(Inner.Ptr + GetFieldOffset("EncountTimeline_Scale_2480F7FC401336A032F69CBD6AA3DC09")) = value;
-	}
-
-	public unsafe ETimelineDirection EncountTimeline_4
-	{
-		get => *(ETimelineDirection*)(Inner.Ptr + GetFieldOffset("EncountTimeline__Direction_2480F7FC401336A032F69CBD6AA3DC09"));
-		set => *(ETimelineDirection*)(Inner.Ptr + GetFieldOffset("EncountTimeline__Direction_2480F7FC401336A032F69CBD6AA3DC09")) = value;
-	}
-
-	public unsafe UTimelineComponent? EncountTimeline_5
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("EncountTimeline")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("EncountTimeline")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("EncountTimeline")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe UBtlGuiDrawObjectImage? Image
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("Image")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("Image")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("Image")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe bool PlayerAdvantage
-	{
-		get => *(bool*)(Inner.Ptr + GetFieldOffset("PlayerAdvantage"));
-		set => *(bool*)(Inner.Ptr + GetFieldOffset("PlayerAdvantage")) = value;
-	}
-
-	public unsafe FVector* Pos
-	{
-		get => (FVector*)(Inner.Ptr + GetFieldOffset("Pos"));
-	}
-
-	public unsafe float LifeTime
-	{
-		get => *(float*)(Inner.Ptr + GetFieldOffset("LifeTime"));
-		set => *(float*)(Inner.Ptr + GetFieldOffset("LifeTime")) = value;
-	}
-
-	public unsafe float Scale
-	{
-		get => *(float*)(Inner.Ptr + GetFieldOffset("Scale"));
-		set => *(float*)(Inner.Ptr + GetFieldOffset("Scale")) = value;
-	}
-
-	public unsafe float Alpha
-	{
-		get => *(float*)(Inner.Ptr + GetFieldOffset("Alpha"));
-		set => *(float*)(Inner.Ptr + GetFieldOffset("Alpha")) = value;
-	}
-
-	public unsafe void GuiActorUpdate( float DeltaTime)
-	{
-		_ = Inner.ProcessEvent("GuiActorUpdate", [
-			new FloatParam(new(&DeltaTime))
-		], out _);
-	}
-
-	public unsafe void GuiActorBeginPlay()
-	{
-		_ = Inner.ProcessEvent("GuiActorBeginPlay", [], out _);
-	}
-
-	public unsafe void EncountTimeline__UpdateFunc()
-	{
-		_ = Inner.ProcessEvent("EncountTimeline__UpdateFunc", [], out _);
-	}
-
-	public unsafe void EncountTimeline__FinishedFunc()
-	{
-		_ = Inner.ProcessEvent("EncountTimeline__FinishedFunc", [], out _);
-	}
-
-	public unsafe void SetParam( bool PlayerAdvantage, float LifeTime)
-	{
-		_ = Inner.ProcessEvent("SetParam", [
-			new BoolParam(new(&PlayerAdvantage), 255),
-			new FloatParam(new(&LifeTime))
-		], out _);
-	}
-
-}
-
-[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0x3AC)]
-public unsafe struct ABP_BtlGuiEncountAlert_C_Repr
-{
-	[FieldOffset(0x0)] public ABP_BtlGuiBaseActor_C_Repr Super; // Size: 0x34D
-	[FieldOffset(0x350)] public FPointerToUberGraphFrame UberGraphFrame; // Size: 0x8
-	[FieldOffset(0x358)] public UBtlGuiResources_Repr* BtlGuiResources; // Size: 0x8
-	[FieldOffset(0x360)] public UBtlGuiDrawComponent_Repr* BtlGuiDraw; // Size: 0x8
-	[FieldOffset(0x368)] public FVector EncountTimeline; // Size: 0xC
-	[FieldOffset(0x374)] public float EncountTimeline_2; // Size: 0x4
-	[FieldOffset(0x378)] public float EncountTimeline_3; // Size: 0x4
-	[FieldOffset(0x37C)] public ETimelineDirection EncountTimeline_4; // Size: 0x1
-	[FieldOffset(0x380)] public UTimelineComponent_Repr* EncountTimeline_5; // Size: 0x8
-	[FieldOffset(0x388)] public UBtlGuiDrawObjectImage_Repr* Image; // Size: 0x8
-	[FieldOffset(0x390)] public bool PlayerAdvantage; // Size: 0x1
-	[FieldOffset(0x394)] public FVector Pos; // Size: 0xC
-	[FieldOffset(0x3A0)] public float LifeTime; // Size: 0x4
-	[FieldOffset(0x3A4)] public float Scale; // Size: 0x4
-	[FieldOffset(0x3A8)] public float Alpha; // Size: 0x4
-
-	public ABP_BtlGuiEncountAlert_C ToManaged(IUnrealFactory factory)
-	{
-		fixed (ABP_BtlGuiEncountAlert_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
 	}
 }
 
@@ -350284,6 +350168,157 @@ public unsafe struct ABP_BtlGuiRush_C_Repr
 	public ABP_BtlGuiRush_C ToManaged(IUnrealFactory factory)
 	{
 		fixed (ABP_BtlGuiRush_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
+	}
+}
+
+
+public class ABP_BtlGuiEncountAlert_C : ABP_BtlGuiBaseActor_C, ITypeRepr<ABP_BtlGuiEncountAlert_C_Repr>
+{
+	private static Dictionary<string, int>? FieldOffsets;
+	public ABP_BtlGuiEncountAlert_C(IUObject inner, bool genOffsets = true) : base(inner, false)
+	{
+		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
+	}
+
+	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
+
+	public new unsafe ABP_BtlGuiEncountAlert_C_Repr* Repr => (ABP_BtlGuiEncountAlert_C_Repr*)Inner.Ptr;
+
+	public unsafe FPointerToUberGraphFrame* UberGraphFrame
+	{
+		get => (FPointerToUberGraphFrame*)(Inner.Ptr + GetFieldOffset("UberGraphFrame"));
+	}
+
+	public unsafe UBtlGuiResources? BtlGuiResources
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("BtlGuiResources")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("BtlGuiResources")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("BtlGuiResources")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe UBtlGuiDrawComponent? BtlGuiDraw
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("BtlGuiDraw")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("BtlGuiDraw")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("BtlGuiDraw")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe FVector* EncountTimeline
+	{
+		get => (FVector*)(Inner.Ptr + GetFieldOffset("EncountTimeline_pos_2480F7FC401336A032F69CBD6AA3DC09"));
+	}
+
+	public unsafe float EncountTimeline_2
+	{
+		get => *(float*)(Inner.Ptr + GetFieldOffset("EncountTimeline_Alpha_2480F7FC401336A032F69CBD6AA3DC09"));
+		set => *(float*)(Inner.Ptr + GetFieldOffset("EncountTimeline_Alpha_2480F7FC401336A032F69CBD6AA3DC09")) = value;
+	}
+
+	public unsafe float EncountTimeline_3
+	{
+		get => *(float*)(Inner.Ptr + GetFieldOffset("EncountTimeline_Scale_2480F7FC401336A032F69CBD6AA3DC09"));
+		set => *(float*)(Inner.Ptr + GetFieldOffset("EncountTimeline_Scale_2480F7FC401336A032F69CBD6AA3DC09")) = value;
+	}
+
+	public unsafe ETimelineDirection EncountTimeline_4
+	{
+		get => *(ETimelineDirection*)(Inner.Ptr + GetFieldOffset("EncountTimeline__Direction_2480F7FC401336A032F69CBD6AA3DC09"));
+		set => *(ETimelineDirection*)(Inner.Ptr + GetFieldOffset("EncountTimeline__Direction_2480F7FC401336A032F69CBD6AA3DC09")) = value;
+	}
+
+	public unsafe UTimelineComponent? EncountTimeline_5
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("EncountTimeline")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("EncountTimeline")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("EncountTimeline")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe UBtlGuiDrawObjectImage? Image
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("Image")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("Image")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("Image")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe bool PlayerAdvantage
+	{
+		get => *(bool*)(Inner.Ptr + GetFieldOffset("PlayerAdvantage"));
+		set => *(bool*)(Inner.Ptr + GetFieldOffset("PlayerAdvantage")) = value;
+	}
+
+	public unsafe FVector* Pos
+	{
+		get => (FVector*)(Inner.Ptr + GetFieldOffset("Pos"));
+	}
+
+	public unsafe float LifeTime
+	{
+		get => *(float*)(Inner.Ptr + GetFieldOffset("LifeTime"));
+		set => *(float*)(Inner.Ptr + GetFieldOffset("LifeTime")) = value;
+	}
+
+	public unsafe float Scale
+	{
+		get => *(float*)(Inner.Ptr + GetFieldOffset("Scale"));
+		set => *(float*)(Inner.Ptr + GetFieldOffset("Scale")) = value;
+	}
+
+	public unsafe float Alpha
+	{
+		get => *(float*)(Inner.Ptr + GetFieldOffset("Alpha"));
+		set => *(float*)(Inner.Ptr + GetFieldOffset("Alpha")) = value;
+	}
+
+	public unsafe void GuiActorUpdate( float DeltaTime)
+	{
+		_ = Inner.ProcessEvent("GuiActorUpdate", [
+			new FloatParam(new(&DeltaTime))
+		], out _);
+	}
+
+	public unsafe void GuiActorBeginPlay()
+	{
+		_ = Inner.ProcessEvent("GuiActorBeginPlay", [], out _);
+	}
+
+	public unsafe void EncountTimeline__UpdateFunc()
+	{
+		_ = Inner.ProcessEvent("EncountTimeline__UpdateFunc", [], out _);
+	}
+
+	public unsafe void EncountTimeline__FinishedFunc()
+	{
+		_ = Inner.ProcessEvent("EncountTimeline__FinishedFunc", [], out _);
+	}
+
+	public unsafe void SetParam( bool PlayerAdvantage, float LifeTime)
+	{
+		_ = Inner.ProcessEvent("SetParam", [
+			new BoolParam(new(&PlayerAdvantage), 255),
+			new FloatParam(new(&LifeTime))
+		], out _);
+	}
+
+}
+
+[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0x3AC)]
+public unsafe struct ABP_BtlGuiEncountAlert_C_Repr
+{
+	[FieldOffset(0x0)] public ABP_BtlGuiBaseActor_C_Repr Super; // Size: 0x34D
+	[FieldOffset(0x350)] public FPointerToUberGraphFrame UberGraphFrame; // Size: 0x8
+	[FieldOffset(0x358)] public UBtlGuiResources_Repr* BtlGuiResources; // Size: 0x8
+	[FieldOffset(0x360)] public UBtlGuiDrawComponent_Repr* BtlGuiDraw; // Size: 0x8
+	[FieldOffset(0x368)] public FVector EncountTimeline; // Size: 0xC
+	[FieldOffset(0x374)] public float EncountTimeline_2; // Size: 0x4
+	[FieldOffset(0x378)] public float EncountTimeline_3; // Size: 0x4
+	[FieldOffset(0x37C)] public ETimelineDirection EncountTimeline_4; // Size: 0x1
+	[FieldOffset(0x380)] public UTimelineComponent_Repr* EncountTimeline_5; // Size: 0x8
+	[FieldOffset(0x388)] public UBtlGuiDrawObjectImage_Repr* Image; // Size: 0x8
+	[FieldOffset(0x390)] public bool PlayerAdvantage; // Size: 0x1
+	[FieldOffset(0x394)] public FVector Pos; // Size: 0xC
+	[FieldOffset(0x3A0)] public float LifeTime; // Size: 0x4
+	[FieldOffset(0x3A4)] public float Scale; // Size: 0x4
+	[FieldOffset(0x3A8)] public float Alpha; // Size: 0x4
+
+	public ABP_BtlGuiEncountAlert_C ToManaged(IUnrealFactory factory)
+	{
+		fixed (ABP_BtlGuiEncountAlert_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
 	}
 }
 
@@ -369463,7 +369498,7 @@ public class ABP_BtlSkillBase_C : ABtlSkill, ITypeRepr<ABP_BtlSkillBase_C_Repr>
 		], out _);
 	}
 
-	public unsafe void UserConstructionScript( int Temp_int_Loop_Counter_Variable, int CallFunc_Add_IntInt_ReturnValue, int Temp_int_Array_Index_Variable, FFBtlSkillControl Temp_struct_Variable, FFBtlSkillControl Temp_struct_Variable_1, int CallFunc_Array_Add_ReturnValue, TArray<Ptr<USceneComponent_Repr>> CallFunc_GetChildrenComponents_Children, int CallFunc_Array_Length_ReturnValue, int CallFunc_Array_Length_ReturnValue_1, bool CallFunc_Less_IntInt_ReturnValue, ALevelSequenceActor? CallFunc_CreateLevelSequencePlayer_OutActor, ULevelSequencePlayer? CallFunc_CreateLevelSequencePlayer_ReturnValue, int Temp_int_Array_Index_Variable_1, USceneComponent? CallFunc_Array_Get_Item, int CallFunc_Array_Add_ReturnValue_1, UNiagaraCameraAttachComponent? K2Node_DynamicCast_AsNiagara_Camera_Attach_Component, bool K2Node_DynamicCast_bSuccess, USceneComponent? CallFunc_GetObjectClass_ReturnValue, bool CallFunc_NotEqual_ClassClass_ReturnValue, int Temp_int_Loop_Counter_Variable_1, bool CallFunc_Less_IntInt_ReturnValue_1, int CallFunc_Add_IntInt_ReturnValue_1)
+	public unsafe void UserConstructionScript( int Temp_int_Loop_Counter_Variable, int CallFunc_Add_IntInt_ReturnValue, int Temp_int_Array_Index_Variable, FFBtlSkillControl Temp_struct_Variable, FFBtlSkillControl Temp_struct_Variable_1, int CallFunc_Array_Add_ReturnValue, TArray<Ptr<USceneComponent_Repr>> CallFunc_GetChildrenComponents_Children, int CallFunc_Array_Length_ReturnValue, int CallFunc_Array_Length_ReturnValue_1, bool CallFunc_Less_IntInt_ReturnValue, ALevelSequenceActor? CallFunc_CreateLevelSequencePlayer_OutActor, ULevelSequencePlayer? CallFunc_CreateLevelSequencePlayer_ReturnValue, int Temp_int_Array_Index_Variable_1, USceneComponent? CallFunc_Array_Get_Item, int CallFunc_Array_Add_ReturnValue_1, UNiagaraCameraAttachComponent? K2Node_DynamicCast_AsNiagara_Camera_Attach_Component, bool K2Node_DynamicCast_bSuccess, UClass? CallFunc_GetObjectClass_ReturnValue, bool CallFunc_NotEqual_ClassClass_ReturnValue, int Temp_int_Loop_Counter_Variable_1, bool CallFunc_Less_IntInt_ReturnValue_1, int CallFunc_Add_IntInt_ReturnValue_1)
 	{
 		nint CallFunc_CreateLevelSequencePlayer_OutActor_Ptr = CallFunc_CreateLevelSequencePlayer_OutActor?.Inner.Ptr ?? nint.Zero;
 		nint CallFunc_CreateLevelSequencePlayer_ReturnValue_Ptr = CallFunc_CreateLevelSequencePlayer_ReturnValue?.Inner.Ptr ?? nint.Zero;
@@ -371707,6 +371742,176 @@ public unsafe struct ABP_BtlTacticsCheck_C_Repr
 }
 
 
+public class ABP_BtlGuiPersonaStatus_C : ABP_BtlGuiBaseActor_C, ITypeRepr<ABP_BtlGuiPersonaStatus_C_Repr>
+{
+	private static Dictionary<string, int>? FieldOffsets;
+	public ABP_BtlGuiPersonaStatus_C(IUObject inner, bool genOffsets = true) : base(inner, false)
+	{
+		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
+	}
+
+	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
+
+	public new unsafe ABP_BtlGuiPersonaStatus_C_Repr* Repr => (ABP_BtlGuiPersonaStatus_C_Repr*)Inner.Ptr;
+
+	public unsafe FPointerToUberGraphFrame* UberGraphFrame
+	{
+		get => (FPointerToUberGraphFrame*)(Inner.Ptr + GetFieldOffset("UberGraphFrame"));
+	}
+
+	public unsafe UBtlGuiListComponent? BtlGuiList
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("BtlGuiList")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("BtlGuiList")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("BtlGuiList")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe UBtlDataBaseComponent? BtlDataBase
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("BtlDataBase")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("BtlDataBase")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("BtlDataBase")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe UBtlGuiDrawComponent? BtlGuiDraw
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("BtlGuiDraw")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("BtlGuiDraw")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("BtlGuiDraw")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe UBtlGuiPersonaStatusComponent? BtlGuiPersonaStatus
+	{
+		get => *(nint*)(Inner.Ptr + GetFieldOffset("BtlGuiPersonaStatus")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("BtlGuiPersonaStatus")))) : null;
+		set => *(nint*)(Inner.Ptr + GetFieldOffset("BtlGuiPersonaStatus")) = value?.Inner.Ptr ?? nint.Zero;
+	}
+
+	public unsafe bool IsCommentaryOpen
+	{
+		get => *(bool*)(Inner.Ptr + GetFieldOffset("IsCommentaryOpen"));
+		set => *(bool*)(Inner.Ptr + GetFieldOffset("IsCommentaryOpen")) = value;
+	}
+
+	public unsafe bool IsSkillHelpOpen
+	{
+		get => *(bool*)(Inner.Ptr + GetFieldOffset("IsSkillHelpOpen"));
+		set => *(bool*)(Inner.Ptr + GetFieldOffset("IsSkillHelpOpen")) = value;
+	}
+
+	public unsafe bool IsStrategy
+	{
+		get => *(bool*)(Inner.Ptr + GetFieldOffset("IsStrategy"));
+		set => *(bool*)(Inner.Ptr + GetFieldOffset("IsStrategy")) = value;
+	}
+
+	public unsafe bool IsUpdateEnable
+	{
+		get => *(bool*)(Inner.Ptr + GetFieldOffset("IsUpdateEnable"));
+		set => *(bool*)(Inner.Ptr + GetFieldOffset("IsUpdateEnable")) = value;
+	}
+
+	public unsafe float BindTime
+	{
+		get => *(float*)(Inner.Ptr + GetFieldOffset("BindTime"));
+		set => *(float*)(Inner.Ptr + GetFieldOffset("BindTime")) = value;
+	}
+
+	public unsafe void GuiActorEncountEnd()
+	{
+		_ = Inner.ProcessEvent("GuiActorEncountEnd", [], out _);
+	}
+
+	public unsafe void GuiActorEncountStart()
+	{
+		_ = Inner.ProcessEvent("GuiActorEncountStart", [], out _);
+	}
+
+	public unsafe void GuiActorUpdate( float DeltaTime)
+	{
+		_ = Inner.ProcessEvent("GuiActorUpdate", [
+			new FloatParam(new(&DeltaTime))
+		], out _);
+	}
+
+	public unsafe void GuiActorStateExit()
+	{
+		_ = Inner.ProcessEvent("GuiActorStateExit", [], out _);
+	}
+
+	public unsafe void GuiActorStateInit( bool flag, int Param)
+	{
+		_ = Inner.ProcessEvent("GuiActorStateInit", [
+			new BoolParam(new(&flag), 255),
+			new IntParam(new(&Param))
+		], out _);
+	}
+
+	public unsafe void GuiActorBeginDestroy()
+	{
+		_ = Inner.ProcessEvent("GuiActorBeginDestroy", [], out _);
+	}
+
+	public unsafe void pushL2()
+	{
+		_ = Inner.ProcessEvent("pushL2", [], out _);
+	}
+
+	public unsafe void PushR1()
+	{
+		_ = Inner.ProcessEvent("PushR1", [], out _);
+	}
+
+	public unsafe void PushL1()
+	{
+		_ = Inner.ProcessEvent("PushL1", [], out _);
+	}
+
+	public unsafe void PushOk()
+	{
+		_ = Inner.ProcessEvent("PushOk", [], out _);
+	}
+
+	public unsafe void PushRL()
+	{
+		_ = Inner.ProcessEvent("PushRL", [], out _);
+	}
+
+	public unsafe void PushCancel()
+	{
+		_ = Inner.ProcessEvent("PushCancel", [], out _);
+	}
+
+	public unsafe void GuiActorUnbindAction()
+	{
+		_ = Inner.ProcessEvent("GuiActorUnbindAction", [], out _);
+	}
+
+	public unsafe void GuiActorBindAction()
+	{
+		_ = Inner.ProcessEvent("GuiActorBindAction", [], out _);
+	}
+
+}
+
+[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0x380)]
+public unsafe struct ABP_BtlGuiPersonaStatus_C_Repr
+{
+	[FieldOffset(0x0)] public ABP_BtlGuiBaseActor_C_Repr Super; // Size: 0x34D
+	[FieldOffset(0x350)] public FPointerToUberGraphFrame UberGraphFrame; // Size: 0x8
+	[FieldOffset(0x358)] public UBtlGuiListComponent_Repr* BtlGuiList; // Size: 0x8
+	[FieldOffset(0x360)] public UBtlDataBaseComponent_Repr* BtlDataBase; // Size: 0x8
+	[FieldOffset(0x368)] public UBtlGuiDrawComponent_Repr* BtlGuiDraw; // Size: 0x8
+	[FieldOffset(0x370)] public UBtlGuiPersonaStatusComponent_Repr* BtlGuiPersonaStatus; // Size: 0x8
+	[FieldOffset(0x378)] public bool IsCommentaryOpen; // Size: 0x1
+	[FieldOffset(0x379)] public bool IsSkillHelpOpen; // Size: 0x1
+	[FieldOffset(0x37A)] public bool IsStrategy; // Size: 0x1
+	[FieldOffset(0x37B)] public bool IsUpdateEnable; // Size: 0x1
+	[FieldOffset(0x37C)] public float BindTime; // Size: 0x4
+
+	public ABP_BtlGuiPersonaStatus_C ToManaged(IUnrealFactory factory)
+	{
+		fixed (ABP_BtlGuiPersonaStatus_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
+	}
+}
+
+
 public class ABP_BtlSkillList_C : ABP_BtlGuiBaseActor_C, ITypeRepr<ABP_BtlSkillList_C_Repr>
 {
 	private static Dictionary<string, int>? FieldOffsets;
@@ -372888,176 +373093,6 @@ public unsafe struct ABP_BtlSkillList_C_Repr
 }
 
 
-public class ABP_BtlGuiPersonaStatus_C : ABP_BtlGuiBaseActor_C, ITypeRepr<ABP_BtlGuiPersonaStatus_C_Repr>
-{
-	private static Dictionary<string, int>? FieldOffsets;
-	public ABP_BtlGuiPersonaStatus_C(IUObject inner, bool genOffsets = true) : base(inner, false)
-	{
-		if (genOffsets) FieldOffsets ??= CreateFieldOffsets();
-	}
-
-	protected override int GetFieldOffset(string Name) => FieldOffsets![Name];
-
-	public new unsafe ABP_BtlGuiPersonaStatus_C_Repr* Repr => (ABP_BtlGuiPersonaStatus_C_Repr*)Inner.Ptr;
-
-	public unsafe FPointerToUberGraphFrame* UberGraphFrame
-	{
-		get => (FPointerToUberGraphFrame*)(Inner.Ptr + GetFieldOffset("UberGraphFrame"));
-	}
-
-	public unsafe UBtlGuiListComponent? BtlGuiList
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("BtlGuiList")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("BtlGuiList")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("BtlGuiList")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe UBtlDataBaseComponent? BtlDataBase
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("BtlDataBase")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("BtlDataBase")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("BtlDataBase")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe UBtlGuiDrawComponent? BtlGuiDraw
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("BtlGuiDraw")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("BtlGuiDraw")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("BtlGuiDraw")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe UBtlGuiPersonaStatusComponent? BtlGuiPersonaStatus
-	{
-		get => *(nint*)(Inner.Ptr + GetFieldOffset("BtlGuiPersonaStatus")) != nint.Zero ? new(Inner.GetFactory().CreateUObject(*(nint*)(Inner.Ptr + GetFieldOffset("BtlGuiPersonaStatus")))) : null;
-		set => *(nint*)(Inner.Ptr + GetFieldOffset("BtlGuiPersonaStatus")) = value?.Inner.Ptr ?? nint.Zero;
-	}
-
-	public unsafe bool IsCommentaryOpen
-	{
-		get => *(bool*)(Inner.Ptr + GetFieldOffset("IsCommentaryOpen"));
-		set => *(bool*)(Inner.Ptr + GetFieldOffset("IsCommentaryOpen")) = value;
-	}
-
-	public unsafe bool IsSkillHelpOpen
-	{
-		get => *(bool*)(Inner.Ptr + GetFieldOffset("IsSkillHelpOpen"));
-		set => *(bool*)(Inner.Ptr + GetFieldOffset("IsSkillHelpOpen")) = value;
-	}
-
-	public unsafe bool IsStrategy
-	{
-		get => *(bool*)(Inner.Ptr + GetFieldOffset("IsStrategy"));
-		set => *(bool*)(Inner.Ptr + GetFieldOffset("IsStrategy")) = value;
-	}
-
-	public unsafe bool IsUpdateEnable
-	{
-		get => *(bool*)(Inner.Ptr + GetFieldOffset("IsUpdateEnable"));
-		set => *(bool*)(Inner.Ptr + GetFieldOffset("IsUpdateEnable")) = value;
-	}
-
-	public unsafe float BindTime
-	{
-		get => *(float*)(Inner.Ptr + GetFieldOffset("BindTime"));
-		set => *(float*)(Inner.Ptr + GetFieldOffset("BindTime")) = value;
-	}
-
-	public unsafe void GuiActorEncountEnd()
-	{
-		_ = Inner.ProcessEvent("GuiActorEncountEnd", [], out _);
-	}
-
-	public unsafe void GuiActorEncountStart()
-	{
-		_ = Inner.ProcessEvent("GuiActorEncountStart", [], out _);
-	}
-
-	public unsafe void GuiActorUpdate( float DeltaTime)
-	{
-		_ = Inner.ProcessEvent("GuiActorUpdate", [
-			new FloatParam(new(&DeltaTime))
-		], out _);
-	}
-
-	public unsafe void GuiActorStateExit()
-	{
-		_ = Inner.ProcessEvent("GuiActorStateExit", [], out _);
-	}
-
-	public unsafe void GuiActorStateInit( bool flag, int Param)
-	{
-		_ = Inner.ProcessEvent("GuiActorStateInit", [
-			new BoolParam(new(&flag), 255),
-			new IntParam(new(&Param))
-		], out _);
-	}
-
-	public unsafe void GuiActorBeginDestroy()
-	{
-		_ = Inner.ProcessEvent("GuiActorBeginDestroy", [], out _);
-	}
-
-	public unsafe void pushL2()
-	{
-		_ = Inner.ProcessEvent("pushL2", [], out _);
-	}
-
-	public unsafe void PushR1()
-	{
-		_ = Inner.ProcessEvent("PushR1", [], out _);
-	}
-
-	public unsafe void PushL1()
-	{
-		_ = Inner.ProcessEvent("PushL1", [], out _);
-	}
-
-	public unsafe void PushOk()
-	{
-		_ = Inner.ProcessEvent("PushOk", [], out _);
-	}
-
-	public unsafe void PushRL()
-	{
-		_ = Inner.ProcessEvent("PushRL", [], out _);
-	}
-
-	public unsafe void PushCancel()
-	{
-		_ = Inner.ProcessEvent("PushCancel", [], out _);
-	}
-
-	public unsafe void GuiActorUnbindAction()
-	{
-		_ = Inner.ProcessEvent("GuiActorUnbindAction", [], out _);
-	}
-
-	public unsafe void GuiActorBindAction()
-	{
-		_ = Inner.ProcessEvent("GuiActorBindAction", [], out _);
-	}
-
-}
-
-[StructLayout(LayoutKind.Explicit, Pack = 8, Size = 0x380)]
-public unsafe struct ABP_BtlGuiPersonaStatus_C_Repr
-{
-	[FieldOffset(0x0)] public ABP_BtlGuiBaseActor_C_Repr Super; // Size: 0x34D
-	[FieldOffset(0x350)] public FPointerToUberGraphFrame UberGraphFrame; // Size: 0x8
-	[FieldOffset(0x358)] public UBtlGuiListComponent_Repr* BtlGuiList; // Size: 0x8
-	[FieldOffset(0x360)] public UBtlDataBaseComponent_Repr* BtlDataBase; // Size: 0x8
-	[FieldOffset(0x368)] public UBtlGuiDrawComponent_Repr* BtlGuiDraw; // Size: 0x8
-	[FieldOffset(0x370)] public UBtlGuiPersonaStatusComponent_Repr* BtlGuiPersonaStatus; // Size: 0x8
-	[FieldOffset(0x378)] public bool IsCommentaryOpen; // Size: 0x1
-	[FieldOffset(0x379)] public bool IsSkillHelpOpen; // Size: 0x1
-	[FieldOffset(0x37A)] public bool IsStrategy; // Size: 0x1
-	[FieldOffset(0x37B)] public bool IsUpdateEnable; // Size: 0x1
-	[FieldOffset(0x37C)] public float BindTime; // Size: 0x4
-
-	public ABP_BtlGuiPersonaStatus_C ToManaged(IUnrealFactory factory)
-	{
-		fixed (ABP_BtlGuiPersonaStatus_C_Repr* self = &this) return new(factory.CreateUObject((nint)self));
-	}
-}
-
-
 public class ABP_TitleActor_C : ATitleActor, ITypeRepr<ABP_TitleActor_C_Repr>
 {
 	private static Dictionary<string, int>? FieldOffsets;
@@ -373922,10 +373957,10 @@ public class ABP_FLDSky_C : AActor, ITypeRepr<ABP_FLDSky_C_Repr>
 		set => *(float*)(Inner.Ptr + GetFieldOffset("月サイズ")) = value;
 	}
 
-	public unsafe float Horizon_falloff
+	public unsafe float Horizon_Falloff
 	{
-		get => *(float*)(Inner.Ptr + GetFieldOffset("Horizon falloff"));
-		set => *(float*)(Inner.Ptr + GetFieldOffset("Horizon falloff")) = value;
+		get => *(float*)(Inner.Ptr + GetFieldOffset("Horizon Falloff"));
+		set => *(float*)(Inner.Ptr + GetFieldOffset("Horizon Falloff")) = value;
 	}
 
 	public unsafe FLinearColor* 月発光範囲カラー
@@ -373933,9 +373968,9 @@ public class ABP_FLDSky_C : AActor, ITypeRepr<ABP_FLDSky_C_Repr>
 		get => (FLinearColor*)(Inner.Ptr + GetFieldOffset("月発光範囲カラー"));
 	}
 
-	public unsafe FLinearColor* Zenith_color
+	public unsafe FLinearColor* Zenith_Color
 	{
-		get => (FLinearColor*)(Inner.Ptr + GetFieldOffset("Zenith color"));
+		get => (FLinearColor*)(Inner.Ptr + GetFieldOffset("Zenith Color"));
 	}
 
 	public unsafe FLinearColor* Horizon_color
@@ -373943,9 +373978,9 @@ public class ABP_FLDSky_C : AActor, ITypeRepr<ABP_FLDSky_C_Repr>
 		get => (FLinearColor*)(Inner.Ptr + GetFieldOffset("Horizon color"));
 	}
 
-	public unsafe FLinearColor* Cloud_color
+	public unsafe FLinearColor* Cloud_Color
 	{
-		get => (FLinearColor*)(Inner.Ptr + GetFieldOffset("Cloud color"));
+		get => (FLinearColor*)(Inner.Ptr + GetFieldOffset("Cloud Color"));
 	}
 
 	public unsafe FLinearColor* Overall_Color
@@ -374537,11 +374572,11 @@ public unsafe struct ABP_FLDSky_C_Repr
 	[FieldOffset(0x2B8)] public float 月発光範囲; // Size: 0x4
 	[FieldOffset(0x2BC)] public float 発光パワー; // Size: 0x4
 	[FieldOffset(0x2C0)] public float 月サイズ; // Size: 0x4
-	[FieldOffset(0x2C4)] public float Horizon_falloff; // Size: 0x4
+	[FieldOffset(0x2C4)] public float Horizon_Falloff; // Size: 0x4
 	[FieldOffset(0x2C8)] public FLinearColor 月発光範囲カラー; // Size: 0x10
-	[FieldOffset(0x2D8)] public FLinearColor Zenith_color; // Size: 0x10
+	[FieldOffset(0x2D8)] public FLinearColor Zenith_Color; // Size: 0x10
 	[FieldOffset(0x2E8)] public FLinearColor Horizon_color; // Size: 0x10
-	[FieldOffset(0x2F8)] public FLinearColor Cloud_color; // Size: 0x10
+	[FieldOffset(0x2F8)] public FLinearColor Cloud_Color; // Size: 0x10
 	[FieldOffset(0x308)] public FLinearColor Overall_Color; // Size: 0x10
 	[FieldOffset(0x318)] public float 雲スクロール速度; // Size: 0x4
 	[FieldOffset(0x31C)] public float 雲透明度_通常_; // Size: 0x4
@@ -388702,6 +388737,14 @@ public enum Enum_LocomotionState : byte
     Enum_MAX = 6,
 }
 
+public enum MovementDirection : byte
+{
+    Forward = 0,
+    Right = 1,
+    Left = 2,
+    Backward = 3,
+}
+
 public enum HipsDirection : byte
 {
     F = 0,
@@ -388712,12 +388755,11 @@ public enum HipsDirection : byte
     LB = 5,
 }
 
-public enum MovementDirection : byte
+public enum ALS_ViewMode : byte
 {
-    Forward = 0,
-    Right = 1,
-    Left = 2,
-    Backward = 3,
+    ThirdPerson = 0,
+    FirstPerson = 1,
+    ALS_MAX = 2,
 }
 
 public enum ALS_MovementState : byte
@@ -388736,19 +388778,19 @@ public enum GroundedEntryState : byte
     Roll = 1,
 }
 
-public enum ALS_ViewMode : byte
-{
-    ThirdPerson = 0,
-    FirstPerson = 1,
-    ALS_MAX = 2,
-}
-
 public enum ALS_RotationMode : byte
 {
     VelocityDirection = 0,
     LookingDirection = 1,
     Aiming = 2,
     ALS_MAX = 3,
+}
+
+public enum ALS_Stance : byte
+{
+    Standing = 0,
+    Crouching = 1,
+    ALS_MAX = 2,
 }
 
 public enum ALS_MovementAction : byte
@@ -388767,13 +388809,6 @@ public enum ALS_Gait : byte
     Running = 1,
     Sprinting = 2,
     ALS_MAX = 3,
-}
-
-public enum ALS_Stance : byte
-{
-    Standing = 0,
-    Crouching = 1,
-    ALS_MAX = 2,
 }
 
 public enum ALS_OverlayState : byte

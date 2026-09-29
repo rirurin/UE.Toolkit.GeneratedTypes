@@ -15,7 +15,7 @@
 
 	<!-- Use Semantic Versioning -->
 	<Authors>Rirurin</Authors>
-	<Version>1.0.1</Version>
+	<Version>1.0.2</Version>
 
 	<!-- Description of your Package -->
 	<Description>UE Toolkit generated classes and structs for Life is Strange: Double Exposure (UE 5.2)</Description>
